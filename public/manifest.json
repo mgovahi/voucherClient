@@ -1,0 +1,25 @@
+{
+  "short_name": "وچر مانی",
+  "name": "وچر مانی",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "151x75",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/logo/favicon-100x50.png",
+      "sizes": "100x50",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/logo/android-chrome.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

@@ -1,0 +1,29 @@
+@import "../../../assets/styles/variables.scss";
+
+.not-found-wrap{
+    margin:48px auto;
+    text-align: center;
+    .icon {
+        padding:24px;
+        border-radius: 50%;
+        background-color: #f0f4ff;
+        display: block;
+        margin: 10px auto;
+        width:100px;
+        height: 100px;
+        text-align:center;
+        svg {
+            width:60px;
+            height: 60px;;
+            stroke:$color-yellow2;
+        }
+    }
+    > span {
+        b {
+            display: block;
+            color: $color-main2;
+            font-size: 18px;
+            margin:10px 0;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+@font-face {
+  font-family: IRANYekanX;
+  font-style: normal;
+  font-weight: bold;
+
+  src: url("IRANYekanXFaNum-Bold.woff2") format("woff2");
+  /* FF39+,Chrome36+, Opera24+*/
+}
+
+@font-face {
+  font-family: IRANYekanX;
+  font-style: normal;
+  font-weight: 500;
+  src: url("IRANYekanXFaNum-Regular.woff2") format("woff2");
+}

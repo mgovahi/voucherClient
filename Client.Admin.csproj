@@ -1,0 +1,9 @@
+<Project>
+    <ItemGroup>
+        <Content Include="src/**" />
+        <Content Include="public/**" />
+        <Content Include="node_modules_local/**" />
+        <Content Include="*.*" />
+        <Content Remove="package-lock.json" />
+    </ItemGroup>
+</Project>
