@@ -15,8 +15,8 @@ function Navigation(props) {
   const dispatch = useDispatch();
   const theme = useTheme();
   const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down("md"));
-  const isWidthMdToLg = useMediaQuery(theme.breakpoints.between("md", "lg"));
-  const isWidthLgToXl = useMediaQuery(theme.breakpoints.between("lg", "xl"));
+  // const isWidthMdToLg = useMediaQuery(theme.breakpoints.between("md", "lg"));
+  // const isWidthLgToXl = useMediaQuery(theme.breakpoints.between("lg", "xl"));
 
   return useMemo(() => {
     function handleItemClick(item) {
@@ -25,18 +25,18 @@ function Navigation(props) {
       }
     }
     let navItems = [...navigation];
-    let dropdownNavigation = [];
+    // let dropdownNavigation = [];
 
     switch (true) {
-      case isWidthMdToLg:
-        navItems = navigation.slice(0, 2);
-        dropdownNavigation = navigation.slice(2);
-        break;
+      // case isWidthMdToLg:
+      //   navItems = navigation.slice(0, 2);
+      //   dropdownNavigation = navigation.slice(2);
+      //   break;
 
-      case isWidthLgToXl:
-        navItems = navigation.slice(0, 3);
-        dropdownNavigation = navigation.slice(3);
-        break;
+      // case isWidthLgToXl:
+      //   navItems = navigation.slice(0, 3);
+      //   dropdownNavigation = navigation.slice(3);
+      //   break;
 
       case isMobile && props.layout === "vertical":
         navItems.push({
@@ -61,9 +61,9 @@ function Navigation(props) {
           active={props.active}
           onItemClick={handleItemClick}
         />
-        {isWidthMdToLg || isWidthLgToXl ? (
+        {/* {isWidthMdToLg || isWidthLgToXl ? (
           <DropdownNavigation navigation={dropdownNavigation} />
-        ) : null}
+        ) : null} */}
       </>
     );
   }, [
@@ -74,8 +74,8 @@ function Navigation(props) {
     props.className,
     props.dense,
     props.layout,
-    isWidthMdToLg,
-    isWidthLgToXl,
+    // isWidthMdToLg,
+    // isWidthLgToXl,
   ]);
 }
 

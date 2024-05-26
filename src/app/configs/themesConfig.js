@@ -267,6 +267,13 @@ const themesConfig = {
       },
       custome: {
         greenBlue: "#11adb9",
+        darkSky: "#1f2024",
+        red: "#f64e60",
+        yellow: "#ffa800",
+        lightPurple: "#f4e1f0",
+        borderSecure: "#b8c5db",
+        greenLight: "#eef8e8",
+        grayProfile: "#728096",
       },
       warning: {
         main: "#F59900",
