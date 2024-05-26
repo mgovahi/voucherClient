@@ -193,6 +193,17 @@ window.appSettings.resources = {
       ATTENTION:"توجه",
       BANK_NAME: "نام بانک",
       ADD_ACCOUNT: "افزودن حساب",
+
+
+      API_INFORMATION: "اطلاعات API",
+      API_KEY: "رمز API",
+      API_KEY_HELPER_TEXT: "رمز API را در اختیار افراد غیر قرار ندهید.",
+      WEBSITE: "وب سایت (اختیاری)",
+      WEBSITE_HELPER_TEXT: "آدرس بایستی https باشد.",
+      IP_LIMIT: "محدودیت های IP",
+      ADD: "افزودن",
+      DELETE: "حذف",
+      VALID_IP: "آی پی مجاز ",
     },
   },
 };
