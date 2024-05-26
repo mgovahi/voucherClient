@@ -10,10 +10,10 @@ import FusePageSimpleHeader from "@fuse/core/FusePageSimple/FusePageSimpleHeader
 import { useAuth } from "react-oidc-context";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import { useState } from "react";
-import UserInfo from "./components/UserInfo";
 import SecuritySettings from "./components/SecuritySettings";
 import Lastlogin from "./components/LastLogin";
 import ProfilePassword from "./components/ProfilePassword";
+import ClientInfo from "./components/ClientInfo";
 
 
 function ProfilePage(props) {
@@ -58,19 +58,37 @@ function ProfilePage(props) {
                     variant="scrollable"
                     scrollButtons="auto"
                     sx={{
+
                       borderRadius: "8px",
                       backgroundColor: "white",
                       border: `1px solid ${theme.palette.divider}`,
+                      // "Mui-selected": { color: `$theme.palette.primary.light!important` },
                     }}
 
                   >
-                    <Tab label={t("USER_INFO")} value="1" />
-                    <Tab label={t("CHAANGE_PASSWORD")} value="2" />
+                    <Tab
+                      label={t("USER_INFO")}
+                      value="1"
+                      sx={{
+                        "&.Mui-selected": {
+                          color: theme.palette.primary.tabMain + " !important", fontWeight: "bold",
+                        },
+                      }}
+                    />
+                    <Tab
+                      label={t("CHANGE_PASSWORD")}
+                      value="2"
+                      sx={{
+                        "&.Mui-selected": {
+                          color: theme.palette.primary.tabMain + " !important", fontWeight: "bold",
+                        },
+                      }}
+                    />
                   </TabList>
                 </Box>
                 <motion.div variants={item} className="col-span-1 ">
                   <TabPanel value="1" sx={{ padding: "0 !important" }}>
-                    <UserInfo />
+                    <ClientInfo />
                     <SecuritySettings />
                     <Lastlogin />
                   </TabPanel>

@@ -43,6 +43,7 @@ const themesConfig = {
         light: "#e5f3fe;",
         main: "#e5f3fe;",
         contrastText: "#2196f3",
+        secondary:"#f9f7ff",
       },
       info: {
         light: "#fdeee1",
@@ -58,6 +59,7 @@ const themesConfig = {
         secondary: "#a788ea",
         main: "#4d3dee",
         dark: "#4234CD",
+        tabMain:"#9155fd",
         contrastText: "rgb(255, 255, 255)",
       },
       secondary: {

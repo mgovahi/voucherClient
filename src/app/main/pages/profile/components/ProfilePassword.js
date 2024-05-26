@@ -169,7 +169,7 @@ function ProfilePassword({ info = {}, onCancelClick }) {
               width: { xs: "100%", sm: "fit-content",lg:"162px" },
               height: {  xs: "100%", sm: "fit-content",lg:"38px"}
             }}
-            color="info"
+            color="primary"
             size="middle"
             variant="contained"
             isLoading={loading}

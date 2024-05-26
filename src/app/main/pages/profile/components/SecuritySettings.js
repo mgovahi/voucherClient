@@ -105,7 +105,7 @@ const SecuritySettings = () => {
             <b> {isActive ? t("ACTIVE") : t("INACTIVE")} </b>
 
             <FormControlLabel
-              control={<Switch color="info" />}
+              control={<Switch color="primary" />}
               label={statusMap[isActive]}
               labelPlacement="start"
               onChange={onStatusChange}
@@ -240,13 +240,13 @@ const SecuritySettings = () => {
             </Grid>
           </Grid>
         </Box>
-        <Box className="col-span-2 flex justify-end my-20 mx-20">
+        <Box className="col-span-2 flex justify-end mt-48 mb-20 mx-20">
           <ButtonComponent
             sx={{
               width: { xs: "100%", sm: "fit-content" },
             }}
             onClick={handleSaveClick}
-            color="info"
+            color="primary"
             size="middle"
             variant="contained"
             isLoading={loading}
