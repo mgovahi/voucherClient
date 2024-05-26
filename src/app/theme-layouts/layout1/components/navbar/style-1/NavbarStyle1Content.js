@@ -53,7 +53,7 @@ function NavbarStyle1Content(props) {
         props.className
       )}
     >
-      <div className="items-center h-48 relative mb-48 w-full p-10">
+      <div className="items-center min-h-48 relative w-full p-10">
         {/* <div className="flex flex-1 mx-4">
           <Logo />
         </div> */}
@@ -83,7 +83,7 @@ function NavbarStyle1Content(props) {
       </div>
 
       <StyledContent
-        className="flex flex-1 flex-col min-h-0"
+        className="flex flex-1 flex-col justify-evenly gap-20 min-h-0"
         option={{ suppressScrollX: true, wheelPropagation: false }}
       >
         {/* <UserNavbarHeader /> */}
@@ -96,7 +96,7 @@ function NavbarStyle1Content(props) {
               minHeight: "245px",
               borderRadius: "8px",
               position: "relative",
-              margin: "5rem auto 0 auto"
+              margin: "0 auto"
             }}
           >
             <Box
@@ -138,7 +138,7 @@ function NavbarStyle1Content(props) {
               className="absolute -left-1 bottom-0 xs:w-[17rem] lg:w-160"
             />
           </Box>
-        <div className="py-20 m-12 mt-32 border-t">
+        <div className="py-20 border-t">
           <Button
             variant="caption"
             sx={{

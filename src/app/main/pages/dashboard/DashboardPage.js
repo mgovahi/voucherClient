@@ -38,7 +38,7 @@ function DashboardPage(props) {
         content={
           <div className="w-full">
             <motion.div
-              className="grid grid-cols-1 gap-24 w-full min-w-0"
+              className="grid grid-cols-1 w-full min-w-0"
               variants={container}
               initial="hidden"
               animate="show"
