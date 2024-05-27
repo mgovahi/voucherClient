@@ -118,6 +118,7 @@ const ApiInformation = () => {
           isLoading={isFetching}
           loadingPosition="end"
           endIcon={<FuseSvgIcon>mv-icons:icon-Check</FuseSvgIcon>}
+          disabled
         >
           {t("SAVE_INFO")}
         </ButtonComponent>

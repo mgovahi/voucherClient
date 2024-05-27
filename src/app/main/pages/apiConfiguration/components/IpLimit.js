@@ -1,82 +1,46 @@
 import React, { useState } from "react";
-import {
-  Button,
-  FormControl,
-  IconButton,
-  Paper,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Button, Paper, Typography } from "@mui/material";
 import FusePageSimpleHeader from "@fuse/core/FusePageSimple/FusePageSimpleHeader";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@mui/styles";
 import { Box } from "@mui/system";
-import { Controller, useForm } from "react-hook-form";
 import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
+import IpField from "./IpField";
 
 const IpLimit = () => {
   const { t } = useTranslation();
   const theme = useTheme();
-  const [ipList, setIpList] = useState(mockIpList)
+  const [ipList, setIpList] = useState(mockIpList);
 
   const isFetching = false;
-  const { control, formState, handleSubmit, reset, getValues } = useForm({
-    mode: "onChange",
-  });
+
+  const handleAddIp = (newIp) => {
+    setIpList((prev) => [...prev, newIp]);
+  };
+
+  const handleRemoveIp = (removedIp) => {
+    let update = ipList.filter((ip) => ip !== removedIp);
+    setIpList(update);
+  };
 
   return (
     <Paper className="w-full">
       <FusePageSimpleHeader header={t("IP_LIMIT")}></FusePageSimpleHeader>
       <Box className="grid gap-y-32 px-20 pt-[24px] pb-[40px]">
         <Box className="grid grid-cols-2 gap-x-[100px]">
-          <FormControl>
-            <Controller
-              name="validIp"
-              control={control}
-              render={({ field: { value, onChange, onBlur } }) => (
-                <TextField
-                  sx={{ flex: 1 }}
-                  onChange={onChange}
-                  type="text"
-                  value={value}
-                  InputProps={{
-                    autocomplete: "off",
-                    endAdornment: (
-                      <Button
-                        onClick={() => {}}
-                        sx={{
-                          backgroundColor: theme.palette.primary.main,
-                          color: "white",
-                          width: "120px",
-                          gap: "4px",
-                          "&:hover": {
-                            backgroundColor: theme.palette.primary.dark,
-                          },
-                        }}
-                      >
-                        {t("ADD")}
-                        <FuseSvgIcon
-                          sx={{
-                            stroke: "transparent !important",
-                          }}
-                          color="white"
-                          size="20px"
-                        >
-                          mv-icons:icon-Add
-                        </FuseSvgIcon>
-                      </Button>
-                    ),
-                  }}
-                  label={t("VALID_IP")}
-                />
-              )}
-            />
-          </FormControl>
+          <IpField onAddIp={handleAddIp} ipList={ipList} />
         </Box>
         <Box className="grid gap-10">
-          {ipList.map((item) => {
+          {ipList.map((item, index) => {
             return (
-              <Box className="py-14 px-20 grid items-center" sx={{backgroundColor: theme.palette.custome.cyanBlueLight, gridTemplateColumns: "repeat(20, minmax(0, 1fr))"}}>
+              <Box
+                className="py-14 px-20 grid items-center"
+                sx={{
+                  backgroundColor: theme.palette.custome.cyanBlueLight,
+                  gridTemplateColumns: "repeat(20, minmax(0, 1fr))",
+                }}
+                key={index}
+              >
                 <Box
                   sx={{
                     backgroundColor: theme.palette.yellow.main,
@@ -87,10 +51,18 @@ const IpLimit = () => {
                     mv-icons:icon-Security
                   </FuseSvgIcon>
                 </Box>
-                <Typography className="font-bold col-[span_18_/_span_18]" variant="body2">
+                <Typography
+                  className="font-bold col-[span_18_/_span_18]"
+                  variant="body2"
+                >
                   {item}
                 </Typography>
-                <Button variant="outlined" color="error" className="col-span-1 gap-4">
+                <Button
+                  variant="outlined"
+                  color="error"
+                  className="col-span-1 gap-4"
+                  onClick={() => handleRemoveIp(item)}
+                >
                   {t("DELETE")}
                   <FuseSvgIcon color="error" size="20px">
                     mv-icons:icon-Cancel

@@ -1,5 +1,8 @@
 window.appSettings = {
-  languages: [{ id: "fa", title: "فارسی", flag: "IR" }, { id: "en", title: "English", flag: "USA" }],
+  languages: [
+    { id: "fa", title: "فارسی", flag: "IR" },
+    { id: "en", title: "English", flag: "USA" },
+  ],
   allowLanguageSelection: true,
   defaultLanguage: "fa",
   apiBaseUrl: "https://api.stts.ir/panel/api/v1/", //"https://shop.stts.ir/panel/api/v1/", // "https://api.stts.ir/panel/api/v1/",
@@ -108,7 +111,8 @@ window.appSettings.resources = {
       ADD_BANK_ACCOUNT: "افزودن حساب بانکی",
       BANK_ACCOUNT_NUMBER: "تعداد حساب بانکی:",
       MANAGEMENT_BANK_ACCOUNT: "مدیریت حساب های بانکی",
-      BANK_ACCOUNTS_HELPER: ' حساب های بانکی صرفا برای نمایش در پنل مشتریان است تا برای ثبت مقاصد واریز انتخاب استفاده نمایند و کاربرد دیگری ندارد.',
+      BANK_ACCOUNTS_HELPER:
+        " حساب های بانکی صرفا برای نمایش در پنل مشتریان است تا برای ثبت مقاصد واریز انتخاب استفاده نمایند و کاربرد دیگری ندارد.",
       ACCOUNT_NUMBER: "شماره حساب",
       BANK: "بانک",
       AMOUNT: "مبلغ",
@@ -179,8 +183,10 @@ window.appSettings.resources = {
       ATTACHMENT: "پیوست ",
       ATTACHMENT_VIEW: "مشاهده پیوست",
       DETAILS_VIEW: "مشاهده جزییات",
-      EXCHANGE_RATE_REMITTANCE_RECEIVANLES_TOMAN: "نرخ ارز حواله در زمان ثبت دریافتنی (تومان)",
-      EXCHANGE_RATE_REMITTANCE_ALLOCATE_TO_CUSTOMER_TOMAN: "نرخ ارز حواله تخصیصی به مشتری (تومان)",
+      EXCHANGE_RATE_REMITTANCE_RECEIVANLES_TOMAN:
+        "نرخ ارز حواله در زمان ثبت دریافتنی (تومان)",
+      EXCHANGE_RATE_REMITTANCE_ALLOCATE_TO_CUSTOMER_TOMAN:
+        "نرخ ارز حواله تخصیصی به مشتری (تومان)",
       CREDIT_ALLOCATE_TO_CUSTOMER: "اعتبار تخصیصی به مشتری",
       CURRENT_EXCHANGE_RATE_REMITTANCE: "نرخ ارز لحظه ای حواله",
       DESCRIPTION: "توضیحات",
@@ -189,11 +195,11 @@ window.appSettings.resources = {
       MANAGE_ADMIN_PERMISSIONS: "دسترسی  را مدیریت کنید",
       ADMIN_STATE: "وضعیت راهبر",
       EXCHANGE_RATE: "نرخ ارز حواله",
-      EXCHANGE_RATE_HELPER: "توجه: نرخ ارز حواله در کلیه محاسبات سامانه محاسبه می گردد.",
-      ATTENTION:"توجه",
+      EXCHANGE_RATE_HELPER:
+        "توجه: نرخ ارز حواله در کلیه محاسبات سامانه محاسبه می گردد.",
+      ATTENTION: "توجه",
       BANK_NAME: "نام بانک",
       ADD_ACCOUNT: "افزودن حساب",
-
 
       API_INFORMATION: "اطلاعات API",
       API_KEY: "رمز API",
@@ -204,6 +210,7 @@ window.appSettings.resources = {
       ADD: "افزودن",
       DELETE: "حذف",
       VALID_IP: "آی پی مجاز ",
+      IP_ERROR: "IP معتبر نمی‌باشد.",
     },
   },
 };
