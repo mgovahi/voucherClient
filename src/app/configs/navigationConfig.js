@@ -19,7 +19,7 @@ const navigationConfig = [
     title: i18next.t("DEPOSITS_REPORT"),
     type: "item",
     icon: "mv-icons:icon-icon-menu-transfer-report",
-    url: "/#",
+    url: "/depositsReport",
   },
   {
     id: "vouchers",

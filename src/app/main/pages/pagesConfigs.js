@@ -10,6 +10,7 @@ import ReceivablesReportPageConfigs from "./receivables/report/ReceivablesReport
 import SystemManagementPageConfigs from "./systemManagement/SystemManagementPageConfigs";
 import ApiConfigurationPageConfigs from "./apiConfiguration/ApiConfigurationPageConfigs";
 import VouchersPageConfigs from "./vouchers/VouchersPageConfigs";
+import DepositsReportConfigs from "./depositsReport/DepositsReportPageConfigs";
 
 const pagesConfigs = [
   ProfilePageConfigs,
@@ -24,7 +25,8 @@ const pagesConfigs = [
   SystemManagementPageConfigs,
 
   ApiConfigurationPageConfigs,
-  VouchersPageConfigs
+  VouchersPageConfigs,
+  DepositsReportConfigs
 ];
 
 export default pagesConfigs;

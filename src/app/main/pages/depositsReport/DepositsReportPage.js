@@ -1,0 +1,111 @@
+import React, { useState } from "react";
+import FusePageSimple from "@fuse/core/FusePageSimple";
+import styled from "styled-components";
+// import ApiInformation from "./components/ApiInformation";
+// import IpLimit from "./components/IpLimit";
+import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";import { useTheme } from "@mui/material/styles";
+import { Box } from "@mui/system";
+import { Button } from "@mui/material";
+import SimpleStatBox from "app/shared-components/SimpleStatBox";
+import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
+import DepositsReport from "./report/DepositsReport";
+
+
+const  DepositsReportPage= () => {
+  const { t } = useTranslation();
+  const theme = useTheme();
+  const Root = styled(FusePageSimple)(({ theme }) => ({}));
+
+  const container = {
+    show: {
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 },
+  };
+
+  const [dashStats, setDashStats] = useState([
+    {
+      icon: "mv-icons-mc:icon-income-R-Info",
+      value: "$678,690",
+      title: "واریزی های شما",
+      color: theme.palette.info,
+    },
+    {
+      icon: "mv-icons-mc:icon-income-R-Green",
+      value: "$622,690",
+      title: "واریزی های تایید شده شما",
+      color: theme.palette.green,
+    },
+    {
+      icon: "mv-icons-mc:icon-income-R-Yellow",
+      value: "$56,000",
+      title: "واریزی های در انتظار تایید شما",
+      color: theme.palette.yellow,
+    },
+  ]);
+
+
+  return (
+
+    <>
+    <Root
+        header={t("DEPOSITS_REPORT")}
+        headerActions={
+          <>
+            <Button variant="outlined" color="default" aria-label="refresh" 
+         
+            > 
+              <FuseSvgIcon>mv-icons:icon-Masked-Icon</FuseSvgIcon>
+            </Button>
+          </>
+        }
+        content={
+          <div className="w-full  ">
+            <motion.div
+              className="grid grid-cols-1 gap-24 w-full min-w-0"
+              variants={container}
+              initial="hidden"
+              animate="show"
+            >
+              <motion.div variants={item} className="col-span-1 ">
+               
+                <Box
+                  className="flex gap-[24px] mb-[24px]"
+                  sx={{
+                    " > div": {
+                      flex: 1,
+                    },
+                  }}
+                >
+                  {dashStats.map((stat) => {
+                    return (
+                      <SimpleStatBox
+                        icon={stat.icon}
+                        color={stat.color}
+                        statValue={stat.value}
+                        statTitle={stat.title}
+                      ></SimpleStatBox>
+                    );
+                  })}
+                </Box>
+             
+
+               
+              </motion.div>
+            </motion.div>
+             <DepositsReport/>
+          </div>
+        }
+        variant="none"
+      />
+    </>
+  );
+};
+
+export default DepositsReportPage;
