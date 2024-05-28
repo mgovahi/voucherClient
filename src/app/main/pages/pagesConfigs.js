@@ -9,7 +9,7 @@ import ReceivablesDashboardPageConfig from "./receivables/dashboard/ReceivablesD
 import ReceivablesReportPageConfigs from "./receivables/report/ReceivablesReportPageConfigs";
 import SystemManagementPageConfigs from "./systemManagement/SystemManagementPageConfigs";
 import ApiConfigurationPageConfigs from "./apiConfiguration/ApiConfigurationPageConfigs";
-import vouchersPageConfigs from "./vouchers/VouchersPageConfigs";
+import VouchersPageConfigs from "./vouchers/VouchersPageConfigs";
 
 const pagesConfigs = [
   ProfilePageConfigs,
@@ -24,7 +24,7 @@ const pagesConfigs = [
   SystemManagementPageConfigs,
 
   ApiConfigurationPageConfigs,
-  vouchersPageConfigs
+  VouchersPageConfigs
 ];
 
 export default pagesConfigs;
