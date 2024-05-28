@@ -98,6 +98,7 @@ window.appSettings.resources = {
       SAVE_INFO: "ذخیره اطلاعات",
       CANCEL: "انصراف",
       CANCEL_ACTION: "لغو",
+      CANCELLATION: "ابطال",
       CREATE_DATE: "تاریخ ایجاد",
       LATEST_CLIENT_VOUCHERS: "آخرین حواله مشتری",
       CLIENT_VOUCHERS_REPORT: "گزراش وچرهای مشتری",

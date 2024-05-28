@@ -1,7 +1,7 @@
 import { useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import { motion } from "framer-motion";
-import { Box } from "@mui/system";
+import { Box, border } from "@mui/system";
 import { Paper, TextField, Button } from "@mui/material";
 import FusePageSimple from "@fuse/core/FusePageSimple";
 import { useTranslation } from "react-i18next";
@@ -12,7 +12,10 @@ import SearchForm from "./components/SearchForm";
 import { useState } from "react";
 import VouchersList from "./components/VouchersList";
 import { useNavigate } from "react-router-dom";
-function VouchersReportPage(props) {
+import FusePageSimpleHeader from "@fuse/core/FusePageSimple/FusePageSimpleHeader";
+
+import sx from "@mui/system/sx";
+function VouchersReport(props) {
   const { t } = useTranslation();
   const naviage = useNavigate();
   const theme = useTheme();
@@ -38,16 +41,37 @@ function VouchersReportPage(props) {
 
   return (
     <>
-      <Root
+      <Paper className="w-full rounded">
+      <FusePageSimpleHeader
         header={t("VOUCHERS_REPORT")}
-        content={
-          <div className="w-full p-16 ">
+        // inner
+        headerActions={
+          <>
+       
+            {/* <Button
+              className="py-10 px-28 min-h-full h-[42px] rounded-[5px] flex gap-8"
+              variant="contained"
+              color="primary"
+              endIcon={
+                <FuseSvgIcon sx={{ stroke: "transparent !important" }}>
+                  mv-icons:icon-ListAlt
+                </FuseSvgIcon>
+              }
+            >
+              {t("REPORT")}
+            </Button> */}
+          </>
+        }
+      ></FusePageSimpleHeader>
+
+      
             <motion.div
-              className="grid grid-cols-1  gap-24 w-full min-w-0"
+              className="grid grid-cols-1  gap-24 w-full min-w-0 "
               variants={container}
               initial="hidden"
               animate="show"
             >
+
               <motion.div variants={item} className="col-span-1">
                 <Box>
                   <SearchForm />
@@ -61,9 +85,9 @@ function VouchersReportPage(props) {
                 </Box>
               </motion.div>
             </motion.div>
-          </div>
-        }
-      />
+         
+         
+            </Paper>
     </>
   );
 }
@@ -190,4 +214,4 @@ const sampleData = [
     status: "ACTIVE",
   },
 ];
-export default VouchersReportPage;
+export default VouchersReport;

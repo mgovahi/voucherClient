@@ -25,8 +25,8 @@ const navigationConfig = [
     id: "vouchers",
     title: i18next.t("VOUCHERS"),
     type: "item",
-    icon: "mv-icons:icon-menu-vouchers",
-    url: "/#",
+    icon: "mv-icons:icon-menu-financial",
+    url: "/vouchers",
   },
   {
     id: "balanceReport",

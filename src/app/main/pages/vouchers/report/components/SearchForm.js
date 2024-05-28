@@ -142,7 +142,7 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
               )}
             />
           </FormControl>
-          <FormControl>
+          {/* <FormControl>
             <Controller
               name="client"
               control={control}
@@ -158,7 +158,7 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
                 />
               )}
             />
-          </FormControl>
+          </FormControl> */}
           <FormControl>
             <InputLabel>{t("CHANNEL")}</InputLabel>
             <Controller
@@ -342,10 +342,10 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
           <ButtonComponent
             sx={{
               height: "54px",
-              width: { xs: "100%", sm: "fit-content" },
+              width: { xs: "100%", sm: "180px" },
             }}
             onClick={handleSearchClick}
-            color="info"
+            color="primary"
             size="large"
             variant="contained"
             isLoading={loading}

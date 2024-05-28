@@ -80,7 +80,7 @@ const VouchersList = (props) => {
   };
   let columns = [
     {
-      minWidth: 30,
+      minWidth: 10,
       headerName: t("ROW_NUMBER"),
       field: "id",
       renderCell: (params) => (
@@ -95,7 +95,7 @@ const VouchersList = (props) => {
       ),
     },
     {
-      minWidth: 30,
+      minWidth: 120,
       headerName: t("VOUCHER_CODE"),
       field: "code",
       flex: 1,
@@ -107,13 +107,7 @@ const VouchersList = (props) => {
       ),
     },
     {
-      minWidth: 70,
-      headerName: t("CLIENT"),
-      field: "client",
-      flex: 1,
-    },
-    {
-      minWidth: 70,
+      minWidth: 100,
       headerName: t("CURRENCY"),
       field: "currency",
       flex: 1,
@@ -125,7 +119,7 @@ const VouchersList = (props) => {
     },
     {
       field: "amount",
-      minWidth: 80,
+      minWidth: 100,
       headerName: t("AMOUNT"),
       flex: 1,
       renderCell: (params) => (
@@ -137,33 +131,34 @@ const VouchersList = (props) => {
         </Typography>
       ),
     },
-    // {
-    //   minWidth: 50,
-    //   headerName: t("WAGE"),
-    //   field: "wage",
-    //   flex: 1,
-    // },
-    // {
-    //   minWidth: 50,
-    //   headerName: t("CHANNEL"),
-    //   field: "channel",
-    //   flex: 1,
-    // },
-    // {
-    //   field: "createDate",
-    //   minWidth: 100,
-    //   headerName: t("CREATE_DATE"),
-    //   flex: 1,
-    //   renderCell: (params) => (
-    //     <Typography variant="body2" sx={{ direction: "ltr" }}>
-    //       {moment(new Date(params.row.createDate))
-    //         .locale("fa")
-    //         .format("YYYY-MM-DD hh:mm:ss")}
-    //     </Typography>
-    //   ),
-    // },
     {
-      minWidth: 260,
+      minWidth: 100,
+      headerName: t("WAGE"),
+      field: "wage",
+      flex: 1,
+    },
+    {
+      minWidth: 100,
+      headerName: t("CHANNEL"),
+      field: "channel",
+      flex: 1,
+    },
+    {
+      field: "createDate",
+      minWidth: 160,
+      headerName: t("CREATE_DATE"),
+      flex: 1,
+      renderCell: (params) => (
+        <Typography variant="body2" sx={{ direction: "ltr" }}>
+          {moment(new Date(params.row.createDate))
+            .locale("fa")
+            .format("YYYY-MM-DD hh:mm:ss")}
+        </Typography>
+      ),
+    },
+    
+    {
+      minWidth: 250,
       headerName: t("TRANSACTION_ID"),
       field: "transactionId",
       flex: 1,
@@ -182,7 +177,7 @@ const VouchersList = (props) => {
       ),
     },
     {
-      minWidth: 120,
+      minWidth: 110,
       field: "status",
       headerName: t("STATUS"),
       renderCell: (params) => (
@@ -202,7 +197,7 @@ const VouchersList = (props) => {
       ),
     },
     {
-      minWidth: 120,
+      minWidth: 140,
       field: "cancel",
       sortable: false,
       headerName: t("ACTIONS"),
@@ -216,10 +211,11 @@ const VouchersList = (props) => {
             isLoading={isLoadingData}
             onClick={() => handleClickOpen(params.row)}
             variant="outlined"
-            sx={{}}
+            sx={{ padding:"7px",}}
             endIcon={
               <FuseSvgIcon
                 sx={{
+                 
                   stroke: "transparent !important",
                   fill: "#fff",
                 }}
@@ -228,7 +224,7 @@ const VouchersList = (props) => {
               </FuseSvgIcon>
             }
           >
-            {t("CANCEL_ACTION")}
+            {t("CANCELLATION")}
           </ButtonComponent>
         ) : (
           <></>
@@ -329,7 +325,7 @@ const VouchersList = (props) => {
           {t("VOUCHERS")}
         </Typography>
       </Box>
-      <Box sx={{ ...dataGridStyles, minHeight: "500px" }}>
+      <Box sx={{ ...dataGridStyles, minHeight: "500px" ,width: '100%'}}>
         <DataGrid
           pagination
           rows={data}
