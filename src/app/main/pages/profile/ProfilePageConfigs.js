@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import ProfilePassword from './components/ProfilePassword';
+
 
 const ProfilePage = lazy(() => import('./ProfilePage'));
 
@@ -11,12 +11,12 @@ const ProfilePageConfigs = {
     },
     routes: [
         {
-            path: '/profile',
+            path: '/changeInfo',
             element: <ProfilePage />,
         },
         {
-            path: '/add',
-            element: <ProfilePassword />,
+            path: '/changePass',
+            element: <ProfilePage />,
         },
     ],
 };

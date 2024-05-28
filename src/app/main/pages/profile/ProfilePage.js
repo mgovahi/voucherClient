@@ -14,12 +14,14 @@ import SecuritySettings from "./components/SecuritySettings";
 import Lastlogin from "./components/LastLogin";
 import ProfilePassword from "./components/ProfilePassword";
 import ClientInfo from "./components/ClientInfo";
-
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function ProfilePage(props) {
   const { t } = useTranslation();
   const theme = useTheme();
-  const [value, setValue] = useState('1');
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const Root = styled(FusePageSimple)(({ theme }) => ({}));
 
@@ -37,7 +39,7 @@ function ProfilePage(props) {
 
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    navigate(newValue);
   };
 
   return (
@@ -52,7 +54,7 @@ function ProfilePage(props) {
               initial="hidden"
               animate="show"
             >
-              <TabContext value={value}>
+              <TabContext value={pathname}>
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                   <TabList onChange={handleChange} aria-label="lab API tabs example"
                     variant="scrollable"
@@ -68,7 +70,7 @@ function ProfilePage(props) {
                   >
                     <Tab
                       label={t("USER_INFO")}
-                      value="1"
+                      value="/changeInfo"
                       sx={{
                         "&.Mui-selected": {
                           color: theme.palette.primary.tabMain + " !important", fontWeight: "bold",
@@ -77,7 +79,7 @@ function ProfilePage(props) {
                     />
                     <Tab
                       label={t("CHANGE_PASSWORD")}
-                      value="2"
+                      value="/changePass"
                       sx={{
                         "&.Mui-selected": {
                           color: theme.palette.primary.tabMain + " !important", fontWeight: "bold",
@@ -87,12 +89,12 @@ function ProfilePage(props) {
                   </TabList>
                 </Box>
                 <motion.div variants={item} className="col-span-1 ">
-                  <TabPanel value="1" sx={{ padding: "0 !important" }}>
+                  <TabPanel value="/changeInfo" sx={{ padding: "0 !important" }}>
                     <ClientInfo />
                     <SecuritySettings />
                     <Lastlogin />
                   </TabPanel>
-                  <TabPanel value="2" sx={{ padding: "0 !important" }}>
+                  <TabPanel value="/changePass" sx={{ padding: "0 !important" }}>
                     <ProfilePassword />
                   </TabPanel>
                 </motion.div>

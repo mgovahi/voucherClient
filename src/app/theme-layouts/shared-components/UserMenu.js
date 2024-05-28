@@ -143,7 +143,7 @@ function UserMenu(props) {
         <MenuItem
           onClick={() => {
             userMenuClose();
-            navigate("/profile");
+            navigate("/changeInfo");
           }}
           sx={{
             borderBottom: `1px solid  ${theme.palette.divider}`,
@@ -172,7 +172,7 @@ function UserMenu(props) {
         <MenuItem
           onClick={() => {
             userMenuClose();
-            navigate("/profile");
+            navigate("/changeInfo");
           }}
         >
           {/* <ListItemIcon className=" p-10">
@@ -221,7 +221,7 @@ function UserMenu(props) {
         <MenuItem
           onClick={() => {
             userMenuClose();
-            navigate("/add");
+            navigate("/changePass");
           }}
         >
           <ListItemIcon className=" ">
