@@ -212,6 +212,7 @@ window.appSettings.resources = {
       DELETE: "حذف",
       VALID_IP: "آی پی مجاز ",
       IP_ERROR: "IP معتبر نمی‌باشد.",
+      DEPOSIT_AMOUNT_TOMAN: "مبلغ واریزی (تومان)",
     },
   },
 };

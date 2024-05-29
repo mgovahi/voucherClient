@@ -12,7 +12,7 @@ const navigationConfig = [
     title: i18next.t("ADD_DEPOSIT"),
     type: "item",
     icon: "mv-icons:icon-icon-menu-transfer-add",
-    url: "/#",
+    url: "/addDeposit",
   },
   {
     id: "depositsReport",
