@@ -53,6 +53,7 @@
     "num2persian": "^3.2.2",
     "oidc-client-ts": "^2.2.1",
     "perfect-scrollbar": "1.5.5",
+    "persian-number": "^1.6.0",
     "prismjs": "1.28.0",
     "prop-types": "15.8.1",
     "qs": "6.11.0",

@@ -55,7 +55,7 @@ const themesConfig = {
         contrastText: "#758599",
       },
       primary: {
-        light: "#ece7f8",
+        light: "#f9f7ff",
         secondary: "#a788ea",
         main: "#4d3dee",
         dark: "#4234CD",

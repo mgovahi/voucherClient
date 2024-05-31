@@ -213,6 +213,13 @@ window.appSettings.resources = {
       VALID_IP: "آی پی مجاز ",
       IP_ERROR: "IP معتبر نمی‌باشد.",
       DEPOSIT_AMOUNT_TOMAN: "مبلغ واریزی (تومان)",
+      PAYMENT_DOLLAR: "دلار حواله USD",
+      ALLOCATED_CREDIT: "اعتبار USD تخصیصی به شما",
+      FIELD_ERROR_MESSAGE: "این فیلد اجباری است.",
+      BANK_AND_ACCOUNT_NUMBER: "بانک و شماره حساب",
+      DEPOSIT_TYPE: "نوع واریزی",
+      DESCRIPTION_OPTIONAL: "توضیحات (اختیاری)",
+      ATTACHED_FILE: "فایل پیوست",
     },
   },
 };
