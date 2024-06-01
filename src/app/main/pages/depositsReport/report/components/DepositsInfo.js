@@ -24,7 +24,7 @@ import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
 import { InfoRounded } from "@mui/icons-material";
 import moment from "jalali-moment";
 
-function VoucherInfo({ info = {}, onCancelClick }) {
+function DepositsInfo({ info = {}, onCancelClick }) {
   const { t } = useTranslation();
   const theme = useTheme();
   const [status, setStatus] = useState(info.status || "INACTIVE");
@@ -32,17 +32,25 @@ function VoucherInfo({ info = {}, onCancelClick }) {
     setActive(newValue);
   };
   const statusMap = {
-    ACTIVE: "فعال",
-    CANCELED: "لغو شده",
-    MERGED: "ادغام شده",
-    USED: "مصرف شده",
+    ACCEPTED: "تایید شده",
+    WAITING: "در انتظار تایید",
+    REJECTED: "رد شده",
   };
+
   const statusMapColor = {
-    ACTIVE: "successLight",
-    CANCELED: "errorLight",
-    MERGED: "warningLight",
-    USED: "infoLight",
+    ACCEPTED: "successLight",
+    REJECTED: "errorLight",
+    WAITING: "warningLight",
   };
+  const statusMapDescription = {
+    ACCEPTED: " موفق بوده است. با تشکر",
+    REJECTED: "لطفا تا پایان امروز تایید نمایید. با تشکر",
+    WAITING: "مجدد اقدام فرماید. با تشکر",
+  };
+
+
+console.log(statusMapDescription[info.status],)
+
   const onStatusChange = (e) => {
     setStatus(e.target.checked ? "ACTIVE" : "INACTIVE");
   };
@@ -59,36 +67,38 @@ function VoucherInfo({ info = {}, onCancelClick }) {
           size="small"
           color={statusMapColor[info.status]}
           label={statusMap[info.status]}
+          // description={statusMapDescription[info.status]}
+
         />
       </Typography>
       <TextField
         sx={{ flex: 1 }}
-        value={info.code || " "}
-        label={t("VOUCHER_CODE")}
+        value={info.transactionId || " "}
+        label={t("TRANSACTION_ID")}
         disabled
       />
+         <TextField
+          sx={{ flex: 1 }}
+          value={info.deposit || " "}
+          label={t("DEPOSIT_TOMAN")}
+          disabled
+        />
+      <TextField
+          sx={{ flex: 1 }}
+          value={"61.200" || ""}
+          label={t("EXCHANGE_RATE_REMITTANCE_RECEIVANLES_TOMAN")}
+          disabled
+        />
+       <TextField
+          sx={{ flex: 1 }}
+          value={info.currency || " 123"}
+          label={t("CURRENCY")}
+          disabled
+        />
       <TextField
         sx={{ flex: 1 }}
-        value={info.currency || " "}
-        label={t("CURRENCY")}
-        disabled
-      />
-      <TextField
-        sx={{ flex: 1 }}
-        value={info.amount || ""}
-        label={t("AMOUNT")}
-        disabled
-      />
-      <TextField
-        sx={{ flex: 1 }}
-        value={info.wage || " 123"}
-        label={t("WAGE")}
-        disabled
-      />
-      <TextField
-        sx={{ flex: 1 }}
-        value={info.client || ""}
-        label={t("CLIENT")}
+        value={info.attachmentType || ""}
+        label={t("ATTACHMENT_TYPE")}
         disabled
       />
       <TextField
@@ -98,11 +108,11 @@ function VoucherInfo({ info = {}, onCancelClick }) {
           ".MuiOutlinedInput-input": { textAlign: "left" },
         }}
         value={
-          moment(info.createDate)
+          moment(info.depositDate)
             .locale("fa")
             .format("YYYY/MM/DD - hh:mm:ss") || "1403/01/25  23:10:13 "
         }
-        label={t("CREATE_DATE")}
+        label={t("DEPOSIT_DATE")}
         disabled
       />
       <TextField
@@ -124,6 +134,12 @@ function VoucherInfo({ info = {}, onCancelClick }) {
         label={t("USED_DATE")}
         disabled
       />
+          <TextField
+        sx={{ flex: 1 }}
+        value={statusMapDescription[info.status] ?? ""}
+        label={t("DESCRIPTION_DEPOSIT")}
+        disabled
+      />
       <TextField
         sx={{ flex: 1 }}
         value={info.channel || " "}
@@ -133,4 +149,4 @@ function VoucherInfo({ info = {}, onCancelClick }) {
     </Box>
   );
 }
-export default VoucherInfo;
+export default DepositsInfo;

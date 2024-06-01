@@ -25,8 +25,8 @@ import DialogTitle from "@mui/material/DialogTitle";
 import FusePageSimpleHeader from "@fuse/core/FusePageSimple/FusePageSimpleHeader";
 
 import { useThemeMediaQuery } from "@fuse/hooks";
-import VoucherInfo from "./VoucherInfo";
 import ButtonComponent from "app/shared-components/ButtonComponent/ButtonComponent";
+import DepositsInfo from "./DepositsInfo";
 const DepositsList = (props) => {
   const [exportLoading, setExportLoading] = useState(false);
   const { t } = useTranslation();
@@ -42,12 +42,12 @@ const DepositsList = (props) => {
   const handleClickOpen = (params) => {
     setDetails({
       showModal: true,
-      data: { voucherInfo: params },
+      data: { DepositsInfo: params },
     });
   };
 
   const handleClose = () => {
-    setDetails({ showModal: false, data: { voucherInfo: {} } });
+    setDetails({ showModal: false, data: { DepositsInfo: {} } });
   };
   const isLoadingData = true;
 
@@ -77,6 +77,10 @@ const DepositsList = (props) => {
     REJECTED: "errorLight",
     WAITING: "warningLight",
   };
+
+
+
+
   let columns = [
     {
       minWidth: 20,
@@ -97,7 +101,7 @@ const DepositsList = (props) => {
     {
       field: "deposit",
       minWidth: 180,
-      headerName: t("DEPOSIT_AMOUNT_TOMAN"),
+      headerName: t("DEPOSIT_TOMAN"),
       flex: 1,
       renderCell: (params) => (
         <Typography
@@ -368,7 +372,7 @@ const DepositsList = (props) => {
           </Box>
         </DialogTitle>
         <DialogContent>
-          <VoucherInfo info={details.data.voucherInfo}></VoucherInfo>
+          <DepositsInfo info={details.data.DepositsInfo}></DepositsInfo>
         </DialogContent>
       </Dialog>
     </>

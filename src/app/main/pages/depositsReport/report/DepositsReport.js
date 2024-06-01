@@ -103,7 +103,6 @@ const sampleData = [
     attachmentType: "فیش بانکی",
     latestActionDate: new Date().getTime(),
     status: "ACCEPTED",
-  
   },
   {
     code: "1*34-*234-*234-*2*4*34*2",
@@ -115,7 +114,6 @@ const sampleData = [
     attachmentType: "رسید بانکی",
     latestActionDate: new Date().getTime(),
     status: "WAITING",
-  
   },
   {
     code: "1*34-*234-*234-*2*4*34*3",
@@ -127,7 +125,6 @@ const sampleData = [
     attachmentType: "فیش بانکی",
     latestActionDate: new Date().getTime(),
     status: "REJECTED",
-  
   },
   {
   
@@ -140,7 +137,6 @@ const sampleData = [
     attachmentType: "فیش بانکی",
     latestActionDate: new Date().getTime(),
     status: "ACCEPTED",
-  
   },
   {
     code: "1*34-*234-*234-*2*4*34*5",
@@ -152,7 +148,6 @@ const sampleData = [
     attachmentType: "فیش بانکی",
     latestActionDate: new Date().getTime(),
     status: "WAITING",
-  
   },
   {
     code: "1*34-*234-*234-*2*4*34*6",
@@ -164,7 +159,6 @@ const sampleData = [
     attachmentType: "رسید بانکی",
     latestActionDate: new Date().getTime(),
     status: "REJECTED",
-  
   },
   {
     code: "1*34-*234-*234-*2*4*34*7",
@@ -176,7 +170,6 @@ const sampleData = [
     attachmentType: "فیش بانکی",
     latestActionDate: new Date().getTime(),
     status: "ACCEPTED",
-  
   },
   {
     code: "1*34-*234-*234-*2*4*34*8",
@@ -188,7 +181,6 @@ const sampleData = [
     attachmentType: "فیش بانکی",
     latestActionDate: new Date().getTime(),
     status: "WAITING",
-  
   },
   {
     code: "1*34-*234-*234-*2*4*34*9",
@@ -200,7 +192,6 @@ const sampleData = [
     attachmentType: "فیش بانکی",
     latestActionDate: new Date().getTime(),
     status: "REJECTED",
-  
   },
   {
     code: "1*34-*234-*234-*2*4*34*10",
@@ -212,7 +203,6 @@ const sampleData = [
     attachmentType: "فیش بانکی",
     latestActionDate: new Date().getTime(),
     status: "ACCEPTED",
-  
   },
 ];
 export default DepositsReport;
