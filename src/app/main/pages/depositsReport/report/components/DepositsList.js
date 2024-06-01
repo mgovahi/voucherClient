@@ -67,20 +67,19 @@ const DepositsList = (props) => {
   } = props;
 
   const statusMap = {
-    ACTIVE: "فعال",
-    CANCELED: "لغو شده",
-    MERGED: "ادغام شده",
-    USED: "مصرف شده",
+    ACCEPTED: "تایید شده",
+    WAITING: "در انتظار تایید",
+    REJECTED: "رد شده",
   };
+
   const statusMapColor = {
-    ACTIVE: "successLight",
-    CANCELED: "errorLight",
-    MERGED: "warningLight",
-    USED: "infoLight",
+    ACCEPTED: "successLight",
+    REJECTED: "errorLight",
+    WAITING: "warningLight",
   };
   let columns = [
     {
-      minWidth: 10,
+      minWidth: 20,
       headerName: t("ROW_NUMBER"),
       field: "id",
       renderCell: (params) => (
@@ -94,17 +93,35 @@ const DepositsList = (props) => {
         </Typography>
       ),
     },
+
     {
-      minWidth: 120,
-      headerName: t("VOUCHER_CODE"),
-      field: "code",
+      field: "deposit",
+      minWidth: 180,
+      headerName: t("DEPOSIT_AMOUNT_TOMAN"),
       flex: 1,
       renderCell: (params) => (
-        <Typography variant="body2" className="font-bold">
-          {/* { params.row.clientId } */}
-          {params.row?.code}
+        <Typography
+          variant="body2"
+          sx={{ direction: "ltr" }}
+        >
+          {params.row.deposit.toAmount()}
         </Typography>
       ),
+    },
+    {
+      minWidth: 100,
+      headerName: t("CREDIT"),
+      field: "credit",
+      flex: 1,
+      renderCell: (params) => (
+        <Typography
+          variant="body2"
+          sx={{ color: "info.main", direction: "ltr" }}
+        >
+          {params.row.credit.toAmount()}
+        </Typography>
+      ),
+
     },
     {
       minWidth: 100,
@@ -117,62 +134,56 @@ const DepositsList = (props) => {
       //     </Typography>
       // )
     },
-    {
-      field: "amount",
-      minWidth: 100,
-      headerName: t("AMOUNT"),
-      flex: 1,
-      renderCell: (params) => (
-        <Typography
-          variant="body2"
-          sx={{ color: "info.main", direction: "ltr" }}
-        >
-          {params.row.amount.toAmount()}
-        </Typography>
-      ),
-    },
-    {
-      minWidth: 100,
-      headerName: t("WAGE"),
-      field: "wage",
-      flex: 1,
-    },
-    {
-      minWidth: 100,
-      headerName: t("CHANNEL"),
-      field: "channel",
-      flex: 1,
-    },
-    {
-      field: "createDate",
-      minWidth: 160,
-      headerName: t("CREATE_DATE"),
-      flex: 1,
-      renderCell: (params) => (
-        <Typography variant="body2" sx={{ direction: "ltr" }}>
-          {moment(new Date(params.row.createDate))
-            .locale("fa")
-            .format("YYYY-MM-DD hh:mm:ss")}
-        </Typography>
-      ),
-    },
+ 
+  
+  
     
     {
       minWidth: 250,
       headerName: t("TRANSACTION_ID"),
       field: "transactionId",
       flex: 1,
+      renderCell: (params) => (
+        <Typography variant="body2">
+          {params.row.transactionId}
+        </Typography>
+      ),
     },
     {
-      field: "usedDate",
+      field: "depositDate",
       minWidth: 160,
-      headerName: t("USED_DATE"),
+      headerName: t("DEPOSIT_DATE"),
       flex: 1,
       renderCell: (params) => (
         <Typography variant="body2" sx={{ direction: "rtl" }}>
-          {moment(new Date(params.row.usedDate))
+          {moment(new Date(params.row.depositDate))
             .locale("fa")
             .format("YYYY-MM-DD - hh:mm:ss")}
+        </Typography>
+      ),
+    },
+    {
+      minWidth: 50,
+      headerName: t("ATTACHMENT_TYPE"),
+      field: "attachmentType",
+      flex: 1,
+      renderCell: (params) => (
+        <Typography variant="body2">{params.row.attachmentType}</Typography>
+      ),
+    },
+    {
+      field: "latestActionDate",
+      minWidth: 200,
+      headerName: t("LAST_ACTION_DATE"),
+      flex: 1,
+      renderCell: (params) => (
+        <Typography
+          variant="body2"
+          sx={{ color: "text.primary", direction: "ltr" }}
+        >
+          {moment(new Date(params.row.latestActionDate))
+            .locale("fa")
+            .format("YYYY/MM/DD hh:mm:ss")}
         </Typography>
       ),
     },
@@ -196,41 +207,7 @@ const DepositsList = (props) => {
         ></Chip>
       ),
     },
-    {
-      minWidth: 140,
-      field: "cancel",
-      sortable: false,
-      headerName: t("ACTIONS"),
-      renderCell: (params) => {
-        return params.row.status == "ACTIVE" ? (
-          <ButtonComponent
-            color="error"
-            skin="light"
-            size="small"
-            //disabled={isLoading}
-            isLoading={isLoadingData}
-            onClick={() => handleClickOpen(params.row)}
-            variant="outlined"
-            sx={{ padding:"7px",}}
-            endIcon={
-              <FuseSvgIcon
-                sx={{
-                 
-                  stroke: "transparent !important",
-                  fill: "#fff",
-                }}
-              >
-                {"mv-icons:icon-Cancel"}
-              </FuseSvgIcon>
-            }
-          >
-            {t("CANCELLATION")}
-          </ButtonComponent>
-        ) : (
-          <></>
-        );
-      },
-    },
+ 
     {
       minWidth: 180,
       field: "details",
