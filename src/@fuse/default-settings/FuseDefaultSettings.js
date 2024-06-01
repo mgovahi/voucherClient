@@ -221,7 +221,7 @@ export const defaultThemeOptions = {
       styleOverrides: {
         root: {
           ".MuiFormHelperText-root": {
-            color: theme.palette.text.grayDay,
+            color: theme.palette.text.grayV,
           },
         },
       },

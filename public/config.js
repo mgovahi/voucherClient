@@ -220,6 +220,9 @@ window.appSettings.resources = {
       DEPOSIT_TYPE: "نوع واریزی",
       DESCRIPTION_OPTIONAL: "توضیحات (اختیاری)",
       ATTACHED_FILE: "فایل پیوست",
+      UPLOADER_ALERT: "فایل خود را اینجا بکشید و رها کنید یا انتخاب کنید.",
+      SELECT_ATTACHMENT: "انتخاب پیوست",
+      UPLOADER_HELPER_TEXT: "فرمت مجاز :  پسوند jpeg ، jpg ، png یا pdf و با حجم حداکثر ۱۰۰۰ کیلوبایت"
     },
   },
 };

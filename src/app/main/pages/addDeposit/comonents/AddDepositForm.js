@@ -20,6 +20,7 @@ import NumericFormat from "react-number-format";
 import PN from "persian-number";
 import BankAndAccountNumber from "./BankAndAccountNumber";
 import FileUploaderSingle from "@fuse/core/FileUploader";
+import ButtonComponent from "app/shared-components/ButtonComponent/ButtonComponent";
 
 const AddDepositForm = () => {
   const {
@@ -31,7 +32,9 @@ const AddDepositForm = () => {
   });
   const { t } = useTranslation();
   const theme = useTheme();
-  const onSubmit = (data) => {};
+  const onSubmit = (data) => {
+    console.log(data, "data2")
+  };
 
   const depositTypeMap = [
     {
@@ -47,6 +50,8 @@ const AddDepositForm = () => {
       value: "pol",
     },
   ];
+
+  const loading = false
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="grid gap-y-36">
@@ -206,6 +211,7 @@ const AddDepositForm = () => {
                     id="demo-simple-select"
                     onChange={onChange}
                     value={value}
+                    error={errors.depositType}
                   >
                     {depositTypeMap.map((type, i) => (
                       <MenuItem key={`type_${i}`} value={type.value}>
@@ -247,13 +253,48 @@ const AddDepositForm = () => {
       </Grid>
 
       <Box className="grid gap-14">
-      <Box>
+        <Box>
           <Typography variant="body3" className="font-bold">
             {t("ATTACHED_FILE")}
           </Typography>
         </Box>
-        <FileUploaderSingle/>
+        <FormControl className="w-full">
+          <Controller
+            name="attachedFile"
+            control={control}
+            rules={{
+              required: true,
+            }}
+            render={({ field: { value, onChange, onBlur } }) => (
+              <FileUploaderSingle readOnly={true} error={errors.attachedFile} helperText="UPLOADER_HELPER_TEXT" loading={loading} />
+            )}
+          />
+        </FormControl>
       </Box>
+
+      <Box className="flex justify-end mt-20">
+          <ButtonComponent
+            sx={{
+              width: { xs: "100%", sm: "fit-content" },
+            }}
+            color="primary"
+            size="middle"
+            variant="contained"
+            type="submit"
+            isLoading={loading}
+            endIcon={
+              loading ? (
+                <CircularProgress size={16} sx={{ color: "#fff" }} />
+              ) : (
+                <FuseSvgIcon color={theme.palette.common.white} size={20}>
+                  mv-icons:icon-Check
+                </FuseSvgIcon>
+              )
+            }
+          >
+            {t("ADD_ACCOUNT")}
+          </ButtonComponent>
+        </Box>
     </form>
   );
 };
