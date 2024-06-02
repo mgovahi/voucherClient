@@ -25,10 +25,8 @@ MyFormControlLabel.propTypes = {
 // Styled Box
 const StyledBox = styled(Box)(({ theme }) => ({
   border: "2px solid",
-  borderColor: "#e4e6ef",
   background: theme.palette.custome.cyanBlueLight,
   borderRadius: "6px",
-  padding: "24px",
   "&.hover": {
     cursor: "pointer",
   },
@@ -41,6 +39,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
 const CustomFormControlLabel = ({
   accountNumber,
   bankName,
+  error,
   onCardClick,
   checkedValue,
 }) => {
@@ -50,7 +49,7 @@ const CustomFormControlLabel = ({
     <StyledBox
       sx={{
         borderColor:
-          checkedValue === accountNumber && theme.palette.primary.main,
+          checkedValue === accountNumber ? theme.palette.primary.main : error ? theme.palette.error.main : "#e4e6ef",
         background:
           checkedValue === accountNumber && theme.palette.primary.light,
       }}
@@ -58,6 +57,7 @@ const CustomFormControlLabel = ({
     >
       <MyFormControlLabel
         value={accountNumber}
+        sx={{width: "100%", height: "100%", padding: "24px"}}
         label={
           <Box display="flex" flexDirection="column" alignItems="center">
             <Typography

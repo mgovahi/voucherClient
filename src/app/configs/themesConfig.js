@@ -31,7 +31,7 @@ const themesConfig = {
       success: {
         main: "#56ca00",
         dark: "#4caf50",
-        light: "#eaf6ea",
+        light: "#e4f7d7",
         contrastText: "#56ca00",
       },
       successLight: {
