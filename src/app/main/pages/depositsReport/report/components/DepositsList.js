@@ -372,7 +372,7 @@ const DepositsList = (props) => {
           </Box>
         </DialogTitle>
         <DialogContent>
-          <DepositsInfo info={details.data.DepositsInfo}></DepositsInfo>
+          <DepositsInfo info={details.data.DepositsInfo}  onCancelClick={handleClose}></DepositsInfo>
         </DialogContent>
       </Dialog>
     </>

@@ -19,6 +19,9 @@ import {
   InputLabel,
   FormControlLabel,
   DialogActions,
+  Dialog,
+  DialogContent,
+  DialogTitle,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
@@ -38,10 +41,8 @@ function DepositsInfo({ info = {}, onCancelClick }) {
   });
   const handleClose = () => {
     setDetails({ showModal: false });
-    if (onCancelClick) {
-      onCancelClick();
-    }
   };
+
 
   const statusMap = {
     ACCEPTED: "تایید شده",
@@ -240,19 +241,19 @@ function DepositsInfo({ info = {}, onCancelClick }) {
 
           </Button>
         </DialogActions> */}
-        <ButtonComponent
-          sx={{
-            width: { xs: "100%", sm: "fit-content" },
-          }}
-          onClick={onCancelClick}
-          color="default"
-          size="middle"
-          variant="outlined"
-          isLoading={loading}
-        // disabled={loading}
-        >
-          {t("CLOSE")}
-        </ButtonComponent>
+          <ButtonComponent
+              sx={{
+                width: { xs: "100%", sm: "fit-content" },
+              }}
+              onClick={onCancelClick}
+              color="default"
+              size="middle"
+              variant="outlined"
+              isLoading={loading}
+              // disabled={loading}
+            >
+              {t("CLOSE")}
+            </ButtonComponent>
       </Box>
     </>
 
