@@ -52,6 +52,9 @@ function DepositsReport(props) {
               className="py-10 px-20 min-h-full h-[42px] rounded-[5px] flex "
               variant="contained"
               color="secondary"
+              onClick={() => {
+                naviage("/AddDeposit");
+              }}
               endIcon={
                 <FuseSvgIcon sx={{ stroke: "transparent !important" }}>
                   mv-icons-mc:icon-transfer-report
@@ -59,6 +62,7 @@ function DepositsReport(props) {
               }
             >
               {t("NEW_DEPOSIT")}
+
             </Button>
           </>
         }
