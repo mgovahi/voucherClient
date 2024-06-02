@@ -53,8 +53,6 @@ const FileUploaderSingle = (props) => {
     },
   });
 
-  console.log(value, "value")
-
   const handleLinkClick = (event) => {
     event.preventDefault();
   };

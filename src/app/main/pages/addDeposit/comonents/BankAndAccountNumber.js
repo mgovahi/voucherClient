@@ -5,15 +5,16 @@ import {
 import React, { useState } from "react";
 import CustomFormControlLabel from "./CustomFormControlLabel";
 
-const BankAndAccountNumber = ({ field }) => {
-  const [checkedValue, setCheckedValue] = useState("");
+const BankAndAccountNumber = ({ field, error }) => {
+  const [checkedValue, setCheckedValue] = useState(field.value);
 
   const handleChange = (event) => {
-    setCheckedValue(event.target.value);
-  };
+    field.onChange(event.target.value); // update form state
+    setCheckedValue(event.target.value);  };
 
   const handleCardClick = (value) => {
     setCheckedValue(value);
+    field.onChange(value); // update form state
   };
 
   return (
@@ -25,6 +26,7 @@ const BankAndAccountNumber = ({ field }) => {
               <CustomFormControlLabel
                 checkedValue={checkedValue}
                 bankName={item.bankName}
+                error={!!error}
                 accountNumber={item.accountNumber}
                 onCardClick={() => handleCardClick(item.accountNumber)}
               />
