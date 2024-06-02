@@ -68,6 +68,7 @@ window.appSettings.resources = {
       DETAILS: "جزيیات",
       CLIENTS: "مشتریان",
       PAGE_TO: "تا",
+      CLOSE:"بستن",
       ITEMS_PER_PAGE: "تعداد در هر صفحه",
       NO_ITEMS_FOUND: "موردی یافت نشد",
       EMAIL: "ایمیل",
@@ -222,9 +223,6 @@ window.appSettings.resources = {
       DEPOSIT_TYPE: "نوع واریزی",
       DESCRIPTION_OPTIONAL: "توضیحات (اختیاری)",
       ATTACHED_FILE: "فایل پیوست",
-      UPLOADER_ALERT: "فایل خود را اینجا بکشید و رها کنید یا انتخاب کنید.",
-      SELECT_ATTACHMENT: "انتخاب پیوست",
-      UPLOADER_HELPER_TEXT: "فرمت مجاز :  پسوند jpeg ، jpg ، png یا pdf و با حجم حداکثر ۱۰۰۰ کیلوبایت"
     },
   },
 };

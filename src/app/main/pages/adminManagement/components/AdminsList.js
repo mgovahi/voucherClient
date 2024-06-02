@@ -44,11 +44,13 @@ const AdminsList = (props) => {
       data: { adminInfo: params },
     });
   };
- 
+
 
   const handleClose = () => {
     setDetails({ showModal: false });
   };
+
+
   const isLoadingData = true;
 
   const {
@@ -70,7 +72,7 @@ const AdminsList = (props) => {
     ACTIVE: "فعال",
     INACTIVE: "غیرفعال",
   };
-//   console.log("setDetails",data)
+  //   console.log("setDetails",data)
   let columns = [
     {
       minWidth: 40,
@@ -178,8 +180,8 @@ const AdminsList = (props) => {
             params.row.status == "ACTIVE"
               ? "successLight"
               : params.row.status == "INACTIVE"
-              ? "errorLight"
-              : ""
+                ? "errorLight"
+                : ""
           }
           sx={{
             height: 20,
@@ -196,9 +198,9 @@ const AdminsList = (props) => {
       field: "details",
       sortable: false,
       headerName: t("DETAILS"),
-      
+
       renderCell: (params) => {
-    
+
         return (
           <ButtonComponent
             color="info"
@@ -218,7 +220,7 @@ const AdminsList = (props) => {
               >
                 {"mv-icons:icon-ListAlt"}
               </FuseSvgIcon>
-               
+
             }
           >
             {t("DETAILS")}
@@ -317,8 +319,7 @@ const AdminsList = (props) => {
             MuiTablePagination: {
               labelRowsPerPage: t("ITEMS_PER_PAGE"),
               labelDisplayedRows: ({ from, to, count }) =>
-                `${t("ROW_NUMBER")} ${from} ${t("PAGE_TO")} ${to} از ${
-                  count !== -1 ? count : `بیشتر از ${to}`
+                `${t("ROW_NUMBER")} ${from} ${t("PAGE_TO")} ${to} از ${count !== -1 ? count : `بیشتر از ${to}`
                 }`,
             },
           }}
@@ -367,11 +368,11 @@ const AdminsList = (props) => {
         <DialogContent>
           <AdminDetails
             onCancelClick={handleClose}
-           adminInfo={details.data ? details.data.adminInfo : {}}
+            adminInfo={details.data ? details.data.adminInfo : {}}
           ></AdminDetails>
         </DialogContent>
       </Dialog>
-      
+
     </>
   );
 };

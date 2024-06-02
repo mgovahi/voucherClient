@@ -25,6 +25,7 @@ function AdminDetails({ adminInfo, onCancelClick }) {
   const { t } = useTranslation();
   const theme = useTheme();
   const [active, setActive] = useState(0);
+  const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   const handleChange = (event, newValue) => {
     setActive(newValue);
