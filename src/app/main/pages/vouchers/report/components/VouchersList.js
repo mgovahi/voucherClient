@@ -32,6 +32,8 @@ const VouchersList = (props) => {
   const { t } = useTranslation();
   const theme = useTheme();
   const dispatch = useDispatch();
+ 
+  
 
   const [details, setDetails] = useState({
     showModal: false,
@@ -45,6 +47,16 @@ const VouchersList = (props) => {
       data: { voucherInfo: params },
     });
   };
+  
+
+  const [sampleDataList, setSampleDataList] = useState(props.data || []);
+
+  const handleRemoveItem = (removedItem) => {
+    const updatedList = sampleDataList.filter(item => item.code !== removedItem.code);
+    setSampleDataList(updatedList);
+  };
+console.log(handleRemoveItem,"1212")
+
 
   const handleClose = () => {
     setDetails({ showModal: false, data: { voucherInfo: {} } });
@@ -209,7 +221,7 @@ const VouchersList = (props) => {
             size="small"
             //disabled={isLoading}
             isLoading={isLoadingData}
-            onClick={() => handleClickOpen(params.row)}
+            onClick={() => handleRemoveItem(params.row)}
             variant="outlined"
             sx={{ padding:"7px",}}
             endIcon={
@@ -326,6 +338,7 @@ const VouchersList = (props) => {
         </Typography>
       </Box>
       <Box sx={{ ...dataGridStyles, minHeight: "500px" ,width: '100%'}}>
+      
         <DataGrid
           pagination
           rows={data}
@@ -361,6 +374,7 @@ const VouchersList = (props) => {
             },
           }}
         />
+    
       </Box>
       <Dialog
         open={details.showModal}
