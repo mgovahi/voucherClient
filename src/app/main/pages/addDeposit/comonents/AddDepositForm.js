@@ -32,6 +32,18 @@ const AddDepositForm = ({onShowPage}) => {
   });
   const { t } = useTranslation();
   const theme = useTheme();
+
+  const validateImage = (file) => {
+    if (file.size > 1024 * 1024) {
+      return t("FILE_SIZE_ERROR");
+    }
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif']; 
+    if (!allowedTypes.includes(file.type)) {
+      return t("FILE_TYPE_ERROR");
+    }
+    return true;
+  };
+
   const onSubmit = (data) => {
     console.log(data, "data");
     onShowPage()
@@ -264,7 +276,8 @@ const AddDepositForm = ({onShowPage}) => {
             name="attachedFile"
             control={control}
             rules={{
-              required: true,
+              required: {value: true, message: t("FIELD_ERROR_MESSAGE")},
+              validate: validateImage
             }}
             render={({ field: { value, onChange, onBlur } }) => (
               <FileUploaderSingle

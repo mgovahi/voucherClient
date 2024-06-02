@@ -225,6 +225,8 @@ window.appSettings.resources = {
       ATTACHED_FILE: "فایل پیوست",
       UPLOADER_ALERT: "فایل خود را این‌جا بکشید و رها کنید یا انتخاب کنید.",
       UPLOADER_HELPER_TEXT: "فرمت مجاز :  پسوند jpeg ، jpg ، png یا pdf و با حجم حداکثر ۱۰۰۰ کیلوبایت",
+      FILE_SIZE_ERROR: "سایز فایل انتخاب شده نمی‌تواند بیشتر از 1000 کیلوبایت باشد. لطفاً یک فایل با سایز کوچکتر انتخاب کنید.",
+      FILE_TYPE_ERROR: "فایل با فرمت‌های jpeg ، jpg ، png یا pdf مجاز است.",
       SELECT_ATTACHMENT: "انتخاب پیوست",
       DEPOSIT_AMOUNT_TOMAN: "مبلغ واریزی (تومان)",
       ADD_DEPOSIT_HEADER_ACTION: "واریزی شما پس از تایید به موجودی شما افزوده خواهد شد.",

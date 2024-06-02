@@ -30,7 +30,7 @@ const HeadingTypography = styled(Typography)(({ theme }) => ({
 const FileUploaderSingle = (props) => {
   // ** State
   const [file, setFile] = useState({});
-  const { value, readOnly, disabled } = props;
+  const { value, readOnly, disabled, error } = props;
   const { t } = useTranslation();
   const theme = useTheme();
 
@@ -38,7 +38,7 @@ const FileUploaderSingle = (props) => {
   const { acceptedFiles, getRootProps, open, getInputProps } = useDropzone({
     multiple: false,
     accept: {
-      "image/*": [".png", ".jpg", ".jpeg", ".gif"],
+      "image/*": [".png", ".jpg", ".jpeg"],
     },
     onDrop: (acceptedFiles) => {
       const firstFile = acceptedFiles.map((file) =>
@@ -66,6 +66,8 @@ const FileUploaderSingle = (props) => {
     props.onChange({});
   };
 
+  console.log(error, !error?.type === "validate", "errors2")
+
   return (
     <>
       <input {...getInputProps()} />
@@ -73,7 +75,7 @@ const FileUploaderSingle = (props) => {
         <InputLabel
           sx={{ backgroundColor: "#fff" }}
           htmlFor={props.id}
-          error={props.error}
+          error={error}
         >
           {props.label}
         </InputLabel>
@@ -88,10 +90,10 @@ const FileUploaderSingle = (props) => {
             zIndex: "1",
           }}
           id={props.id}
-          value={value}
+          // value={value ? value : file && file.name ? file.name : ""}
           readOnly={readOnly}
           disabled={disabled}
-          error={!!props.error}
+          error={!!error}
           inputProps={{
             sx: {
               fontFamily: "IransansxRE !important",
@@ -126,7 +128,7 @@ const FileUploaderSingle = (props) => {
             justifyContent: "center",
           }}
         >
-          {file.preview && (
+          {!error?.type === "validate" || (
             <Box
               component="img"
               src={file.preview}
@@ -139,7 +141,7 @@ const FileUploaderSingle = (props) => {
               }}
             />
           )}
-          {!file.preview && (
+          {(!error || error.type === "validate") && (
             <FuseSvgIcon size={48} color={theme.palette.primary.main}>
               mv-icons:icon-CloudUpload
             </FuseSvgIcon>
@@ -162,9 +164,9 @@ const FileUploaderSingle = (props) => {
           </ButtonComponent>
         </Box>
       </Box>
-      {props.error ? (
-        <FormHelperText error={props.error}>
-          {t("FIELD_ERROR_MESSAGE")}
+      {error ? (
+        <FormHelperText error={error}>
+          {error.message}
         </FormHelperText>
       ) : (
         // props.error.message.map((error) => (
