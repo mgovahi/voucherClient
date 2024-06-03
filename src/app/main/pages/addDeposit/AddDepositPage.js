@@ -34,7 +34,7 @@ const AddDepositPage = () => {
   return (
     <Root
       header={t("ADD_DEPOSIT")}
-      headerActions={isShow &&
+      headerActions={!isShow &&
         <div className="flex gap-10 items-center">
           <FuseSvgIcon size={24}>mv-icons-mc:icon-Info</FuseSvgIcon>
           <Typography sx={{ color: theme.palette.info.main }}>

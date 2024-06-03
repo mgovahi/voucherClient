@@ -25,7 +25,7 @@ import ButtonComponent from "app/shared-components/ButtonComponent/ButtonCompone
 const AddDepositForm = ({onShowPage}) => {
   const {
     control,
-    formState: { errors },
+    formState: { errors, isValid },
     handleSubmit,
   } = useForm({
     mode: "onChange",
@@ -303,6 +303,7 @@ const AddDepositForm = ({onShowPage}) => {
           variant="contained"
           type="submit"
           isLoading={loading}
+          disabled={!isValid}
           endIcon={
             loading ? (
               <CircularProgress size={16} sx={{ color: "#fff" }} />

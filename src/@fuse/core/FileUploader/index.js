@@ -66,8 +66,6 @@ const FileUploaderSingle = (props) => {
     props.onChange({});
   };
 
-  console.log(error, !error?.type === "validate", "errors2")
-
   return (
     <>
       <input {...getInputProps()} />
@@ -85,7 +83,10 @@ const FileUploaderSingle = (props) => {
           sx={{
             width: "100%",
             height: "auto",
-            minHeight: file.preview ? "300px" : "200px",
+            minHeight:
+              file.preview && (error?.type !== "validate")
+                ? "300px"
+                : "200px",
             maxHeight: "300px",
             zIndex: "1",
           }}
@@ -128,7 +129,7 @@ const FileUploaderSingle = (props) => {
             justifyContent: "center",
           }}
         >
-          {!error?.type === "validate" || (
+          {file.preview && (error?.type !== "validate") ? (
             <Box
               component="img"
               src={file.preview}
@@ -140,12 +141,12 @@ const FileUploaderSingle = (props) => {
                 zIndex: 2,
               }}
             />
-          )}
-          {(!error || error.type === "validate") && (
+          ) : (
             <FuseSvgIcon size={48} color={theme.palette.primary.main}>
               mv-icons:icon-CloudUpload
             </FuseSvgIcon>
           )}
+
           <Typography variant="body2" color="primary" sx={{ zIndex: 2 }}>
             {t("UPLOADER_ALERT")}
           </Typography>
@@ -165,9 +166,7 @@ const FileUploaderSingle = (props) => {
         </Box>
       </Box>
       {error ? (
-        <FormHelperText error={error}>
-          {error.message}
-        </FormHelperText>
+        <FormHelperText error={error}>{error.message}</FormHelperText>
       ) : (
         // props.error.message.map((error) => (
         //     <FormHelperText>{t("error")}</FormHelperText>
