@@ -27,13 +27,16 @@ import FusePageSimpleHeader from "@fuse/core/FusePageSimple/FusePageSimpleHeader
 import { useThemeMediaQuery } from "@fuse/hooks";
 import VoucherInfo from "./VoucherInfo";
 import ButtonComponent from "app/shared-components/ButtonComponent/ButtonComponent";
+
+
+
 const VouchersList = (props) => {
   const [exportLoading, setExportLoading] = useState(false);
   const { t } = useTranslation();
   const theme = useTheme();
   const dispatch = useDispatch();
- 
-  
+
+
 
   const [details, setDetails] = useState({
     showModal: false,
@@ -47,7 +50,7 @@ const VouchersList = (props) => {
       data: { voucherInfo: params },
     });
   };
-  
+
 
   const [sampleDataList, setSampleDataList] = useState(props.data || []);
 
@@ -55,8 +58,6 @@ const VouchersList = (props) => {
     const updatedList = sampleDataList.filter(item => item.code !== removedItem.code);
     setSampleDataList(updatedList);
   };
-console.log(handleRemoveItem,"1212")
-
 
   const handleClose = () => {
     setDetails({ showModal: false, data: { voucherInfo: {} } });
@@ -168,7 +169,7 @@ console.log(handleRemoveItem,"1212")
         </Typography>
       ),
     },
-    
+
     {
       minWidth: 250,
       headerName: t("TRANSACTION_ID"),
@@ -214,33 +215,36 @@ console.log(handleRemoveItem,"1212")
       sortable: false,
       headerName: t("ACTIONS"),
       renderCell: (params) => {
-        return params.row.status == "ACTIVE" ? (
-          <ButtonComponent
-            color="error"
-            skin="light"
-            size="small"
-            //disabled={isLoading}
-            isLoading={isLoadingData}
-            onClick={() => handleRemoveItem(params.row)}
-            variant="outlined"
-            sx={{ padding:"7px",}}
-            endIcon={
-              <FuseSvgIcon
-                sx={{
-                 
-                  stroke: "transparent !important",
-                  fill: "#fff",
-                }}
+        {
+            return params.row.status == "ACTIVE" ? (
+              <ButtonComponent
+                color="error"
+                skin="light"
+                size="small"
+                //disabled={isLoading}
+                isLoading={isLoadingData}
+                onClick={() => handleRemoveItem(params.row)}
+                variant="outlined"
+                sx={{ padding: "7px", }}
+                endIcon={
+                  <FuseSvgIcon
+                    sx={{
+
+                      stroke: "transparent !important",
+                      fill: "#fff",
+                    }}
+                  >
+                    {"mv-icons:icon-Cancel"}
+                  </FuseSvgIcon>
+                }
               >
-                {"mv-icons:icon-Cancel"}
-              </FuseSvgIcon>
-            }
-          >
-            {t("CANCELLATION")}
-          </ButtonComponent>
-        ) : (
-          <></>
-        );
+                {t("CANCELLATION")}
+              </ButtonComponent>
+            ) : (
+              <></>
+            );
+        
+        }
       },
     },
     {
@@ -337,11 +341,11 @@ console.log(handleRemoveItem,"1212")
           {t("VOUCHERS")}
         </Typography>
       </Box>
-      <Box sx={{ ...dataGridStyles, minHeight: "500px" ,width: '100%'}}>
-      
+      <Box sx={{ ...dataGridStyles, minHeight: "500px", width: '100%' }}>
+
         <DataGrid
           pagination
-          rows={data}
+          rows={sampleDataList}
           getRowId={(row) => row.code}
           rowCount={total?.TotalRecords}
           autoHeight
@@ -368,13 +372,12 @@ console.log(handleRemoveItem,"1212")
             MuiTablePagination: {
               labelRowsPerPage: t("ITEMS_PER_PAGE"),
               labelDisplayedRows: ({ from, to, count }) =>
-                `${t("ROW_NUMBER")} ${from} ${t("PAGE_TO")} ${to} از ${
-                  count !== -1 ? count : `بیشتر از ${to}`
+                `${t("ROW_NUMBER")} ${from} ${t("PAGE_TO")} ${to} از ${count !== -1 ? count : `بیشتر از ${to}`
                 }`,
             },
           }}
         />
-    
+
       </Box>
       <Dialog
         open={details.showModal}
