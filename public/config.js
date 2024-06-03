@@ -13,6 +13,15 @@ window.appSettings.resources = {
   en: {
     translation: {
       APPLICATIONS: "Applications",
+      DASHBOARD: "Dashboard",
+      ADD_DEPOSIT: "Add Deposit",
+      DEPOSITS_REPORT: "Deposits Report",
+      VOUCHERS: "Vouchers",
+      BALANCE_REPORT: "Balance Report",
+      API_CONFIGURATION: "API Configuration",
+      DEPOSIT_SENTENCE: "If you need a Voucher, please add your deposit",
+      NEW_DEPOSIT: "New Deposit",
+      API_DOCUMENTS: "API Documents",
     },
   },
   fa: {

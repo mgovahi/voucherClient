@@ -129,6 +129,7 @@ function NavbarStyle1Content(props) {
                   padding: "5px 10px",
                   zIndex: 2,
                 }}
+                className="ltr:ml-auto"
               >
                 {t("ADD_DEPOSIT")}
               </Button>
@@ -138,7 +139,7 @@ function NavbarStyle1Content(props) {
               className="absolute -left-1 bottom-0 xs:w-[17rem] lg:w-160"
             />
           </Box>
-        <div className="py-20 border-t">
+        <div className="py-20 px-12 border-t">
           <Button
             variant="caption"
             sx={{
@@ -156,12 +157,15 @@ function NavbarStyle1Content(props) {
                 backgroundColor: theme.palette.primary.main,
                 // pointer-events: none;
                 // transition: border-radius .15s cubic-bezier(0.4,0.0,0.2,1)
+                svg: {
+                  color: theme.palette.warning.main,
+                },
               },
             }}
             component={NavLink}
             to="/systemManagement"
           >
-            <FuseSvgIcon>mv-icons-mc:icon-menu-configuration</FuseSvgIcon>
+            <FuseSvgIcon>mv-icons:icon-icon-menu-documents</FuseSvgIcon>
             {t("API_DOCUMENTS")}
           </Button>
         </div>

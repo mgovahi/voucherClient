@@ -9,7 +9,6 @@ import FusePageSimpleSidebar from "./FusePageSimpleSidebar";
 
 const Root = styled("div")(
   ({ theme, ...props }) => (
-    console.log(props, "soon"),
     {
       display: "flex",
       flexDirection: "column",
