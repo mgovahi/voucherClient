@@ -15,6 +15,7 @@ import {
 import { useTranslation } from "react-i18next";
 import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
 import ButtonComponent from "app/shared-components/ButtonComponent/ButtonComponent";
+import { styled } from '@mui/material/styles';
 
 function ClientInfo({ info = {}, onCancelClick }) {
   const { t } = useTranslation();
@@ -33,14 +34,33 @@ function ClientInfo({ info = {}, onCancelClick }) {
     mobile: "۰۹۱۲۳۵۰۴۱۷۹",
   };
 
-
-
-
   const onStatusChange = (e) => {
     setStatus(e.target.checked ? "ACTIVE" : "INACTIVE");
   };
   const handleSaveClick = () => { };
   const loading = false;
+
+
+
+  const VisuallyHiddenInput = styled('input')({
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
+    height: 1,
+    overflow: 'hidden',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    whiteSpace: 'nowrap',
+    width: 1,
+
+  });
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    console.log("File selected:", file);
+  };
+
+
   return (
     <Paper className="shadow gap-4 grid "
       sx={{
@@ -164,21 +184,25 @@ function ClientInfo({ info = {}, onCancelClick }) {
                   color: "#fff",
                   fontWeight: "bold",
                 }}
+                component="label"
               >
-                {t("UPDATE_PROFILE_PICTURE")}                
-                 <span className=" flex justify-center items-center rounded-full "
-                >                   
-                <FuseSvgIcon
-                  className="mr-4"
-                  sx={{
-                    fill: `${theme.palette.divider}!important`,
-                    stroke: `${theme.palette.divider}!important`,
-                  }}
+                {t("UPDATE_PROFILE_PICTURE")}
+                <VisuallyHiddenInput type="file" onChange={handleFileChange} />
+
+                <span className=" flex justify-center items-center rounded-full "
                 >
+                  <FuseSvgIcon
+                    className="mr-4"
+                    sx={{
+                      fill: `${theme.palette.divider}!important`,
+                      stroke: `${theme.palette.divider}!important`,
+                    }}
+                  >
                     mv-icons:icon-CloudUpload
                   </FuseSvgIcon>
                 </span>
               </Button>
+             
             </Box>
 
           </Box>
@@ -199,7 +223,7 @@ function ClientInfo({ info = {}, onCancelClick }) {
                   fontStyle: "bold",
                   display: "block",
                   marginTop: "5px",
-                  fontSize:"14px"
+                  fontSize: "14px"
                 },
               },
             }}
@@ -223,7 +247,7 @@ function ClientInfo({ info = {}, onCancelClick }) {
             >
               <b>$8,942
                 {/* {t("TOMAN")} */}
-                </b>
+              </b>
               <i>{t("BALANCE")}</i>
             </Typography>
           </Box>
