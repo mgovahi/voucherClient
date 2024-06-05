@@ -46,7 +46,7 @@ function NavbarToggleButton(props) {
 NavbarToggleButton.defaultProps = {
   children: (
     <FuseSvgIcon size={20} color={"action"}>
-      ob_icons:icon-Menu
+      mv-icons:icon-Menu
     </FuseSvgIcon>
   ),
 };

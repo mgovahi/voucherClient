@@ -60,8 +60,8 @@ function ToolbarLayout1(props) {
                   {config.navbar.style === "style-1" && !navbar.open && (
                     <NavbarToggleButton className="w-40 h-40 p-0">
                       <FuseSvgIcon
-                        fill="#f8f8f8"
-                        className="stroke-transparent"
+                        color={theme.palette.text.grayV}
+                        className="stroke-transparent ltr:rotate-180"
                       >
                         mv-icons:icon-Menu
                       </FuseSvgIcon>
@@ -70,7 +70,10 @@ function ToolbarLayout1(props) {
                 </Hidden>
                 <Hidden lgUp>
                   <NavbarToggleButton className="w-40 h-40 p-0 mx-0 sm:mx-8 ">
-                    <FuseSvgIcon fill="#f8f8f8" className="stroke-transparent">
+                    <FuseSvgIcon
+                      color={theme.palette.text.grayV}
+                      className="stroke-transparent ltr:rotate-180"
+                    >
                       mv-icons:icon-Menu
                     </FuseSvgIcon>
                   </NavbarToggleButton>

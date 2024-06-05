@@ -33,8 +33,8 @@ function NavbarLayout2(props) {
         <div className="flex shrink-0 items-center px-0 xs:px-8 w-full md:w-auto justify-center xs:justify-between md:justify-start">
           <NavbarToggleButton className="w-40 h-40 p-0 md:hidden">
             <FuseSvgIcon
-              fill="#99a8c1"
-              className="stroke-transparent w-32 h-32"
+              color={theme.palette.text.grayV}
+              className="stroke-transparent ltr:rotate-180"
             >
               mv-icons:icon-Menu
             </FuseSvgIcon>

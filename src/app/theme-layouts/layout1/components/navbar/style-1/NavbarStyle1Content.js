@@ -49,11 +49,11 @@ function NavbarStyle1Content(props) {
   return (
     <Root
       className={clsx(
-        "flex flex-auto flex-col overflow-hidden h-full shadow",
+        "flex flex-auto flex-col overflow-hidden h-full shadow gap-y-28 p-20",
         props.className
       )}
     >
-      <div className="items-center min-h-48 relative w-full p-10">
+      <div className="min-h-48 flex justify-between items-center w-full">
         {/* <div className="flex flex-1 mx-4">
           <Logo />
         </div> */}
@@ -62,7 +62,7 @@ function NavbarStyle1Content(props) {
           className="flex flex-col justify-center items-center gap-y-8"
           sx={{
             " img": {
-              margin: "0 auto 12px 0",
+              margin: "0",
               width: "190px",
             },
             // " b": {
@@ -75,8 +75,8 @@ function NavbarStyle1Content(props) {
           <img src={`/assets/images/logo/logo.png`} />
           {/* <b className="text-lg">{t("ADMIN_PORTAL")}</b> */}
         </Typography>
-        <NavbarToggleButton className="w-40 h-40 p-0 absolute left-4 top-0">
-          <FuseSvgIcon fill="#99a8c1" className="stroke-transparent">
+        <NavbarToggleButton className="w-40 h-40 p-0">
+          <FuseSvgIcon color={theme.palette.text.grayV} className="stroke-transparent ltr:rotate-180">
             mv-icons:icon-Menu
           </FuseSvgIcon>
         </NavbarToggleButton>
@@ -139,7 +139,7 @@ function NavbarStyle1Content(props) {
               className="absolute -left-1 bottom-0 xs:w-[17rem] lg:w-160"
             />
           </Box>
-        <div className="py-20 px-12 border-t">
+        <div className="py-20 border-t">
           <Button
             variant="caption"
             sx={{
