@@ -18,6 +18,7 @@ import { CircularProgress, IconButton } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import ButtonComponent from "app/shared-components/ButtonComponent/ButtonComponent";
 import { useTheme } from "@mui/styles";
+import FormErrorHelperText from "app/shared-components/FormErrorHelperText/FormErrorHelperText";
 
 // Styled component for the heading inside the dropzone area
 const HeadingTypography = styled(Typography)(({ theme }) => ({
@@ -166,7 +167,7 @@ const FileUploaderSingle = (props) => {
         </Box>
       </Box>
       {error ? (
-        <FormHelperText error={error}>{error.message}</FormHelperText>
+        <FormErrorHelperText error={error} />
       ) : (
         // props.error.message.map((error) => (
         //     <FormHelperText>{t("error")}</FormHelperText>

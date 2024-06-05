@@ -17,6 +17,7 @@ import { Controller, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { selectFuseCurrentSettings } from "app/store/mv/settingsSlice";
+import FormErrorHelperText from "app/shared-components/FormErrorHelperText/FormErrorHelperText";
 
 const ApiInformation = () => {
   const { t } = useTranslation();
@@ -26,27 +27,37 @@ const ApiInformation = () => {
     confirm: true,
   });
   const isFetching = false;
-  const { control, formState, handleSubmit, reset, getValues } = useForm({
+  const {
+    control,
+    formState: { errors, isValid },
+    handleSubmit,
+    reset,
+    getValues,
+  } = useForm({
     mode: "onChange",
   });
 
   const { direction } = useSelector(selectFuseCurrentSettings);
 
-  console.log("direction", direction === "ltr");
-
-  const onApproveClick = () => {};
+  const onSubmit = () => {};
 
   return (
     <Paper className="w-full">
       <FusePageSimpleHeader
         header={t("API_INFORMATION")}
       ></FusePageSimpleHeader>
-      <Box className="grid gap-y-[44px] px-20 pt-[24px] pb-[40px]">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="grid gap-y-[44px] px-20 pt-[24px] pb-[40px]"
+      >
         <Box className="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-[50px] md:gap-x-[100px] gap-y-32">
           <FormControl>
             <Controller
               name="passwordApi"
               control={control}
+              rules={{
+                required: { value: true, message: t("FIELD_ERROR_MESSAGE") },
+              }}
               render={({ field: { value, onChange, onBlur } }) => (
                 <TextField
                   sx={{ flex: 1 }}
@@ -83,11 +94,13 @@ const ApiInformation = () => {
                       </IconButton>
                     ),
                   }}
+                  error={errors.passwordApi}
                   label={t("API_KEY")}
                   helperText={t("API_KEY_HELPER_TEXT")}
                 />
               )}
             />
+            <FormErrorHelperText error={errors.passwordApi} />
           </FormControl>
           <FormControl>
             <Controller
@@ -136,9 +149,10 @@ const ApiInformation = () => {
         </Box>
         <ButtonComponent
           className={`rtl:mr-auto ltr:ml-auto ${isFetching && `gap-12`}`}
-          onClick={onApproveClick}
           variant="contained"
           color="primary"
+          type="submit"
+          // disabled={!isValid}
           loading={isFetching}
           isLoading={isFetching}
           loadingPosition="end"
@@ -146,7 +160,7 @@ const ApiInformation = () => {
         >
           {t("SAVE_INFO")}
         </ButtonComponent>
-      </Box>
+      </form>
     </Paper>
   );
 };

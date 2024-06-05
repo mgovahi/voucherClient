@@ -21,8 +21,9 @@ import PN from "persian-number";
 import BankAndAccountNumber from "./BankAndAccountNumber";
 import FileUploaderSingle from "@fuse/core/FileUploader";
 import ButtonComponent from "app/shared-components/ButtonComponent/ButtonComponent";
+import FormErrorHelperText from "app/shared-components/FormErrorHelperText/FormErrorHelperText";
 
-const AddDepositForm = ({onShowPage}) => {
+const AddDepositForm = ({ onShowPage }) => {
   const {
     control,
     formState: { errors, isValid },
@@ -37,7 +38,7 @@ const AddDepositForm = ({onShowPage}) => {
     if (file.size > 1024 * 1024) {
       return t("FILE_SIZE_ERROR");
     }
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif']; 
+    const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
     if (!allowedTypes.includes(file.type)) {
       return t("FILE_TYPE_ERROR");
     }
@@ -46,7 +47,7 @@ const AddDepositForm = ({onShowPage}) => {
 
   const onSubmit = (data) => {
     console.log(data, "data");
-    onShowPage()
+    onShowPage();
   };
 
   const depositTypeMap = [
@@ -86,7 +87,7 @@ const AddDepositForm = ({onShowPage}) => {
                 name="depositAmount"
                 control={control}
                 rules={{
-                  required: true,
+                  required: { value: true, message: t("FIELD_ERROR_MESSAGE") },
                 }}
                 render={({
                   field: { value, onChange, onBlur, ref, ...field },
@@ -132,11 +133,7 @@ const AddDepositForm = ({onShowPage}) => {
                   </Box>
                 )}
               />
-              {errors.depositAmount && (
-                <FormHelperText error={errors.depositAmount}>
-                  {t("FIELD_ERROR_MESSAGE")}
-                </FormHelperText>
-              )}
+              <FormErrorHelperText error={errors.depositAmount} />
             </FormControl>
           </Grid>
           <Grid
@@ -145,11 +142,7 @@ const AddDepositForm = ({onShowPage}) => {
             className="grid grid-rows-2 grid-cols-8 items-center"
           >
             <Box className="bg-[#f1ecfc] rounded-full w-44 h-44 flex justify-center items-center row-span-2 col-span-1">
-              <FuseSvgIcon
-                size={50}
-              >
-                mv-icons-mc:icon-Dollar
-              </FuseSvgIcon>
+              <FuseSvgIcon size={50}>mv-icons-mc:icon-Dollar</FuseSvgIcon>
             </Box>
             <Typography
               variant="body2"
@@ -186,7 +179,7 @@ const AddDepositForm = ({onShowPage}) => {
             name="bankAndAccountNumber"
             control={control}
             rules={{
-              required: true,
+              required: { value: true, message: t("FIELD_ERROR_MESSAGE") },
               // validate: isValidIpHandle,
             }}
             render={({ field }) => (
@@ -196,11 +189,7 @@ const AddDepositForm = ({onShowPage}) => {
               />
             )}
           />
-          {errors.bankAndAccountNumber && (
-            <FormHelperText error={!!errors.bankAndAccountNumber}>
-              {t("FIELD_ERROR_MESSAGE")}
-            </FormHelperText>
-          )}
+          <FormErrorHelperText error={errors.bankAndAccountNumber} />
         </FormControl>
       </Box>
 
@@ -211,7 +200,7 @@ const AddDepositForm = ({onShowPage}) => {
               name="depositType"
               control={control}
               rules={{
-                required: true,
+                required: { value: true, message: t("FIELD_ERROR_MESSAGE") },
               }}
               render={({ field: { value, onChange, onBlur } }) => {
                 return (
@@ -235,11 +224,7 @@ const AddDepositForm = ({onShowPage}) => {
                 );
               }}
             />
-            {errors.depositType && (
-              <FormHelperText error={errors.depositType}>
-                {t("FIELD_ERROR_MESSAGE")}
-              </FormHelperText>
-            )}
+            <FormErrorHelperText error={errors.depositType} />
           </FormControl>
         </Grid>
         <Grid item xs={6}>
@@ -276,8 +261,8 @@ const AddDepositForm = ({onShowPage}) => {
             name="attachedFile"
             control={control}
             rules={{
-              required: {value: true, message: t("FIELD_ERROR_MESSAGE")},
-              validate: validateImage
+              required: { value: true, message: t("FIELD_ERROR_MESSAGE") },
+              validate: validateImage,
             }}
             render={({ field: { value, onChange, onBlur } }) => (
               <FileUploaderSingle
