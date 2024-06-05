@@ -18,6 +18,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { selectFuseCurrentSettings } from "app/store/mv/settingsSlice";
 import FormErrorHelperText from "app/shared-components/FormErrorHelperText/FormErrorHelperText";
+import { urlValidatorPattern } from "@fuse/utils/validations";
 
 const ApiInformation = () => {
   const { t } = useTranslation();
@@ -31,15 +32,15 @@ const ApiInformation = () => {
     control,
     formState: { errors, isValid },
     handleSubmit,
-    reset,
-    getValues,
   } = useForm({
     mode: "onChange",
   });
 
   const { direction } = useSelector(selectFuseCurrentSettings);
 
-  const onSubmit = () => {};
+  const onSubmit = (data) => {
+    console.log({...data, url: `https://${data.url}`})
+  };
 
   return (
     <Paper className="w-full">
@@ -53,7 +54,7 @@ const ApiInformation = () => {
         <Box className="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-[50px] md:gap-x-[100px] gap-y-32">
           <FormControl>
             <Controller
-              name="passwordApi"
+              name="apiKey"
               control={control}
               rules={{
                 required: { value: true, message: t("FIELD_ERROR_MESSAGE") },
@@ -94,18 +95,24 @@ const ApiInformation = () => {
                       </IconButton>
                     ),
                   }}
-                  error={errors.passwordApi}
+                  error={errors.apiKey}
                   label={t("API_KEY")}
                   helperText={t("API_KEY_HELPER_TEXT")}
                 />
               )}
             />
-            <FormErrorHelperText error={errors.passwordApi} />
+            <FormErrorHelperText error={errors.apiKey} />
           </FormControl>
           <FormControl>
             <Controller
-              name="passwordConfirm"
+              name="url"
               control={control}
+              rules={{
+                pattern: {
+                  value: urlValidatorPattern,
+                  message: t("WEBSITE_ERROR"),
+                },
+              }}
               render={({ field: { value, onChange, onBlur } }) => (
                 <TextField
                   sx={{
@@ -140,11 +147,13 @@ const ApiInformation = () => {
                       </InputAdornment>
                     ),
                   }}
+                  error={errors.url}
                   label={t("WEBSITE_OPTIONAL")}
                   helperText={t("WEBSITE_HELPER_TEXT")}
                 />
               )}
             />
+            <FormErrorHelperText error={errors.url} />
           </FormControl>
         </Box>
         <ButtonComponent
@@ -152,7 +161,7 @@ const ApiInformation = () => {
           variant="contained"
           color="primary"
           type="submit"
-          // disabled={!isValid}
+          disabled={!isValid}
           loading={isFetching}
           isLoading={isFetching}
           loadingPosition="end"
