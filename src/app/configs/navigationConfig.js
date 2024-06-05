@@ -39,8 +39,7 @@ const navigationConfig = [
     translate: "BALANCE_REPORT",
     type: "item",
     icon: "mv-icons:icon-icon-menu-balance-report",
-
-    url: "/#",
+    url: "/balanceReport",
   },
   {
     id: "apiConfiguration",

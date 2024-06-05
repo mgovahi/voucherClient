@@ -12,6 +12,7 @@ import ApiConfigurationPageConfigs from "./apiConfiguration/ApiConfigurationPage
 import VouchersPageConfigs from "./vouchers/VouchersPageConfigs";
 import AddDepositPageConfigs from "./addDeposit/AddDepositPageConfigs";
 import DepositsReportConfigs from "./depositsReport/DepositsReportPageConfigs";
+import BalanceReportPageConfigs from "./balanceReport/BalanceReportPageConfigs";
 
 const pagesConfigs = [
   ProfilePageConfigs,
@@ -29,6 +30,7 @@ const pagesConfigs = [
   VouchersPageConfigs,
   AddDepositPageConfigs,
   DepositsReportConfigs,
+  BalanceReportPageConfigs,
 ];
 
 export default pagesConfigs;
