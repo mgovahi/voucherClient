@@ -27,17 +27,17 @@ const IpLimit = () => {
     <Paper className="w-full">
       <FusePageSimpleHeader header={t("IP_LIMIT")}></FusePageSimpleHeader>
       <Box className="grid gap-y-32 px-20 pt-[24px] pb-[40px]">
-        <Box className="grid grid-cols-2 gap-x-[100px]">
+        <Box className="grid  grid-cols-1 sm:grid-cols-2 sm:gap-x-[50px] md:gap-x-[100px]">
           <IpField onAddIp={handleAddIp} ipList={ipList} />
         </Box>
         <Box className="grid gap-10">
           {ipList.map((item, index) => {
             return (
               <Box
-                className="py-14 px-20 grid items-center"
+                className="py-14 px-14 sm:px-20 grid items-center"
                 sx={{
                   backgroundColor: theme.palette.custome.cyanBlueLight,
-                  gridTemplateColumns: "repeat(20, minmax(0, 1fr))",
+                  gridTemplateColumns: {xs: "45px auto 80px", sm: "50px auto 90px"},
                 }}
                 key={index}
               >
@@ -45,14 +45,14 @@ const IpLimit = () => {
                   sx={{
                     backgroundColor: theme.palette.yellow.main,
                   }}
-                  className="w-36 h-36 rounded-full flex justify-center items-center col-span-1"
+                  className="w-36 h-36 rounded-full flex justify-center items-center"
                 >
                   <FuseSvgIcon color="white" size="20px">
                     mv-icons:icon-Security
                   </FuseSvgIcon>
                 </Box>
                 <Typography
-                  className="font-bold col-[span_18_/_span_18]"
+                  className="font-bold"
                   variant="body2"
                 >
                   {item}
@@ -60,7 +60,7 @@ const IpLimit = () => {
                 <Button
                   variant="outlined"
                   color="error"
-                  className="col-span-1 gap-4"
+                  className="gap-4"
                   onClick={() => handleRemoveIp(item)}
                 >
                   {t("DELETE")}
