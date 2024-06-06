@@ -27,13 +27,18 @@ import FusePageSimpleHeader from "@fuse/core/FusePageSimple/FusePageSimpleHeader
 import { useThemeMediaQuery } from "@fuse/hooks";
 import ButtonComponent from "app/shared-components/ButtonComponent/ButtonComponent";
 import { Parameters } from "redoc";
-
+import {
+  selectCurrentLanguage,
+  selectCurrentLanguageDirection,
+} from "app/store/i18nSlice";
+import { useSelector } from "react-redux";
 const BalanceList = (props) => {
   const [exportLoading, setExportLoading] = useState(false);
   const { t } = useTranslation();
   const theme = useTheme();
   const dispatch = useDispatch();
-
+  const currentLanguage = useSelector(selectCurrentLanguage);
+  const currentDir = useSelector(selectCurrentLanguageDirection);
   const [details, setDetails] = useState({
     showModal: false,
     data: {},
@@ -68,8 +73,8 @@ const BalanceList = (props) => {
   } = props;
 
   const balanceTypeMap = {
-    wallet: "کیف پول",
-    voucher: "حواله",
+    wallet: t("WALLET"),
+    voucher: t("VOUCHER"),
   };
 
   const statusMapColor = {
@@ -169,9 +174,9 @@ const BalanceList = (props) => {
       flex: 1,
       sortable: false,
       renderCell: (params) => (
-        <Typography variant="body2" sx={{ direction: "rtl" }}>
+        <Typography variant="body2" sx={{ direction: currentDir }}>
           {moment(new Date(params.row.balanceDate))
-            .locale("fa")
+            .locale(currentLanguage.id)
             .format("YYYY-MM-DD - hh:mm:ss")}
         </Typography>
       ),
@@ -251,7 +256,9 @@ const BalanceList = (props) => {
             color="default"
             size="small"
             aria-label="refresh"
-            className="ml-4"
+            sx={{
+              marginRight: "8px",
+            }}
           >
             <FuseSvgIcon size="16px">mv-icons:icon-Masked-Icon</FuseSvgIcon>
           </Button>
@@ -293,14 +300,16 @@ const BalanceList = (props) => {
           localeText={{
             ...faIR.components.MuiDataGrid.defaultProps.localeText,
             footerTotalVisibleRows: (visibleCount, totalCount) =>
-              `${visibleCount.toLocaleString()} از ${totalCount.toLocaleString()}`,
+              `${visibleCount.toLocaleString()} ${t(
+                "FROM"
+              )} ${totalCount.toLocaleString()}`,
             noRowsLabel: t("NOT_FOUND"),
             MuiTablePagination: {
               labelRowsPerPage: t("ITEMS_PER_PAGE"),
               labelDisplayedRows: ({ from, to, count }) =>
-                `${t("ROW_NUMBER")} ${from} ${t("PAGE_TO")} ${to} از ${
-                  count !== -1 ? count : `بیشتر از ${to}`
-                }`,
+                `${t("ROW_NUMBER")} ${from} ${t("PAGE_TO")} ${to} ${t(
+                  "FROM"
+                )} ${count !== -1 ? count : `بیشتر از ${to}`}`,
             },
           }}
         />

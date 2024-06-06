@@ -19,6 +19,7 @@ export const changeLanguage = (languageId) => (dispatch, getState) => {
     Change Language
      */
   return i18n.changeLanguage(languageId).then(() => {
+    localStorage.setItem("lang", languageId);
     dispatch(i18nSlice.actions.languageChanged(languageId));
   });
 };

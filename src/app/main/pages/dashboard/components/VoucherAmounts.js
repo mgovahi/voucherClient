@@ -153,7 +153,7 @@ function VoucherAmounts() {
                       className="font-bold"
                       color="white"
                     >
-                      <span>۱۷,۵۰۰</span>
+                      <span>17,1500$</span>
                     </Typography>
                   </div>
                 </Box>

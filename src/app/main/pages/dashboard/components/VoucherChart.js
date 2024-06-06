@@ -6,18 +6,20 @@ import fa from "apexcharts/dist/locales/fa.json";
 import { useTranslation } from "react-i18next";
 import FusePageSimpleHeader from "@fuse/core/FusePageSimple/FusePageSimpleHeader";
 import { Box } from "@mui/system";
-
-const pastSevenDays = [];
-
-for (let i = 0; i <= 6; i++) {
-  const currentDate = moment(new Date());
-  const pastDate = currentDate.subtract(i, "days");
-  const formattedDate = pastDate.locale("fa").format("DD MMM");
-
-  pastSevenDays.push(formattedDate);
-}
+import { selectCurrentLanguage } from "app/store/i18nSlice";
+import { useSelector } from "react-redux";
 
 const VoucherChart = () => {
+  let pastSevenDays = [];
+  const currentLanguage = useSelector(selectCurrentLanguage);
+
+  for (let i = 0; i <= 6; i++) {
+    const currentDate = moment(new Date());
+    const pastDate = currentDate.subtract(i, "days");
+    const formattedDate = pastDate.locale(currentLanguage.id).format("DD MMM");
+
+    pastSevenDays.push(formattedDate);
+  }
   const theme = useTheme();
   const { t } = useTranslation();
 
@@ -25,11 +27,11 @@ const VoucherChart = () => {
     return {
       series: [
         {
-          name: "حواله صادر شده ",
+          name: t("GENERATED_VOUCHERS"),
           data: [10, 12, 15, 17, 15, 7, 5],
         },
         {
-          name: "حواله مصرف شده ",
+          name: t("USED_VOUCHERS"),
           data: [-10, -12, -15, -17, -15, -7, -5],
         },
       ],
@@ -110,7 +112,7 @@ const VoucherChart = () => {
             ],
             radius: 5,
             offsetY: -3,
-            offsetX: -130,
+            //offsetX: -130,
           },
           itemMargin: {
             horizontal: 5,
@@ -141,10 +143,9 @@ const VoucherChart = () => {
           justifyContent: "flex-start!important",
           padding: "0 50px",
           gap: "20px",
-          ".apexcharts-legend-series:first-child": {
-            ".apexcharts-legend-marker": {
-              right: "-120px!important",
-            },
+
+          ".apexcharts-legend-marker": {
+            marginRight: "5px",
           },
         },
         ".FusePageSimple-header": {
@@ -180,7 +181,7 @@ const VoucherChart = () => {
               }}
             >
               <Typography variant="body3" color="#fff" className="font-bold">
-                {t("MONEY_VOUCHER")}
+                {t("NEW_DEPOSIT")}
               </Typography>
               <Typography
                 variant="small"

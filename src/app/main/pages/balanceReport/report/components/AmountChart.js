@@ -6,31 +6,43 @@ import moment from "jalali-moment";
 import Chart from "react-apexcharts";
 import { useTranslation } from "react-i18next";
 import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
-import { fontSize } from "@mui/system";
+import { fontSize, margin } from "@mui/system";
 import fa from "apexcharts/dist/locales/fa.json";
-
-const pastSevenDays = [];
-
-const daysOfWeek = [
-  "یک‌شنبه",
-  "دو‌شنبه",
-  "سه‌شنبه",
-  "چهارشنبه",
-  "پنج‌شنبه",
-  "جمعه",
-  "شنبه",
-];
-
-for (let i = 0; i <= 6; i++) {
-  const currentDate = moment(new Date());
-  const pastDate = currentDate.subtract(i, "days");
-  const dayOfWeekIndex = pastDate.day(); // Get the index of the day of the week
-  const dayOfWeekName = daysOfWeek[dayOfWeekIndex]; // Get the name of the day of the week
-
-  pastSevenDays.push(dayOfWeekName);
-}
-
+import { useSelector } from "react-redux";
+import { selectCurrentLanguage } from "app/store/i18nSlice";
 const AmountChart = () => {
+  const pastSevenDays = [];
+  const currentLanguage = useSelector(selectCurrentLanguage);
+  const daysOfWeek =
+    currentLanguage.id == "fa"
+      ? [
+          "یک‌شنبه",
+          "دو‌شنبه",
+          "سه‌شنبه",
+          "چهارشنبه",
+          "پنج‌شنبه",
+          "جمعه",
+          "شنبه",
+        ]
+      : [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ];
+
+  for (let i = 0; i <= 6; i++) {
+    const currentDate = moment(new Date());
+    const pastDate = currentDate.subtract(i, "days");
+    const dayOfWeekIndex = pastDate.day(); // Get the index of the day of the week
+    const dayOfWeekName = daysOfWeek[dayOfWeekIndex]; // Get the name of the day of the week
+
+    pastSevenDays.push(dayOfWeekName);
+  }
+
   const { t } = useTranslation();
   const theme = useTheme();
   const chartData = useMemo(() => {
@@ -228,28 +240,24 @@ const AmountChart = () => {
             backgroundColor: theme.palette.secondary.slowLight,
           }}
         >
-          <FuseSvgIcon
-            className=" ml-10"
-            sx={{
-              fill: `${theme.palette.secondary.slowLight}!important`,
-              stroke: `${theme.palette.secondary.main}!important`,
-            }}
-          >
-            mv-icons-mc:icon-money-bag
-          </FuseSvgIcon>
-
           <Typography
             variant="inherit"
-            sx={{ color: theme.palette.primary.main, fontSize: "14px" }}
+            sx={{
+              color: theme.palette.primary.main,
+              fontSize: "14px",
+              lineHeight: "20px",
+              marginRight: "10px",
+              svg: {
+                marginRight: "5px",
+                verticalAlign: "sub",
+              },
+            }}
           >
-            <i className="inline-block rounded-xl ml-8 not-italic vertical-middle">
-              <FuseSvgIcon className="ml-4">
-                mv-icons-mc:icon-icon-money-bag-purple
-              </FuseSvgIcon>
-              {t("YOUR_BALANCE")}:
-            </i>
+            <FuseSvgIcon size="18px">
+              mv-icons-mc:icon-icon-money-bag-purple
+            </FuseSvgIcon>
+            {t("YOUR_BALANCE")}:
           </Typography>
-
           <Typography
             variant=""
             sx={{
@@ -258,7 +266,7 @@ const AmountChart = () => {
               fontSize: "18px",
             }}
           >
-            <i className="inline-block rounded-xl not-italic">$4,580</i>
+            $4,580
           </Typography>
         </Paper>
       </Box>

@@ -10,7 +10,7 @@ import { fontSize } from "@mui/system";
 import fa from "apexcharts/dist/locales/fa.json";
 import { useSelector } from "react-redux";
 import { selectCurrentLanguageDirection } from "app/store/i18nSlice";
-const TotalAmountChart = () => {
+const TotalAmountChart = ({ showTotal }) => {
   const { t } = useTranslation();
   const theme = useTheme();
   const langDirection = useSelector(selectCurrentLanguageDirection);
@@ -125,10 +125,15 @@ const TotalAmountChart = () => {
       </Box>
       <Box
         sx={{
+          position: "relative",
           ".apexcharts-legend": {
             width: "40%",
             display: "flex",
-            justifyContent: "center !important",
+            marginBottom: showTotal ? "20px" : 0,
+            marginLeft: "15px",
+            justifyContent: showTotal
+              ? "flex-end !important"
+              : "center !important",
             ".apexcharts-legend-marker": {
               height: "3px !important",
               width: "8px !important",
@@ -161,6 +166,32 @@ const TotalAmountChart = () => {
           },
         }}
       >
+        {showTotal && (
+          <Box
+            sx={{
+              position: "absolute",
+              left: "30px",
+              top: "30px",
+            }}
+          >
+            <Typography
+              variant="h6"
+              color="secondary"
+              sx={{
+                fontFamily: "IRANYekanBold",
+                fontSize: "28px",
+              }}
+            >
+              $5,542
+            </Typography>
+            <Typography
+              variant="caption"
+              sx={{ color: theme.palette.text.grayDay }}
+            >
+              {t("BALANCE")}
+            </Typography>
+          </Box>
+        )}
         <ReactApexChart
           type="donut"
           width={"100%"}

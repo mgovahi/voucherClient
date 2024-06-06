@@ -64,14 +64,14 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
   const balanceTypeMap = [
     {
       value: null,
-      label: "همه موارد",
+      label: t("ALL_ITEMS"),
     },
     {
-      label: "کیف پول",
+      label: t("WALLET"),
       value: "wallet",
     },
     {
-      label: "حواله",
+      label: t("VOUCHER"),
       value: "voucher",
     },
   ];

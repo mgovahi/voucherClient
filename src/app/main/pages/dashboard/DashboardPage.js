@@ -52,7 +52,7 @@ function DashboardPage(props) {
                   <WelcomeBlock />
                 </Box>
                 <Box className="col-span-1">
-                  <TotalAmountChart />
+                  <TotalAmountChart showTotal />
                 </Box>
                 <Box className="col-span-2">
                   <VoucherAmounts />

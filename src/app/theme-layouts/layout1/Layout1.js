@@ -15,6 +15,8 @@ import ToolbarLayout1 from "./components/ToolbarLayout1";
 import SettingsPanel from "../shared-components/SettingsPanel";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFnsJalali } from "@mui/x-date-pickers/AdapterDateFnsJalali";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { selectCurrentLanguage } from "app/store/i18nSlice";
 
 const Root = styled("div")(({ theme, config }) => ({
   ...(config.mode === "boxed" && {
@@ -37,10 +39,14 @@ function Layout1(props) {
   const config = useSelector(selectFuseCurrentLayoutConfig);
   const appContext = useContext(AppContext);
   const { routes } = appContext;
-
+  const currentLanguage = useSelector(selectCurrentLanguage);
   return (
     <Root id="fuse-layout" config={config} className="w-full flex ">
-      <LocalizationProvider dateAdapter={AdapterDateFnsJalali}>
+      <LocalizationProvider
+        dateAdapter={
+          currentLanguage.id == "fa" ? AdapterDateFnsJalali : AdapterDateFns
+        }
+      >
         {config.leftSidePanel.display && <LeftSideLayout1 />}
 
         <div className="flex flex-auto min-w-0">
