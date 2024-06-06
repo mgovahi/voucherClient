@@ -10,14 +10,15 @@ import FusePageSimpleHeader from "@fuse/core/FusePageSimple/FusePageSimpleHeader
 import { useAuth } from "react-oidc-context";
 import SimpleWidget from "./components/SimpleWidget";
 import VoucherAmounts from "./components/VoucherAmounts";
-import format from 'date-fns/format';
+import format from "date-fns/format";
 import VoucherChart from "./components/VoucherChart";
-
+import TotalAmountChart from "../balanceReport/report/components/TotalAmountChart";
+import WelcomeBlock from "./components/WelcomeBlock";
 function DashboardPage(props) {
   const { t } = useTranslation();
   const theme = useTheme();
 
-  console.log(format(new Date(), 'eeee'))
+  console.log(format(new Date(), "eeee"));
 
   const Root = styled(FusePageSimple)(({ theme }) => {});
   const container = {
@@ -43,11 +44,22 @@ function DashboardPage(props) {
               initial="hidden"
               animate="show"
             >
-              <motion.div variants={item} className="col-span-1">
-                {/* <h1 style={{color: theme.palette.text.primary}}>Dashboard</h1> */}
-                <VoucherAmounts />
-                <SimpleWidget />
-                <VoucherChart />
+              <motion.div
+                variants={item}
+                className="col-span-1 grid  grid-cols-2 gap-[24px]"
+              >
+                <Box className="col-span-1">
+                  <WelcomeBlock />
+                </Box>
+                <Box className="col-span-1">
+                  <TotalAmountChart />
+                </Box>
+                <Box className="col-span-2">
+                  <VoucherAmounts />
+                </Box>
+                <Box className="col-span-2">
+                  <VoucherChart />
+                </Box>
               </motion.div>
             </motion.div>
           </div>

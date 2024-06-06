@@ -83,6 +83,7 @@ const BalanceList = (props) => {
       minWidth: 20,
       headerName: t("ROW_NUMBER"),
       field: "id",
+      sortable: false,
       renderCell: (params) => (
         <Typography
           variant="body2"
@@ -100,6 +101,7 @@ const BalanceList = (props) => {
       minWidth: 180,
       headerName: t("BALANCE"),
       flex: 1,
+      sortable: false,
       renderCell: (params) => (
         <Typography
           variant="body2"
@@ -114,6 +116,7 @@ const BalanceList = (props) => {
       headerName: t("BALANCE_TYPE"),
       field: "balanceType",
       flex: 1,
+      sortable: false,
       renderCell: (params) => (
         <Typography
           variant="body2"
@@ -154,6 +157,7 @@ const BalanceList = (props) => {
       headerName: t("DOCUMENT_ID"),
       field: "transactionId",
       flex: 1,
+      sortable: false,
       renderCell: (params) => (
         <Typography variant="body2">{params.row.transactionId}</Typography>
       ),
@@ -163,6 +167,7 @@ const BalanceList = (props) => {
       minWidth: 160,
       headerName: t("DATE"),
       flex: 1,
+      sortable: false,
       renderCell: (params) => (
         <Typography variant="body2" sx={{ direction: "rtl" }}>
           {moment(new Date(params.row.balanceDate))

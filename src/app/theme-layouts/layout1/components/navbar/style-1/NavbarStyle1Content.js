@@ -76,7 +76,10 @@ function NavbarStyle1Content(props) {
           {/* <b className="text-lg">{t("ADMIN_PORTAL")}</b> */}
         </Typography>
         <NavbarToggleButton className="w-40 h-40 p-0">
-          <FuseSvgIcon color={theme.palette.text.grayV} className="stroke-transparent ltr:rotate-180">
+          <FuseSvgIcon
+            color={theme.palette.text.grayV}
+            className="stroke-transparent ltr:rotate-180"
+          >
             mv-icons:icon-Menu
           </FuseSvgIcon>
         </NavbarToggleButton>
@@ -90,55 +93,58 @@ function NavbarStyle1Content(props) {
 
         <Navigation layout="vertical" />
         <Box
+          sx={{
+            backgroundColor: theme.palette.custome.red,
+            width: { xs: "200px", lg: "200px" },
+            minHeight: "245px",
+            borderRadius: "8px",
+            position: "relative",
+            margin: "0 auto",
+          }}
+        >
+          <Box
             sx={{
-              backgroundColor: theme.palette.custome.red,
-              width: { xs: "200px", lg: "200px" },
-              minHeight: "245px",
-              borderRadius: "8px",
-              position: "relative",
-              margin: "0 auto"
+              padding: "25px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "15px",
             }}
           >
-            <Box
+            <Typography variant="body3" color="#fff" className="font-bold">
+              {t("NEW_DEPOSIT")}
+            </Typography>
+            <Typography
+              variant="small"
+              color={theme.palette.custome.lightPurple}
+              className="font-bold text-[12px]"
+            >
+              {t("DEPOSIT_SENTENCE")}
+            </Typography>
+            <Button
               sx={{
-                padding: "25px",
-                display: "flex",
-                flexDirection: "column",
-                gap: "15px",
+                backgroundColor: theme.palette.custome.yellow,
+                width: "90px",
+                minHeight: "30px",
+                maxHeight: "30px",
+                fontSize: "12px",
+                color: "#fff",
+                fontWeight: "bold",
+                padding: "5px 10px",
+                zIndex: 2,
+              }}
+              className="ltr:ml-auto"
+              onClick={() => {
+                navigate("/AddDeposit");
               }}
             >
-              <Typography variant="body3" color="#fff" className="font-bold">
-                {t("NEW_DEPOSIT")}
-              </Typography>
-              <Typography
-                variant="small"
-                color={theme.palette.custome.lightPurple}
-                className="font-bold text-[12px]"
-              >
-                {t("DEPOSIT_SENTENCE")}
-              </Typography>
-              <Button
-                sx={{
-                  backgroundColor: theme.palette.custome.yellow,
-                  width: "90px",
-                  minHeight: "30px",
-                  maxHeight: "30px",
-                  fontSize: "12px",
-                  color: "#fff",
-                  fontWeight: "bold",
-                  padding: "5px 10px",
-                  zIndex: 2,
-                }}
-                className="ltr:ml-auto"
-              >
-                {t("ADD_DEPOSIT")}
-              </Button>
-            </Box>
-            <img
-              src="/assets/images/new-payment.svg"
-              className="absolute -left-1 bottom-0 xs:w-[17rem] lg:w-160"
-            />
+              {t("ADD_DEPOSIT")}
+            </Button>
           </Box>
+          <img
+            src="/assets/images/new-payment.svg"
+            className="absolute -left-1 bottom-0 xs:w-[17rem] lg:w-160"
+          />
+        </Box>
         <div className="py-20 border-t">
           <Button
             variant="caption"

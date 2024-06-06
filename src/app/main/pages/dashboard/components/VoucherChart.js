@@ -187,7 +187,7 @@ const VoucherChart = () => {
                 color={theme.palette.custome.lightPurple}
                 className="font-bold text-[12px]"
               >
-                {t("VOUCHER_SENTENCE")}
+                {t("DEPOSIT_SENTENCE")}
               </Typography>
               <Button
                 sx={{
@@ -201,11 +201,11 @@ const VoucherChart = () => {
                   zIndex: 2,
                 }}
               >
-                {t("NEW_VOUCHER")}
+                {t("ADD_DEPOSIT")}
               </Button>
             </Box>
             <img
-              src="/assets/images/dashboard-sitting.png"
+              src="/assets/images/new-payment.svg"
               className="absolute -left-1 -bottom-2 xs:w-[17rem] lg:w-192"
             />
           </Box>

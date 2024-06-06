@@ -206,7 +206,7 @@ const AmountChart = () => {
         series={chartData.series}
         className="w-4/4 ml-0 pt-10 pl-20 pr-20 "
         type="bar"
-        height={"251px"}
+        height={"200px"}
       />
 
       <Box

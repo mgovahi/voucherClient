@@ -52,7 +52,7 @@ const BalanceReportPage = () => {
               <motion.div variants={item} className="col-span-1">
                 <AmountChart />
               </motion.div>
-              <motion.div variants={item} className="col-span-1">
+              <motion.div variants={item} className="col-span-1 h-full">
                 <TotalAmountChart />
               </motion.div>
               <motion.div variants={item} className="col-span-2">

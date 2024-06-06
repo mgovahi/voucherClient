@@ -261,7 +261,7 @@ window.appSettings.resources = {
         "واریزی شما به شناسه تراکنش {{transactionId}} با موفقیت ثبت گردید. ",
       SUCCESS_ALERT_HELPER_TEXT:
         "موجودی شما پس از تایید افزایش خواهد یافت. وضعیت تراکنش را در گزارش واریزی پیگیری نمایید.",
-      DEPOSITS_REPORT: "گزارش موجودی",
+      DEPOSITS_REPORT: "گزارش واریزی ها",
       ADD_NEW_DEPOSIT: "ثبت واریزی جدید",
       BALANCE_REPORT: "گردش حساب",
       LATEST_YOUR_BALANCE: "موجودی اخیر شما",
@@ -270,6 +270,12 @@ window.appSettings.resources = {
       DATE: "تاریخ",
       DOWNLOAD: "دانلود",
       YOUR_BALANCE: "موجودی شما",
+      WALLET: "کیف پول",
+      TOTAL_BALANCE: "موجودی کل",
+      WELCOME_TITLE: "به VoucherUSD خوش آمدید",
+      WELCOME_MESSAGE:
+        "متن معرفی کوتاه و خوش آمدگویی به وچر یو اس دی اینجا قرار می گیرد. متن معرفی کوتاه و خوش آمدگویی به وچر یو اس دی اینجا قرار می گیرد. متن معرفی کوتاه و خوش آمدگویی به وچر یو اس دی اینجا قرار می گیرد",
+      ADD_BALANCE: "افزودن موجودی",
     },
   },
 };
