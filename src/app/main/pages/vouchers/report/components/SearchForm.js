@@ -1,6 +1,6 @@
 import _ from "@lodash";
 import { useTheme } from "@mui/material/styles";
-import { Box, width } from "@mui/system";
+import { Box, display, width } from "@mui/system";
 import {
   Button,
   CircularProgress,
@@ -113,17 +113,35 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
         <Box
           sx={{
             display: "flex",
-            alignItems: "center",
+            flexWrap: "wrap",
+            // alignItems: "center",
             justifyContent: "space-between",
             gap: "20px",
-            flexDirection: { xs: "column", sm: "row" },
+            flexDirection: { xs: "column", sm: "row", },
+            // columnGap: { xs: 2, sm: 2.5, md: 2, lg: 3, xl:4},
             "  .MuiFormControl-root": {
-              flex: 1,
+              flex: { md: '1 1 calc(33.333% - 20px)', lg: 1, xl: 1 },
+              // m: { sm: "0.1rem 0.5rem", xs: "0.1rem 0.5rem", md: "0.1rem 0.5rem" },
+
               width: {
                 xs: "100%",
               },
             },
           }}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         >
           <FormControl>
             <Controller
@@ -131,7 +149,7 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
               control={control}
               render={({ field: { value, onChange, onBlur } }) => (
                 <TextField
-                  sx={{ flex: 1 }}
+                  sx={{ flex: 1, mb: { xs: "0.5rem" } }}
                   onChange={onChange}
                   value={value}
                   inputProps={{
@@ -339,10 +357,12 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
               )}
             />
           </FormControl>
+
           <ButtonComponent
             sx={{
+              m: { md: "0 1rem" },
               height: "54px",
-              width: { xs: "100%", sm: "180px" },
+              width: { xs: "100%", md: "240px", lg: "fit-content" },
             }}
             onClick={handleSearchClick}
             color="primary"
@@ -369,3 +389,4 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
 }
 
 export default SearchForm;
+

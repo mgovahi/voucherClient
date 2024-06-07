@@ -79,15 +79,45 @@ const  VouchersPage= () => {
               animate="show"
             >
               <motion.div variants={item} className="col-span-1 ">
-               
+{/*                
                 <Box
-                  className="flex gap-[24px] mb-[24px]"
+                  
+                  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2  lg:grid-cols-4 sm:gap-16 xs:gap-x-36 md:gap-16 lg:gap-24 xl:gap-24 w-full min-w-0 mb-[24px] "
                   sx={{
                     " > div": {
+                      flex: 1,
+                    // columnGap:{ xs: '90px' }
+                     
+                    },
+                  }}
+                > */}
+
+
+<Box
+                  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 w-full min-w-0 mb-[24px]"
+                  sx={{
+                    // columnGap: {
+                    //   lg: '24px',
+                    //   md: '16px',
+                    //   sm: '10px',
+                    //   xs: '10px',
+                    // },
+                    // rowGap: {
+                    //   lg: '24px',
+                    //   md: '16px',
+                    //   sm: '10px',
+                    //   xs: '10px',
+                    // },
+
+                    columnGap: { xs: 2, sm: 2.5, md: 2, lg: 3, xl:4},
+                    rowGap: { xs: 2, sm: 2.5, md: 2, lg:3, xl:4},
+
+                    "> div": {
                       flex: 1,
                     },
                   }}
                 >
+
                   {dashStats.map((stat) => {
                     return (
                       <SimpleStatBox
@@ -114,3 +144,5 @@ const  VouchersPage= () => {
 };
 
 export default VouchersPage;
+
+
