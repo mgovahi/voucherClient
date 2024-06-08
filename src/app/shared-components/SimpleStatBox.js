@@ -6,6 +6,8 @@ import { useTranslation } from "react-i18next";
 import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
 
 function SimpleStatBox({ icon, color, statValue, statTitle }) {
+  const { t } = useTranslation();
+
   return (
     <>
       <Box
@@ -35,7 +37,7 @@ function SimpleStatBox({ icon, color, statValue, statTitle }) {
             opacity: "0.8",
           }}
         >
-          {statTitle}
+          {t(statTitle)}
         </Typography>
       </Box>
     </>
