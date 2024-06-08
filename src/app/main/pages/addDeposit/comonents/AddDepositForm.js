@@ -22,6 +22,9 @@ import BankAndAccountNumber from "./BankAndAccountNumber";
 import FileUploaderSingle from "@fuse/core/FileUploader";
 import ButtonComponent from "app/shared-components/ButtonComponent/ButtonComponent";
 import FormErrorHelperText from "app/shared-components/FormErrorHelperText/FormErrorHelperText";
+import { selectCurrentLanguageDirection } from "app/store/i18nSlice";
+import { useSelector } from "react-redux";
+import { toWords } from "number-to-words";
 
 const AddDepositForm = ({ onShowPage }) => {
   const {
@@ -33,6 +36,7 @@ const AddDepositForm = ({ onShowPage }) => {
   });
   const { t } = useTranslation();
   const theme = useTheme();
+  const langDirection = useSelector(selectCurrentLanguageDirection);
 
   const validateImage = (file) => {
     if (file.size > 1024 * 1024) {
@@ -52,15 +56,15 @@ const AddDepositForm = ({ onShowPage }) => {
 
   const depositTypeMap = [
     {
-      label: "پایا",
+      label: "PAYA",
       value: "paya",
     },
     {
-      label: "ساتنا",
+      label: "SATNA",
       value: "satna",
     },
     {
-      label: "پل",
+      label: "POL",
       value: "pol",
     },
   ];
@@ -101,6 +105,9 @@ const AddDepositForm = ({ onShowPage }) => {
                       inputProps={{ min: 0, defaultValue: 0 }}
                       sx={{
                         flex: 1,
+                        ".MuiFormHelperText-contained": {
+                          textTransform: "capitalize",
+                        },
                         ".MuiInputBase-formControl": {
                           minHeight: "48px",
                           maxHeight: "48px",
@@ -124,9 +131,11 @@ const AddDepositForm = ({ onShowPage }) => {
                       error={errors.depositAmount}
                       helperText={
                         value === 0
-                          ? "صفر تومان"
+                          ? t("ZERO_TOMAN")
                           : value
-                          ? `${PN.convert(value)} تومان`
+                          ? langDirection === "rtl"
+                            ? `${PN.convert(value)} ${t("TOMAN")}`
+                            : `${toWords(value)} ${t("TOMAN")}`
                           : ""
                       }
                     />
@@ -152,7 +161,7 @@ const AddDepositForm = ({ onShowPage }) => {
               {t("PAYMENT_DOLLAR")}:
             </Typography>
             <Typography variant="body2" className="font-bold col-span-4">
-              ۶۰.۴۰۰ تومان
+              60.400 {t("TOMAN")}
             </Typography>
             <Typography
               variant="body2"

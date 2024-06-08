@@ -42,15 +42,15 @@ export default BankAndAccountNumber;
 
 const mockData = [
   {
-    bankName: "بانک پاسارگاد",
+    bankName: "PASARGAD_BANK",
     accountNumber: "1234-800-123456-1",
   },
   {
-    bankName: "بانک تجارت",
+    bankName: "TEJARAT_BANK",
     accountNumber: "200123456",
   },
   {
-    bankName: "بانک ایران‌زمین",
+    bankName: "IRAN_ZAMIN_BANK",
     accountNumber: "200-707-123456-1",
   },
 ];

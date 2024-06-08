@@ -139,7 +139,7 @@ const getToolbarTheme = (state) => state.mv.settings.current.theme.toolbar;
 const getFooterTheme = (state) => state.mv.settings.current.theme.footer;
 
 function generateMuiTheme(theme, direction) {
-  const data = _.merge({}, defaultThemeOptions, theme, mustHaveThemeOptions);
+  const data = _.merge({}, defaultThemeOptions(direction), theme, mustHaveThemeOptions);
   const response = createTheme(
     _.merge({}, data, {
       mixins: extendThemeWithMixins(data),

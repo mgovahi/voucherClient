@@ -36,13 +36,13 @@ const AddDepositSuccess = ({ onShowPage }) => {
           variant="body2"
           sx={{ color: theme.palette.custome.darkSky }}
         >
-          واریزی شما به شناسه تراکنش 
+          {t("TRANSACTION_ID_TEXT_PART_ONE")}
           {
             <span style={{ color: theme.palette.secondary.main }}>
-          {` ${transactionId} `}
+              {` ${transactionId} `}
             </span>
           }
-          با موفقیت ثبت گردید.
+          {t("TRANSACTION_ID_TEXT_PART_TWO")}
         </Typography>
         <Typography
           sx={{ color: theme.palette.custome.darkSky }}

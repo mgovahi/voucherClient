@@ -4,6 +4,7 @@ import CustomRadio from "./CustomRadio";
 import { Box, useTheme } from "@mui/system";
 import { styled } from "@mui/material/styles";
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 
 // Custom FormControlLabel
 const MyFormControlLabel = (props) => {
@@ -44,6 +45,8 @@ const CustomFormControlLabel = ({
   checkedValue,
 }) => {
   const theme = useTheme();
+  const { t } = useTranslation();
+
 
   return (
     <StyledBox
@@ -59,7 +62,7 @@ const CustomFormControlLabel = ({
         value={accountNumber}
         sx={{width: "100%", height: "100%", padding: "24px"}}
         label={
-          <Box display="flex" flexDirection="column" alignItems="center">
+          <Box display="flex" flexDirection="column" alignItems="flex-start" gap="8px">
             <Typography
               variant="body2"
               color={theme.palette.custome.darkSky}
@@ -68,7 +71,7 @@ const CustomFormControlLabel = ({
               {accountNumber}
             </Typography>
             <Typography variant="body2" color={theme.palette.text.grayV}>
-              {bankName}
+              {t(bankName)}
             </Typography>
           </Box>
         }
