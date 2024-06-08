@@ -10,7 +10,8 @@ import { Button } from "@mui/material";
 import SimpleStatBox from "app/shared-components/SimpleStatBox";
 import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
 import VouchersReport from "./report/VouchersReport";
-
+import { useSelector } from "react-redux";
+import { selectCurrentLanguage } from "app/store/i18nSlice";
 const VouchersPage = () => {
   const { t } = useTranslation();
   const theme = useTheme();
@@ -28,29 +29,33 @@ const VouchersPage = () => {
     show: { opacity: 1, y: 0 },
   };
 
+ 
+ 
+
+
   const [dashStats, setDashStats] = useState([
     {
       icon: "mv-icons-mc:icon-Voucher-star-purple",
       value: "$809,450",
-      title: t("GENERATED_VOUCHERS"),
+      title: "GENERATED_VOUCHERS",
       color: theme.palette.primary,
     },
     {
       icon: "mv-icons-mc:icon-Voucher-check-pink",
       value: "$686,304",
-      title: t("USED_VOUCHERS"),
+      title: "USED_VOUCHERS",
       color: theme.palette.secondary,
     },
     {
       icon: "mv-icons-mc:icon-VoucherInfo",
       value: "$123,146",
-      title: t("UNUSED_VOUCHER"),
+      title: "UNUSED_VOUCHER",
       color: theme.palette.info,
     },
     {
       icon: "mv-icons-mc:icon-VoucherYellow",
       value: "$104",
-      title: t("CANCELD_VOUCHER"),
+      title: "CANCELD_VOUCHER",
       color: theme.palette.yellow,
     },
   ]);

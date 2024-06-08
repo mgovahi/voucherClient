@@ -46,10 +46,10 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
   const channelMap = [
     {
       value: null,
-      label: "همه موارد",
+      label: t('ALL_ITEMS'),
     },
     {
-      label: "پنل",
+      label: "panel",
       value: "panel",
     },
     {
@@ -64,22 +64,22 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
   const statusMap = [
     {
       value: null,
-      label: "همه موارد",
+      label: t('ALL_ITEMS'),
     },
     {
-      label: "فعال",
+      label: t("ACTIVE"),
       value: "ACTIVE",
     },
     {
-      label: "مصرف شده",
+      label: t("USED"),
       value: "USED",
     },
     {
-      label: "ادغام شده",
+      label: t("MERGED"),
       value: "MERGED",
     },
     {
-      label: "لغو شده",
+      label: t("CANCELED"),
       value: "CANCELED",
     },
   ];
@@ -128,20 +128,6 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
               },
             },
           }}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         >
           <FormControl>
             <Controller
@@ -360,9 +346,9 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
 
           <ButtonComponent
             sx={{
-              m: { md: "0 1rem" },
+              m: { md: "0 0rem" },
               height: "54px",
-              width: { xs: "100%", md: "240px", lg: "fit-content" },
+              width: { xs: "100%", md: "32%", lg: "fit-content" },
             }}
             onClick={handleSearchClick}
             color="primary"
