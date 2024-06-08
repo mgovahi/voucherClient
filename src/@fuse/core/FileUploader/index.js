@@ -153,7 +153,7 @@ const FileUploaderSingle = (props) => {
           </Typography>
           <ButtonComponent
             sx={{
-              width: { xs: "100%", sm: "fit-content" },
+              width: "fit-content",
               zIndex: 2,
             }}
             color="primary"

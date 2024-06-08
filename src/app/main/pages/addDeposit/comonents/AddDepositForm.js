@@ -81,11 +81,12 @@ const AddDepositForm = ({ onShowPage }) => {
         </Box>
         <Grid
           container
-          columnSpacing="100px"
-          className="h-68"
+          columnSpacing={{md: "100px", xs: "50px"}}
+          rowSpacing={{xs: "32px", md: 0}}
+          className="h-auto md:h-68"
           alignItems="start"
         >
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <FormControl className="w-full">
               <Controller
                 name="depositAmount"
@@ -147,30 +148,32 @@ const AddDepositForm = ({ onShowPage }) => {
           </Grid>
           <Grid
             item
-            xs={6}
-            className="grid grid-rows-2 grid-cols-8 items-center"
+            xs={12} md={6}
+            sx={{                  gridTemplateColumns: {xs: "60px 150px auto", },
+          }}
+            className="grid grid-rows-2 items-center"
           >
-            <Box className="bg-[#f1ecfc] rounded-full w-44 h-44 flex justify-center items-center row-span-2 col-span-1">
+            <Box className="bg-[#f1ecfc] rounded-full w-44 h-44 flex justify-center items-center row-span-2">
               <FuseSvgIcon size={50}>mv-icons-mc:icon-Dollar</FuseSvgIcon>
             </Box>
             <Typography
               variant="body2"
               color={theme.palette.text.grayV}
-              className="col-span-3"
+              className="font-bold"
             >
               {t("PAYMENT_DOLLAR")}:
             </Typography>
-            <Typography variant="body2" className="font-bold col-span-4">
+            <Typography variant="body2" className="font-bold">
               60.400 {t("TOMAN")}
             </Typography>
             <Typography
               variant="body2"
               color={theme.palette.text.grayV}
-              className="col-span-3"
+              className="font-bold"
             >
               {t("ALLOCATED_CREDIT")}:
             </Typography>
-            <Typography variant="body2" className="font-bold col-span-4">
+            <Typography variant="body2" className="font-bold">
               $17
             </Typography>
           </Grid>
@@ -202,8 +205,8 @@ const AddDepositForm = ({ onShowPage }) => {
         </FormControl>
       </Box>
 
-      <Grid container columnSpacing="100px">
-        <Grid item xs={6}>
+      <Grid container columnSpacing={{md: "100px", xs: "50px"}} rowSpacing={{xs: "16px", sm: 0}}>
+        <Grid item xs={12} sm={6}>
           <FormControl className="w-full">
             <Controller
               name="depositType"
@@ -236,7 +239,7 @@ const AddDepositForm = ({ onShowPage }) => {
             <FormErrorHelperText error={errors.depositType} />
           </FormControl>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <FormControl className="w-full">
             <Controller
               name="description"

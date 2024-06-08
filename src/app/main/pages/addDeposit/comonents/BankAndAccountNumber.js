@@ -22,7 +22,7 @@ const BankAndAccountNumber = ({ field, error }) => {
       <Grid container spacing={2}>
         {mockData.map((item, index) => {
           return (
-            <Grid key={index} item xs={4}>
+            <Grid key={index} item xs={12} md={4}>
               <CustomFormControlLabel
                 checkedValue={checkedValue}
                 bankName={item.bankName}

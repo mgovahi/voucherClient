@@ -17,7 +17,7 @@ const AddDepositSuccess = ({ onShowPage }) => {
     <>
       <Alert
         severity="success"
-        className="grid justify-center justify-items-center text-center p-40 w-3/4 my-0 mx-auto"
+        className="grid justify-center justify-items-center text-center p-40 sm:w-3/4 w-full my-0 mx-auto"
         icon={
           <FuseSvgIcon color={theme.palette.common.white} size={80}>
             mv-icons-mc:icon-icon-success
@@ -32,7 +32,7 @@ const AddDepositSuccess = ({ onShowPage }) => {
           {t("SUCCESS_TRANSACTION")}
         </Typography>
         <Typography
-          className="font-bold mt-20 mb-5"
+          className="font-bold mt-20 mb-10"
           variant="body2"
           sx={{ color: theme.palette.custome.darkSky }}
         >
