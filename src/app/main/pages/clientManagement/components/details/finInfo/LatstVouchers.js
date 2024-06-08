@@ -44,7 +44,7 @@ function LatestVouchers({ info = {}, onCancelClick }) {
       renderCell: (params) => params.row.amount.toAmount(),
     },
     {
-      headerName: t("WAGE"),
+      headerName: t("TRANSACTION_FEE"),
       field: "fee",
       flex: 1,
       renderCell: (params) => params.row.fee.toAmount(),

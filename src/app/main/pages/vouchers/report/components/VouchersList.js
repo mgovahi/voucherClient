@@ -80,10 +80,10 @@ const VouchersList = (props) => {
   } = props;
 
   const statusMap = {
-    ACTIVE: "فعال",
-    CANCELED: "لغو شده",
-    MERGED: "ادغام شده",
-    USED: "مصرف شده",
+    ACTIVE: t("ACTIVE"),
+    CANCELED:t("CANCELED"),
+    MERGED: t("MERGED"),
+    USED:t("USED"), 
   };
   const statusMapColor = {
     ACTIVE: "successLight",
@@ -146,7 +146,7 @@ const VouchersList = (props) => {
     },
     {
       minWidth: 100,
-      headerName: t("WAGE"),
+      headerName: t("TRANSACTION_FEE"),
       field: "wage",
       flex: 1,
     },

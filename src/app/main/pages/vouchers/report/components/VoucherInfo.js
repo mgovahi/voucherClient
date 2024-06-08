@@ -82,7 +82,7 @@ function VoucherInfo({ info = {}, onCancelClick }) {
       <TextField
         sx={{ flex: 1 }}
         value={info.wage || " 123"}
-        label={t("WAGE")}
+        label={t("TRANSACTION_FEE")}
         disabled
       />
       <TextField
