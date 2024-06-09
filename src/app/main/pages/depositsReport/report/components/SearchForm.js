@@ -43,43 +43,43 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
   const { control, formState, handleSubmit, reset, getValues } = useForm({
     mode: "onChange",
   });
-  const channelMap = [
-    {
-      value: null,
-      label: "همه موارد",
-    },
-    {
-      label: "پنل",
-      value: "panel",
-    },
-    {
-      label: "api",
-      value: "api",
-    },
-    {
-      label: "website",
-      value: "website",
-    },
-  ];
+  // const channelMap = [
+  //   {
+  //     value: null,
+  //     label: "همه موارد",
+  //   },
+  //   {
+  //     label: "پنل",
+  //     value: "panel",
+  //   },
+  //   {
+  //     label: "api",
+  //     value: "api",
+  //   },
+  //   {
+  //     label: "website",
+  //     value: "website",
+  //   },
+  // ];
   const statusMap = [
     {
       value: null,
-      label: "همه موارد",
+      label: t('ALL_ITEMS'),
     },
     {
-      label: "فعال",
+      label: t("ACTIVE"),
       value: "ACTIVE",
     },
     {
-      label: "مصرف شده",
+      label: t("USED"),
       value: "USED",
     },
     {
-      label: "ادغام شده",
+      label: t("MERGED"),
       value: "MERGED",
     },
     {
-      label: "لغو شده",
+      label: t("CANCELED"),
       value: "CANCELED",
     },
   ];

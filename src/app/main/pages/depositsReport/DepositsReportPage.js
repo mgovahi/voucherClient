@@ -4,7 +4,7 @@ import styled from "styled-components";
 // import ApiInformation from "./components/ApiInformation";
 // import IpLimit from "./components/IpLimit";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";import { useTheme } from "@mui/material/styles";
+import { motion } from "framer-motion"; import { useTheme } from "@mui/material/styles";
 import { Box } from "@mui/system";
 import { Button } from "@mui/material";
 import SimpleStatBox from "app/shared-components/SimpleStatBox";
@@ -12,7 +12,7 @@ import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
 import DepositsReport from "./report/DepositsReport";
 
 
-const  DepositsReportPage= () => {
+const DepositsReportPage = () => {
   const { t } = useTranslation();
   const theme = useTheme();
   const Root = styled(FusePageSimple)(({ theme }) => ({}));
@@ -31,21 +31,21 @@ const  DepositsReportPage= () => {
 
   const [dashStats, setDashStats] = useState([
     {
-      icon: "mv-icons-mc:icon-income-R-Info",
+      icon: "mv-icons-mc:icon-icon-menu-transfer-report-3",
       value: "$678,690",
-      title: "واریزی های شما",
+      title: "YOUR_DEPOSITS",
       color: theme.palette.info,
     },
     {
-      icon: "mv-icons-mc:icon-income-R-Green",
+      icon: "mv-icons-mc:icon-icon-menu-transfer-report-2",
       value: "$622,690",
-      title: "واریزی های تایید شده شما",
+      title: "CONFIRMED_DEPOSITS",
       color: theme.palette.green,
     },
     {
-      icon: "mv-icons-mc:icon-income-R-Yellow",
+      icon: "mv-icons-mc:icon-icon-menu-transfer-report-1",
       value: "$56,000",
-      title: "واریزی های در انتظار تایید شما",
+      title: "WAITING_CONFIRM_DEPOSITS",
       color: theme.palette.yellow,
     },
   ]);
@@ -54,13 +54,13 @@ const  DepositsReportPage= () => {
   return (
 
     <>
-    <Root
+      <Root
         header={t("DEPOSITS_REPORT")}
         headerActions={
           <>
-            <Button variant="outlined" color="default" aria-label="refresh" 
-         
-            > 
+            <Button variant="outlined" color="default" aria-label="refresh"
+
+            >
               <FuseSvgIcon>mv-icons:icon-Masked-Icon</FuseSvgIcon>
             </Button>
           </>
@@ -74,7 +74,7 @@ const  DepositsReportPage= () => {
               animate="show"
             >
               <motion.div variants={item} className="col-span-1 ">
-               
+
                 <Box
                   className="flex gap-[24px] mb-[24px]"
                   sx={{
@@ -94,12 +94,12 @@ const  DepositsReportPage= () => {
                     );
                   })}
                 </Box>
-             
 
-               
+
+
               </motion.div>
             </motion.div>
-             <DepositsReport/>
+            <DepositsReport />
           </div>
         }
         variant="none"

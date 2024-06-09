@@ -67,9 +67,9 @@ const DepositsList = (props) => {
   } = props;
 
   const statusMap = {
-    ACCEPTED: "تایید شده",
-    WAITING: "در انتظار تایید",
-    REJECTED: "رد شده",
+    ACCEPTED: t("ACCEPTED"),
+    WAITING:t(" WAITING"), 
+    REJECTED:t("REJECTED") ,
   };
 
   const statusMapColor = {
@@ -77,8 +77,6 @@ const DepositsList = (props) => {
     REJECTED: "errorLight",
     WAITING: "warningLight",
   };
-
-
 
 
   let columns = [
@@ -139,9 +137,6 @@ const DepositsList = (props) => {
       // )
     },
  
-  
-  
-    
     {
       minWidth: 250,
       headerName: t("TRANSACTION_ID"),

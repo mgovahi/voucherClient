@@ -42,56 +42,56 @@ function DepositsReport(props) {
   return (
     <>
       <Paper className="w-full rounded">
-      <FusePageSimpleHeader
-        header={t("DEPOSITS_REPORT")}
-        // inner
-        headerActions={
-          <>
-       
-            <Button
-              className="py-10 px-20 min-h-full h-[42px] rounded-[5px] flex "
-              variant="contained"
-              color="secondary"
-              onClick={() => {
-                naviage("/AddDeposit");
-              }}
-              endIcon={
-                <FuseSvgIcon sx={{ stroke: "transparent !important" }}>
-                  mv-icons-mc:icon-transfer-report
-                </FuseSvgIcon>
-              }
-            >
-              {t("NEW_DEPOSIT")}
+        <FusePageSimpleHeader
+          header={t("DEPOSITS_REPORT")}
+          // inner
+          headerActions={
+            <>
 
-            </Button>
-          </>
-        }
-      ></FusePageSimpleHeader>
+              <Button
+                className="py-10 px-20 min-h-full h-[42px] rounded-[5px] flex "
+                variant="contained"
+                color="secondary"
+                onClick={() => {
+                  naviage("/AddDeposit");
+                }}
+                endIcon={
+                  <FuseSvgIcon sx={{ stroke: "transparent !important" }}>
+                    mv-icons-mc:icon-icon-menu-transfer-add
+                  </FuseSvgIcon>
+                }
+              >
+                {t("NEW_DEPOSIT")}
 
-      
-            <motion.div
-              className="grid grid-cols-1  gap-24 w-full min-w-0 "
-              variants={container}
-              initial="hidden"
-              animate="show"
-            >
+              </Button>
+            </>
+          }
+        ></FusePageSimpleHeader>
 
-              <motion.div variants={item} className="col-span-1">
-                <Box>
-                  <SearchForm />
-                </Box>
-                <Box>
-                  <DepositsList
-                    data={vouchers.list}
-                    total={vouchers.totalInfo}
-                    onPageSizeChange={onPageSizeChange}
-                  />
-                </Box>
-              </motion.div>
-            </motion.div>
-         
-         
-            </Paper>
+
+        <motion.div
+          className="grid grid-cols-1  gap-24 w-full min-w-0 "
+          variants={container}
+          initial="hidden"
+          animate="show"
+        >
+
+          <motion.div variants={item} className="col-span-1">
+            <Box>
+              <SearchForm />
+            </Box>
+            <Box>
+              <DepositsList
+                data={vouchers.list}
+                total={vouchers.totalInfo}
+                onPageSizeChange={onPageSizeChange}
+              />
+            </Box>
+          </motion.div>
+        </motion.div>
+
+
+      </Paper>
     </>
   );
 }
@@ -131,7 +131,7 @@ const sampleData = [
     status: "REJECTED",
   },
   {
-  
+
     code: "1*34-*234-*234-*2*4*34*4",
     deposit: "۱۴۷,۱۸۶,۰۰",
     credit: "2,237",

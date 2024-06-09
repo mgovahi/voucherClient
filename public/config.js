@@ -108,6 +108,19 @@ window.appSettings.resources = {
       POL: "Pol",
       TRANSACTION_ID_TEXT_PART_ONE: "Your deposit with transaction ID",
       TRANSACTION_ID_TEXT_PART_TWO: "has been submitted successfully.",
+      YOUR_DEPOSITS: "your deposits",
+      CONFIRMED_DEPOSITS: "confirmd deposits",
+      WAITING_CONFIRM_DEPOSITS: "waiting for confirm deposits",
+      FROM_AMOUNT: "From Amount",
+      TO_AMOUNT: "To Amount",
+      DEPOSIT_TOMAN: "Deposit (Toman)",
+      CREDIT: "Credit",
+      DATE: "Date",
+      LAST_ACTION_DATE: "Last Action",
+      ATTACHMENT_TYPE: "Attachement Type",
+      CONFIRMED: "Confirmed",
+      WAITING: " Waiting",
+      REJECTED: " rejected",
     },
   },
   fa: {
@@ -371,6 +384,15 @@ window.appSettings.resources = {
       POL: "پل",
       TRANSACTION_ID_TEXT_PART_ONE: "واریزی شما به شناسه تراکنش ",
       TRANSACTION_ID_TEXT_PART_TWO: "با موفقیت ثبت گردید.",
+      YOUR_DEPOSITS: "واریزی های شما",
+      CONFIRMED_DEPOSITS: "واریزی های تایید شده شما",
+      WAITING_CONFIRM_DEPOSITS: "واریزی های در انتظار تایید شما",
+      CONFIRMED: "تایید شده",
+      WAITING: "در انتظار تایید",
+      REJECTED: "رد شده",
+
+
+
     },
   },
 };
