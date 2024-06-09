@@ -67,8 +67,8 @@ const DepositsList = (props) => {
   } = props;
 
   const statusMap = {
-    ACCEPTED: t("ACCEPTED"),
-    WAITING:t(" WAITING"), 
+    ACCEPTED: t("CONFIRMED"),
+    WAITING:t("WAITING"), 
     REJECTED:t("REJECTED") ,
   };
 
@@ -197,6 +197,7 @@ const DepositsList = (props) => {
           label={statusMap[params.row.status]}
           color={statusMapColor[params.row.status]}
           sx={{
+            textTransform: 'uppercase',
             height: 20,
             maxWidth: "initial",
             mt: 0.4,
@@ -298,7 +299,7 @@ const DepositsList = (props) => {
         }}
       >
         <Typography caption="body2" className="text-lg">
-          {t("VOUCHERS")}
+          {t("DEPOSITS_REPORT")}
         </Typography>
       </Box>
       <Box sx={{ ...dataGridStyles, minHeight: "500px" ,width: '100%'}}>

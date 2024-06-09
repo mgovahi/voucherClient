@@ -76,8 +76,10 @@ const DepositsReportPage = () => {
               <motion.div variants={item} className="col-span-1 ">
 
                 <Box
-                  className="flex gap-[24px] mb-[24px]"
+                  className="grid grid-cols-1 sm:grid-cols-3   w-full min-w-0 mb-[24px]"
                   sx={{
+                       columnGap: { xs: 2, sm: 2.5, md: 2, lg: 3, xl: 4 },
+                    rowGap: { xs: 2, sm: 2.5, md: 2, lg: 3, xl: 4 },
                     " > div": {
                       flex: 1,
                     },
@@ -90,7 +92,7 @@ const DepositsReportPage = () => {
                         color={stat.color}
                         statValue={stat.value}
                         statTitle={stat.title}
-                      ></SimpleStatBox>
+                        ></SimpleStatBox>
                     );
                   })}
                 </Box>

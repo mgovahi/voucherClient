@@ -35,6 +35,7 @@ function SimpleStatBox({ icon, color, statValue, statTitle }) {
         <Typography
           sx={{
             opacity: "0.8",
+            textTransform: 'uppercase'
           }}
         >
           {t(statTitle)}

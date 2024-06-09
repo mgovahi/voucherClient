@@ -1,7 +1,7 @@
 import { useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import { motion } from "framer-motion";
-import { Box, border } from "@mui/system";
+import { Box, border, fontSize } from "@mui/system";
 import { Paper, TextField, Button } from "@mui/material";
 import FusePageSimple from "@fuse/core/FusePageSimple";
 import { useTranslation } from "react-i18next";
@@ -19,7 +19,7 @@ function DepositsReport(props) {
   const { t } = useTranslation();
   const naviage = useNavigate();
   const theme = useTheme();
-  const [vouchers, setVouchers] = useState({
+  const [deposits, setDeposits] = useState({
     list: sampleData,
     totalInfo: { PageSize: 10, TotalRecords: 50, PageNumber: 1 },
   });
@@ -38,17 +38,25 @@ function DepositsReport(props) {
   const onPageSizeChange = (pageSize) => {
     //setReportData({ ...reportData, pageSize: pageSize });
   };
-
+  
   return (
     <>
-      <Paper className="w-full rounded">
+      <Paper className="w-full rounded"
+
+      >
         <FusePageSimpleHeader
-          header={t("DEPOSITS_REPORT")}
+
+          header={<Typography sx={{ fontSize: { xs: "14px", md: "inherit" }, fontWeight: "bold" ,}}>
+            {t("DEPOSITS_REPORT")}
+          </Typography>}
           // inner
           headerActions={
             <>
 
               <Button
+                sx={{
+                  fontSize: { xs: "12px", md: "inherit" }
+                }}
                 className="py-10 px-20 min-h-full h-[42px] rounded-[5px] flex "
                 variant="contained"
                 color="secondary"
@@ -56,7 +64,9 @@ function DepositsReport(props) {
                   naviage("/AddDeposit");
                 }}
                 endIcon={
-                  <FuseSvgIcon sx={{ stroke: "transparent !important" }}>
+                  <FuseSvgIcon sx={{
+                    stroke: "transparent !important",
+                  }} >
                     mv-icons-mc:icon-icon-menu-transfer-add
                   </FuseSvgIcon>
                 }
@@ -82,8 +92,8 @@ function DepositsReport(props) {
             </Box>
             <Box>
               <DepositsList
-                data={vouchers.list}
-                total={vouchers.totalInfo}
+                data={deposits.list}
+                total={deposits.totalInfo}
                 onPageSizeChange={onPageSizeChange}
               />
             </Box>

@@ -200,6 +200,7 @@ const VouchersList = (props) => {
           label={statusMap[params.row.status]}
           color={statusMapColor[params.row.status]}
           sx={{
+            textTransform: 'uppercase',
             height: 20,
             maxWidth: "initial",
             mt: 0.4,

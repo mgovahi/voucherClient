@@ -119,8 +119,8 @@ window.appSettings.resources = {
       LAST_ACTION_DATE: "Last Action",
       ATTACHMENT_TYPE: "Attachement Type",
       CONFIRMED: "Confirmed",
-      WAITING: " Waiting",
-      REJECTED: " rejected",
+      WAITING: "Waiting",
+      REJECTED: "Rejected",
     },
   },
   fa: {
