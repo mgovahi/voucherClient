@@ -76,7 +76,6 @@ const VoucherChart = () => {
           type: "string",
           labels: {
             show: true,
-            align: "center",
             // format: 'MM/dd',
             // offsetY: isSmallMobile ? 35 : 0,
             style: {
@@ -95,6 +94,7 @@ const VoucherChart = () => {
               fontSize: "12px",
               fontFamily: "IRANYekanX",
             },
+            align: "center",
             formatter: function (val) {
               return Math.abs(val).toPersianDigits();
             },
@@ -214,13 +214,14 @@ const VoucherChart = () => {
                   padding: "5px 10px",
                   zIndex: 2,
                 }}
+                className="ltr:ml-auto"
               >
                 {t("ADD_DEPOSIT")}
               </Button>
             </Box>
             <img
               src="/assets/images/new-payment.svg"
-              className="absolute rtl:-left-1 ltr:-right-1 -bottom-2 xs:w-[17rem] lg:w-192"
+              className="absolute -left-1 -bottom-2 xs:w-[17rem] lg:w-192"
             />
           </Box>
         </Grid>

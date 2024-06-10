@@ -15,7 +15,7 @@ function DollarLivePrice(){
         <FuseSvgIcon size={24} sx={{opacity:"0.8",mr:"4px"}}>mv-icons:icon-LocalAtm</FuseSvgIcon>
         {t("VOUCHER_DOLLAR")}:
     </Typography>
-    <Typography color={theme.palette.custome.green}>64,300 تومان</Typography>
+    <Typography color={theme.palette.custome.green}>64,300 {t("TOMAN")}</Typography>
     <Typography variant='caption' className='rounded bg-white px-8' sx={{
         color: theme.palette.custome.green2,
         opacity:0.88,
