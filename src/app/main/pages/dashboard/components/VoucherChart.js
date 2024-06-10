@@ -1,4 +1,4 @@
-import { Paper, useTheme, Grid, Typography, Button } from "@mui/material";
+import { Paper, useTheme, Grid, Typography, Button, useMediaQuery } from "@mui/material";
 import React, { useMemo } from "react";
 import Chart from "react-apexcharts";
 import moment from "jalali-moment";
@@ -8,6 +8,7 @@ import FusePageSimpleHeader from "@fuse/core/FusePageSimple/FusePageSimpleHeader
 import { Box } from "@mui/system";
 import { selectCurrentLanguage } from "app/store/i18nSlice";
 import { useSelector } from "react-redux";
+import { useThemeMediaQuery } from "@fuse/hooks";
 
 const VoucherChart = () => {
   let pastSevenDays = [];
@@ -22,6 +23,9 @@ const VoucherChart = () => {
   }
   const theme = useTheme();
   const { t } = useTranslation();
+
+  const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down("sm"));
+  const isSmallMobile = useMediaQuery("(max-width:400px)")
 
   const chartData = useMemo(() => {
     return {
@@ -72,7 +76,9 @@ const VoucherChart = () => {
           type: "string",
           labels: {
             show: true,
+            align: "center",
             // format: 'MM/dd',
+            // offsetY: isSmallMobile ? 35 : 0,
             style: {
               colors: theme.palette.text.grayDay,
               fontSize: "12px",
@@ -98,7 +104,7 @@ const VoucherChart = () => {
           show: true,
           position: "top",
           horizontalAlign: "right",
-          fontSize: "15px",
+          fontSize: isMobile ? "12px" : "15px",
           fontFamily: "IRANYekanX",
           labels: {
             colors: theme.palette.text.grayDay,
@@ -132,7 +138,8 @@ const VoucherChart = () => {
         },
       },
     };
-  }, []);
+  }, [isMobile, isSmallMobile]);
+
   return (
     <Paper
       className="gap-4 px-[29px] py-[27px]" //flex flex-col items-center
@@ -141,8 +148,9 @@ const VoucherChart = () => {
         ".apexcharts-align-right": {
           flexDirection: "row-reverse",
           justifyContent: "flex-start!important",
-          padding: "0 50px",
-          gap: "20px",
+          padding: { xs: "0 10px 0 0" },
+          columnGap: { xs: "0", md: "20px" },
+          rowGap: "5px",
 
           ".apexcharts-legend-marker": {
             marginRight: "5px",
@@ -159,14 +167,19 @@ const VoucherChart = () => {
         inner
         header={t("VOUCHER_LAST_WEEK")}
       ></FusePageSimpleHeader>
-      <Grid container alignItems="flex-end" justifyContent="space-between">
-        <Grid item sm={2}>
+      <Grid
+        container
+        alignItems="flex-end"
+        justifyContent="space-between"
+        rowSpacing={4}
+      >
+        <Grid item xs={12} sm={4} md={2}>
           <Box
             sm={10}
             sx={{
               backgroundColor: theme.palette.custome.red,
-              width: { xs: "200px", lg: "230px" },
-              height: "320px",
+              width: { xs: "auto", md: "230px" },
+              height: { xs: "200px", sm: "320px" },
               borderRadius: "8px",
               position: "relative",
               overflow: "hidden",
@@ -207,11 +220,11 @@ const VoucherChart = () => {
             </Box>
             <img
               src="/assets/images/new-payment.svg"
-              className="absolute -left-1 -bottom-2 xs:w-[17rem] lg:w-192"
+              className="absolute rtl:-left-1 ltr:-right-1 -bottom-2 xs:w-[17rem] lg:w-192"
             />
           </Box>
         </Grid>
-        <Grid item sm={9}>
+        <Grid item xs={12} sm={7} md={9}>
           <Chart
             options={chartData.options}
             series={chartData.series}

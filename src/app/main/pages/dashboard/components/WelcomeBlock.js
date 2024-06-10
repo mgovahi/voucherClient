@@ -1,7 +1,7 @@
 import { memo } from "react";
 import Paper from "@mui/material/Paper";
 import { useTheme } from "@mui/material/styles";
-import { Typography, Grid, Button } from "@mui/material";
+import { Typography, Grid, Button, useMediaQuery } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
 
@@ -19,6 +19,7 @@ function WelcomeBlock({ description, amount, svgIcon, color }) {
           backgroundImage: "url(assets/images/logo/logoMark.png)",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "right bottom",
+          backgroundSize: useMediaQuery("(max-width:415px)") && "60%",
           color: theme.palette.common.white,
         }}
       >

@@ -85,6 +85,7 @@ const TotalAmountChart = ({ showTotal }) => {
                 total: {
                   show: true,
                   label: t("TOTAL_BALANCE"),
+                  fontFamily: "IranYekanX",
                   formatter: (a) => "",
                 },
               },
@@ -126,6 +127,7 @@ const TotalAmountChart = ({ showTotal }) => {
       <Box
         sx={{
           position: "relative",
+          padding: {xs: "0 2rem 2rem 2rem", md: 0},
           ".apexcharts-legend": {
             width: "40%",
             display: "flex",
@@ -134,6 +136,8 @@ const TotalAmountChart = ({ showTotal }) => {
             justifyContent: showTotal
               ? "flex-end !important"
               : "center !important",
+              marginLeft: {xs: 0, sm: "15px"},
+              padding: {xs: 0, sm: "10px"},
             ".apexcharts-legend-marker": {
               height: "3px !important",
               width: "8px !important",

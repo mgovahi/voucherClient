@@ -48,10 +48,10 @@ function DashboardPage(props) {
                 variants={item}
                 className="col-span-1 grid  grid-cols-2 gap-[24px]"
               >
-                <Box className="col-span-1">
+                <Box className="col-span-2 md:col-span-1">
                   <WelcomeBlock />
                 </Box>
-                <Box className="col-span-1">
+                <Box className="col-span-2 md:col-span-1">
                   <TotalAmountChart showTotal />
                 </Box>
                 <Box className="col-span-2">

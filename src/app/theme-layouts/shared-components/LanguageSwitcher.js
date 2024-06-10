@@ -42,7 +42,7 @@ function LanguageSwitcher(props) {
           src={`assets/images/flags/${currentLanguage.flag}.svg`}
           alt={currentLanguage.title}
         /> */}
-        <FuseSvgIcon>{`mv-icons-mc:icon-flag-${currentLanguage.flag}`}</FuseSvgIcon>
+        <FuseSvgIcon>{`mv-icons-mc:icon-Language`}</FuseSvgIcon>
 
         <Typography
           className="mx-4 font-semibold uppercase"
