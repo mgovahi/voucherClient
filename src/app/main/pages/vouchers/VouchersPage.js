@@ -29,31 +29,27 @@ const VouchersPage = () => {
     show: { opacity: 1, y: 0 },
   };
 
- 
- 
-
-
   const [dashStats, setDashStats] = useState([
     {
-      icon: "mv-icons-mc:icon-Voucher-star-purple",
+      icon: "mv-icons-mc:icon-Voucher-Generated-1",
       value: "$809,450",
       title: "GENERATED_VOUCHERS",
       color: theme.palette.primary,
     },
     {
-      icon: "mv-icons-mc:icon-Voucher-check-pink",
+      icon: "mv-icons-mc:icon-Voucher-Generated",
       value: "$686,304",
       title: "USED_VOUCHERS",
       color: theme.palette.secondary,
     },
     {
-      icon: "mv-icons-mc:icon-VoucherInfo",
+      icon: "mv-icons-mc:icon-Voucher",
       value: "$123,146",
       title: "UNUSED_VOUCHER",
       color: theme.palette.info,
     },
     {
-      icon: "mv-icons-mc:icon-VoucherYellow",
+      icon: "mv-icons-mc:icon-Voucher-1",
       value: "$104",
       title: "CANCELD_VOUCHER",
       color: theme.palette.yellow,

@@ -32,10 +32,10 @@ function VoucherInfo({ info = {}, onCancelClick }) {
     setActive(newValue);
   };
   const statusMap = {
-    ACTIVE: "فعال",
-    CANCELED: "لغو شده",
-    MERGED: "ادغام شده",
-    USED: "مصرف شده",
+    ACTIVE: t("ACTIVE"),
+    CANCELED: t("CANCELED"),
+    MERGED:t("MERGED"),
+    USED: t("USED")
   };
   const statusMapColor = {
     ACTIVE: "successLight",
@@ -49,8 +49,8 @@ function VoucherInfo({ info = {}, onCancelClick }) {
   const handleSaveClick = () => {};
   return (
     <Box
-      className="p-[16px] rounded grid grid-cols-2 gap-x-[40px] gap-y-[20px]"
-      sx={{ border: `1px solid ${theme.palette.divider}` }}
+    className="p-[16px] rounded grid grid-cols-2 gap-x-[40px] gap-y-[20px]"
+    sx={{ border: `1px solid ${theme.palette.divider}` }}
     >
       <Typography className="col-span-2 justify-self-end" variant="caption">
         <label>{t("VOUCHER_STATUS")}:</label>
@@ -81,7 +81,7 @@ function VoucherInfo({ info = {}, onCancelClick }) {
       />
       <TextField
         sx={{ flex: 1 }}
-        value={info.wage || " 123"}
+        value={info.transactionId || " 123"}
         label={t("TRANSACTION_FEE")}
         disabled
       />

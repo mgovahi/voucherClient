@@ -187,7 +187,7 @@ const DepositsList = (props) => {
       ),
     },
     {
-      minWidth: 110,
+      minWidth: 118,
       field: "status",
       headerName: t("STATUS"),
       renderCell: (params) => (
@@ -203,6 +203,7 @@ const DepositsList = (props) => {
             mt: 0.4,
             fontSize: "1.1rem",
             fontWeight: "normal",
+           
           }}
         ></Chip>
       ),

@@ -226,7 +226,7 @@ const VouchersList = (props) => {
                 isLoading={isLoadingData}
                 onClick={() => handleRemoveItem(params.row)}
                 variant="outlined"
-                sx={{ padding: "7px", }}
+                sx={{ padding: "7px",minWidth:"87px!important"}}
                 endIcon={
                   <FuseSvgIcon
                     sx={{
@@ -331,7 +331,7 @@ const VouchersList = (props) => {
     <>
       <Box
         sx={{
-          m: "2rem 1rem",
+          m: "2rem 2rem",
           display: "flex",
           flexDirection: { xs: "column", sm: "row" },
           justifyContent: "space-between",
@@ -342,7 +342,22 @@ const VouchersList = (props) => {
           {t("VOUCHERS")}
         </Typography>
       </Box>
-      <Box sx={{ ...dataGridStyles, minHeight: "500px", width: '100%' }}>
+      <Box sx={{ ...dataGridStyles, minHeight: "500px",  
+    "& .MuiDataGrid-cell, & .MuiDataGrid-cell:not(.MuiDataGrid-cellCheckbox):first-of-type":
+    {
+      paddingRight:'0px',
+      paddingLeft:'0px',
+      // justifyContent: "center",
+    },
+    "& .muirtl-1w8msm6-MuiDataGrid-root .MuiDataGrid-cell:last-of-type":
+    {
+      paddingRight:'0px',
+      paddingLeft:'0px',
+      justifyContent: "center",
+    },
+   
+    
+    }}>
 
         <DataGrid
           pagination

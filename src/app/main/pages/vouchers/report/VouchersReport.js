@@ -48,18 +48,28 @@ function VouchersReport(props) {
         headerActions={
           <>
        
-            {/* <Button
-              className="py-10 px-28 min-h-full h-[42px] rounded-[5px] flex gap-8"
-              variant="contained"
-              color="primary"
-              endIcon={
-                <FuseSvgIcon sx={{ stroke: "transparent !important" }}>
-                  mv-icons:icon-ListAlt
-                </FuseSvgIcon>
-              }
-            >
-              {t("REPORT")}
-            </Button> */}
+          
+       <Button
+                sx={{
+                  fontSize: { xs: "12px", md: "inherit" }
+                }}
+                className="py-10 px-20 min-h-full h-[42px] rounded-[5px] flex "
+                variant="contained"
+                color="secondary"
+                onClick={() => {
+                  // naviage("/AddDeposit");
+                }}
+                endIcon={
+                  <FuseSvgIcon sx={{
+                    stroke: "transparent !important",
+                  }} >
+                    mv-icons:icon-icon-menu-vouchers
+                  </FuseSvgIcon>
+                }
+              >
+                {t("ADD_VOUCHER")}
+
+              </Button>
           </>
         }
       ></FusePageSimpleHeader>

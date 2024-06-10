@@ -121,6 +121,7 @@ window.appSettings.resources = {
       CONFIRMED: "Confirmed",
       WAITING: "Waiting",
       REJECTED: "Rejected",
+      ADD_VOUCHER:"Add Voucher"
     },
   },
   fa: {
@@ -390,6 +391,7 @@ window.appSettings.resources = {
       CONFIRMED: "تایید شده",
       WAITING: "در انتظار تایید",
       REJECTED: "رد شده",
+      ADD_VOUCHER:"ایجاد حواله"
 
 
 

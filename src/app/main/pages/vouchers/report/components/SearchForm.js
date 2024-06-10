@@ -109,7 +109,7 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
   // console.log(getValues(),"get");
   return (
     <>
-      <Box sx={{ m: "2rem 1rem" }}>
+      <Box sx={{ m: "2rem 2rem" }}>
         <Box
           sx={{
             display: "flex",
