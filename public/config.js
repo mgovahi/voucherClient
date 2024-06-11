@@ -136,6 +136,8 @@ window.appSettings.resources = {
       INACTIVE:"inActive ",
       PROFILE:"Profile",
       EXIT:"Exit",
+      CREATE_VOUCHER: "Create Voucher",
+      VOUCHERS_REPORT: "Vouchers Report"
     },
   },
   fa: {
@@ -405,7 +407,7 @@ window.appSettings.resources = {
       CONFIRMED: "تایید شده",
       WAITING: "در انتظار تایید",
       REJECTED: "رد شده",
-      ADD_VOUCHER:"ایجاد حواله",
+      CREATE_VOUCHER:"ایجاد حواله",
       PROFILE:"پروفایل",
       EXIT:"خروج"
 

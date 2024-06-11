@@ -67,7 +67,7 @@ function VouchersReport(props) {
                   </FuseSvgIcon>
                 }
               >
-                {t("ADD_VOUCHER")}
+                {t("CREATE_VOUCHER")}
 
               </Button>
           </>
