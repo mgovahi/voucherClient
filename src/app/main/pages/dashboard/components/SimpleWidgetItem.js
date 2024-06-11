@@ -36,7 +36,7 @@ function SimpleWidgetItems({ description, amount, svgIcon, color }) {
           </Typography>
           <Typography
             variant="body2"
-            sx={{ color: theme.palette.text.grayDay }}
+            color="text.grayDay"
             textAlign="center"
           >
             {t(description)}

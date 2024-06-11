@@ -16,10 +16,10 @@ function WelcomeBlock({ description, amount, svgIcon, color }) {
           minHeight: "340px",
           width: "100%",
           backgroundColor: theme.palette.custome.blueDark,
-          backgroundImage: "url(assets/images/logo/logoMark.png)",
+          backgroundImage: "url(assets/images/logo/logoMark.svg)",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "right bottom",
-          backgroundSize: useMediaQuery("(max-width:415px)") && "60%",
+          backgroundSize: useMediaQuery("(max-width:500px)") && "60%",
           color: theme.palette.common.white,
         }}
       >

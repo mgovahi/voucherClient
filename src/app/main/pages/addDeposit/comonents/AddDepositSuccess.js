@@ -34,7 +34,7 @@ const AddDepositSuccess = ({ onShowPage }) => {
         <Typography
           className="font-bold mt-20 mb-10"
           variant="body2"
-          sx={{ color: theme.palette.custome.darkSky }}
+          color="custome.darkSky"
         >
           {t("TRANSACTION_ID_TEXT_PART_ONE")}
           {
@@ -45,7 +45,7 @@ const AddDepositSuccess = ({ onShowPage }) => {
           {t("TRANSACTION_ID_TEXT_PART_TWO")}
         </Typography>
         <Typography
-          sx={{ color: theme.palette.custome.darkSky }}
+          color="custome.darkSky"
           variant="body2"
         >
           {t("SUCCESS_ALERT_HELPER_TEXT")}

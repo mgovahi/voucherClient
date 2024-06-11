@@ -72,7 +72,7 @@ function NavbarStyle1Content(props) {
             // },
           }}
         >
-          <img src={`/assets/images/logo/logo.png`} />
+          <img src={`/assets/images/logo/logo.svg`} />
           {/* <b className="text-lg">{t("ADMIN_PORTAL")}</b> */}
         </Typography>
         <NavbarToggleButton className="w-40 h-40 p-0">

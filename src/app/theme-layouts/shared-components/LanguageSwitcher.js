@@ -36,20 +36,21 @@ function LanguageSwitcher(props) {
 
   return (
     <>
-      <Button className="h-40 w-64" onClick={langMenuClick}>
+      <Button className="h-28 min-h-28 w-52 min-w-52 p-4 gap-4 ltr:flex-row-reverse" onClick={langMenuClick} sx={{backgroundColor: "rgba(188, 74, 231, 0.24)"}}>
         {/* <img
           className="mx-4 min-w-20"
           src={`assets/images/flags/${currentLanguage.flag}.svg`}
           alt={currentLanguage.title}
         /> */}
-        <FuseSvgIcon>{`mv-icons-mc:icon-Language`}</FuseSvgIcon>
 
         <Typography
-          className="mx-4 font-semibold uppercase"
-          color="text.secondary"
+          className="font-semibold uppercase"
+          color="text.grayDay"
+          variant="body1"
         >
           {currentLanguage.id}
         </Typography>
+        <FuseSvgIcon size={20}>{`mv-icons-mc:icon-Language`}</FuseSvgIcon>
       </Button>
 
       <Popover

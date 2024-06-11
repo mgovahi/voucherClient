@@ -246,7 +246,8 @@ const AmountChart = () => {
 
           <Typography
             variant="inherit"
-            sx={{ color: theme.palette.info.main, fontSize: "14px" }}
+            color="info.main"
+            sx={{ fontSize: "14px" }}
           >
             <i className="inline-block rounded-xl ml-8 not-italic">
               {t("ALL_TOTAL")}:

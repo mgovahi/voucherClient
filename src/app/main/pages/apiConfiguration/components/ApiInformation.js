@@ -130,7 +130,7 @@ const ApiInformation = () => {
                       <InputAdornment>
                         <Typography
                           variant="body2"
-                          sx={{ color: theme.palette.text.primary }}
+                          color="text.primary"
                         >
                           https://
                         </Typography>
@@ -140,7 +140,7 @@ const ApiInformation = () => {
                       <InputAdornment sx={{ direction: "rtl" }}>
                         <Typography
                           variant="body2"
-                          sx={{ color: theme.palette.text.primary }}
+                          color="text.primary"
                         >
                           https://
                         </Typography>

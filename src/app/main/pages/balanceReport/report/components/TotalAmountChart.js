@@ -190,7 +190,7 @@ const TotalAmountChart = ({ showTotal }) => {
             </Typography>
             <Typography
               variant="caption"
-              sx={{ color: theme.palette.text.grayDay }}
+              color="text.grayDay"
             >
               {t("BALANCE")}
             </Typography>

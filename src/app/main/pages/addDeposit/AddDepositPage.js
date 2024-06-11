@@ -28,19 +28,21 @@ const AddDepositPage = () => {
   };
 
   const handleShowPage = () => {
-    setIsShow((prev) => !prev)
-  }
+    setIsShow((prev) => !prev);
+  };
 
   return (
     <Root
       header={t("ADD_DEPOSIT")}
-      headerActions={!isShow &&
-        <div className="flex gap-10 items-center">
-          <FuseSvgIcon size={24}>mv-icons-mc:icon-Info</FuseSvgIcon>
-          <Typography sx={{ color: theme.palette.info.main }}>
-            {t("ADD_DEPOSIT_HEADER_ACTION")}
-          </Typography>
-        </div>
+      headerActions={
+        !isShow && (
+          <div className="flex gap-10 items-center">
+            <FuseSvgIcon size={24}>mv-icons-mc:icon-Info</FuseSvgIcon>
+            <Typography color="info.main">
+              {t("ADD_DEPOSIT_HEADER_ACTION")}
+            </Typography>
+          </div>
+        )
       }
       content={
         <motion.div
@@ -50,7 +52,11 @@ const AddDepositPage = () => {
           animate="show"
         >
           <motion.div variants={item} className="h-full grid items-end">
-            {isShow ? <AddDepositSuccess onShowPage={handleShowPage} /> : <AddDepositForm onShowPage={handleShowPage} />}
+            {isShow ? (
+              <AddDepositSuccess onShowPage={handleShowPage} />
+            ) : (
+              <AddDepositForm onShowPage={handleShowPage} />
+            )}
           </motion.div>
         </motion.div>
       }
