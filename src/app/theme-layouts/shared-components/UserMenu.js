@@ -199,6 +199,7 @@ function UserMenu(props) {
               gap: "10px",
               width: "200px",
               minHeight: "44px",
+             
               "&:hover": {
                 backgroundColor: "transparent !important",
               },
@@ -213,8 +214,8 @@ function UserMenu(props) {
           >
             <FuseSvgIcon size="20px">mv-icons:icon-Icon-2</FuseSvgIcon>
             <ListItemText
-              sx={{ fontWeight: "bold" }}
-              primary="پروفایل کاربری"
+              sx={{ fontWeight: "bold" , }}
+              primary={t("PROFILE")}
             />
           </Button>
         </MenuItem>
@@ -248,7 +249,7 @@ function UserMenu(props) {
               to="/add"
             >
               <FuseSvgIcon size="20px">mv-icons:icon-Icon</FuseSvgIcon>
-              <ListItemText primary="تغییر رمز عبور" />
+              <ListItemText primary={t("CHANGE_PASSWORD")} />
             </Button>
           </ListItemIcon>
         </MenuItem>
@@ -266,7 +267,7 @@ function UserMenu(props) {
           </ListItemIcon>
           <ListItemText
             sx={{ color: theme.palette.error.main }}
-            primary="خروج"
+            primary={t("Exit")}
           />
         </MenuItem>
       </Popover>

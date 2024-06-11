@@ -121,7 +121,21 @@ window.appSettings.resources = {
       CONFIRMED: "Confirmed",
       WAITING: "Waiting",
       REJECTED: "Rejected",
-      ADD_VOUCHER:"Add Voucher"
+      ADD_VOUCHER:"Add Voucher",
+      USER_INFO:"User Information",
+      CHANGE_PASSWORD:"Change Password",
+      UPDATE_PROFILE_PICTURE:"Update Your Avatar",
+      VOUCHER_ISSUED:"Generated Vouchers",
+      VOUCHER_CONSUMED:"Used Vouchers",
+      BALANCE:"Balance",
+      TWO_FACTOR_LOGIN:"Two Factor Authentication",
+      ACTIVATING_TWO_FACTOR:"Active your Two Factor Authentication",
+      SCAN_QR_CODE:"Scan QR Code",
+      ENTER_KEY_SECRET:"Or enter Secret Key in to Google Authenticator",
+      LAST_LOGIN:"Your Latest Login",
+      INACTIVE:"inActive ",
+      PROFILE:"Profile",
+      EXIT:"Exit",
     },
   },
   fa: {
@@ -391,9 +405,9 @@ window.appSettings.resources = {
       CONFIRMED: "تایید شده",
       WAITING: "در انتظار تایید",
       REJECTED: "رد شده",
-      ADD_VOUCHER:"ایجاد حواله"
-
-
+      ADD_VOUCHER:"ایجاد حواله",
+      PROFILE:"پروفایل",
+      EXIT:"خروج"
 
     },
   },

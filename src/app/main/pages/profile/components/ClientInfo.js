@@ -100,22 +100,28 @@ function ClientInfo({ info = {}, onCancelClick }) {
           </FuseSvgIcon> */}
         </Box>
 
-        <Box className="flex-1 flex flex-col justify-between">
-          <Box className="relative">
+        <Box className="flex-1 flex flex-col justify-between" sx={{
+         
+
+        }}>
+          <Box className="relative" sx={{
+          
+            
+          }}>
             <Typography variant="h6" className="font-bold text-xl mb-[12px]">
               {Person.firstName + " " + Person.lastName}
             </Typography>
             <Typography
               caption="body2"
-              className="flex gap-x-[20px] font-bold text-[14px]"
+              className="flex  gap-x-[20px] font-bold text-[12px]"
               color={[theme.palette.text.grayDay]}
 
               sx={{
                 " svg": {
                   marginRight: "7px",
                 },
-
-
+              
+                border:"1px solid red"
               }}
             >
               <span>
@@ -126,7 +132,7 @@ function ClientInfo({ info = {}, onCancelClick }) {
               </span>
               <span>
                 <FuseSvgIcon size={16}>
-                  mv-icons-mc:icon-profile-mobile
+                  mv-icons-mc:icon-Mobile
                 </FuseSvgIcon>
                 {Person.mobile}
               </span>
@@ -163,7 +169,7 @@ function ClientInfo({ info = {}, onCancelClick }) {
               className="flex  "
               sx={{
                 position: "absolute",
-                top: { xs: "98px", lg: '9px' },
+                top: { xs: "98px", lg: '21px' },
 
                 right: { xs: "5px", lg: '0' },
                 maxWidth: "initial",
@@ -173,16 +179,18 @@ function ClientInfo({ info = {}, onCancelClick }) {
               }} >
               <Button
                 sx={{
+                  padding:"0px !important",
                   backgroundColor: theme.palette.primary.main,
                   "&:hover": {
                     backgroundColor: theme.palette.custome.info2
                   },
-                  width: { xs: "150px", lg: '217px' },
+                  width: { xs: "150px", lg: '180px' },
                   height: "42px",
 
-                  fontSize: { xs: "10px", lg: '14px' },
+                  fontSize: { xs: "10px", lg: '12px' },
                   color: "#fff",
                   fontWeight: "bold",
+                  
                 }}
                 component="label"
               >
@@ -196,6 +204,8 @@ function ClientInfo({ info = {}, onCancelClick }) {
                     sx={{
                       fill: `${theme.palette.divider}!important`,
                       stroke: `${theme.palette.divider}!important`,
+                      style: { direction: "ltr" } ,
+                      marginLeft:"5px"
                     }}
                   >
                     mv-icons:icon-CloudUpload
