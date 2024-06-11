@@ -62,15 +62,16 @@ function ClientInfo({ info = {}, onCancelClick }) {
 
 
   return (
-    <Paper className="shadow gap-4 grid "
+    <Paper className="shadow gap-4 grid grid-cols-1 w-full min-w-0 "
       sx={{
-        display: "flex",
         marginY: "20px"
       }
       } >
       <Box
-        className="p-[30px] rounded flex gap-x-[40px]"
-        sx={{ border: `1px solid ${theme.palette.divider}` }}
+        className="p-[30px] rounded  gap-x-[40px] col-span-1 grid  md:grid-cols-2 "
+        sx={{
+          border: `1px solid ${theme.palette.divider}`,
+        }}
       >
         {/* <Box
           className="rounded flex justify-center items-center"
@@ -86,28 +87,28 @@ function ClientInfo({ info = {}, onCancelClick }) {
         </Box> */}
 
         <Box
-          className=" flex justify-center items-center"
-          sx={{
-            borderRadius: "20px",
-            width: "160px",
-            height: "160px",
-            backgroundColor: "#f3f8ff",
-          }}
-        >
-          <img src="assets/images/user.png" className="rounded-[12px] " />
-          {/* <FuseSvgIcon size={100} sx={{ color: "#fff" }}>
+          className=" grid grid-cols-4 col-span-2 md:col-span-1 gap-4">
+          <Box
+            sx={{
+              borderRadius: "20px",
+              width: "160px",
+              height: "160px",
+              backgroundColor: "#f3f8ff",
+            }}
+          >
+
+            <img src="assets/images/user.png" className="rounded-[12px] " />
+            {/* <FuseSvgIcon size={100} sx={{ color: "#fff" }}>
             mv-icons:icon-User-_-Light-_-Duotone
           </FuseSvgIcon> */}
-        </Box>
 
-        <Box className="flex-1 flex flex-col justify-between" sx={{
-         
+          </Box>
 
-        }}>
-          <Box className="relative" sx={{
-          
-            
-          }}>
+          <Box className="relative"
+            sx={{
+              width: "400px"
+            }}
+          >
             <Typography variant="h6" className="font-bold text-xl mb-[12px]">
               {Person.firstName + " " + Person.lastName}
             </Typography>
@@ -120,8 +121,8 @@ function ClientInfo({ info = {}, onCancelClick }) {
                 " svg": {
                   marginRight: "7px",
                 },
-              
-                border:"1px solid red"
+
+
               }}
             >
               <span>
@@ -143,27 +144,7 @@ function ClientInfo({ info = {}, onCancelClick }) {
                 {Person.email}
               </span>
             </Typography>
-            {/* <Chip
-              skin="light"
-              label={statusMap[info.status]}
-              color={
-                info.status == "ACTIVE"
-                  ? "successLight"
-                  : info.status == "INACTIVE"
-                  ? "errorLight"
-                  : "successLight"
-              }
-              sx={{
-                position: "absolute",
-                top: "0",
-                right: "16px",
-                height: 20,
-                maxWidth: "initial",
-                mt: 0.4,
-                fontSize: "1.1rem",
-                fontWeight: "normal",
-              }}
-            ></Chip> */}
+
 
             <Box
               className="flex  "
@@ -177,47 +158,45 @@ function ClientInfo({ info = {}, onCancelClick }) {
                 fontWeight: "normal",
 
               }} >
-              <Button
-                sx={{
-                  padding:"0px !important",
-                  backgroundColor: theme.palette.primary.main,
-                  "&:hover": {
-                    backgroundColor: theme.palette.custome.info2
-                  },
-                  width: { xs: "150px", lg: '180px' },
-                  height: "42px",
-
-                  fontSize: { xs: "10px", lg: '12px' },
-                  color: "#fff",
-                  fontWeight: "bold",
-                  
-                }}
-                component="label"
-              >
-                {t("UPDATE_PROFILE_PICTURE")}
-                <VisuallyHiddenInput type="file" onChange={handleFileChange} />
-
-                <span className=" flex justify-center items-center rounded-full "
-                >
-                  <FuseSvgIcon
-                    className="mr-4"
-                    sx={{
-                      fill: `${theme.palette.divider}!important`,
-                      stroke: `${theme.palette.divider}!important`,
-                      style: { direction: "ltr" } ,
-                      marginLeft:"5px"
-                    }}
-                  >
-                    mv-icons:icon-CloudUpload
-                  </FuseSvgIcon>
-                </span>
-              </Button>
-             
             </Box>
-
           </Box>
+        </Box>
+
+        <Box className="col-span-2 md:col-span-1 flex flex-col items-end gap-4 gap-y-[30px]">
+          <Button
+            sx={{
+              padding: "0px !important",
+              backgroundColor: theme.palette.primary.main,
+              "&:hover": {
+                backgroundColor: theme.palette.custome.info2
+              },
+              width: { xs: "150px", lg: '180px' },
+              height: "42px",
+              fontSize: { xs: "10px", lg: '12px' },
+              color: "#fff",
+              fontWeight: "bold",
+            }}
+            component="label"
+          >
+            {t("UPDATE_PROFILE_PICTURE")}
+            <VisuallyHiddenInput type="file" onChange={handleFileChange} />
+            <span className="flex justify-center items-center rounded-full">
+              <FuseSvgIcon
+                className="mr-4"
+                sx={{
+                  fill: `${theme.palette.divider}!important`,
+                  stroke: `${theme.palette.divider}!important`,
+                  style: { direction: "ltr" },
+                  marginLeft: "5px"
+                }}
+              >
+                mv-icons:icon-CloudUpload
+              </FuseSvgIcon>
+            </span>
+          </Button>
+
           <Box
-            className="flex gap-x-[20px]  justify-end"
+            className="flex gap-x-[20px] "
             sx={{
               " span": {
                 borderRadius: "6px",
@@ -255,15 +234,13 @@ function ClientInfo({ info = {}, onCancelClick }) {
                 },
               }}
             >
-              <b>$8,942
-                {/* {t("TOMAN")} */}
-              </b>
+              <b>$8,942</b>
               <i>{t("BALANCE")}</i>
             </Typography>
           </Box>
         </Box>
       </Box>
-    </Paper>
+    </Paper >
   );
 }
 export default ClientInfo;
