@@ -25,7 +25,6 @@ function ClientInfo({ info = {}, onCancelClick }) {
     setActive(newValue);
   };
 
-
   const Person = {
     firstName: "  سیاوش ",
     lastName: "   شاهی  ",
@@ -68,9 +67,12 @@ function ClientInfo({ info = {}, onCancelClick }) {
       }
       } >
       <Box
-        className="p-[30px] rounded  gap-x-[40px] col-span-1 grid  md:grid-cols-2 "
+        className="p-[30px] rounded   col-span-1 grid  "
         sx={{
           border: `1px solid ${theme.palette.divider}`,
+          // gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
+          gridTemplateColumns: { xs: '100%', md: '50% 50%' },
+
         }}
       >
         {/* <Box
@@ -87,12 +89,18 @@ function ClientInfo({ info = {}, onCancelClick }) {
         </Box> */}
 
         <Box
-          className=" grid grid-cols-4 col-span-2 md:col-span-1 gap-4">
+  className="grid lg:gap-x-[30px]  "
+           sx={{
+            gridTemplateColumns: { xs: 'auto 1fr', md: 'auto 1fr ' },
+           gap:{xs:'10px'
+           }
+          }}>
           <Box
+          className="  "
             sx={{
               borderRadius: "20px",
-              width: "160px",
-              height: "160px",
+              width: { xs: "120px", sm: "140px", md: "160px" },
+              height: { xs: "120px", sm: "140px", md: "160px" },
               backgroundColor: "#f3f8ff",
             }}
           >
@@ -104,40 +112,57 @@ function ClientInfo({ info = {}, onCancelClick }) {
 
           </Box>
 
-          <Box className="relative"
+          <Box className=""
             sx={{
-              width: "400px"
+              width: { xs: "100%", sm: "auto", md: "350px" },
             }}
           >
-            <Typography variant="h6" className="font-bold text-xl mb-[12px]">
+            <Typography variant="h6" className="font-bold lg:text-xl    mb-[12px]"
+            
+            sx={{
+              fontSize: {
+                xs: '12px', // Small screens
+                sm: '14px', // Small screens (adjust as needed)
+                md: '18px', // Medium screens
+                
+              } 
+              }}
+            >
               {Person.firstName + " " + Person.lastName}
             </Typography>
             <Typography
-              caption="body2"
-              className="flex  gap-x-[20px] font-bold text-[12px]"
-              color={[theme.palette.text.grayDay]}
-
+              variant="body2"
+              className="gap-x-[20px] font-bold lg:text-[12px]"
+              color={theme.palette.text.grayDay}
               sx={{
-                " svg": {
+                display: 'flex',
+                flexDirection: { xs: 'column', sm: 'row' },
+                alignItems: { xs: 'flex-start', sm: 'center' },
+                svg: {
                   marginRight: "7px",
                 },
+              
+                  fontSize: {
+                    xs: '12px', // Small screens
+                  } 
+            
 
 
               }}
             >
-              <span>
+              <span className="mb-2">
                 <FuseSvgIcon size={16}>
                   mv-icons-mc:icon-User-_-Light-_-Duotone
                 </FuseSvgIcon>
                 {Person.position}
               </span>
-              <span>
+              <span className="mb-2">
                 <FuseSvgIcon size={16}>
                   mv-icons-mc:icon-Mobile
                 </FuseSvgIcon>
                 {Person.mobile}
               </span>
-              <span>
+              <span className="mb-2">
                 <FuseSvgIcon size={16}>
                   mv-icons-mc:icon-At-_-Light-_-Duotone
                 </FuseSvgIcon>
@@ -146,26 +171,31 @@ function ClientInfo({ info = {}, onCancelClick }) {
             </Typography>
 
 
-            <Box
-              className="flex  "
-              sx={{
-                position: "absolute",
-                top: { xs: "98px", lg: '21px' },
-
-                right: { xs: "5px", lg: '0' },
-                maxWidth: "initial",
-                fontSize: "1.1rem",
-                fontWeight: "normal",
-
-              }} >
-            </Box>
+         
           </Box>
         </Box>
 
-        <Box className="col-span-2 md:col-span-1 flex flex-col items-end gap-4 gap-y-[30px]">
+        <Box
+      className="grid gap-4 "
+      sx={{
+        gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
+        alignItems: 'center',
+        justifyContent: 'end',
+      }}
+    >
+        <Box className=" col-span-2 md:col-span-4 flex flex-col  md:items-end   gap-4 gap-y-[30px]"
+        
+        >
+          <Box   className="flex gap-x-[20px]"
+            sx={{
+              flexDirection:{sm:"row" ,md:"row" },
+              justifyContent:"right"}}
+              >
           <Button
             sx={{
+            
               padding: "0px !important",
+              marginTop:{xs:"10px !important"},
               backgroundColor: theme.palette.primary.main,
               "&:hover": {
                 backgroundColor: theme.palette.custome.info2
@@ -175,6 +205,8 @@ function ClientInfo({ info = {}, onCancelClick }) {
               fontSize: { xs: "10px", lg: '12px' },
               color: "#fff",
               fontWeight: "bold",
+              // textAlign: "right", // Ensures left alignment
+
             }}
             component="label"
           >
@@ -194,27 +226,51 @@ function ClientInfo({ info = {}, onCancelClick }) {
               </FuseSvgIcon>
             </span>
           </Button>
-
+          </Box>
           <Box
-            className="flex gap-x-[20px] "
+            className="flex gap-x-[20px]     "
             sx={{
+              flexDirection:{xs:"column",sm:"row" ,md:"row" },
+              justifyContent:"right",
+
               " span": {
                 borderRadius: "6px",
                 backgroundColor: theme.palette.infoLight.secondary,
                 display: "inline-block",
-                padding: "15px",
-                textAlign: "right",
+                padding: {lg:"15px",xs:"10px"},
+                // textAlign: {lg:"right",xs:"center"},
+                textAlign: {lg:"right",xs:"center"},
+                // width: { xs: "250px",md:'100px', lg: '140px' },
+                // height: { xs: "70px", lg: '100px' },
+                marginBottom:{xs:"10px",},
+
+
+
                 " b": {
-                  fontSize: "20px",
+                  
+
+                  fontSize: {
+                    xs: '14px', // Small screens
+                    sm: '18px', // Small screens (adjust as needed)
+                    md: '20px', // Medium screens
+                    
+                  } 
                 },
                 " i": {
                   color: theme.palette.text.grayDay,
                   fontStyle: "bold",
                   display: "block",
                   marginTop: "5px",
-                  fontSize: "14px"
+                  fontSize: {
+                    xs: '12px', // Small screens
+                    sm: '12px', // Small screens (adjust as needed)
+                    md: '14px', // Medium screens
+                    lg:"14px"
+                  } 
                 },
               },
+
+
             }}
           >
             <Typography variant="caption">
@@ -240,6 +296,7 @@ function ClientInfo({ info = {}, onCancelClick }) {
             </Typography>
           </Box>
         </Box>
+      </Box>
       </Box>
     </Paper >
   );

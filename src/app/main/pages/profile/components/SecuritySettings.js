@@ -80,18 +80,19 @@ const SecuritySettings = () => {
             <Box className="relative  ">
               <Typography
                 variant="h6"
-                className="font-bold text-[16px] px-14"
+                className="font-bold  md:text-[16px] px-14"
                 color={"#1a1c1f"}
+                sx={{ fontSize: { xs: "14px" } }}
               >
                 Google Authenticator
               </Typography>
               <Typography
                 caption="body2"
-                className="flex  text-[14px] px-14"
+                className="flex md:text-[14px] px-14"
                 color={[theme.palette.text.grayDay]}
-                sx={{}}
+                sx={{ fontSize: { xs: "12px" } }}
               >
-                <span>{t("ACTIVATING_TWO_FACTOR")}</span>
+                <span >{t("ACTIVATING_TWO_FACTOR")}</span>
               </Typography>
             </Box>
           </Box>
@@ -100,6 +101,7 @@ const SecuritySettings = () => {
             sx={{
               display: "flex",
               alignItems: "center",
+              fontSize: { md: "16px", xs: "12px" }
             }}
           >
             <b> {isActive ? t("ACTIVE") : t("INACTIVE")} </b>
@@ -117,17 +119,19 @@ const SecuritySettings = () => {
           sx={{
             border: `1px dotted ${theme.palette.custome.borderSecure}`,
             backgroundColor: theme.palette.background.disabled,
-            height: "240px",
+            height:{lg:"240px",md:"240px",xs:"400px",} ,
           }}
         >
           <Grid container>
             <Grid
               item
-              xs={6}
+              xs={12}
+              md={6}
               sx={{
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+               
               }}
             >
               <Box
@@ -138,6 +142,7 @@ const SecuritySettings = () => {
                   justifyContent: "center",
                   alignItems: "center",
                   flexDirection: "column",
+                 
                 }}
               >
                 <Typography
@@ -162,7 +167,8 @@ const SecuritySettings = () => {
                 </Typography>
               </Box>
             </Grid>
-            <Grid item xs={1}>
+            
+            {/* <Grid item xs={1}>
               <Box
                 className="pr-0"
                 sx={{
@@ -174,15 +180,36 @@ const SecuritySettings = () => {
                   marginBottom: "40px",
                 }}
               ></Box>
-            </Grid>
+            </Grid> */}
+
+
+            
 
             <Grid
               item
-              xs={5}
+             md={6}
+             xs={12}
+
+              // sx={{
+              //   display: "flex",
+              //   justifyContent: "center",
+              //   alignItems: "center",
+              //   // borderLeft:`1px solid ${theme.palette.custome.borderSecure}`,
+              // }}
               sx={{
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+                position: 'relative',
+                '&::before': {
+                  content: '""',
+                  position: 'absolute',
+                  left: 0,
+                  top: '40px',
+                  bottom: '40px',
+                  width:{md:"1px",xs:"0px"},
+                  backgroundColor: theme.palette.custome.borderSecure,
+                },
               }}
             >
               {isActive ? (
@@ -214,7 +241,7 @@ const SecuritySettings = () => {
                       margin: "68px 102px 58px 48px",
                       padding: "13px 20px 13px 20px",
                     }}
-                    size="large"
+                    // size="large"
                     id="key-secret-btn"
                     onClick={handleKeySecret}
                   >
