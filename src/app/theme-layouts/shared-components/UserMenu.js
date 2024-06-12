@@ -135,6 +135,22 @@ function UserMenu(props) {
           vertical: "top",
           horizontal: "left",
         }}
+        sx={{
+          ".MuiMenuItem-root": {
+            margin: "10px",
+            height: "36px",
+            borderRadius: "8px",
+            "&:hover": {
+              backgroundColor: "rgba(239, 243, 249, 0.6);",
+              ".MuiButton-caption": {
+                color: theme.palette.info.main
+              }
+            },
+            ".MuiTypography-root": {
+              fontSize: "14px",
+            },
+          }
+        }}
       >
         <MenuItem
           onClick={() => {
@@ -144,6 +160,10 @@ function UserMenu(props) {
           sx={{
             borderBottom: `1px solid  ${theme.palette.divider}`,
             width: 230,
+            height: "68px !important",
+            "&:hover": {
+              backgroundColor: "transparent !important"
+            }
           }}
         >
           <Box
@@ -185,14 +205,13 @@ function UserMenu(props) {
           <Button
             variant="caption"
             sx={{
-              color: theme.palette.text.secondary,
+              color: theme.palette.text.primary,
               padding: "0 5px!important",
               fontSize: "14px",
               display: "flex",
               justifyContent: "flex-start",
               gap: "10px",
               width: "200px",
-              minHeight: "44px",
 
               "&:hover": {
                 backgroundColor: "transparent !important",
@@ -221,12 +240,11 @@ function UserMenu(props) {
               variant="caption"
               sx={{
                 padding: "0 5px!important",
-                color: theme.palette.text.secondary,
+                color: theme.palette.text.primary,
                 fontSize: "14px",
                 display: "flex",
                 gap: "10px",
                 width: "200px",
-                minHeight: "44px",
                 "&:hover": {
                   backgroundColor: "transparent !important",
                 },
