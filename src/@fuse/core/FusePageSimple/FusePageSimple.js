@@ -19,7 +19,10 @@ const Root = styled("div")(
       width: "100%",
       height: "auto",
       backgroundColor: theme.palette.background.default,
-      padding: theme.breakpoints.down("sm") ? "10px" : "30px 40px",
+      padding: "30px 40px",
+      [theme.breakpoints.down("sm")]: {
+        padding: "10px"
+      },
       "&.FusePageSimple-scroll-content": {
         height: "100%",
       },
