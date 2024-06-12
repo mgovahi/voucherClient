@@ -81,8 +81,8 @@ const AddDepositForm = ({ onShowPage }) => {
         </Box>
         <Grid
           container
-          columnSpacing={{md: "100px", xs: "50px"}}
-          rowSpacing={{xs: "32px", md: 0}}
+          columnSpacing={{ md: "100px", xs: "50px" }}
+          rowSpacing={{ xs: "32px", md: 0 }}
           className="h-auto md:h-68"
           alignItems="start"
         >
@@ -148,13 +148,13 @@ const AddDepositForm = ({ onShowPage }) => {
           </Grid>
           <Grid
             item
-            xs={12} md={6}
-            sx={{                  gridTemplateColumns: {xs: "60px 150px auto", },
-          }}
+            xs={12}
+            md={6}
+            sx={{ gridTemplateColumns: { xs: "60px 200px auto" } }}
             className="grid grid-rows-2 items-center"
           >
             <Box className="bg-[#f1ecfc] rounded-full w-44 h-44 flex justify-center items-center row-span-2">
-              <FuseSvgIcon size={50}>mv-icons-mc:icon-Dollar</FuseSvgIcon>
+              <FuseSvgIcon size={50}>mv-icons-mc:icon-Icon-dollar</FuseSvgIcon>
             </Box>
             <Typography
               variant="body2"
@@ -205,7 +205,11 @@ const AddDepositForm = ({ onShowPage }) => {
         </FormControl>
       </Box>
 
-      <Grid container columnSpacing={{md: "100px", xs: "50px"}} rowSpacing={{xs: "16px", sm: 0}}>
+      <Grid
+        container
+        columnSpacing={{ md: "100px", xs: "50px" }}
+        rowSpacing={{ xs: "16px", sm: 0 }}
+      >
         <Grid item xs={12} sm={6}>
           <FormControl className="w-full">
             <Controller

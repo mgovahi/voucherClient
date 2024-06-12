@@ -160,7 +160,7 @@ const themesConfig = {
         lightPurple: "#f4e1f0",
         borderSecure: "#b8c5db",
         greenLight: "#eef8e8",
-        grayProfile: "#728096",
+        grayProfile: "#22225A",
         cyanBlueLight: "#F5F8FA"
       },
     },
@@ -274,7 +274,7 @@ const themesConfig = {
         lightPurple: "#f4e1f0",
         borderSecure: "#b8c5db",
         greenLight: "#eef8e8",
-        grayProfile: "#728096",
+        grayProfile: "#22225A",
       },
       warning: {
         main: "#F59900",

@@ -66,11 +66,7 @@ function UserMenu(props) {
         onClick={userMenuClick}
         variant="text"
         color="primary"
-        startIcon={
-          <FuseSvgIcon size={18} sx={{ color: "#aaa", fill: "#fff" }}>
-            mv-icons:icon-Arrow
-          </FuseSvgIcon>
-        }
+        startIcon={<FuseSvgIcon size={14}>mv-icons-mc:icon-Arrow</FuseSvgIcon>}
         sx={{
           minWidth: "181px",
           minHeight: "40px",
@@ -163,12 +159,10 @@ function UserMenu(props) {
           <ListItemText className="p-10">
             <Box sx={{ fontWeight: "bold" }}> {`${Person.name}`} </Box>
             <Box sx={{ color: theme.palette.primary.main }}>
-              {" "}
-              {`${Person.mobile}`}
+              {`${Person.email}`}
             </Box>
           </ListItemText>
         </MenuItem>
-        <MenuItem />
         <MenuItem
           onClick={() => {
             userMenuClose();
@@ -199,7 +193,7 @@ function UserMenu(props) {
               gap: "10px",
               width: "200px",
               minHeight: "44px",
-             
+
               "&:hover": {
                 backgroundColor: "transparent !important",
               },
@@ -213,10 +207,7 @@ function UserMenu(props) {
             to="/profile"
           >
             <FuseSvgIcon size="20px">mv-icons:icon-Icon-2</FuseSvgIcon>
-            <ListItemText
-              sx={{ fontWeight: "bold" , }}
-              primary={t("PROFILE")}
-            />
+            <ListItemText sx={{ fontWeight: "bold" }} primary={t("PROFILE")} />
           </Button>
         </MenuItem>
         <MenuItem
