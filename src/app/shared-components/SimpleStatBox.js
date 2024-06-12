@@ -28,14 +28,15 @@ function SimpleStatBox({ icon, color, statValue, statTitle }) {
             mb: "20px",
           }}
         >
-          {" "}
           <FuseSvgIcon size={28}>{icon}</FuseSvgIcon>
         </Typography>
-        <Typography className="font-bold">{statValue}</Typography>
+        <Typography className="font-bold" fontFamily="IranYekan">
+          {statValue}
+        </Typography>
         <Typography
           sx={{
             opacity: "0.8",
-            textTransform: 'uppercase'
+            textTransform: "uppercase",
           }}
         >
           {t(statTitle)}

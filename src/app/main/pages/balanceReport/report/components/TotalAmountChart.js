@@ -144,9 +144,16 @@ const TotalAmountChart = ({ showTotal }) => {
               marginRight: "5px",
             },
             ".apexcharts-legend-text": {
-              color: theme.palette.text.grayDay + " !important",
               display: "inline-block",
               width: "90%",
+              fontSize: "14px" + " !important",
+              b: {
+                color: theme.palette.text.grayDay
+              },
+              i: {
+                color: theme.palette.text.grayV,
+                fontWeight: "bold"
+              }
             },
             ".legend-custome": {
               display: "flex",
@@ -164,9 +171,10 @@ const TotalAmountChart = ({ showTotal }) => {
           ".apexcharts-graphical": {},
           text: {
             fontFamily: "IranYekan !important",
-            fill: theme.palette.text.grayDay + " !important",
-            fontSize: "12px",
+            fill: theme.palette.text.grayV + " !important",
+            fontSize: "14px",
             marginBottom: "10px",
+            fontWeight: "bold",
           },
         }}
       >
@@ -189,7 +197,7 @@ const TotalAmountChart = ({ showTotal }) => {
               $5,542
             </Typography>
             <Typography
-              variant="caption"
+              variant="body2"
               color="text.grayDay"
             >
               {t("BALANCE")}
