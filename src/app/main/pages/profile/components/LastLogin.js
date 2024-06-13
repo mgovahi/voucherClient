@@ -38,9 +38,8 @@ const Lastlogin = () => {
             sm={6}
             lg={12}
             key={dataItem.id}
-            className=" text-right  sm:mx-0   "
+            className=" text-right  md:mx-0 "
             sx={{
-              
               " p:not(:first-child)": {
                 minWidth: "25%",
                 textAlign: "center",
@@ -49,9 +48,11 @@ const Lastlogin = () => {
               flexDirection: { xs: "column", lg: "row" },
               alignItems: "center",
               justifyContent: "space-between",
-              padding: 2,
-              
-            //   border:{sm:`1px solid ${theme.palette.text.grayV}`}
+              padding: 2, 
+              backgroundColor: { xs: theme.palette.custome.cyanBlueLight, sm: theme.palette.custome.cyanBlueLight, md: "transparent", lg: "transparent" },
+              marginBottom: { xs: "10px", sm: "10px", md: 0, lg: 0 },
+
+
             }}
           >
             <Grid
@@ -62,6 +63,7 @@ const Lastlogin = () => {
               md={3}
               sx={{
                 maxWidth: "100%!important",
+               
               }}
             >
               <Typography className="font-bold " sx={{ fontSize: "14px" }}>
