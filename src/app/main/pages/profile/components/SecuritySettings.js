@@ -114,12 +114,14 @@ const SecuritySettings = () => {
             />
           </Box>
         </Box>
+
+        
         <Box
-          className="mx-[20px] my-[24px] rounded flex "
+          className="mx-[20px] my-[24px] rounded flex  "
           sx={{
             border: `1px dotted ${theme.palette.custome.borderSecure}`,
             backgroundColor: theme.palette.background.disabled,
-            height:{lg:"240px",md:"240px",xs:"400px",} ,
+            height:{lg:"240px",md:"240px"} ,
           }}
         >
           <Grid container>
@@ -134,10 +136,10 @@ const SecuritySettings = () => {
                
               }}
             >
-              <Box
+              <Box 
                 sx={{
                   width: { xs: "100", lg: "160" },
-                  height: "160",
+                  // height: "160",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
@@ -148,7 +150,9 @@ const SecuritySettings = () => {
                 <Typography
                   variant="body3"
                   fontSize={"14px"}
-                  className="mt-30 mb-10"
+                  className=" mb-8 "
+                  sx={{marginTop:{xs:'10px',md:"none"}}}
+
                 >
                   {t("SCAN_QR_CODE")}
                 </Typography>
@@ -167,38 +171,14 @@ const SecuritySettings = () => {
                 </Typography>
               </Box>
             </Grid>
-            
-            {/* <Grid item xs={1}>
-              <Box
-                className="pr-0"
-                sx={{
-                  width: "1px",
-                  height: "160px",
-                  //   transform: rotate(-270deg);
-                  backgroundColor: theme.palette.custome.borderSecure,
-                  marginTop: "40px",
-                  marginBottom: "40px",
-                }}
-              ></Box>
-            </Grid> */}
-
-
-            
-
             <Grid
               item
              md={6}
              xs={12}
-
-              // sx={{
-              //   display: "flex",
-              //   justifyContent: "center",
-              //   alignItems: "center",
-              //   // borderLeft:`1px solid ${theme.palette.custome.borderSecure}`,
-              // }}
               sx={{
                 display: "flex",
-                justifyContent: "center",
+                flexDirection: "column",
+                // justifyContent: "center",
                 alignItems: "center",
                 position: 'relative',
                 '&::before': {
@@ -218,6 +198,9 @@ const SecuritySettings = () => {
                     display: "flex",
                     justifyContent: "center",
                     flexDirection: "column",
+                    width: { lg: "55%", xs: "95%" },
+                    alignItems: "center", 
+                    textAlign: "center", 
                   }}
                 >
                   <Typography
@@ -225,7 +208,8 @@ const SecuritySettings = () => {
                     className=" mb-10 "
                     sx={{
                       marginTop: "30px",
-                      fontSize: { lg: "14px", xs: "12px" },
+                      fontSize: { lg: "14px", xs: "14px" },
+                      alignItems: "", 
                     }}
                   >
                     {t("ENTER_KEY_SECRET")}
@@ -238,8 +222,8 @@ const SecuritySettings = () => {
                       height: "44px",
                       backgroundColor: "#fff",
                       border: `1px solid ${theme.palette.text.grayDay} `,
-                      margin: "68px 102px 58px 48px",
-                      padding: "13px 20px 13px 20px",
+                      padding: "13px 20px",
+                      marginTop: "68px",
                     }}
                     // size="large"
                     id="key-secret-btn"
@@ -247,7 +231,6 @@ const SecuritySettings = () => {
                   >
                     Nx@71k989284LoP009134jfT1401
                     <Box className="flex   pr-20 my-24 " sx={{}}>
-                      <i className=" flex items-center rounded-full ">
                         <FuseSvgIcon
                           size={18}
                           sx={{
@@ -257,7 +240,7 @@ const SecuritySettings = () => {
                         >
                           mv-icons:icon-Copy
                         </FuseSvgIcon>
-                      </i>
+                      
                     </Box>
                   </Button>
                 </Box>
