@@ -145,7 +145,7 @@ function NavbarStyle1Content(props) {
             className="absolute -left-1 bottom-0 xs:w-[17rem] lg:w-160"
           />
         </Box>
-        <div className="py-20 border-t">
+        <div className="py-20 border-t hidden">
           <Button
             variant="caption"
             sx={{
