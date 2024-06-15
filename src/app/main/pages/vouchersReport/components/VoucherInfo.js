@@ -62,7 +62,7 @@ function VoucherInfo({ info = {}, onCancelClick }) {
           <Typography variant="caption">
             <label>{t("VOUCHER_STATUS")}:</label>
             <Chip
-              className="mr-8"
+              sx={{marginLeft:"20px"}}
               size="small"
               color={statusMapColor[info.status]}
               label={statusMap[info.status]}

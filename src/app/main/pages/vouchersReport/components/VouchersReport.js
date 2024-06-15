@@ -8,9 +8,9 @@ import { useTranslation } from "react-i18next";
 import { styled } from "@mui/material/styles";
 import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
 import { useAuth } from "react-oidc-context";
-import SearchForm from "./components/SearchForm";
+import SearchForm from "./SearchForm";
 import { useState } from "react";
-import VouchersList from "./components/VouchersList";
+import VouchersList from "./VouchersList";
 import { useNavigate } from "react-router-dom";
 import FusePageSimpleHeader from "@fuse/core/FusePageSimple/FusePageSimpleHeader";
 

@@ -9,9 +9,9 @@ import { Box } from "@mui/system";
 import { Button } from "@mui/material";
 import SimpleStatBox from "app/shared-components/SimpleStatBox";
 import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
-import VouchersReport from "./report/VouchersReport";
 import { useSelector } from "react-redux";
 import { selectCurrentLanguage } from "app/store/i18nSlice";
+import VouchersReport from "./components/VouchersReport";
 const VouchersPage = () => {
   const { t } = useTranslation();
   const theme = useTheme();
@@ -135,7 +135,7 @@ const VouchersPage = () => {
 
               </motion.div>
             </motion.div>
-            <VouchersReport />
+        <VouchersReport/>
           </div>
         }
         variant="none"

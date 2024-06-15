@@ -351,7 +351,7 @@ const VouchersList = (props) => {
     },
     "& .muirtl-1w8msm6-MuiDataGrid-root .MuiDataGrid-cell:last-of-type":
     {
-      paddingRight:'0px',
+      // paddingRight:'0px',
       paddingLeft:'0px',
       justifyContent: "center",
     },

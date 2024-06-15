@@ -74,8 +74,8 @@ window.appSettings.resources = {
       UNUSED_VOUCHER: "unused voucher",
       CANCELD_VOUCHER: "canceld voucher",
       CURRENCY: "Currency",
-      AMOUNT: "amount",
-      TRANSACTION_FEE: "transaction fee",
+      AMOUNT: "Amount",
+      TRANSACTION_FEE: "transaction Fee",
       CREATE_DATE: "Create Date",
       ACTION: "action",
       ACTIVE: "action",
@@ -150,7 +150,9 @@ window.appSettings.resources = {
      DESCRIPTION_SENTENCE:"Description comes here",
      ATTACHMENT_VIEW:"View Attachement",
      CLOSE:"Close",
-     ATTACHMENT:"Attachement"
+     ATTACHMENT:"Attachement",
+     VOUCHER_STATUS:"Voucher Status",
+     CLIENT:"Customer"
     },
   },
   fa: {
