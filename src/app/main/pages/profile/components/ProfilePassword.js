@@ -113,7 +113,7 @@ function ProfilePassword({ info = {}, onCancelClick }) {
             <Typography>{t("CHANGE_PASS_HINT2")}</Typography>
           </Alert>
           <Box className=" mt-[20px]">
-            <Box className="grid grid-cols-2 mt-44 gap-x-[100px] gap-y-[20px] mx-20">
+            <Box className="grid md:grid-cols-2 xs:grid-cols-1 mt-44 gap-x-[100px] gap-y-[20px] mx-20">
               <FormControl>
                 <Controller
                   name="password"
@@ -173,7 +173,7 @@ function ProfilePassword({ info = {}, onCancelClick }) {
                 />
               </FormControl>
             </Box>
-            <Box className="flex justify-end gap-x-[20px] mt-[74px] ml-20">
+            <Box className="flex justify-end gap-x-[20px] mt-[74px] md:ml-20  sm:ml-10">
               <ButtonComponent
                 sx={{
                   width: { xs: "100%", sm: "fit-content", lg: "162px" },
