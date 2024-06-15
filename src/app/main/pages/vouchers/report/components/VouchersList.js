@@ -424,7 +424,7 @@ const VouchersList = (props) => {
           </Box>
         </DialogTitle>
         <DialogContent>
-          <VoucherInfo info={details.data.voucherInfo}></VoucherInfo>
+          <VoucherInfo info={details.data.voucherInfo}  onCancelClick={handleClose}></VoucherInfo>
         </DialogContent>
       </Dialog>
     </>

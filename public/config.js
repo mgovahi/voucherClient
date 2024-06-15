@@ -73,7 +73,7 @@ window.appSettings.resources = {
       USED_DATE: "Used Date",
       UNUSED_VOUCHER: "unused voucher",
       CANCELD_VOUCHER: "canceld voucher",
-      CURRENCY: "currency",
+      CURRENCY: "Currency",
       AMOUNT: "amount",
       TRANSACTION_FEE: "transaction fee",
       CREATE_DATE: "Create Date",
@@ -137,7 +137,20 @@ window.appSettings.resources = {
       PROFILE:"Profile",
       EXIT:"Exit",
       VOUCHER_GENERATE: "Voucher Generate",
-      VOUCHERS_REPORT: "Vouchers Report"
+      VOUCHERS_REPORT: "Vouchers Report",
+     DEPOSIT_INFORMATION:"Deposit Information",
+     DEPOSIT_STATUS:"Deposit Status",
+     EXCHANGE_RATE_REMITTANCE_RECEIVANLES_TOMAN:"Rate of Voucher in Add Deposit (Toman)",
+     DEPOSIT_DATE:"Deposit Date",
+     DESCRIPTION_DEPOSIT:"Description",
+     FINAL_BALANCE:"Your Final Balance",
+     EXCHANGE_RATE_REMITTANCE_ALLOCATE_TO_CUSTOMER_TOMAN:"Rate of allocated to the customer",
+     CREDIT_ALLOCATE_TO_CUSTOMER:"Final Balance",
+     DESCRIPTION:"Description",
+     DESCRIPTION_SENTENCE:"Description comes here",
+     ATTACHMENT_VIEW:"View Attachement",
+     CLOSE:"Close",
+     ATTACHMENT:"Attachement"
     },
   },
   fa: {
@@ -410,7 +423,10 @@ window.appSettings.resources = {
       VOUCHER_GENERATE:"ایجاد حواله",
       PROFILE:"پروفایل",
       EXIT:"خروج",
-      VOUCHER_GENERATE_HEADER_ACTION: "حواله شما پس از ثبت نهایی، تولید شده و کد حواله در اختیار شما قرار می‌گیرد."
+      VOUCHER_GENERATE_HEADER_ACTION: "حواله شما پس از ثبت نهایی، تولید شده و کد حواله در اختیار شما قرار می‌گیرد.",
+      DEPOSIT_INFORMATION:"اطلاعات واریزی",
+      DEPOSIT_STATUS:"وضعیت واریزی",
+       FINAL_BALANCE:"اعتبار تخصیصی به شما"
     },
   },
 };

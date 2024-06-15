@@ -22,6 +22,7 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
+  Grid,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
@@ -43,11 +44,10 @@ function DepositsInfo({ info = {}, onCancelClick }) {
     setDetails({ showModal: false });
   };
 
-
   const statusMap = {
-    ACCEPTED: "تایید شده",
-    WAITING: "در انتظار تایید",
-    REJECTED: "رد شده",
+    ACCEPTED: t("CONFIRMED"),
+    WAITING: t("WAITING"),
+    REJECTED: t("REJECTED"),
   };
 
   const statusMapColor = {
@@ -62,110 +62,137 @@ function DepositsInfo({ info = {}, onCancelClick }) {
   };
   const loading = false;
 
-
-
   const onStatusChange = (e) => {
     setStatus(e.target.checked ? "ACTIVE" : "INACTIVE");
   };
   const handleSaveClick = () => { };
+
   return (
     <>
       <Box
-        className="p-[16px] rounded grid grid-cols-2 gap-x-[40px] gap-y-[20px]"
+        className="p-[16px] rounded gap-x-[40px] gap-y-[20px]"
         sx={{ border: `1px solid ${theme.palette.divider}` }}
       >
-        <Typography className="col-span-2 justify-self-end" variant="caption">
-          <label>{t("VOUCHER_STATUS")}:</label>
-          <Chip
-            className="mr-8"
-            size="small"
-            color={statusMapColor[info.status]}
-            label={statusMap[info.status]}
-          />
-        </Typography>
-        <TextField
-          sx={{ flex: 1 }}
-          value={info.transactionId || " "}
-          label={t("TRANSACTION_ID")}
-          disabled
-        />
-        <TextField
-          sx={{ flex: 1 }}
-          value={info.deposit || " "}
-          label={t("DEPOSIT_TOMAN")}
-          disabled
-        />
-        <TextField
-          sx={{ flex: 1 }}
-          value={"61.200" || ""}
-          label={t("EXCHANGE_RATE_REMITTANCE_RECEIVANLES_TOMAN")}
-          disabled
-        />
-        <TextField
-          sx={{ flex: 1 }}
-          value={info.currency || " 123"}
-          label={t("CURRENCY")}
-          disabled
-        />
-        <TextField
-          sx={{ flex: 1 }}
-          value={info.attachmentType || ""}
-          label={t("ATTACHMENT_TYPE")}
-          disabled
-        />
-        <TextField
-          sx={{
-            flex: 1,
-            direction: "rtl",
-            ".MuiOutlinedInput-input": { textAlign: "left" },
-          }}
-          value={
-            moment(info.depositDate)
-              .locale("fa")
-              .format("YYYY/MM/DD - hh:mm:ss") || "1403/01/25  23:10:13 "
-          }
-          label={t("DEPOSIT_DATE")}
-          disabled
-        />
-        <TextField
-          sx={{ flex: 1 }}
-          value={info.transactionId || ""}
-          label={t("TRANSACTION_ID")}
-          disabled
-        />
-        <TextField
-          sx={{
-            flex: 1,
-            direction: "rtl",
-            ".MuiOutlinedInput-input": { textAlign: "left" },
-          }}
-          value={
-            moment(info.usedDate).locale("fa").format("YYYY/MM/DD - hh:mm:ss") ||
-            "1403/01/25  23:10:13 "
-          }
-          label={t("USED_DATE")}
-          disabled
-        />
-        <TextField
-          sx={{ flex: 1 }}
-          value={statusMapDescription[info.status] ?? ""}
-          label={t("DESCRIPTION_DEPOSIT")}
-          disabled
-        />
-        <TextField
-          sx={{
-            flex: 1,
-            direction: "rtl",
-            ".MuiOutlinedInput-input": { textAlign: "left" },
-          }}
-          value={
-            moment(info.latestActionDate)
-              .locale("fa")
-              .format("YYYY/MM/DD - hh:mm:ss") || "1403/01/25  23:10:13"
-          }
-          label={t("LAST_ACTION_DATE")}
-          disabled
-        />
+        <Grid container spacing={2}>
+          <Grid item xs={12} display="flex" justifyContent="flex-end">
+            <Typography variant="caption"  sx={{
+              //  direction: "rtl",
+               
+            }}>
+              <label>{t("DEPOSIT_STATUS")}:</label>
+              <Chip
+                // className="mr-8"
+                sx={{marginLeft:"20px"}}
+                size="small"
+                color={statusMapColor[info.status]}
+                label={statusMap[info.status]}
+              />
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              fullWidth
+              value={info.transactionId || " "}
+              label={t("TRANSACTION_ID")}
+              disabled
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              fullWidth
+              value={info.deposit || " "}
+              label={t("DEPOSIT_TOMAN")}
+              disabled
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              fullWidth
+              value={"61.200" || ""}
+              label={t("EXCHANGE_RATE_REMITTANCE_RECEIVANLES_TOMAN")}
+              disabled
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              fullWidth
+              value={info.currency || " 123"}
+              label={t("CURRENCY")}
+              disabled
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              fullWidth
+              value={info.attachmentType || ""}
+              label={t("ATTACHMENT_TYPE")}
+              disabled
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              fullWidth
+              sx={{
+                direction: "rtl",
+                ".MuiOutlinedInput-input": { textAlign: "left" },
+              }}
+              value={
+                moment(info.depositDate)
+                  .locale("fa")
+                  .format("YYYY/MM/DD - hh:mm:ss") || "1403/01/25  23:10:13 "
+              }
+              label={t("DEPOSIT_DATE")}
+              disabled
+            />
+          </Grid>
+          {/* <Grid item xs={12} sm={6}>
+            <TextField
+              fullWidth
+              value={info.transactionId || ""}
+              label={t("TRANSACTION_ID")}
+              disabled
+            />
+          </Grid> */}
+          {/* <Grid item xs={12} sm={6}>
+            <TextField
+              fullWidth
+              sx={{
+                direction: "rtl",
+                ".MuiOutlinedInput-input": { textAlign: "left" },
+              }}
+              value={
+                moment(info.usedDate).locale("fa").format("YYYY/MM/DD - hh:mm:ss") ||
+                "1403/01/25  23:10:13 "
+              }
+              label={t("USED_DATE")}
+              disabled
+            />
+          </Grid> */}
+          <Grid item xs={12} sm={6}>
+            <TextField
+              fullWidth
+              value={statusMapDescription[info.status] ?? ""}
+              label={t("DESCRIPTION_DEPOSIT")}
+              disabled
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              fullWidth
+              sx={{
+                direction: "rtl",
+                ".MuiOutlinedInput-input": { textAlign: "left" },
+              }}
+              value={
+                moment(info.latestActionDate)
+                  .locale("fa")
+                  .format("YYYY/MM/DD - hh:mm:ss") || "1403/01/25  23:10:13"
+              }
+              label={t("LAST_ACTION_DATE")}
+              disabled
+            />
+          </Grid>
+        </Grid>
       </Box>
       <Box
         className="p-[16px] rounded grid gap-y-[20px] my-32"
@@ -184,7 +211,21 @@ function DepositsInfo({ info = {}, onCancelClick }) {
             backgroundColor: theme.palette.secondary.slowLight,
           }}
         >
-          <img src={`/assets/images/PDF.png`} />
+          {/* <img src={`/assets/images/PDF.png`} alt="Attachment"  className="xs:w-88 md:w-144"/> */}
+          <Box
+            component="img"
+            src={`/assets/images/PDF.png`}
+            alt="Attachment"
+            sx={{
+              width: {
+                xs: "100px",
+                sm: '150px',
+              },
+              height: "auto",
+            }}
+          />
+
+
           <ButtonComponent
             endIcon={<FuseSvgIcon>mv-icons:icon-FilePresent</FuseSvgIcon>}
             variant="contained"
@@ -192,71 +233,86 @@ function DepositsInfo({ info = {}, onCancelClick }) {
             skin="light"
             size="small"
             isLoading={loading}
+            sx={{
+              //  width: {
+              // xs:"100px"
+              // },
+              fontSize: {
+                xs: "10px",
+                md: "12px",
+              },
+            }}
+
           >
             {t("ATTACHMENT_VIEW")}
           </ButtonComponent>
         </Box>
       </Box>
       <Box
-        className="p-[16px] rounded grid grid-cols-2 gap-x-[40px] gap-y-[20px]"
+        className="p-[16px] rounded"
         sx={{ border: `1px solid ${theme.palette.divider}` }}
       >
-        <Typography
-          variant="body2"
-          color={theme.palette.text.grayV}
-          className="font-bold col-span-2"
-        >
-          {t("CREDIT_ALLOCATE_TO_CUSTOMER")}
-        </Typography>
-        <TextField
-          sx={{ flex: 1 }}
-          label={t("EXCHANGE_RATE_REMITTANCE_ALLOCATE_TO_CUSTOMER_TOMAN")}
-          value={"60.400"}
-          disabled
-        />
-        <TextField
-          sx={{ flex: 1 }}
-          // value={info.credit?.toAmount() || ""}
-          value={17 || ""}
-          label={t("CREDIT_ALLOCATE_TO_CUSTOMER")}
-          disabled
-        />
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <Typography
+              variant="body2"
+              color={theme.palette.text.grayV}
+              className="font-bold"
+            >
+              {t("FINAL_BALANCE")}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              fullWidth
+              label={t("EXCHANGE_RATE_REMITTANCE_ALLOCATE_TO_CUSTOMER_TOMAN")}
+              value={"60.400"}
+              disabled
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              fullWidth
+              // value={info.credit?.toAmount() || ""}
+              value={17 || ""}
+              label={t("CREDIT_ALLOCATE_TO_CUSTOMER")}
+              disabled
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
 
-
-        <TextField
-          sx={{ flex: 1 }}
-          label={t("DESCRIPTION")}
-          defaultValue={t("DESCRIPTION_SENTENCE")}
-        />
+              fullWidth
+              label={t("DESCRIPTION")}
+              defaultValue={t("DESCRIPTION_SENTENCE")}
+              disabled
+              sx={{
+                "& .MuiOutlinedInput-input": {
+                  fontSize: {
+                    xs: "10px",
+                    sm: "12px",
+                  },
+                },
+              }}
+            />
+          </Grid>
+        </Grid>
       </Box>
       <Box className="flex justify-end gap-x-[20px] my-44 mx-20">
-        {/* <DialogActions>
-          <Button onClick={handleClose} 
-          
-          // sx={{border:'1px solid #cacaca'}}
-          sx={{border: `1px solid ${theme.palette.text.grayDay}`}}
-
-          >
-            {t("CLOSE")}
-
-          </Button>
-        </DialogActions> */}
-          <ButtonComponent
-              sx={{
-                width: { xs: "100%", sm: "fit-content" },
-              }}
-              onClick={onCancelClick}
-              color="default"
-              size="middle"
-              variant="outlined"
-              isLoading={loading}
-              // disabled={loading}
-            >
-              {t("CLOSE")}
-            </ButtonComponent>
+        <ButtonComponent
+          sx={{
+            width: { xs: "100%", sm: "fit-content" },
+          }}
+          onClick={onCancelClick}
+          color="default"
+          size="middle"
+          variant="outlined"
+          isLoading={loading}
+        >
+          {t("CLOSE")}
+        </ButtonComponent>
       </Box>
     </>
-
   );
 }
 export default DepositsInfo;

@@ -351,7 +351,7 @@ const DepositsList = (props) => {
         <DialogTitle>
           <Box className="">
             <FusePageSimpleHeader
-              header={t("VOUCHER_DETAIL")}
+              header={t("DEPOSIT_INFORMATION")}
               headerActions={
                 <i className="inline-block rounded-xl ">
                   <FuseSvgIcon
