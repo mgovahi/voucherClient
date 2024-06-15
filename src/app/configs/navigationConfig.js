@@ -26,12 +26,12 @@ const navigationConfig = [
     url: "/depositsReport",
   },
   {
-    id: "createVoucher",
-    title: i18next.t("CREATE_VOUCHER"),
-    translate: "CREATE_VOUCHER",
+    id: "voucherGenerate",
+    title: i18next.t("VOUCHER_GENERATE"),
+    translate: "VOUCHER_GENERATE",
     type: "item",
     icon: "mv-icons:icon-menu-vouchers",
-    url: "/#",
+    url: "/voucherGenerate",
   },
   {
     id: "vouchersReport",

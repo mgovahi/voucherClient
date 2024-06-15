@@ -3,8 +3,10 @@ import { styled } from '@mui/material/styles';
 import clsx from 'clsx';
 import { useDispatch } from 'react-redux';
 import FuseNavItem from '../FuseNavItem';
+import { useSelector } from 'react-redux';
+import { selectCurrentLanguageDirection } from 'app/store/i18nSlice';
 
-const StyledList = styled(List)(({ theme }) => ({
+const StyledList = styled(List)(({ theme, ...props }) => ({
   '& .fuse-list-item': {
     color: theme.palette.text.primary,
     marginBottom: "20px",
@@ -28,8 +30,10 @@ const StyledList = styled(List)(({ theme }) => ({
   '& .fuse-list-item-text-primary': {
     lineHeight: '20px',
     fontSize: "16px",
-    fontFamily: "Aeonis",
-    fontWeight: 'bold',
+    ...(props.currentDir === "ltr" && {
+      fontFamily: "Aeonis",
+      fontWeight: 'bold',
+    }),
   },
   '&.active-square-list': {
     '& .fuse-list-item, & .active.fuse-list-item': {
@@ -49,6 +53,7 @@ const StyledList = styled(List)(({ theme }) => ({
 function FuseNavVerticalLayout1(props) {
   const { navigation, layout, active, dense, className, onItemClick } = props;
   const dispatch = useDispatch();
+  const currentDir = useSelector(selectCurrentLanguageDirection);
 
   function handleItemClick(item) {
     onItemClick?.(item);
@@ -62,6 +67,7 @@ function FuseNavVerticalLayout1(props) {
         dense && 'dense',
         className
       )}
+      currentDir={currentDir}
     >
       {navigation.map((_item) => (
         <FuseNavItem

@@ -136,7 +136,7 @@ window.appSettings.resources = {
       INACTIVE:"inActive ",
       PROFILE:"Profile",
       EXIT:"Exit",
-      CREATE_VOUCHER: "Create Voucher",
+      VOUCHER_GENERATE: "Voucher Generate",
       VOUCHERS_REPORT: "Vouchers Report"
     },
   },
@@ -407,10 +407,10 @@ window.appSettings.resources = {
       CONFIRMED: "تایید شده",
       WAITING: "در انتظار تایید",
       REJECTED: "رد شده",
-      CREATE_VOUCHER:"ایجاد حواله",
+      VOUCHER_GENERATE:"ایجاد حواله",
       PROFILE:"پروفایل",
-      EXIT:"خروج"
-
+      EXIT:"خروج",
+      VOUCHER_GENERATE_HEADER_ACTION: "حواله شما پس از ثبت نهایی، تولید شده و کد حواله در اختیار شما قرار می‌گیرد."
     },
   },
 };
