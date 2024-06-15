@@ -27,7 +27,9 @@ const StyledList = styled(List)(({ theme }) => ({
   },
   '& .fuse-list-item-text-primary': {
     lineHeight: '20px',
-    fontSize: "16px"
+    fontSize: "16px",
+    fontFamily: "Aeonis",
+    fontWeight: 'bold',
   },
   '&.active-square-list': {
     '& .fuse-list-item, & .active.fuse-list-item': {
