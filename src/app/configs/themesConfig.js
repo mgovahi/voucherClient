@@ -161,7 +161,8 @@ const themesConfig = {
         borderSecure: "#b8c5db",
         greenLight: "#eef8e8",
         grayProfile: "#22225A",
-        cyanBlueLight: "#F5F8FA"
+        cyanBlueLight: "#F5F8FA",
+        darkWall: "#161619"
       },
     },
     status: {

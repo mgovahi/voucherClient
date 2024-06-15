@@ -1,4 +1,11 @@
-import { Paper, useTheme, Grid, Typography, Button, useMediaQuery } from "@mui/material";
+import {
+  Paper,
+  useTheme,
+  Grid,
+  Typography,
+  Button,
+  useMediaQuery,
+} from "@mui/material";
 import React, { useMemo } from "react";
 import Chart from "react-apexcharts";
 import moment from "jalali-moment";
@@ -25,7 +32,7 @@ const VoucherChart = () => {
   const { t } = useTranslation();
 
   const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down("sm"));
-  const isSmallMobile = useMediaQuery("(max-width:400px)")
+  const isSmallMobile = useMediaQuery("(max-width:400px)");
 
   const chartData = useMemo(() => {
     return {
@@ -157,14 +164,13 @@ const VoucherChart = () => {
           },
         },
         ".FusePageSimple-header": {
-          borderBottom: "none",
           position: "absolute",
-          padding: "0",
         },
       }}
     >
       <FusePageSimpleHeader
         inner
+        className="noBorder"
         header={t("VOUCHER_LAST_WEEK")}
       ></FusePageSimpleHeader>
       <Grid

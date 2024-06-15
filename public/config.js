@@ -428,7 +428,8 @@ window.appSettings.resources = {
       VOUCHER_GENERATE_HEADER_ACTION: "حواله شما پس از ثبت نهایی، تولید شده و کد حواله در اختیار شما قرار می‌گیرد.",
       DEPOSIT_INFORMATION:"اطلاعات واریزی",
       DEPOSIT_STATUS:"وضعیت واریزی",
-       FINAL_BALANCE:"اعتبار تخصیصی به شما"
+      FINAL_BALANCE:"اعتبار تخصیصی به شما",
+      VOUCHER_AMOUNT_DOLLAR: "مبلغ حواله (دلار)"
     },
   },
 };

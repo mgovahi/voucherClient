@@ -93,6 +93,7 @@ const Root = styled("div")(
         borderBottom: "1px solid " + theme.palette.divider,
         " &.noBorder": {
           borderBottom: 0,
+          padding: "0"
         },
       },
       "& .FusePageSimple-content": {
