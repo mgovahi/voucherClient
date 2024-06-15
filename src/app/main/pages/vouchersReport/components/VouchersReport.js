@@ -57,7 +57,7 @@ function VouchersReport(props) {
                 variant="contained"
                 color="secondary"
                 onClick={() => {
-                  // naviage("/AddDeposit");
+                  naviage("/voucherGenerate");
                 }}
                 endIcon={
                   <FuseSvgIcon sx={{

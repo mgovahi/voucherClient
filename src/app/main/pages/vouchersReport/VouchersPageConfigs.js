@@ -2,6 +2,7 @@ import { lazy } from "react";
 
 
 const VouchersPage = lazy(() => import("./VouchersPage"));
+const VoucherGeneratePage = lazy(() => import("./../voucherGenerate/VoucherGeneratePage"));
 
 const VouchersPageConfigs = {
   settings: {
@@ -13,6 +14,10 @@ const VouchersPageConfigs = {
     {
       path: "/vouchers",
       element: <VouchersPage />,
+    },
+    {
+      path: "/voucherGenerate",
+      element: <VoucherGeneratePage />,
     },
   ],
 };
