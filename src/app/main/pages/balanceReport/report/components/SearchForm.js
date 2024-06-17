@@ -23,7 +23,7 @@ import EventIcon from "@mui/icons-material/Event";
 import { useState } from "react";
 import Autocomplete from "@mui/material/Autocomplete";
 import ButtonComponent from "app/shared-components/ButtonComponent/ButtonComponent";
-
+import { getFirstDayOfMonth } from "@fuse/utils/dateUtils";
 function SearchForm({ onSearchClick, loading, isAdmin }) {
   const { t } = useTranslation();
   const theme = useTheme();
@@ -45,7 +45,7 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
   });
   const channelMap = [
     {
-      value: null,
+      value: "-1",
       label: "همه موارد",
     },
     {
@@ -63,7 +63,7 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
   ];
   const balanceTypeMap = [
     {
-      value: null,
+      value: "-1",
       label: t("ALL_ITEMS"),
     },
     {
@@ -99,6 +99,7 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
     }
   };
   // console.log(getValues(),"get");
+  let firstDayOfMonth = getFirstDayOfMonth(null, "fa");
   return (
     <>
       <Box sx={{ m: "2rem 1rem" }}>
@@ -129,7 +130,7 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
                   labelId="demo-simple-select-outlined-label"
                   name="status"
                   onChange={onChange}
-                  defaultValue={null}
+                  defaultValue={"-1"}
                   value={value}
                   sx={{ flex: 1, width: { xs: "100%", sm: "auto" } }}
                 >
@@ -178,6 +179,7 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
                     },
                   }}
                   value={value}
+                  defaultValue={firstDayOfMonth}
                   maxDate={new Date()}
                   label={t("FROM_DATE")}
                   slotProps={{
@@ -218,6 +220,7 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
                 <DatePicker
                   open={isOpen.toDate}
                   onClose={() => handleDatePickerClick("toDate")}
+                  defaultValue={firstDayOfMonth}
                   label={t("TO_DATE")}
                   sx={{
                     flex: 1,

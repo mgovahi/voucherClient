@@ -73,10 +73,9 @@ const BalanceList = (props) => {
   } = props;
 
   const balanceTypeMap = {
-    wallet: t("WALLET"),
-    voucher: t("VOUCHER"),
+    wallet: t("DEPOSIT"),
+    voucher: t("WITHDRAW"),
   };
-
   const statusMapColor = {
     ACCEPTED: "successLight",
     REJECTED: "errorLight",

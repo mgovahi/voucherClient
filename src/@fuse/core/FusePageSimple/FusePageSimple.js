@@ -6,196 +6,196 @@ import { forwardRef, memo, useImperativeHandle, useRef } from "react";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import FusePageSimpleHeader from "./FusePageSimpleHeader";
 import FusePageSimpleSidebar from "./FusePageSimpleSidebar";
+import { padding } from "@mui/system";
 
-const Root = styled("div")(
-  ({ theme, ...props }) => (
-    {
-      display: "flex",
-      flexDirection: "column",
-      minWidth: 0,
-      minHeight: "100%",
-      position: "relative",
-      flex: "1 1 auto",
-      width: "100%",
-      height: "auto",
-      backgroundColor: theme.palette.background.default,
-      padding: "30px 40px",
-      [theme.breakpoints.down("sm")]: {
-        padding: "10px"
+const Root = styled("div")(({ theme, ...props }) => ({
+  display: "flex",
+  flexDirection: "column",
+  minWidth: 0,
+  minHeight: "100%",
+  position: "relative",
+  flex: "1 1 auto",
+  width: "100%",
+  height: "auto",
+  backgroundColor: theme.palette.background.default,
+  padding: "30px 40px",
+  ...(props.variant === "none" && {
+    padding: "20px 40px",
+  }),
+  [theme.breakpoints.down("sm")]: {
+    padding: "10px",
+  },
+  "&.FusePageSimple-scroll-content": {
+    height: "100%",
+  },
+
+  "& .FusePageSimple-wrapper": {
+    display: "flex",
+    flexDirection: "row",
+    flex: "1 1 auto",
+    zIndex: 2,
+    minWidth: 0,
+    height: "100%",
+    backgroundColor: theme.palette.background.default,
+
+    ...(props.scroll === "content" && {
+      position: "absolute",
+      top: 0,
+      bottom: 0,
+      right: 0,
+      left: 0,
+      overflow: "hidden",
+    }),
+  },
+
+  "& .FusePageSimple-header": {
+    display: "flex",
+    flex: "0 0 auto",
+    backgroundSize: "cover",
+  },
+
+  "& .FusePageSimple-topBg": {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: headerHeight,
+    pointerEvents: "none",
+  },
+
+  "& .FusePageSimple-contentWrapper": {
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
+    flex: "1 1 auto",
+    borderRadius: "8px",
+
+    //overflow: 'hidden',
+    //    WebkitOverflowScrolling: 'touch',
+    zIndex: 9999,
+    ...(props.variant === "filled" && {
+      backgroundColor: "#fff",
+      boxShadow: "0 3px 20px 0 rgba(63, 64, 183, 0.13)",
+    }),
+    ...(props.variant === "none" && {
+      " > .FusePageSimple-header": {
+        padding: "0 0 10px 0",
       },
-      "&.FusePageSimple-scroll-content": {
-        height: "100%",
-      },
+    }),
+  },
 
-      "& .FusePageSimple-wrapper": {
-        display: "flex",
-        flexDirection: "row",
-        flex: "1 1 auto",
-        zIndex: 2,
-        minWidth: 0,
-        height: "100%",
-        backgroundColor: theme.palette.background.default,
+  "& .FusePageSimple-toolbar": {
+    height: toolbarHeight,
+    minHeight: toolbarHeight,
+    display: "flex",
+    alignItems: "center",
+  },
+  "& .FusePageSimple-header ": {
+    padding: "20px",
+    borderBottom: "1px solid " + theme.palette.divider,
+    " &.noBorder": {
+      borderBottom: 0,
+      padding: "0",
+    },
+  },
+  "& .FusePageSimple-content": {
+    display: "flex",
+    flex: "1 1 auto",
+    alignItems: "start",
+    minHeight: 0,
+    overflowY: "auto",
+    maxWidth: "initial",
+    ...(props.variant === "filled" && {
+      padding: "20px",
+    }),
+  },
 
-        ...(props.scroll === "content" && {
-          position: "absolute",
-          top: 0,
-          bottom: 0,
-          right: 0,
-          left: 0,
-          overflow: "hidden",
+  "& .FusePageSimple-sidebarWrapper": {
+    overflow: "hidden",
+    backgroundColor: "transparent",
+    position: "absolute",
+    "&.permanent": {
+      [theme.breakpoints.up("lg")]: {
+        position: "relative",
+        marginLeft: 0,
+        marginRight: 0,
+        transition: theme.transitions.create("margin", {
+          easing: theme.transitions.easing.sharp,
+          duration: theme.transitions.duration.leavingScreen,
         }),
-      },
+        "&.closed": {
+          transition: theme.transitions.create("margin", {
+            easing: theme.transitions.easing.easeOut,
+            duration: theme.transitions.duration.enteringScreen,
+          }),
 
-      "& .FusePageSimple-header": {
-        display: "flex",
-        flex: "0 0 auto",
-        backgroundSize: "cover",
-      },
-
-      "& .FusePageSimple-topBg": {
-        position: "absolute",
-        left: 0,
-        right: 0,
-        top: 0,
-        height: headerHeight,
-        pointerEvents: "none",
-      },
-
-      "& .FusePageSimple-contentWrapper": {
-        display: "flex",
-        flexDirection: "column",
-        width: "100%",
-        flex: "1 1 auto",
-        borderRadius: "8px",
-
-        //overflow: 'hidden',
-        //    WebkitOverflowScrolling: 'touch',
-        zIndex: 9999,
-        ...(props.variant === "filled" && {
-          backgroundColor: "#fff",
-          boxShadow: "0 3px 20px 0 rgba(63, 64, 183, 0.13)",
-        }),
-        ...(props.variant === "none" && {
-          " > .FusePageSimple-header": {
-            padding: "10px 0",
+          "&.FusePageSimple-leftSidebar": {
+            marginLeft: -props.leftsidebarwidth,
           },
-        }),
-      },
-
-      "& .FusePageSimple-toolbar": {
-        height: toolbarHeight,
-        minHeight: toolbarHeight,
-        display: "flex",
-        alignItems: "center",
-      },
-      "& .FusePageSimple-header ": {
-        padding: "20px",
-        borderBottom: "1px solid " + theme.palette.divider,
-        " &.noBorder": {
-          borderBottom: 0,
-          padding: "0"
-        },
-      },
-      "& .FusePageSimple-content": {
-        display: "flex",
-        flex: "1 1 auto",
-        alignItems: "start",
-        minHeight: 0,
-        overflowY: "auto",
-        maxWidth: "initial",
-        ...(props.variant === "filled" && {
-          padding: "20px",
-        }),
-      },
-
-      "& .FusePageSimple-sidebarWrapper": {
-        overflow: "hidden",
-        backgroundColor: "transparent",
-        position: "absolute",
-        "&.permanent": {
-          [theme.breakpoints.up("lg")]: {
-            position: "relative",
-            marginLeft: 0,
-            marginRight: 0,
-            transition: theme.transitions.create("margin", {
-              easing: theme.transitions.easing.sharp,
-              duration: theme.transitions.duration.leavingScreen,
-            }),
-            "&.closed": {
-              transition: theme.transitions.create("margin", {
-                easing: theme.transitions.easing.easeOut,
-                duration: theme.transitions.duration.enteringScreen,
-              }),
-
-              "&.FusePageSimple-leftSidebar": {
-                marginLeft: -props.leftsidebarwidth,
-              },
-              "&.FusePageSimple-rightSidebar": {
-                marginRight: -props.rightsidebarwidth,
-              },
-            },
-          },
-        },
-      },
-
-      "& .FusePageSimple-sidebar": {
-        position: "absolute",
-        backgroundColor: theme.palette.background.paper,
-        color: theme.palette.text.primary,
-
-        "&.permanent": {
-          [theme.breakpoints.up("lg")]: {
-            position: "relative",
+          "&.FusePageSimple-rightSidebar": {
+            marginRight: -props.rightsidebarwidth,
           },
         },
-        maxWidth: "100%",
-        height: "100%",
       },
+    },
+  },
 
-      "& .FusePageSimple-leftSidebar": {
-        width: props.leftsidebarwidth,
+  "& .FusePageSimple-sidebar": {
+    position: "absolute",
+    backgroundColor: theme.palette.background.paper,
+    color: theme.palette.text.primary,
 
-        [theme.breakpoints.up("lg")]: {
-          borderRight: `1px solid ${theme.palette.divider}`,
-          borderLeft: 0,
-        },
+    "&.permanent": {
+      [theme.breakpoints.up("lg")]: {
+        position: "relative",
       },
+    },
+    maxWidth: "100%",
+    height: "100%",
+  },
 
-      "& .FusePageSimple-rightSidebar": {
-        width: props.rightsidebarwidth,
+  "& .FusePageSimple-leftSidebar": {
+    width: props.leftsidebarwidth,
 
-        [theme.breakpoints.up("lg")]: {
-          borderLeft: `1px solid ${theme.palette.divider}`,
-          borderRight: 0,
-        },
-      },
+    [theme.breakpoints.up("lg")]: {
+      borderRight: `1px solid ${theme.palette.divider}`,
+      borderLeft: 0,
+    },
+  },
 
-      "& .FusePageSimple-sidebarHeader": {
-        height: headerHeight,
-        minHeight: headerHeight,
-        backgroundColor: theme.palette.primary.dark,
-        color: theme.palette.primary.contrastText,
-      },
+  "& .FusePageSimple-rightSidebar": {
+    width: props.rightsidebarwidth,
 
-      "& .FusePageSimple-sidebarHeaderInnerSidebar": {
-        backgroundColor: "transparent",
-        color: "inherit",
-        height: "auto",
-        minHeight: "auto",
-      },
+    [theme.breakpoints.up("lg")]: {
+      borderLeft: `1px solid ${theme.palette.divider}`,
+      borderRight: 0,
+    },
+  },
 
-      "& .FusePageSimple-sidebarContent": {
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100%",
-      },
+  "& .FusePageSimple-sidebarHeader": {
+    height: headerHeight,
+    minHeight: headerHeight,
+    backgroundColor: theme.palette.primary.dark,
+    color: theme.palette.primary.contrastText,
+  },
 
-      "& .FusePageSimple-backdrop": {
-        position: "absolute",
-      },
-    }
-  )
-);
+  "& .FusePageSimple-sidebarHeaderInnerSidebar": {
+    backgroundColor: "transparent",
+    color: "inherit",
+    height: "auto",
+    minHeight: "auto",
+  },
+
+  "& .FusePageSimple-sidebarContent": {
+    display: "flex",
+    flexDirection: "column",
+    minHeight: "100%",
+  },
+
+  "& .FusePageSimple-backdrop": {
+    position: "absolute",
+  },
+}));
 
 const headerHeight = 120;
 const toolbarHeight = 64;
