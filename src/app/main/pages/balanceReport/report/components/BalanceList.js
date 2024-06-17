@@ -130,14 +130,6 @@ const BalanceList = (props) => {
             padding: "4px 20px",
             fontSize: "13px",
             borderRadius: "6px",
-            backgroundColor:
-              params.row.balanceType == "wallet"
-                ? "rgba(114, 57, 234, 0.2)"
-                : "rgba(241, 65, 108, 0.2)",
-            color:
-              params.row.balanceType == "wallet"
-                ? theme.palette.primary.main
-                : theme.palette.secondary.main,
             " svg": {
               marginRight: "4px",
             },
