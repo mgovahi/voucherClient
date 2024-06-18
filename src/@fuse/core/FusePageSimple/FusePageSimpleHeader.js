@@ -6,6 +6,7 @@ import FuseSvgIcon from "../FuseSvgIcon";
 
 const Root = styled("div")(({ theme, ...props }) => ({
   "&.inner": {
+    marginBottom: "14px",
     h6: {
       fontSize: "16px",
     },

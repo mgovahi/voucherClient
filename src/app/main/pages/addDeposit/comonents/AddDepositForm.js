@@ -18,6 +18,8 @@ import ButtonComponent from "app/shared-components/ButtonComponent/ButtonCompone
 import FormErrorHelperText from "app/shared-components/FormErrorHelperText/FormErrorHelperText";
 import { selectCurrentLanguageDirection } from "app/store/i18nSlice";
 import { useSelector } from "react-redux";
+import PN from "persian-number";
+import { toWords } from "number-to-words";
 import FusePageSimpleHeader from "@fuse/core/FusePageSimple/FusePageSimpleHeader";
 import CustomNumericFormat from "app/shared-components/CustomNumericFormat/CustomNumericFormat";
 
@@ -31,6 +33,7 @@ const AddDepositForm = ({ onShowPage }) => {
   });
   const { t } = useTranslation();
   const theme = useTheme();
+  const langDirection = useSelector(selectCurrentLanguageDirection);
 
   const validateImage = (file) => {
     if (file.size > 1024 * 1024) {
@@ -67,9 +70,14 @@ const AddDepositForm = ({ onShowPage }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="grid gap-y-36">
-      <Box className="grid gap-14">
+      <Box className="">
         <FusePageSimpleHeader
-          header={t("DEPOSIT_AMOUNT_TOMAN")}
+          header={
+            <>
+              {t("DEPOSIT_AMOUNT")}{" "}
+              <span className="text-12">({t("TOMAN")})</span>
+            </>
+          }
           inner
           className="noBorder"
         ></FusePageSimpleHeader>
@@ -81,7 +89,10 @@ const AddDepositForm = ({ onShowPage }) => {
           alignItems="start"
         >
           <Grid item xs={12} md={6}>
-            <FormControl className="w-full">
+            <FormControl
+              className="w-full"
+              sx={{ ".MuiTextField-root": { borderRadius: "6px" } }}
+            >
               <Controller
                 name="depositAmount"
                 control={control}
@@ -91,14 +102,20 @@ const AddDepositForm = ({ onShowPage }) => {
                 render={({
                   field: { value, onChange, onBlur, ref, ...field },
                 }) => (
-                  <Box display="flex" alignItems="center">
-                    <CustomNumericFormat
-                      value={value}
-                      errors={errors.depositAmount}
-                      helperText={true}
-                      onChange={onChange}
-                    />
-                  </Box>
+                  <CustomNumericFormat
+                    value={value}
+                    errors={errors.depositAmount}
+                    helperText={
+                      value === 0
+                        ? t("ZERO_TOMAN")
+                        : value
+                        ? langDirection === "rtl"
+                          ? `${PN.convert(value)} ${t("TOMAN")}`
+                          : `${toWords(value)} ${t("TOMAN")}`
+                        : ""
+                    }
+                    onChange={onChange}
+                  />
                 )}
               />
               <FormErrorHelperText error={errors.depositAmount} />
@@ -138,7 +155,7 @@ const AddDepositForm = ({ onShowPage }) => {
         </Grid>
       </Box>
 
-      <Box className="grid gap-14">
+      <Box className="">
         <FusePageSimpleHeader
           header={t("BANK_AND_ACCOUNT_NUMBER")}
           inner
@@ -224,7 +241,7 @@ const AddDepositForm = ({ onShowPage }) => {
         </Grid>
       </Grid>
 
-      <Box className="grid gap-14">
+      <Box className="">
         <FusePageSimpleHeader
           header={t("ATTACHED_FILE")}
           inner

@@ -1,17 +1,9 @@
 import React, { useState } from "react";
 import { IconButton, TextField } from "@mui/material";
-import RemoveIcon from "@mui/icons-material/Remove";
-import AddIcon from "@mui/icons-material/Add";
 import NumericFormat from "react-number-format";
-import { useTranslation } from "react-i18next";
-import PN from "persian-number";
-import { toWords } from "number-to-words";
-import { selectCurrentLanguageDirection } from "app/store/i18nSlice";
-import { useSelector } from "react-redux";
+import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
 
 const CustomNumericFormat = ({ value, errors, helperText, onChange }) => {
-  const { t } = useTranslation();
-  const langDirection = useSelector(selectCurrentLanguageDirection);
   const [number, setNumber] = useState(value ? value : 0);
 
   return (
@@ -19,18 +11,33 @@ const CustomNumericFormat = ({ value, errors, helperText, onChange }) => {
       value={number}
       defaultValue={number}
       onValueChange={(values) => {
-        onChange(values.floatValue);
-        setNumber(values.floatValue);
+        onChange(values.floatValue ? values.floatValue : 0);
+        setNumber(values.floatValue ? values.floatValue : 0);
+        console.log(values)
       }}
       customInput={TextField}
       sx={{
         flex: 1,
+        backgroundColor: "custome.cyanBlueLight",
+        ".MuiOutlinedInput-input": {
+          backgroundColor: "custome.cyanBlueLight",
+          fontWeight: "bold",
+          fontSize: "16px",
+          height: "100%",
+          padding: 0,
+        },
         ".MuiFormHelperText-contained": {
           textTransform: "capitalize",
+          backgroundColor: "white",
+          margin: "0",
+          paddingTop: "4px",
         },
         ".MuiInputBase-formControl": {
           minHeight: "48px",
           maxHeight: "48px",
+        },
+        ".MuiOutlinedInput-notchedOutline": {
+          borderColor: "custome.cyanBlueLight",
         },
       }}
       InputProps={{
@@ -46,7 +53,7 @@ const CustomNumericFormat = ({ value, errors, helperText, onChange }) => {
               setNumber((prev) => prev + 1);
             }}
           >
-            <AddIcon />
+            <FuseSvgIcon>mv-icons-mc:icon-Plus-Square</FuseSvgIcon>
           </IconButton>
         ),
         endAdornment: (
@@ -57,23 +64,14 @@ const CustomNumericFormat = ({ value, errors, helperText, onChange }) => {
             }}
             disabled={number === 0}
           >
-            <RemoveIcon />
+            <FuseSvgIcon>mv-icons-mc:icon-Minus-Square</FuseSvgIcon>
           </IconButton>
         ),
       }}
       thousandSeparator
       allowNegative={false}
       error={errors}
-      helperText={
-        helperText &&
-        (value === 0
-          ? t("ZERO_TOMAN")
-          : value
-          ? langDirection === "rtl"
-            ? `${PN.convert(value)} ${t("TOMAN")}`
-            : `${toWords(value)} ${t("TOMAN")}`
-          : "")
-      }
+      helperText={helperText}
     />
   );
 };

@@ -83,7 +83,7 @@ window.appSettings.resources = {
       MERGED: "MERGED",
       CANCELED: "canceled",
       ADD_DEPOSIT_HEADER_ACTION: "Your deposit will be added to your balance after confirmation.",
-      DEPOSIT_AMOUNT_TOMAN: "Amount (Toman)",
+      DEPOSIT_AMOUNT: "Amount",
       PAYMENT_DOLLAR: "Vouchers USD",
       ALLOCATED_CREDIT: "Your Voucher Credit",
       BANK_AND_ACCOUNT_NUMBER: "Bank Accounts",
@@ -152,7 +152,10 @@ window.appSettings.resources = {
      CLOSE:"Close",
      ATTACHMENT:"Attachement",
      VOUCHER_STATUS:"Voucher Status",
-     CLIENT:"Customer"
+     CLIENT:"Customer",
+     VOUCHER_AMOUNT: "Voucher Account",
+     USD: "USD",
+     VOUCHER_AMOUNT_HELPER_TEXT: "Enter your desired voucher amount."
     },
   },
   fa: {
@@ -372,7 +375,7 @@ window.appSettings.resources = {
         "سایز فایل انتخاب شده نمی‌تواند بیشتر از 1000 کیلوبایت باشد. لطفاً یک فایل با سایز کوچکتر انتخاب کنید.",
       FILE_TYPE_ERROR: "فایل با فرمت‌های jpeg ، jpg ، png یا pdf مجاز است.",
       SELECT_ATTACHMENT: "انتخاب پیوست",
-      DEPOSIT_AMOUNT_TOMAN: "مبلغ واریزی (تومان)",
+      DEPOSIT_AMOUNT: "مبلغ واریزی",
       ADD_DEPOSIT_HEADER_ACTION:
         "واریزی شما پس از تایید به موجودی شما افزوده خواهد شد.",
       SUCCESS_TRANSACTION: "تراکنش موفق",
@@ -429,7 +432,9 @@ window.appSettings.resources = {
       DEPOSIT_INFORMATION:"اطلاعات واریزی",
       DEPOSIT_STATUS:"وضعیت واریزی",
       FINAL_BALANCE:"اعتبار تخصیصی به شما",
-      VOUCHER_AMOUNT_DOLLAR: "مبلغ حواله (دلار)"
+      VOUCHER_AMOUNT: "مبلغ حواله",
+      USD: "دلار",
+      VOUCHER_AMOUNT_HELPER_TEXT: "مبلغ دلخواه حواله خود را وارد کنید."
     },
   },
 };
