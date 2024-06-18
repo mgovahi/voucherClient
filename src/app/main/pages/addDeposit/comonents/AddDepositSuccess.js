@@ -44,10 +44,7 @@ const AddDepositSuccess = ({ onShowPage }) => {
           }
           {t("TRANSACTION_ID_TEXT_PART_TWO")}
         </Typography>
-        <Typography
-          color="custome.darkSky"
-          variant="body2"
-        >
+        <Typography color="custome.darkSky" variant="body2">
           {t("SUCCESS_ALERT_HELPER_TEXT")}
         </Typography>
         <Box className=" mt-20">
@@ -89,7 +86,7 @@ const AddDepositSuccess = ({ onShowPage }) => {
           }
           onClick={onShowPage}
         >
-          {t("ADD_NEW_DEPOSIT")}
+          <span className="mt-4">{t("ADD_NEW_DEPOSIT")}</span>
         </ButtonComponent>
       </Box>
     </>

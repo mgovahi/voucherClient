@@ -262,7 +262,7 @@ const AmountChart = () => {
             {t("YOUR_BALANCE")}:
           </Typography>
           <Typography
-            variant=""
+            fontFamily="IRANYekanXNumEnBold"
             sx={{
               color: theme.palette.secondary.main,
               fontWeight: "bold",

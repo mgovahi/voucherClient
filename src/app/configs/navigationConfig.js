@@ -30,7 +30,7 @@ const navigationConfig = [
     title: i18next.t("VOUCHER_GENERATE"),
     translate: "VOUCHER_GENERATE",
     type: "item",
-    icon: "mv-icons:icon-menu-vouchers",
+    icon: "mv-icons:icon-menu-new-voucher",
     url: "/voucherGenerate",
   },
   {

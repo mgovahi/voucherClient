@@ -46,12 +46,12 @@ const VoucherGeneratePage = () => {
       }
       content={
         <motion.div
-          className="h-full w-full"
+          className="w-full"
           variants={container}
           initial="hidden"
           animate="show"
         >
-          <motion.div variants={item} className="h-full grid items-end">
+          <motion.div variants={item} className="grid items-end">
           {isShow ? (
               <VoucherGenerateSuccess onShowPage={handleShowPage} />
             ) : (

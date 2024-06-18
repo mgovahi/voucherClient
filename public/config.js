@@ -166,7 +166,15 @@ window.appSettings.resources = {
       REF_ID:"Transaction ID",
       VOUCHER_AMOUNT: "Voucher Amount",
       USD: "USD",
-      VOUCHER_AMOUNT_HELPER_TEXT: "Enter your desired voucher amount."
+      VOUCHER_AMOUNT_HELPER_TEXT: "Enter your desired voucher amount.",
+      COPY_TOOLTIP: "Copy done",
+      NEW_VOUCHER: "New Voucher",
+      VOUCHER_GENERATE_HEADER_ACTION: "After the registration, your voucher is generated and the remittance code is provided to you.",
+      VOUCHER_CODE_ALERT_ONE: "The Voucher code can be copied only once.",
+      VOUCHER_CODE_ALERT_TWO: "The transfer code is confidential, please be careful when moving it and making it available.",
+      VOUCHER_GENERATION_SUCCESS_ALERT: "Voucher was successfully generated!",
+      VOUCHER_GENERATION_CODE_ALERT: "Your Voucher was created with the following code.",
+
     },
   },
   fa: {
@@ -453,7 +461,13 @@ window.appSettings.resources = {
       REF_ID:"شناسه مرجع",
       VOUCHER_AMOUNT: "مبلغ حواله",
       USD: "دلار",
-      VOUCHER_AMOUNT_HELPER_TEXT: "مبلغ دلخواه حواله خود را وارد کنید."
+      VOUCHER_AMOUNT_HELPER_TEXT: "مبلغ دلخواه حواله خود را وارد کنید.",
+      VOUCHER_GENERATION_SUCCESS_ALERT: "حواله با موفقیت تولید شد!",
+      VOUCHER_GENERATION_CODE_ALERT: "حواله شما با کد زیر ایجاد شد.",
+      VOUCHER_CODE_ALERT_ONE: "کد حواله فقط یک بار قابل کپی می‌باشد.",
+      VOUCHER_CODE_ALERT_TWO: "کد حواله محرمانه است لطفا در جابجایی و در اختیار قرار دادن آن دقت نمایید.",
+      COPY_TOOLTIP: "کپی انجام شد",
+      NEW_VOUCHER: "حواله جدید"
     },
   },
 };

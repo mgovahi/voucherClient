@@ -68,7 +68,7 @@ function VoucherAmounts() {
                       variant="h5"
                       className="font-bold mt-8"
                       color="white"
-                      fontFamily="IRANYekanX"
+                      fontFamily="IRANYekanXNumEnBold"
                     >
                       <span>$63,100</span>
                     </Typography>
@@ -153,7 +153,7 @@ function VoucherAmounts() {
                       variant="h5"
                       className="font-bold"
                       color="white"
-                      fontFamily="IRANYekanX"
+                      fontFamily="IRANYekanXNumEnBold"
                     >
                       $17,1500
                     </Typography>

@@ -30,7 +30,7 @@ const CustomNumericFormat = ({ value, errors, helperText, onChange }) => {
           textTransform: "capitalize",
           backgroundColor: "white",
           margin: "0",
-          paddingTop: "4px",
+          padding: "3px 14px 0 14px",
         },
         ".MuiInputBase-formControl": {
           minHeight: "48px",

@@ -30,7 +30,7 @@ const TotalAmountChart = ({ showTotal }) => {
         legend: {
           show: true,
           position: langDirection == "rtl" ? "right" : "left",
-          fontFamily: "IRANYekanX",
+          fontFamily: "IRANYekanXNumEnBold",
           horizontalAlign: "left",
           formatter: function (val, opts) {
             return (
@@ -85,7 +85,7 @@ const TotalAmountChart = ({ showTotal }) => {
                 total: {
                   show: true,
                   label: t("TOTAL_BALANCE"),
-                  fontFamily: "IRANYekanXX",
+                  fontFamily: "IRANYekanX",
                   formatter: (a) => "",
                 },
               },

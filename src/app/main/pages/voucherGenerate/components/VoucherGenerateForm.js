@@ -20,7 +20,7 @@ import FormErrorHelperText from "app/shared-components/FormErrorHelperText/FormE
 import { useTranslation } from "react-i18next";
 import CustomNumericFormat from "app/shared-components/CustomNumericFormat/CustomNumericFormat";
 import ButtonComponent from "app/shared-components/ButtonComponent/ButtonComponent";
-const VoucherGenerateForm = () => {
+const VoucherGenerateForm = ({onShowPage}) => {
   const { t } = useTranslation();
   const theme = useTheme();
   const {
@@ -33,7 +33,8 @@ const VoucherGenerateForm = () => {
   const loading = false;
 
   const onSubmit = (data) => {
-    console.log(data);
+    console.log(data, "data");
+    onShowPage();
   };
 
   return (
@@ -61,7 +62,7 @@ const VoucherGenerateForm = () => {
               variant="body4"
               className="font-bold"
               color="custome.darkWall"
-              fontFamily="IRANYekanX"
+              fontFamily="IRANYekanXNumEnBold"
             >
               $8,942
             </Typography>
@@ -126,7 +127,7 @@ const VoucherGenerateForm = () => {
               )
             }
           >
-            {t("VOUCHER_GENERATE")}
+            <span className="mt-4">{t("VOUCHER_GENERATE")}</span>
           </ButtonComponent>
         </Box>
       </form>

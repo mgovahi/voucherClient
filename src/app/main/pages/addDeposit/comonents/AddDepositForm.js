@@ -290,7 +290,7 @@ const AddDepositForm = ({ onShowPage }) => {
             )
           }
         >
-          {t("ADD_DEPOSIT")}
+          <span className="mt-4"> {t("ADD_DEPOSIT")}</span>
         </ButtonComponent>
       </Box>
     </form>
