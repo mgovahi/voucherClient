@@ -60,7 +60,7 @@ const VoucherGenerateSuccess = ({ onShowPage }) => {
           <CopyButton voucherCode="2023-9876-1010-1234" />
         </Box>
       </Alert>
-      <Box className="flex justify-end mt-[54px]">
+      <Box className="flex justify-end mt-20">
         <ButtonComponent
           sx={{
             width: { xs: "100%", sm: "fit-content" },

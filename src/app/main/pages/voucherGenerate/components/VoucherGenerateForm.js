@@ -71,7 +71,7 @@ const VoucherGenerateForm = ({onShowPage}) => {
         <img className="w-120" src="/assets/images/balance.png" />
       </Box>
       <form onSubmit={handleSubmit(onSubmit)} className="grid gap-y-36">
-        <Box className="w-2/4">
+        <Box className="w-full sm:w-2/4">
           <FusePageSimpleHeader
             header={
               <>
