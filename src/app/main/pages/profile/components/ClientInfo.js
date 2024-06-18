@@ -263,7 +263,7 @@ function ClientInfo({ info = {}, onCancelClick }) {
               </Typography>
               <Typography
                 variant="caption"
-                fontFamily="IranYekan"
+                fontFamily="IRANYekanX"
                 sx={{
                   " b": {
                     color: theme.palette.primary.main + " !important",

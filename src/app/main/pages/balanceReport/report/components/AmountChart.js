@@ -256,8 +256,8 @@ const AmountChart = () => {
               },
             }}
           >
-            <FuseSvgIcon size="18px">
-              mv-icons-mc:icon-icon-money-bag-purple
+            <FuseSvgIcon size="24px">
+              mv-icons-mc:icon-icon-money-bag
             </FuseSvgIcon>
             {t("YOUR_BALANCE")}:
           </Typography>

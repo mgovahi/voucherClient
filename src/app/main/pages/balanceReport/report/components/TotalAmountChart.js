@@ -30,7 +30,7 @@ const TotalAmountChart = ({ showTotal }) => {
         legend: {
           show: true,
           position: langDirection == "rtl" ? "right" : "left",
-          fontFamily: "IranYekan",
+          fontFamily: "IRANYekanX",
           horizontalAlign: "left",
           formatter: function (val, opts) {
             return (
@@ -85,7 +85,7 @@ const TotalAmountChart = ({ showTotal }) => {
                 total: {
                   show: true,
                   label: t("TOTAL_BALANCE"),
-                  fontFamily: "IranYekanX",
+                  fontFamily: "IRANYekanXX",
                   formatter: (a) => "",
                 },
               },
@@ -170,7 +170,7 @@ const TotalAmountChart = ({ showTotal }) => {
           },
           ".apexcharts-graphical": {},
           text: {
-            fontFamily: "IranYekan !important",
+            fontFamily: "IRANYekanX !important",
             fill: theme.palette.text.grayV + " !important",
             fontSize: "14px",
             marginBottom: "10px",

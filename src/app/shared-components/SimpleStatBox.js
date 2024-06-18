@@ -30,7 +30,7 @@ function SimpleStatBox({ icon, color, statValue, statTitle }) {
         >
           <FuseSvgIcon size={28}>{icon}</FuseSvgIcon>
         </Typography>
-        <Typography className="font-bold" fontFamily="IranYekan">
+        <Typography className="font-bold" fontFamily="IRANYekanX">
           {statValue}
         </Typography>
         <Typography
