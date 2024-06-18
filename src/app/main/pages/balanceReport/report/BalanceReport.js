@@ -53,7 +53,7 @@ function BalanceReport(props) {
           animate="show"
         >
           <motion.div variants={item} className="col-span-1">
-            <Box>
+            <Box className="mt-[40px]">
               <SearchForm />
             </Box>
             <Box>
@@ -81,6 +81,8 @@ const sampleData = [
     balanceType: "wallet",
     latestActionDate: new Date().getTime(),
     status: "ACCEPTED",
+    transactionDesc: "بابت کیف پول 6523",
+    remaining:"3200"
   },
   {
     code: "1*34-*234-*234-*2*4*34*2",
@@ -92,6 +94,8 @@ const sampleData = [
     balanceType: "voucher",
     latestActionDate: new Date().getTime(),
     status: "WAITING",
+    remaining:"45215",
+    transactionDesc: "صدور حواله v45265"
   },
   {
     code: "1*34-*234-*234-*2*4*34*3",
@@ -103,6 +107,8 @@ const sampleData = [
     balanceType: "wallet",
     latestActionDate: new Date().getTime(),
     status: "REJECTED",
+    remaining:"25215",
+    transactionDesc: "بابت کیف پول 6523"
   },
   {
     code: "1*34-*234-*234-*2*4*34*4",
@@ -114,6 +120,8 @@ const sampleData = [
     balanceType: "wallet",
     latestActionDate: new Date().getTime(),
     status: "ACCEPTED",
+    remaining:"35215",
+    transactionDesc: "بابت تسویه حواله 6523"
   },
   {
     code: "1*34-*234-*234-*2*4*34*5",
@@ -125,6 +133,8 @@ const sampleData = [
     balanceType: "voucher",
     latestActionDate: new Date().getTime(),
     status: "WAITING",
+    remaining:"15215",
+    transactionDesc: "بابت کیف پول 6523"
   },
   {
     code: "1*34-*234-*234-*2*4*34*6",
@@ -136,6 +146,8 @@ const sampleData = [
     balanceType: "voucher",
     latestActionDate: new Date().getTime(),
     status: "REJECTED",
+    remaining:"25215",
+    transactionDesc: "صدور حواله 326545"
   },
   {
     code: "1*34-*234-*234-*2*4*34*7",
@@ -147,6 +159,8 @@ const sampleData = [
     balanceType: "wallet",
     latestActionDate: new Date().getTime(),
     status: "ACCEPTED",
+    remaining:"2215",
+    transactionDesc: "بابت کیف پول 6523"
   },
   {
     code: "1*34-*234-*234-*2*4*34*8",
@@ -158,6 +172,8 @@ const sampleData = [
     balanceType: "wallet",
     latestActionDate: new Date().getTime(),
     status: "WAITING",
+    remaining:"6215",
+    transactionDesc: "بابت کیف پول 6523"
   },
   {
     code: "1*34-*234-*234-*2*4*34*9",
@@ -169,6 +185,8 @@ const sampleData = [
     balanceType: "wallet",
     latestActionDate: new Date().getTime(),
     status: "REJECTED",
+    remaining:"11215",
+    transactionDesc: "بابت کیف پول 6523"
   },
   {
     code: "1*34-*234-*234-*2*4*34*10",
@@ -180,6 +198,8 @@ const sampleData = [
     balanceType: "wallet",
     latestActionDate: new Date().getTime(),
     status: "ACCEPTED",
+    remaining:"20215",
+    transactionDesc: "بابت کیف پول 6523"
   },
 ];
 export default BalanceReport;

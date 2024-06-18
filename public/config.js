@@ -77,7 +77,7 @@ window.appSettings.resources = {
       AMOUNT: "Amount",
       TRANSACTION_FEE: "transaction Fee",
       CREATE_DATE: "Create Date",
-      ACTION: "action",
+      ACTION: "OPERATION",
       ACTIVE: "action",
       USED: "used",
       MERGED: "MERGED",
@@ -161,6 +161,9 @@ window.appSettings.resources = {
       CLIENT: "Customer",
       DEPOSIT: "Deposit",
       WITHDRAW: "Withdraw",
+      REMAINING:"Balance",
+      TRANSACTION_DESC:"Description",
+      REF_ID:"Transaction ID"
     },
   },
   fa: {
@@ -442,6 +445,9 @@ window.appSettings.resources = {
       FROM: "از",
       DEPOSIT: "واریز",
       WITHDRAW: "برداشت",
+      REMAINING:"مانده",
+      TRANSACTION_DESC:"شرح تراکنش",
+      REF_ID:"شناسه مرجع"
     },
   },
 };

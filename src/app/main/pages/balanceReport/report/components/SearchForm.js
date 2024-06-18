@@ -67,11 +67,11 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
       label: t("ALL_ITEMS"),
     },
     {
-      label: t("WALLET"),
+      label: t("DEPOSIT"),
       value: "wallet",
     },
     {
-      label: t("VOUCHER"),
+      label: t("WITHDRAW"),
       value: "voucher",
     },
   ];
@@ -119,7 +119,7 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
           }}
         >
           <FormControl>
-            <InputLabel>{t("BALANCE_TYPE")}</InputLabel>
+            <InputLabel>{t("ACTION")}</InputLabel>
             <Controller
               name="balanceType"
               control={control}
@@ -155,7 +155,24 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
                   inputProps={{
                     autocomplete: "off",
                   }}
-                  label={t("DOCUMENT_ID")}
+                  label={t("TRNASACTION_DESC")}
+                />
+              )}
+            />
+          </FormControl>
+          <FormControl>
+            <Controller
+              name="refId"
+              control={control}
+              render={({ field: { value, onChange, onBlur } }) => (
+                <TextField
+                  sx={{ flex: 1 }}
+                  onChange={onChange}
+                  value={value}
+                  inputProps={{
+                    autocomplete: "off",
+                  }}
+                  label={t("REF_ID")}
                 />
               )}
             />

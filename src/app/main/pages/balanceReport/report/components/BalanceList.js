@@ -99,65 +99,6 @@ const BalanceList = (props) => {
         </Typography>
       ),
     },
-
-    {
-      field: "balance",
-      minWidth: 180,
-      headerName: t("BALANCE"),
-      flex: 1,
-      sortable: false,
-      renderCell: (params) => (
-        <Typography
-          variant="body2"
-          sx={{ direction: "ltr", fontFamily: "IRANYekanBold" }}
-        >
-          {"$" + params.row.balance.toAmount()}
-        </Typography>
-      ),
-    },
-    {
-      minWidth: 120,
-      headerName: t("BALANCE_TYPE"),
-      field: "balanceType",
-      flex: 1,
-      sortable: false,
-      renderCell: (params) => (
-        <Typography
-          variant="body2"
-          sx={{
-            color: "info.main",
-            direction: "ltr",
-            padding: "4px 20px",
-            fontSize: "13px",
-            borderRadius: "6px",
-            " svg": {
-              marginRight: "4px",
-            },
-          }}
-        >
-          {params.row.balanceType == "wallet" ? (
-            <FuseSvgIcon>mv-icons-mc:icon-icon-money-bag-purple</FuseSvgIcon>
-          ) : (
-            <FuseSvgIcon>
-              mv-icons-mc:icon-icon-menu-vouchers-purple
-            </FuseSvgIcon>
-          )}
-
-          {balanceTypeMap[params.row.balanceType]}
-        </Typography>
-      ),
-    },
-
-    {
-      minWidth: 250,
-      headerName: t("DOCUMENT_ID"),
-      field: "transactionId",
-      flex: 1,
-      sortable: false,
-      renderCell: (params) => (
-        <Typography variant="body2">{params.row.transactionId}</Typography>
-      ),
-    },
     {
       field: "balanceDate",
       minWidth: 160,
@@ -170,6 +111,90 @@ const BalanceList = (props) => {
             .locale(currentLanguage.id)
             .format("YYYY-MM-DD - hh:mm:ss")}
         </Typography>
+      ),
+    },
+
+    {
+      field: "balance",
+      minWidth: 180,
+      headerName: t("AMOUNT"),
+      flex: 1,
+      sortable: false,
+      renderCell: (params) => (
+        <Typography
+          variant="body2"
+          sx={{ direction: "ltr", fontFamily: "IRANYekanXNumEn" }}
+        >
+          {"$" + params.row.balance.toAmount()}
+        </Typography>
+      ),
+    },
+    {
+      minWidth: 120,
+      headerName: t("ACTION"),
+      field: "balanceType",
+      flex: 1,
+      sortable: false,
+      renderCell: (params) => (
+        <Typography
+          variant="body2"
+          sx={{
+            fontWeight:"bold",
+            direction: "ltr",
+            padding: "4px 20px",
+            fontSize: "13px",
+            borderRadius: "6px",
+            " svg": {
+              marginRight: "20px",
+            },
+          }}
+        >
+          {params.row.balanceType == "wallet" ? (
+            <FuseSvgIcon>mv-icons-mc:icon-icon-menu-admin-income</FuseSvgIcon>
+          ) : (
+            <FuseSvgIcon>
+              mv-icons-mc:icon-icon-menu-vouchers
+            </FuseSvgIcon>
+          )}
+
+          {balanceTypeMap[params.row.balanceType]}
+        </Typography>
+      ),
+    },
+    {
+      field: "remaining",
+      minWidth: 180,
+      headerName: t("REMAINING"),
+      flex: 1,
+      sortable: false,
+      renderCell: (params) => (
+        <Typography
+          variant="body2"
+          sx={{ direction: "ltr", fontFamily: "IRANYekanXNumEnBold" }}
+        >
+          {"$" + params.row.remaining.toAmount()}
+        </Typography>
+      ),
+    },
+   
+    {
+      minWidth: 250,
+      headerName: t("TRANSACTION_DESC"),
+      field: "transactionDesc",
+      flex: 1,
+      sortable: false,
+      renderCell: (params) => (
+        <Typography variant="body2">{params.row.transactionDesc}</Typography>
+      ),
+    },
+    {
+      minWidth: 250,
+      headerName: t("REF_ID"),
+      field: "transactionId",
+      flex: 1,
+      sortable: false,
+      renderCell: (params) => (
+        <Typography variant="body2">{params.row.transactionId}</Typography>
       ),
     },
   ];
@@ -230,7 +255,7 @@ const BalanceList = (props) => {
           gap: "15px",
         }}
       >
-        <Typography caption="body2" className="text-lg">
+        <Typography caption="body2" className="text-lg" sx={{color:theme.palette.text.grayV}}>
           {t("BALANCE")}
         </Typography>
         <Box

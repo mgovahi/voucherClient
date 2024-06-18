@@ -190,7 +190,7 @@ const TotalAmountChart = ({ showTotal }) => {
               variant="h6"
               color="secondary"
               sx={{
-                fontFamily: "IRANYekanBold",
+                fontFamily: "IRANYekanXNumEnBold",
                 fontSize: "28px",
               }}
             >
