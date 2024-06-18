@@ -142,6 +142,7 @@ export const defaultThemeOptions = (direction) => {
           root: {
             textTransform: "none",
             padding: "7px 22px",
+            minWidth: "36px",
             // lineHeight: 1,
             // "&.MuiButton-containedPrimary:hover": {
             //   backgroundColor: theme.palette.primary.main,
@@ -533,8 +534,7 @@ export const defaultThemeOptions = (direction) => {
       },
     },
   };
-  
-}
+};
 export const mustHaveThemeOptions = {
   typography: {
     htmlFontSize: 10,

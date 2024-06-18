@@ -61,7 +61,7 @@ const VoucherGenerateForm = () => {
               variant="body4"
               className="font-bold"
               color="custome.darkWall"
-              fontFamily="IranYekan"
+              fontFamily="IRANYekanX"
             >
               $8,942
             </Typography>

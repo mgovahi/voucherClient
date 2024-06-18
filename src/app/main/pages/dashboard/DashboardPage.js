@@ -37,7 +37,7 @@ function DashboardPage(props) {
     <>
       <Root
         content={
-          <div className="w-full">
+          <div className="w-full mt-[20px]">
             <motion.div
               className="grid grid-cols-1 w-full min-w-0"
               variants={container}

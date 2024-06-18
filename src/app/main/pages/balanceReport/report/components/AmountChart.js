@@ -172,7 +172,7 @@ const AmountChart = () => {
         tooltip: {
           y: {
             formatter: function (val) {
-              return val + "تومان";
+              return "$" + val;
             },
           },
           style: {
@@ -198,6 +198,9 @@ const AmountChart = () => {
               right: "-120px!important",
             },
           },
+        },
+        ".apexcharts-tooltip-marker": {
+          marginRight: "10px",
         },
       }}
     >
@@ -253,8 +256,8 @@ const AmountChart = () => {
               },
             }}
           >
-            <FuseSvgIcon size="18px">
-              mv-icons-mc:icon-icon-money-bag-purple
+            <FuseSvgIcon size="24px">
+              mv-icons-mc:icon-icon-money-bag
             </FuseSvgIcon>
             {t("YOUR_BALANCE")}:
           </Typography>
