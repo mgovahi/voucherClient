@@ -155,7 +155,7 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
                   inputProps={{
                     autocomplete: "off",
                   }}
-                  label={t("TRNASACTION_DESC")}
+                  label={t("TRANSACTION_DESC")}
                 />
               )}
             />
