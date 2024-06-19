@@ -1,6 +1,6 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
-import { Paper, useTheme, Box, Typography } from "@mui/material";
+import { Paper, useTheme, Box, Typography, useMediaQuery } from "@mui/material";
 import { useMemo } from "react";
 import moment from "jalali-moment";
 
@@ -14,6 +14,7 @@ const TotalAmountChart = ({ showTotal }) => {
   const { t } = useTranslation();
   const theme = useTheme();
   const langDirection = useSelector(selectCurrentLanguageDirection);
+  const isMobile = useMediaQuery("(max-width:414px)");
 
   const chartData = useMemo(() => {
     return {
@@ -146,7 +147,7 @@ const TotalAmountChart = ({ showTotal }) => {
             ".apexcharts-legend-text": {
               display: "inline-block",
               width: "90%",
-              fontSize: "14px" + " !important",
+              fontSize: isMobile ? "12px !important" : "14px !important",
               b: {
                 color: theme.palette.text.grayDay
               },

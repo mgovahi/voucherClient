@@ -28,7 +28,7 @@ function FooterLayout1(props) {
               : footerTheme.palette.background.default,
         }}
       >
-        <Toolbar className="p-10 sm:px-40 sm:pt-20 sm:pb-[30px] flex items-center overflow-x-auto">
+        <Toolbar className="p-10 sm:px-40 sm:pt-20 sm:pb-[30px] flex items-center flex-wrap overflow-x-auto">
           <div className="flex grow shrink-0">
             <Typography variant="body2" color="text.grayV">{t("FOOTER_COPYRIGHT")}</Typography>
           </div>

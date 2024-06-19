@@ -169,6 +169,9 @@ const VoucherChart = () => {
             gap: "7px"
           },
         },
+        ".apexcharts-tooltip-series-group": {
+          gap: "5px"
+        },
         ".FusePageSimple-header": {
           position: "absolute",
         },

@@ -50,7 +50,7 @@ function VoucherAmounts() {
                         stroke: `${theme.palette.primary.light}!important`,
                       }}
                     >
-                      mv-icons-mc:icon-Voucher-Generated
+                      mv-icons-mc:icon-Voucher-Generated-3
                     </FuseSvgIcon>
                   </Typography>
                   <div>
