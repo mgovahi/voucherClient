@@ -4,15 +4,15 @@ import NumericFormat from "react-number-format";
 import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
 
 const CustomNumericFormat = ({ value, errors, helperText, onChange }) => {
-  const [number, setNumber] = useState(value ? value : 0);
+  const [number, setNumber] = useState(value ? value : "");
 
   return (
     <NumericFormat
       value={number}
       defaultValue={number}
       onValueChange={(values) => {
-        onChange(values.floatValue ? values.floatValue : 0);
-        setNumber(values.floatValue ? values.floatValue : 0);
+        onChange(values.floatValue ? values.floatValue : "");
+        setNumber(values.floatValue ? values.floatValue : "");
         console.log(values)
       }}
       customInput={TextField}
