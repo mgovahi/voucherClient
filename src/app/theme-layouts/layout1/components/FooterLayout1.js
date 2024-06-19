@@ -8,9 +8,12 @@ import clsx from "clsx";
 import PoweredByLinks from "../../shared-components/PoweredByLinks";
 import DocumentationButton from "../../shared-components/DocumentationButton";
 import PurchaseButton from "../../shared-components/PurchaseButton";
+import { Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 function FooterLayout1(props) {
   const footerTheme = useSelector(selectFooterTheme);
+  const { t } = useTranslation();
 
   return (
     <ThemeProvider theme={footerTheme}>
@@ -25,14 +28,13 @@ function FooterLayout1(props) {
               : footerTheme.palette.background.default,
         }}
       >
-        <Toolbar className="min-h-48 md:min-h-64 px-8 sm:px-12 py-0 flex items-center overflow-x-auto">
+        <Toolbar className="p-10 sm:px-40 sm:pt-20 sm:pb-[30px] flex items-center overflow-x-auto">
           <div className="flex grow shrink-0">
-            <PurchaseButton className="mx-4" />
-            <DocumentationButton className="mx-4" />
+            <Typography variant="body2" color="text.grayV">{t("FOOTER_COPYRIGHT")}</Typography>
           </div>
 
-          <div className="flex grow shrink-0 px-12 justify-end">
-            <PoweredByLinks />
+          <div className="flex grow shrink-0 justify-end">
+          <Typography variant="body2" color="text.grayV" className="font-bold uppercase">{t("FOOTER_SUPPORT")}</Typography>
           </div>
         </Toolbar>
       </AppBar>

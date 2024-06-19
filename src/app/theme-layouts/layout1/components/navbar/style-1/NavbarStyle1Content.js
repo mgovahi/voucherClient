@@ -111,19 +111,19 @@ function NavbarStyle1Content(props) {
             }}
           >
             <Typography variant="body3" color="#fff" className="font-bold">
-              {t("NEW_DEPOSIT")}
+              {t("VOUCHER_GENERATE")}
             </Typography>
             <Typography
               variant="small"
               color={theme.palette.custome.lightPurple}
-              className="font-bold text-[12px]"
+              className="text-[12px]"
             >
-              {t("DEPOSIT_SENTENCE")}
+              {t("VOUCHER_GENERATE_SENTENCE")}
             </Typography>
             <Button
               sx={{
                 backgroundColor: theme.palette.custome.yellow,
-                width: "90px",
+                width: "100px",
                 minHeight: "30px",
                 maxHeight: "30px",
                 fontSize: "12px",
@@ -134,15 +134,15 @@ function NavbarStyle1Content(props) {
               }}
               className="ltr:ml-auto"
               onClick={() => {
-                navigate("/AddDeposit");
+                navigate("/voucherGenerate");
               }}
             >
-              {t("ADD_DEPOSIT")}
+              {t("NEW_VOUCHER")}
             </Button>
           </Box>
           <img
-            src="/assets/images/new-payment.svg"
-            className="absolute -left-1 bottom-0 xs:w-[17rem] lg:w-160"
+            src="/assets/images/Voucher-SittingMan.svg"
+            className="absolute -left-1 -bottom-1 w-[17rem]"
           />
         </Box>
         <div className="py-20 border-t hidden">

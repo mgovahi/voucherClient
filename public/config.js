@@ -178,7 +178,9 @@ window.appSettings.resources = {
       VOUCHER_CODE_ALERT_TWO: "The transfer code is confidential, please be careful when moving it and making it available.",
       VOUCHER_GENERATION_SUCCESS_ALERT: "Voucher was successfully generated!",
       VOUCHER_GENERATION_CODE_ALERT: "Your Voucher was created with the following code.",
-
+      VOUCHER_GENERATE_SENTENCE: "For new voucher, generate and use.",
+      FOOTER_COPYRIGHT: "©2024 | VoucherUSD",
+      FOOTER_SUPPORT: "Support 021-2233"
     },
   },
   fa: {
@@ -471,7 +473,10 @@ window.appSettings.resources = {
       VOUCHER_CODE_ALERT_ONE: "کد حواله فقط یک بار قابل کپی می‌باشد.",
       VOUCHER_CODE_ALERT_TWO: "کد حواله محرمانه است لطفا در جابجایی و در اختیار قرار دادن آن دقت نمایید.",
       COPY_TOOLTIP: "کپی انجام شد",
-      NEW_VOUCHER: "حواله جدید"
+      NEW_VOUCHER: "حواله جدید",
+      VOUCHER_GENERATE_SENTENCE: "حواله جدید، تولید و استفاده کنید.",
+      FOOTER_COPYRIGHT: "© 1403  |  وچر یو‌اس‌دی ",
+      FOOTER_SUPPORT: "پشتیبانی 2233-021 "
     },
   },
 };

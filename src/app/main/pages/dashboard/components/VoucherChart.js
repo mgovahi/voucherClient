@@ -217,8 +217,8 @@ const VoucherChart = () => {
               </Typography>
               <Button
                 sx={{
-                  width: "90px",
-                  height: "28px",
+                  width: "100px",
+                  height: "30px",
                   fontSize: "12px",
                   color: "#fff",
                   fontWeight: "bold",
