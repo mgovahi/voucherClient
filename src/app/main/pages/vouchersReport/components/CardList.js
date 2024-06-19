@@ -1,0 +1,385 @@
+import _ from "@lodash";
+import { lighten, useTheme } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import { motion } from "framer-motion";
+import { useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Box } from "@mui/system";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Switch from "@mui/material/Switch";
+import FusePageSimpleHeader from "@fuse/core/FusePageSimple/FusePageSimpleHeader";
+
+import {
+    Table,
+    TableContainer,
+    TableHead,
+    TableRow,
+    TableCell,
+    TableBody,
+    TablePagination,
+    Chip,
+    Paper,
+} from "@mui/material";
+import FusePageSimple from "@fuse/core/FusePageSimple";
+import useThemeMediaQuery from "@fuse/hooks/useThemeMediaQuery";
+import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
+import { useTranslation } from "react-i18next";
+import { styled } from "@mui/material/styles";
+import history from "@history";
+import { Controller, useForm } from "react-hook-form";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import moment from "jalali-moment";
+import ButtonComponent from "app/shared-components/ButtonComponent/ButtonComponent";
+import VoucherInfo from "./VoucherInfo";
+function CardList(props) {
+    const { t } = useTranslation();
+    const theme = useTheme();
+    const [page, setPage] = useState(0);
+    const { data} = props;
+    const [rowsPerPage, setRowsPerPage] = useState(10);
+    const [sampleDataList, setSampleDataList] = useState(props.data || []);
+
+    const handleChangePage = (event, newPage) => {
+        setPage(newPage);
+    };
+
+    const handleChangeRowsPerPage = (event) => {
+        setRowsPerPage(+event.target.value);
+        setPage(0);
+    };
+
+    const handleClose = () => {
+        setDetails({ showModal: false, data: { voucherInfo: {} } });
+    };
+    const [details, setDetails] = useState({
+        showModal: false,
+        data: {},
+    });
+    const isLoadingData = true;
+
+    const handleClickOpen = (params) => {
+        setDetails({
+            showModal: true,
+            data: { voucherInfo: params },
+        });
+
+    };
+
+
+    const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down("sm"));
+
+
+    const handleRemoveItem = (removedItem) => {
+        const updatedList = sampleDataList.filter(item => item.code !== removedItem.code);
+        setSampleDataList(updatedList);
+    };
+
+
+    const statusMap = {
+        ACTIVE: t("ACTIVE"),
+        CANCELED: t("CANCELED"),
+        MERGED: t("MERGED"),
+        USED: t("USED"),
+    };
+    const statusMapColor = {
+        ACTIVE: "successLight",
+        CANCELED: "errorLight",
+        MERGED: "warningLight",
+        USED: "infoLight",
+    };
+
+
+
+
+    const listItems =
+        sampleDataList && sampleDataList.length
+            ? sampleDataList.map((row) => {
+                return (
+                    <Paper
+                        className="flex flex-col flex-auto p-16 xs:p-24 shadow rounded-2xl mx-16"
+                        sx={{
+                            backgroundColor: theme.palette.custome.cyanBlueLighte,
+                            " .MuiInputBase-input, .MuiInputBase-formControl": {
+                                backgroundColor: "#fff",
+                            },
+                            " label": {
+                                color: theme.palette.text.disabled,
+                                marginRight: 2,
+                                fontSize: '0.9em',
+
+
+                            },
+                            " span": {
+                                [theme.breakpoints.down("sm")]: {
+                                    fontSize: "0.9em",
+                                },
+                            },
+                        }}
+                    >
+                        <Box className="grid  sm:grid-cols-2 xs:grid-cols-2 gap-24">
+                            <Box className="sm:pr-36">
+                                <label variant="string">{t("VOUCHER_CODE")}</label>
+                                <Typography variant="string">{row.code}</Typography>
+                            </Box>
+
+                            <Box>
+                                <label variant="string">{t("CURRENCY")}</label>
+                                <Typography
+                                    variant="string"
+                                    sx={{
+                                        direction: "ltr",
+                                    }}
+                                >
+                                    {row.currency}
+                                </Typography>
+                            </Box>
+
+                            <Box className="sm:pr-36">
+                                <label variant="string">{t("AMOUNT")}</label>
+                                <Typography
+                                    variant="string"
+                                    sx={{
+                                        direction: "ltr",
+                                    }}
+                                >
+                                    {row.amount.toAmount()}
+                                </Typography>
+                            </Box>
+
+                            <Box className="">
+                                <label variant="string">{t("TRANSACTION_FEE")}</label>
+                                <Typography
+                                    variant="string"
+                                    sx={{
+                                        direction: "ltr",
+                                    }}
+                                >
+                                    {row.wage}
+                                </Typography>
+                            </Box>
+                            <Box className="sm:pr-36">
+                                <label className="w-28 inline-block" variant="string">{t("CHANNEL")}</label>
+                                <Typography
+                                    variant="string"
+                                    sx={{
+                                        direction: "ltr",
+
+                                    }}
+                                >
+                                    {row.channel}
+                                </Typography>
+                            </Box>
+
+                            <Box className="">
+                                <label variant="string">{t("CREATE_DATE")}</label>
+                                <Typography
+                                    variant="string"
+                                    sx={{
+                                        direction: "ltr",
+                                    }}
+                                >
+                                    {moment(new Date(row.createDate))
+                                        .locale("fa")
+                                        .format("YYYY-MM-DD hh:mm:ss")}
+                                </Typography>
+                            </Box>
+
+                            <Box className="sm:pr-36">
+                                <label variant="string">{t("TRANSACTION_ID")}</label>
+                                <Typography
+                                    variant="string"
+                                    sx={{
+                                        direction: "ltr",
+                                    }}
+                                >
+                                    {row.transactionId}
+                                </Typography>
+                            </Box>
+
+                            <Box className="">
+                                <label variant="string">{t("USED_DATE")}</label>
+                                <Typography
+                                    variant="string"
+                                    sx={{
+                                        direction: "ltr",
+                                    }}
+                                >
+                                    {moment(new Date(row.usedDate))
+                                        .locale("fa")
+                                        .format("YYYY-MM-DD - hh:mm:ss")}
+                                </Typography>
+                            </Box>
+                            <Box className="sm:pr-36">
+                                <label variant="string">{t("STATUS")}</label>
+                                <Chip
+                                    skin="light"
+                                    //label={params.row.status=="1" ? <Translations  text ="DEPOSITED" /> :  <Translations text="CANCELD" />}
+                                    label={statusMap[row.status]}
+                                    color={statusMapColor[row.status]}
+                                    sx={{
+                                        textTransform: 'uppercase',
+                                        height: 20,
+                                        maxWidth: "initial",
+                                        mt: 0.4,
+                                        fontSize: "1.1rem",
+                                        fontWeight: "normal",
+                                    }}
+                                ></Chip>
+                            </Box>
+
+                            <Box className="">
+                                <label variant="string">{t("ACTIONS")}</label>
+
+                                {row.status == "ACTIVE" ? (
+                                    <ButtonComponent
+                                        color="error"
+                                        skin="light"
+                                        size="small"
+                                        //disabled={isLoading}
+                                        isLoading={isLoadingData}
+                                        onClick={() => handleRemoveItem(row)}
+                                        variant="outlined"
+                                        sx={{ padding: "3px" }}
+                                        endIcon={
+                                            <FuseSvgIcon
+                                                sx={{
+
+                                                    stroke: "transparent !important",
+                                                    fill: "#fff",
+                                                }}
+                                            >
+                                                {"mv-icons:icon-Cancel"}
+                                            </FuseSvgIcon>
+                                        }
+                                    >
+                                        {t("CANCELLATION")}
+                                    </ButtonComponent>
+                                ) : (
+                                    <></>
+                                )
+                                }
+
+                            </Box>
+
+                            <Box className="sm:pr-36">
+                                <label variant="string">{t("DETAILS")}</label>
+                                {
+                                    <ButtonComponent
+                                        color="info"
+                                        skin="light"
+                                        size="small"
+                                        //disabled={isLoading}
+                                        isLoading={isLoadingData}
+                                        onClick={() => handleClickOpen(row)}
+                                        variant="contained"
+                                        sx={{ padding: "5px" }}
+                                        startIcon={
+                                            <FuseSvgIcon
+                                                sx={{
+                                                    stroke: "transparent !important",
+                                                    fill: "#fff",
+                                                }}
+                                            >
+                                                {"mv-icons:icon-ListAlt"}
+                                            </FuseSvgIcon>
+                                        }
+                                    >
+                                        {t("DETAILS")}
+                                    </ButtonComponent>
+                                }
+                            </Box>
+
+
+
+                        </Box>
+                    </Paper>
+                );
+            })
+            : "";
+
+    return (
+        <>
+            {data.length ? (
+                <>
+                    <Box className="grid gap-16">{listItems}</Box>
+                    <TablePagination
+                        rowsPerPageOptions={[10]}
+                        component="div"
+                        count={data.length}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        onPageChange={handleChangePage}
+                        onRowsPerPageChange={handleChangeRowsPerPage}
+                        labelDisplayedRows={(info) => {
+                            var strFormat = function (str, args) {
+                                if (args) {
+                                    console.log(args);
+                                    for (let i = 0; i < args.length; i++)
+                                        str = str.replace("{" + i + "}", args[i]);
+                                }
+                                return str;
+                            };
+
+                            let text = t("LABLE_DISPLAY_ROWS");
+                            return strFormat(text, [info.from, info.to, info.count]);
+                        }}
+                    />
+
+                    <Dialog
+                        open={details.showModal}
+                        fullScreen={isMobile ? true : false}
+                        maxWidth="lg"
+                        fullWidth
+                        keepMounted
+                        onClose={handleClose}
+                    >
+                        <DialogTitle>
+                            <Box className="">
+                                <FusePageSimpleHeader
+                                    header={t("VOUCHER_DETAIL")}
+                                    headerActions={
+                                        <i className="inline-block rounded-xl ">
+                                            <FuseSvgIcon
+                                                cursor="pointer"
+                                                color="gray"
+                                                cer
+                                                size={20}
+                                                onClick={handleClose}
+                                            >
+                                                {"heroicons-outline:x"}
+                                            </FuseSvgIcon>
+                                        </i>
+                                    }
+                                ></FusePageSimpleHeader>
+                            </Box>
+                        </DialogTitle>
+                        <DialogContent>
+                            <VoucherInfo info={details.data.voucherInfo} onCancelClick={handleClose}></VoucherInfo>
+                        </DialogContent>
+                    </Dialog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </>
+            ) : (
+                <></>
+            )}
+        </>
+    );
+}
+
+export default CardList;

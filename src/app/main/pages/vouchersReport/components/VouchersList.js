@@ -27,16 +27,13 @@ import FusePageSimpleHeader from "@fuse/core/FusePageSimple/FusePageSimpleHeader
 import { useThemeMediaQuery } from "@fuse/hooks";
 import VoucherInfo from "./VoucherInfo";
 import ButtonComponent from "app/shared-components/ButtonComponent/ButtonComponent";
-
-
+import CardList from "./CardList";
 
 const VouchersList = (props) => {
   const [exportLoading, setExportLoading] = useState(false);
   const { t } = useTranslation();
   const theme = useTheme();
   const dispatch = useDispatch();
-
-
 
   const [details, setDetails] = useState({
     showModal: false,
@@ -51,11 +48,12 @@ const VouchersList = (props) => {
     });
   };
 
-
   const [sampleDataList, setSampleDataList] = useState(props.data || []);
 
   const handleRemoveItem = (removedItem) => {
-    const updatedList = sampleDataList.filter(item => item.code !== removedItem.code);
+    const updatedList = sampleDataList.filter(
+      (item) => item.code !== removedItem.code
+    );
     setSampleDataList(updatedList);
   };
 
@@ -81,9 +79,9 @@ const VouchersList = (props) => {
 
   const statusMap = {
     ACTIVE: t("ACTIVE"),
-    CANCELED:t("CANCELED"),
+    CANCELED: t("CANCELED"),
     MERGED: t("MERGED"),
-    USED:t("USED"), 
+    USED: t("USED"),
   };
   const statusMapColor = {
     ACTIVE: "successLight",
@@ -200,7 +198,7 @@ const VouchersList = (props) => {
           label={statusMap[params.row.status]}
           color={statusMapColor[params.row.status]}
           sx={{
-            textTransform: 'uppercase',
+            textTransform: "uppercase",
             height: 20,
             maxWidth: "initial",
             mt: 0.4,
@@ -217,34 +215,32 @@ const VouchersList = (props) => {
       headerName: t("ACTIONS"),
       renderCell: (params) => {
         {
-            return params.row.status == "ACTIVE" ? (
-              <ButtonComponent
-                color="error"
-                skin="light"
-                size="small"
-                //disabled={isLoading}
-                isLoading={isLoadingData}
-                onClick={() => handleRemoveItem(params.row)}
-                variant="outlined"
-                sx={{ padding: "7px",minWidth:"87px!important"}}
-                endIcon={
-                  <FuseSvgIcon
-                    sx={{
-
-                      stroke: "transparent !important",
-                      fill: "#fff",
-                    }}
-                  >
-                    {"mv-icons:icon-Cancel"}
-                  </FuseSvgIcon>
-                }
-              >
-                {t("CANCELLATION")}
-              </ButtonComponent>
-            ) : (
-              <></>
-            );
-        
+          return params.row.status == "ACTIVE" ? (
+            <ButtonComponent
+              color="error"
+              skin="light"
+              size="small"
+              //disabled={isLoading}
+              isLoading={isLoadingData}
+              onClick={() => handleRemoveItem(params.row)}
+              variant="outlined"
+              sx={{ padding: "7px", minWidth: "87px!important" }}
+              endIcon={
+                <FuseSvgIcon
+                  sx={{
+                    stroke: "transparent !important",
+                    fill: "#fff",
+                  }}
+                >
+                  {"mv-icons:icon-Cancel"}
+                </FuseSvgIcon>
+              }
+            >
+              {t("CANCELLATION")}
+            </ButtonComponent>
+          ) : (
+            <></>
+          );
         }
       },
     },
@@ -342,23 +338,24 @@ const VouchersList = (props) => {
           {t("VOUCHERS")}
         </Typography>
       </Box>
-      <Box sx={{ ...dataGridStyles, minHeight: "500px",  
-    "& .MuiDataGrid-cell, & .MuiDataGrid-cell:not(.MuiDataGrid-cellCheckbox):first-of-type":
-    {
-      paddingRight:'0px',
-      paddingLeft:'0px',
-      // justifyContent: "center",
-    },
-    "& .muirtl-1w8msm6-MuiDataGrid-root .MuiDataGrid-cell:last-of-type":
-    {
-      // paddingRight:'0px',
-      paddingLeft:'0px',
-      justifyContent: "center",
-    },
-   
-    
-    }}>
-
+      <Box
+        sx={{
+          ...dataGridStyles,
+          minHeight: "500px",
+          "& .MuiDataGrid-cell, & .MuiDataGrid-cell:not(.MuiDataGrid-cellCheckbox):first-of-type":
+            {
+              paddingRight: "0px",
+              paddingLeft: "0px",
+              // justifyContent: "center",
+            },
+          "& .muirtl-1w8msm6-MuiDataGrid-root .MuiDataGrid-cell:last-of-type": {
+            // paddingRight:'0px',
+            paddingLeft: "0px",
+            justifyContent: "center",
+          },
+        }}
+      >
+        {/* <Hidden mdDown> */}
         <DataGrid
           pagination
           rows={sampleDataList}
@@ -388,12 +385,28 @@ const VouchersList = (props) => {
             MuiTablePagination: {
               labelRowsPerPage: t("ITEMS_PER_PAGE"),
               labelDisplayedRows: ({ from, to, count }) =>
-                `${t("ROW_NUMBER")} ${from} ${t("PAGE_TO")} ${to} از ${count !== -1 ? count : `بیشتر از ${to}`
+                `${t("ROW_NUMBER")} ${from} ${t("PAGE_TO")} ${to} از ${
+                  count !== -1 ? count : `بیشتر از ${to}`
                 }`,
             },
           }}
         />
+        {/* </Hidden> */}
+        {/* <Hidden mdUp>
 
+         <CardList
+            data={data}
+            statusMap={statusMap}
+            statusMapColor={statusMapColor}
+            onApprovePurchases={onApprovePurchases}
+            total={total}
+            pageSize={pageSize}
+            onPageChange={onPageChange}
+            onPageSizeChange={onPageSizeChange}
+            // handleClickOpen={handleClickOpen}
+            // onPurchasesAdvice={handlePurchasesAdvice}
+          />
+ </Hidden> */}
       </Box>
       <Dialog
         open={details.showModal}
@@ -424,7 +437,10 @@ const VouchersList = (props) => {
           </Box>
         </DialogTitle>
         <DialogContent>
-          <VoucherInfo info={details.data.voucherInfo}  onCancelClick={handleClose}></VoucherInfo>
+          <VoucherInfo
+            info={details.data.voucherInfo}
+            onCancelClick={handleClose}
+          ></VoucherInfo>
         </DialogContent>
       </Dialog>
     </>

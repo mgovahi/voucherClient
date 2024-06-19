@@ -2,7 +2,7 @@ import { useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import { motion } from "framer-motion";
 import { Box, border } from "@mui/system";
-import { Paper, TextField, Button } from "@mui/material";
+import { Paper, TextField, Button, Hidden } from "@mui/material";
 import FusePageSimple from "@fuse/core/FusePageSimple";
 import { useTranslation } from "react-i18next";
 import { styled } from "@mui/material/styles";
@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import FusePageSimpleHeader from "@fuse/core/FusePageSimple/FusePageSimpleHeader";
 
 import sx from "@mui/system/sx";
+import CardList from "./CardList";
 function VouchersReport(props) {
   const { t } = useTranslation();
   const naviage = useNavigate();
@@ -42,14 +43,14 @@ function VouchersReport(props) {
   return (
     <>
       <Paper className="w-full rounded">
-      <FusePageSimpleHeader
-        header={t("VOUCHERS_REPORT")}
-        // inner
-        headerActions={
-          <>
-       
-          
-       <Button
+        <FusePageSimpleHeader
+          header={t("VOUCHERS_REPORT")}
+          // inner
+          headerActions={
+            <>
+
+
+              <Button
                 sx={{
                   fontSize: { xs: "12px", md: "inherit" }
                 }}
@@ -70,34 +71,44 @@ function VouchersReport(props) {
                 {t("VOUCHER_GENERATE")}
 
               </Button>
-          </>
-        }
-      ></FusePageSimpleHeader>
+            </>
+          }
+        ></FusePageSimpleHeader>
 
-      
-            <motion.div
-              className="grid grid-cols-1  gap-24 w-full min-w-0 "
-              variants={container}
-              initial="hidden"
-              animate="show"
-            >
 
-              <motion.div variants={item} className="col-span-1">
-                <Box>
-                  <SearchForm />
-                </Box>
-                <Box>
-                  <VouchersList
-                    data={vouchers.list}
-                    total={vouchers.totalInfo}
-                    onPageSizeChange={onPageSizeChange}
-                  />
-                </Box>
-              </motion.div>
-            </motion.div>
-         
-         
-            </Paper>
+        <motion.div
+          className="grid grid-cols-1  gap-24 w-full min-w-0 "
+          variants={container}
+          initial="hidden"
+          animate="show"
+        >
+
+          <motion.div variants={item} className="col-span-1">
+            <Box>
+              <SearchForm />
+            </Box>
+            <Box>
+
+              <Hidden mdUp>
+                <CardList 
+                 data={vouchers.list ? vouchers.list :[]}></CardList>
+              </Hidden>
+              <Hidden mdDown>
+                <VouchersList
+                  data={vouchers.list}
+                  total={vouchers.totalInfo}
+                  onPageSizeChange={onPageSizeChange}
+                />
+              </Hidden>
+
+
+
+            </Box>
+          </motion.div>
+        </motion.div>
+
+
+      </Paper>
     </>
   );
 }

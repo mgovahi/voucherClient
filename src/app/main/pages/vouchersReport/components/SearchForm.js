@@ -120,7 +120,7 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
             flexDirection: { xs: "column", sm: "row", },
             // columnGap: { xs: 2, sm: 2.5, md: 2, lg: 3, xl:4},
             "  .MuiFormControl-root": {
-              flex: { md: '1 1 calc(33.333% - 20px)', lg: 1, xl: 1 },
+              flex: {xs: '1 1 100%', sm: '1 1 calc(50% - 20px)', md: '1 1 calc(33.333% - 20px)', lg: 1, xl: 1 },
               // m: { sm: "0.1rem 0.5rem", xs: "0.1rem 0.5rem", md: "0.1rem 0.5rem" },
 
               width: {
