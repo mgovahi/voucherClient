@@ -4,16 +4,28 @@ import NumericFormat from "react-number-format";
 import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
 
 const CustomNumericFormat = ({ value, errors, helperText, onChange }) => {
-  const [number, setNumber] = useState(value ? value : "");
+  const [number, setNumber] = useState(value ? value : 0);
+
+  const handleIncrement = () => {
+    const newValue = number === "" ? 0 : number + 1;
+    onChange(newValue);
+    setNumber(newValue);
+  };
+
+  const handleDecrement = () => {
+    const newValue = number === "" ? 0 : number - 1;
+    onChange(newValue);
+    setNumber(newValue);
+  };
 
   return (
     <NumericFormat
       value={number}
       defaultValue={number}
       onValueChange={(values) => {
-        onChange(values.floatValue ? values.floatValue : "");
-        setNumber(values.floatValue ? values.floatValue : "");
-        console.log(values)
+        const newValue = values.floatValue !== undefined ? values.floatValue : "";
+        onChange(newValue);
+        setNumber(newValue);
       }}
       customInput={TextField}
       sx={{
@@ -48,21 +60,14 @@ const CustomNumericFormat = ({ value, errors, helperText, onChange }) => {
         },
         startAdornment: (
           <IconButton
-            onClick={() => {
-              onChange(value + 1);
-              setNumber((prev) => prev + 1);
-            }}
+          onClick={handleIncrement}
           >
             <FuseSvgIcon>mv-icons-mc:icon-Plus-Square</FuseSvgIcon>
           </IconButton>
         ),
         endAdornment: (
           <IconButton
-            onClick={() => {
-              onChange(value - 1);
-              setNumber((prev) => prev - 1);
-            }}
-            disabled={number === 0}
+          onClick={handleDecrement} disabled={number === 0}
           >
             <FuseSvgIcon>mv-icons-mc:icon-Minus-Square</FuseSvgIcon>
           </IconButton>
