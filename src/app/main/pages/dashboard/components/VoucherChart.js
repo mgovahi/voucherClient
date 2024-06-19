@@ -13,13 +13,15 @@ import fa from "apexcharts/dist/locales/fa.json";
 import { useTranslation } from "react-i18next";
 import FusePageSimpleHeader from "@fuse/core/FusePageSimple/FusePageSimpleHeader";
 import { Box } from "@mui/system";
-import { selectCurrentLanguage } from "app/store/i18nSlice";
+import { selectCurrentLanguage, selectCurrentLanguageDirection } from "app/store/i18nSlice";
 import { useSelector } from "react-redux";
 import { useThemeMediaQuery } from "@fuse/hooks";
+import { useNavigate } from "react-router-dom";
 
 const VoucherChart = () => {
   let pastSevenDays = [];
   const currentLanguage = useSelector(selectCurrentLanguage);
+  console.log(currentLanguage, "moon")
 
   for (let i = 0; i <= 6; i++) {
     const currentDate = moment(new Date());
@@ -31,8 +33,10 @@ const VoucherChart = () => {
   const theme = useTheme();
   const { t } = useTranslation();
 
-  const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down("sm"));
-  const isSmallMobile = useMediaQuery("(max-width:400px)");
+  // const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down("sm"));
+  // const isSmallMobile = useMediaQuery("(max-width:400px)");
+  const navigate = useNavigate();
+  const langDirection = useSelector(selectCurrentLanguageDirection);
 
   const chartData = useMemo(() => {
     return {
@@ -153,15 +157,15 @@ const VoucherChart = () => {
       sx={{
         position: "relative",
         ".apexcharts-align-right": {
-          flexDirection: "row-reverse",
-          justifyContent: "flex-start!important",
+          flexDirection: langDirection === "rtl" && "row-reverse",
+          justifyContent: langDirection === "rtl" && "flex-start!important",
           padding: { xs: "0 10px 0 0" },
           columnGap: { xs: "0", md: "20px" },
           rowGap: "5px",
 
           ".apexcharts-legend-series": {
             display: "flex !important",
-            flexDirection: "row-reverse",
+            flexDirection: langDirection === "rtl" && "row-reverse",
             gap: "7px"
           },
         },
@@ -185,7 +189,7 @@ const VoucherChart = () => {
           <Box
             sm={10}
             sx={{
-              backgroundColor: theme.palette.custome.red,
+              backgroundColor: theme.palette.secondary.main,
               width: { xs: "auto", md: "230px" },
               height: { xs: "200px", sm: "320px" },
               borderRadius: "8px",
@@ -207,13 +211,12 @@ const VoucherChart = () => {
               <Typography
                 variant="small"
                 color={theme.palette.custome.lightPurple}
-                className="font-bold text-[12px]"
+                className="text-[12px]"
               >
                 {t("DEPOSIT_SENTENCE")}
               </Typography>
               <Button
                 sx={{
-                  backgroundColor: theme.palette.custome.yellow,
                   width: "90px",
                   height: "28px",
                   fontSize: "12px",
@@ -223,6 +226,10 @@ const VoucherChart = () => {
                   zIndex: 2,
                 }}
                 className="ltr:ml-auto"
+                color="primary"
+                size="middle"
+                variant="contained"
+                onClick={() => navigate("/addDeposit")}
               >
                 {t("ADD_DEPOSIT")}
               </Button>
