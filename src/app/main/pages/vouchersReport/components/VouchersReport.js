@@ -39,6 +39,22 @@ function VouchersReport(props) {
   const onPageSizeChange = (pageSize) => {
     //setReportData({ ...reportData, pageSize: pageSize });
   };
+  
+  const onSortChange = (model) => {
+    console.log(model);
+  };
+
+  const onCancelVoucher = (data) => {
+    let list = [...vouchers.list];
+    let index = list.findIndex((v) => v.code == data.code);
+    if (index > -1) {
+      list[index]["status"] = "CANCELED";
+      setVouchers({
+        ...vouchers,
+        list: list,
+      });
+    }
+  };
 
   return (
     <>
@@ -64,7 +80,7 @@ function VouchersReport(props) {
                   <FuseSvgIcon sx={{
                     stroke: "transparent !important",
                   }} >
-                    mv-icons:icon-icon-menu-vouchers
+                    mv-icons:icon-menu-new-voucher
                   </FuseSvgIcon>
                 }
               >
@@ -98,6 +114,8 @@ function VouchersReport(props) {
                   data={vouchers.list}
                   total={vouchers.totalInfo}
                   onPageSizeChange={onPageSizeChange}
+                  onSortChange={onSortChange}
+                  onCancelVoucher={onCancelVoucher}
                 />
               </Hidden>
 

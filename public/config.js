@@ -180,7 +180,11 @@ window.appSettings.resources = {
       VOUCHER_GENERATION_CODE_ALERT: "Your Voucher was created with the following code.",
       VOUCHER_GENERATE_SENTENCE: "For new voucher, generate and use.",
       FOOTER_COPYRIGHT: "©2024 | VoucherUSD",
-      FOOTER_SUPPORT: "Support 021-2233"
+      FOOTER_SUPPORT: "Support 021-2233",
+      CANCEL_VOUCHER: "Cancel Voucher",
+      CANCEL_VOUCHER_CONFIRM_MESSAFE: "Are you sure about canceling the remittance?",
+      YES: "yes"
+
     },
   },
   fa: {
@@ -476,7 +480,10 @@ window.appSettings.resources = {
       NEW_VOUCHER: "حواله جدید",
       VOUCHER_GENERATE_SENTENCE: "حواله جدید، تولید و استفاده کنید.",
       FOOTER_COPYRIGHT: "© 1403  |  وچر یو‌اس‌دی ",
-      FOOTER_SUPPORT: "پشتیبانی 2233-021 "
+      FOOTER_SUPPORT: "پشتیبانی 2233-021 ",
+      CANCEL_VOUCHER: "ابطال حواله",
+      CANCEL_VOUCHER_CONFIRM_MESSAFE: "آیا از ابطال حواله اطمینان دارید؟",
+      YES: "بلی"
     },
   },
 };
