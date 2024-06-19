@@ -38,11 +38,11 @@ const VoucherChart = () => {
     return {
       series: [
         {
-          name: t("GENERATED_VOUCHERS"),
+          name: t("GENERATED_VOUCHER"),
           data: [10, 12, 15, 17, 15, 7, 5],
         },
         {
-          name: t("USED_VOUCHERS"),
+          name: t("USED_VOUCHER"),
           data: [-10, -12, -15, -17, -15, -7, -5],
         },
       ],
@@ -111,7 +111,7 @@ const VoucherChart = () => {
           show: true,
           position: "top",
           horizontalAlign: "right",
-          fontSize: isMobile ? "12px" : "15px",
+          fontSize: "12px",
           fontFamily: "IRANYekanX",
           labels: {
             colors: theme.palette.text.grayDay,
@@ -124,7 +124,7 @@ const VoucherChart = () => {
               theme.palette.secondary.main,
             ],
             radius: 5,
-            offsetY: -3,
+            // offsetY: -3,
             //offsetX: -130,
           },
           itemMargin: {
@@ -145,7 +145,7 @@ const VoucherChart = () => {
         },
       },
     };
-  }, [isMobile, isSmallMobile]);
+  }, []);
 
   return (
     <Paper
@@ -159,8 +159,10 @@ const VoucherChart = () => {
           columnGap: { xs: "0", md: "20px" },
           rowGap: "5px",
 
-          ".apexcharts-legend-marker": {
-            marginRight: "5px",
+          ".apexcharts-legend-series": {
+            display: "flex !important",
+            flexDirection: "row-reverse",
+            gap: "7px"
           },
         },
         ".FusePageSimple-header": {

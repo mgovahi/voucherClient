@@ -33,25 +33,25 @@ const VouchersPage = () => {
     {
       icon: "mv-icons-mc:icon-Voucher-Generated-1",
       value: "$809,450",
-      title: "GENERATED_VOUCHERS",
+      title: "GENERATED_VOUCHER_AMOUNT",
       color: theme.palette.primary,
     },
     {
       icon: "mv-icons-mc:icon-Voucher-Generated",
       value: "$686,304",
-      title: "USED_VOUCHERS",
+      title: "USED_VOUCHER_AMOUNT",
       color: theme.palette.secondary,
     },
     {
       icon: "mv-icons-mc:icon-Voucher",
       value: "$123,146",
-      title: "UNUSED_VOUCHER",
+      title: "UNUSED_VOUCHER_AMOUNT",
       color: theme.palette.info,
     },
     {
       icon: "mv-icons-mc:icon-Voucher-1",
       value: "$104",
-      title: "CANCELD_VOUCHER",
+      title: "CANCELED_VOUCHER_AMOUNT",
       color: theme.palette.yellow,
     },
   ]);
