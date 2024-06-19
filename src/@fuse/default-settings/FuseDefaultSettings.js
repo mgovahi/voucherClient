@@ -100,8 +100,8 @@ export const defaultThemeOptions = (direction) => {
   return {
     typography: {
       fontFamily: [
-        direction === "rtl" ? "IRANYekanX" : "IRANYekanXNumEnBold ",
-        direction === "ltr" ? "IRANYekanXNumEnBold " : "IRANYekanX",
+        direction === "rtl" ? "IRANYekanX" : "IRANYekanXNumEn ",
+        direction === "ltr" ? "IRANYekanXNumEn " : "IRANYekanX",
         "Inter var",
         "Roboto",
         '"Helvetica"',
