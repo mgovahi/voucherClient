@@ -23,6 +23,7 @@ import EventIcon from "@mui/icons-material/Event";
 import { useState } from "react";
 import Autocomplete from "@mui/material/Autocomplete";
 import ButtonComponent from "app/shared-components/ButtonComponent/ButtonComponent";
+import { getFirstDayOfMonth } from "@fuse/utils/dateUtils";
 
 function SearchForm({ onSearchClick, loading, isAdmin }) {
   const { t } = useTranslation();
@@ -45,7 +46,7 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
   });
   const channelMap = [
     {
-      value: null,
+      value: "-1",
       label: t('ALL_ITEMS'),
     },
     {
@@ -63,7 +64,7 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
   ];
   const statusMap = [
     {
-      value: null,
+      value: "-1",
       label: t('ALL_ITEMS'),
     },
     {
@@ -83,6 +84,10 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
       value: "CANCELED",
     },
   ];
+
+  // Set a specific default date
+  let firstDayOfMonth = getFirstDayOfMonth(null, "fa");
+
   const handleSearchClick = () => {
     let values = getValues();
     if (values.Status == "ALL") {
@@ -106,7 +111,7 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
       setShopList(dataShop?.result);
     }
   };
-  // console.log(getValues(),"get");
+
   return (
     <>
       <Box sx={{ m: "2rem 2rem" }}>
@@ -120,9 +125,8 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
             flexDirection: { xs: "column", sm: "row", },
             // columnGap: { xs: 2, sm: 2.5, md: 2, lg: 3, xl:4},
             "  .MuiFormControl-root": {
-              flex: {xs: '1 1 100%', sm: '1 1 calc(50% - 20px)', md: '1 1 calc(33.333% - 20px)', lg: 1, xl: 1 },
+              flex: { xs: '1 1 100%', sm: '1 1 calc(50% - 20px)', md: '1 1 calc(33.333% - 20px)', lg: 1, xl: 1 },
               // m: { sm: "0.1rem 0.5rem", xs: "0.1rem 0.5rem", md: "0.1rem 0.5rem" },
-
               width: {
                 xs: "100%",
               },
@@ -146,27 +150,12 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
               )}
             />
           </FormControl>
-          {/* <FormControl>
-            <Controller
-              name="client"
-              control={control}
-              render={({ field: { value, onChange, onBlur } }) => (
-                <TextField
-                  sx={{ flex: 1 }}
-                  onChange={onChange}
-                  value={value}
-                  inputProps={{
-                    autocomplete: "off",
-                  }}
-                  label={t("CLIENT")}
-                />
-              )}
-            />
-          </FormControl> */}
+
           <FormControl>
             <InputLabel>{t("CHANNEL")}</InputLabel>
             <Controller
               name="Status"
+
               control={control}
               render={({ field: { value, onChange, onBlur } }) => (
                 <Select
@@ -175,7 +164,7 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
                   labelId="demo-simple-select-outlined-label"
                   name="status"
                   onChange={onChange}
-                  defaultValue={null}
+                  defaultValue={"-1"}
                   value={value}
                   sx={{ flex: 1, width: { xs: "100%", sm: "auto" } }}
                 >
@@ -223,6 +212,7 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
                       },
                     },
                   }}
+                  defaultValue={firstDayOfMonth}
                   value={value}
                   maxDate={new Date()}
                   label={t("FROM_DATE")}
@@ -275,6 +265,7 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
                       },
                     },
                   }}
+                  defaultValue={firstDayOfMonth}
                   value={value}
                   renderInput={(params) => (
                     <TextField {...params} sx={{ flex: 1 }} />
@@ -330,7 +321,7 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
                   labelId="demo-simple-select-outlined-label"
                   name="status"
                   onChange={onChange}
-                  defaultValue={null}
+                  defaultValue={"-1"}
                   value={value}
                   sx={{ flex: 1, width: { xs: "100%", sm: "auto" } }}
                 >

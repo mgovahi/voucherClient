@@ -6,6 +6,7 @@ import {
   Chip,
   Typography,
   Hidden,
+  Popover
 } from "@mui/material";
 import Box from "@mui/material/Box";
 import { DataGrid, faIR } from "@mui/x-data-grid";
@@ -41,6 +42,15 @@ const VouchersList = (props) => {
   });
   const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down("sm"));
 
+  const [cancel, setCancel] = useState({
+    confirm: false,
+    anchorEl: null,
+    data: null,
+  });
+
+
+
+  
   const handleClickOpen = (params) => {
     setDetails({
       showModal: true,
@@ -50,12 +60,12 @@ const VouchersList = (props) => {
 
   const [sampleDataList, setSampleDataList] = useState(props.data || []);
 
-  const handleRemoveItem = (removedItem) => {
-    const updatedList = sampleDataList.filter(
-      (item) => item.code !== removedItem.code
-    );
-    setSampleDataList(updatedList);
-  };
+  // const handleRemoveItem = (removedItem) => {
+  //   const updatedList = sampleDataList.filter(
+  //     (item) => item.code !== removedItem.code
+  //   );
+  //   setSampleDataList(updatedList);
+  // };
 
   const handleClose = () => {
     setDetails({ showModal: false, data: { voucherInfo: {} } });
@@ -74,6 +84,7 @@ const VouchersList = (props) => {
     onSortModelChange,
     page,
     onApprovePurchases,
+    onCancelVoucher,
     isAdmin,
   } = props;
 
@@ -94,10 +105,11 @@ const VouchersList = (props) => {
       minWidth: 10,
       headerName: t("ROW_NUMBER"),
       field: "id",
+      sortable: false,
       renderCell: (params) => (
         <Typography
           variant="body2"
-          sx={{ color: "text.primary", fontWeight: "bold" }}
+          sx={{ color: "text.primary",  }}
         >
           {params.api.getRowIndex(params.row.code) +
             1 +
@@ -106,9 +118,10 @@ const VouchersList = (props) => {
       ),
     },
     {
-      minWidth: 120,
+      minWidth: 250,
       headerName: t("VOUCHER_CODE"),
       field: "code",
+      sortable: false,
       flex: 1,
       renderCell: (params) => (
         <Typography variant="body2" className="font-bold">
@@ -122,6 +135,7 @@ const VouchersList = (props) => {
       headerName: t("CURRENCY"),
       field: "currency",
       flex: 1,
+      sortable: false,
       // renderCell: params => (
       //     <Typography variant='body2' sx={{ color: 'text.primary' }}>
 
@@ -130,13 +144,13 @@ const VouchersList = (props) => {
     },
     {
       field: "amount",
-      minWidth: 100,
+      minWidth: 150,
       headerName: t("AMOUNT"),
       flex: 1,
       renderCell: (params) => (
         <Typography
           variant="body2"
-          sx={{ color: "info.main", direction: "ltr" }}
+          sx={{ color: "info.main", direction: "ltr", fontWeight:"bold" }}
         >
           {params.row.amount.toAmount()}
         </Typography>
@@ -147,16 +161,19 @@ const VouchersList = (props) => {
       headerName: t("TRANSACTION_FEE"),
       field: "wage",
       flex: 1,
+      sortable: false,
     },
     {
       minWidth: 100,
       headerName: t("CHANNEL"),
       field: "channel",
       flex: 1,
+      sortable: false,
+
     },
     {
       field: "createDate",
-      minWidth: 160,
+      minWidth: 180,
       headerName: t("CREATE_DATE"),
       flex: 1,
       renderCell: (params) => (
@@ -173,10 +190,12 @@ const VouchersList = (props) => {
       headerName: t("TRANSACTION_ID"),
       field: "transactionId",
       flex: 1,
+      sortable: false,
+
     },
     {
       field: "usedDate",
-      minWidth: 160,
+      minWidth: 180,
       headerName: t("USED_DATE"),
       flex: 1,
       renderCell: (params) => (
@@ -191,10 +210,12 @@ const VouchersList = (props) => {
       minWidth: 110,
       field: "status",
       headerName: t("STATUS"),
+      sortable: false,
       renderCell: (params) => (
         <Chip
           skin="light"
           //label={params.row.status=="1" ? <Translations  text ="DEPOSITED" /> :  <Translations text="CANCELD" />}
+
           label={statusMap[params.row.status]}
           color={statusMapColor[params.row.status]}
           sx={{
@@ -222,7 +243,14 @@ const VouchersList = (props) => {
               size="small"
               //disabled={isLoading}
               isLoading={isLoadingData}
-              onClick={() => handleRemoveItem(params.row)}
+              // onClick={() => handleRemoveItem(params.row)}
+              onClick={(e) => {
+                setCancel({
+                  confirm: true,
+                  anchorEl: e.currentTarget,
+                  data: params.row,
+                });
+              }}
               variant="outlined"
               sx={{ padding: "7px", minWidth: "87px!important" }}
               endIcon={
@@ -245,7 +273,7 @@ const VouchersList = (props) => {
       },
     },
     {
-      minWidth: 180,
+      minWidth: 140,
       field: "details",
       sortable: false,
       headerName: t("DETAILS"),
@@ -289,6 +317,21 @@ const VouchersList = (props) => {
       onPageSizeChange(newPageSize);
     }
   };
+
+  const handleCancelVoucher = (e) => {
+    if (cancel.data) {
+      if (onCancelVoucher) {
+        onCancelVoucher(cancel.data);
+      }
+    }
+    setCancel({
+      confirm: false,
+      data: null,
+      anchorEl: null,
+    });
+  };
+
+
 
   const onDownloadClick = () => {
     if (!exportLoading) {
@@ -334,9 +377,46 @@ const VouchersList = (props) => {
           gap: "15px",
         }}
       >
-        <Typography caption="body2" className="text-lg">
+        <Typography
+          caption="body2"
+          className="text-base"
+          sx={{ color: theme.palette.text.grayV }}
+        >
           {t("VOUCHERS")}
         </Typography>
+        <Box
+          sx={{
+            Button: {
+              padding: "3px 3px",
+              color: "#b4b2b7",
+              minHeight: "32px",
+            },
+          }}
+        >
+          <Button
+            variant="outlined"
+            color="default"
+            size="small"
+            aria-label="refresh"
+            sx={{
+              marginRight: "8px",
+            }}
+          >
+            <FuseSvgIcon size="16px">mv-icons:icon-Masked-Icon</FuseSvgIcon>
+          </Button>
+          <Button
+            variant="outlined"
+            color="default"
+            size="small"
+            aria-label="refresh"
+          >
+            {t("DOWNLOAD")}
+            <FuseSvgIcon className="mx-8" size="16px">
+              mv-icons:icon-Uplode_Icon
+            </FuseSvgIcon>
+          </Button>
+        </Box>
+
       </Box>
       <Box
         sx={{
@@ -443,6 +523,84 @@ const VouchersList = (props) => {
           ></VoucherInfo>
         </DialogContent>
       </Dialog>
+
+
+
+      <Popover
+        open={cancel.confirm}
+        anchorEl={cancel.anchorEl}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+        onClose={() => {
+          setCancel({
+            confirm: false,
+            anchorEl: null,
+            data: null,
+          });
+        }}
+      >
+        <Box className="py-[16px]">
+          <Box class="px-[24px] mb-[16px]">
+            <Typography variant="body2">{t("CANCEL_VOUCHER")}</Typography>
+            <Typography className="mt-8">
+              {t("CANCEL_VOUCHER_CONFIRM_MESSAFE")}
+            </Typography>
+          </Box>
+          <Box
+            className="px-[24px] mt-12 text-left"
+            sx={{
+              button: {
+                padding: "3px 8px !important",
+                margin: "0 0 0 5px",
+                minWidth: "100px",
+              },
+            }}
+          >
+            <ButtonComponent
+              size="small"
+              //disabled={isLoading}
+              isLoading={isLoadingData}
+              onClick={(e) => {
+                setCancel({
+                  confirm: false,
+                  anchorEl: null,
+                  data: null,
+                });
+              }}
+              variant="outlined"
+            >
+              {t("CANCEL")}
+            </ButtonComponent>
+            <ButtonComponent
+              color="error"
+              skin="light"
+              size="small"
+              //disabled={isLoading}
+              isLoading={isLoadingData}
+              onClick={(e) => handleCancelVoucher(e)}
+              variant="contained"
+              sx={{}}
+              endIcon={
+                <FuseSvgIcon
+                  sx={{
+                    stroke: "transparent !important",
+                    fill: "#fff",
+                  }}
+                >
+                  {"mv-icons:icon-Cancel"}
+                </FuseSvgIcon>
+              }
+            >
+              {t("YES")}
+            </ButtonComponent>
+          </Box>
+        </Box>
+      </Popover>
+
+
+
     </>
   );
 };
