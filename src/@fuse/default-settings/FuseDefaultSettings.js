@@ -147,6 +147,10 @@ export const defaultThemeOptions = (direction) => {
             // "&.MuiButton-containedPrimary:hover": {
             //   backgroundColor: theme.palette.primary.main,
             // },
+            "&.Mui-disabled": {
+              color: theme.palette.custome.white,
+              backgroundColor: "rgba(0, 0, 0, 0.4)"
+            },
           },
           sizeMedium: {
             borderRadius: 6,
@@ -287,6 +291,8 @@ export const defaultThemeOptions = (direction) => {
               },
             },
             "&.Mui-disabled": {
+              backgroundColor: theme.palette.background.disabled,
+              color: theme.palette.text.grayV,
               " .MuiOutlinedInput-notchedOutline": {
                 borderStyle: "dotted",
                 color: "red",

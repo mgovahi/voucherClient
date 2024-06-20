@@ -39,7 +39,7 @@ const ApiInformation = () => {
   const { direction } = useSelector(selectFuseCurrentSettings);
 
   const onSubmit = (data) => {
-    console.log({...data, url: `https://${data.url}`})
+    console.log({ ...data, url: `https://${data.url}` });
   };
 
   return (
@@ -57,14 +57,15 @@ const ApiInformation = () => {
               name="apiKey"
               control={control}
               rules={{
-                required: { value: true, message: t("FIELD_ERROR_MESSAGE") },
+                // required: { value: true, message: t("FIELD_ERROR_MESSAGE") },
               }}
               render={({ field: { value, onChange, onBlur } }) => (
                 <TextField
                   sx={{ flex: 1 }}
                   onChange={onChange}
                   type={showPassword.pass ? "password" : "text"}
-                  value={value}
+                  value={"2a49n-2k0-3b5g69j001s-2p9-1k8u7"}
+                  disabled
                   InputProps={{
                     autocomplete: "off",
                     endAdornment: (
@@ -84,24 +85,29 @@ const ApiInformation = () => {
                           },
                         }}
                       >
-                        <FuseSvgIcon
-                          sx={{
-                            stroke: "transparent !important",
-                          }}
-                          color="white"
-                        >
-                          mv-icons:icon-View
-                        </FuseSvgIcon>
+                        {showPassword.pass ? (
+                          <FuseSvgIcon
+                            color="white"
+                          >
+                            heroicons-outline:eye
+                          </FuseSvgIcon>
+                        ) : (
+                          <FuseSvgIcon
+                            color="white"
+                          >
+                            heroicons-outline:eye-off
+                          </FuseSvgIcon>
+                        )}
                       </IconButton>
                     ),
                   }}
-                  error={errors.apiKey}
+                  // error={errors.apiKey}
                   label={t("API_KEY")}
                   helperText={t("API_KEY_HELPER_TEXT")}
                 />
               )}
             />
-            <FormErrorHelperText error={errors.apiKey} />
+            {/* <FormErrorHelperText error={errors.apiKey} /> */}
           </FormControl>
           <FormControl>
             <Controller
@@ -128,20 +134,14 @@ const ApiInformation = () => {
                   InputProps={{
                     startAdornment: direction === "ltr" && (
                       <InputAdornment>
-                        <Typography
-                          variant="body2"
-                          color="text.primary"
-                        >
+                        <Typography variant="body2" color="text.primary">
                           https://
                         </Typography>
                       </InputAdornment>
                     ),
                     endAdornment: direction === "rtl" && (
                       <InputAdornment sx={{ direction: "rtl" }}>
-                        <Typography
-                          variant="body2"
-                          color="text.primary"
-                        >
+                        <Typography variant="body2" color="text.primary">
                           https://
                         </Typography>
                       </InputAdornment>

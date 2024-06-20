@@ -14,8 +14,9 @@ import { useTranslation } from "react-i18next";
 const IpField = ({ ipList, onAddIp }) => {
   const {
     control,
-    formState: { errors },
+    formState: { errors, isValid },
     handleSubmit,
+    setError,
   } = useForm({
     mode: "onChange",
   });
@@ -23,8 +24,20 @@ const IpField = ({ ipList, onAddIp }) => {
   const { t } = useTranslation();
 
   const onSubmit = (data) => {
-    if (data.ipValid) return;
-    if (ipList.includes(data.validIp)) return;
+    if (ipList.includes(data.validIp)) {
+      setError("validIp", {
+        type: "manual",
+        message: t("IP_DUPLICATE_ERROR"),
+      });
+      return;
+    }
+    if (ipList.length >= 3) {
+      setError("validIp", {
+        type: "manual",
+        message: t("IP_NUMBER_ERROR"),
+      });
+      return;
+    }
     onAddIp(data.validIp);
   };
 
@@ -62,7 +75,7 @@ const IpField = ({ ipList, onAddIp }) => {
                 autocomplete: "off",
                 endAdornment: (
                   <Button
-                    disabled={!isValidIP(value)}
+                    disabled={!isValid || !value}
                     type="submit"
                     color="primary"
                     variant="contained"
@@ -71,7 +84,7 @@ const IpField = ({ ipList, onAddIp }) => {
                       gap: "4px",
                       "&.Mui-disabled": {
                         svg: {
-                          color: "rgba(0, 0, 0, 0.12)",
+                          color: "custome.white",
                         },
                       },
                     }}
