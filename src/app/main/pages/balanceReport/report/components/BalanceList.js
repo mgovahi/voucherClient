@@ -89,10 +89,7 @@ const BalanceList = (props) => {
       field: "id",
       sortable: false,
       renderCell: (params) => (
-        <Typography
-          variant="body2"
-          sx={{ color: "text.primary", fontWeight: "bold" }}
-        >
+        <Typography variant="body2" sx={{ color: "text.primary" }}>
           {params.api.getRowIndex(params.row.code) +
             1 +
             (parseInt(total?.PageNumber) - 1) * total.PageSize}
@@ -139,7 +136,7 @@ const BalanceList = (props) => {
         <Typography
           variant="body2"
           sx={{
-            fontWeight:"bold",
+            fontWeight: "bold",
             direction: "ltr",
             padding: "4px 20px",
             fontSize: "13px",
@@ -152,9 +149,7 @@ const BalanceList = (props) => {
           {params.row.balanceType == "wallet" ? (
             <FuseSvgIcon>mv-icons-mc:icon-icon-menu-admin-income</FuseSvgIcon>
           ) : (
-            <FuseSvgIcon>
-              mv-icons-mc:icon-icon-menu-vouchers
-            </FuseSvgIcon>
+            <FuseSvgIcon>mv-icons-mc:icon-icon-menu-vouchers</FuseSvgIcon>
           )}
 
           {balanceTypeMap[params.row.balanceType]}
@@ -176,7 +171,7 @@ const BalanceList = (props) => {
         </Typography>
       ),
     },
-   
+
     {
       minWidth: 250,
       headerName: t("TRANSACTION_DESC"),
@@ -255,7 +250,11 @@ const BalanceList = (props) => {
           gap: "15px",
         }}
       >
-        <Typography caption="body2" className="text-lg" sx={{color:theme.palette.text.grayV}}>
+        <Typography
+          caption="body2"
+          className="text-lg"
+          sx={{ color: theme.palette.text.grayV }}
+        >
           {t("BALANCE")}
         </Typography>
         <Box
@@ -303,6 +302,7 @@ const BalanceList = (props) => {
           loading={loading}
           page={total.PageNumber - 1}
           disableColumnMenu
+          columnBuffer={50}
           disableColumnFilter
           disableColumnSelector
           sortable={false}

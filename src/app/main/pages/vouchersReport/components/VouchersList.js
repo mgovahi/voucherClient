@@ -6,7 +6,7 @@ import {
   Chip,
   Typography,
   Hidden,
-  Popover
+  Popover,
 } from "@mui/material";
 import Box from "@mui/material/Box";
 import { DataGrid, faIR } from "@mui/x-data-grid";
@@ -48,9 +48,6 @@ const VouchersList = (props) => {
     data: null,
   });
 
-
-
-  
   const handleClickOpen = (params) => {
     setDetails({
       showModal: true,
@@ -102,15 +99,12 @@ const VouchersList = (props) => {
   };
   let columns = [
     {
-      minWidth: 10,
+      minWidth: 40,
       headerName: t("ROW_NUMBER"),
       field: "id",
       sortable: false,
       renderCell: (params) => (
-        <Typography
-          variant="body2"
-          sx={{ color: "text.primary",  }}
-        >
+        <Typography variant="body2" sx={{ color: "text.primary" }}>
           {params.api.getRowIndex(params.row.code) +
             1 +
             (parseInt(total?.PageNumber) - 1) * total.PageSize}
@@ -150,7 +144,7 @@ const VouchersList = (props) => {
       renderCell: (params) => (
         <Typography
           variant="body2"
-          sx={{ color: "info.main", direction: "ltr", fontWeight:"bold" }}
+          sx={{ color: "info.main", direction: "ltr", fontWeight: "bold" }}
         >
           {params.row.amount.toAmount()}
         </Typography>
@@ -169,7 +163,6 @@ const VouchersList = (props) => {
       field: "channel",
       flex: 1,
       sortable: false,
-
     },
     {
       field: "createDate",
@@ -191,7 +184,6 @@ const VouchersList = (props) => {
       field: "transactionId",
       flex: 1,
       sortable: false,
-
     },
     {
       field: "usedDate",
@@ -331,8 +323,6 @@ const VouchersList = (props) => {
     });
   };
 
-
-
   const onDownloadClick = () => {
     if (!exportLoading) {
       //getFilter(formValues);
@@ -416,18 +406,11 @@ const VouchersList = (props) => {
             </FuseSvgIcon>
           </Button>
         </Box>
-
       </Box>
       <Box
         sx={{
           ...dataGridStyles,
           minHeight: "500px",
-          "& .MuiDataGrid-cell, & .MuiDataGrid-cell:not(.MuiDataGrid-cellCheckbox):first-of-type":
-            {
-              paddingRight: "0px",
-              paddingLeft: "0px",
-              // justifyContent: "center",
-            },
           "& .muirtl-1w8msm6-MuiDataGrid-root .MuiDataGrid-cell:last-of-type": {
             // paddingRight:'0px',
             paddingLeft: "0px",
@@ -448,6 +431,7 @@ const VouchersList = (props) => {
           page={total.PageNumber - 1}
           disableColumnMenu
           disableColumnFilter
+          columnBuffer={50}
           disableColumnSelector
           sortable={false}
           sortColumn={false}
@@ -524,8 +508,6 @@ const VouchersList = (props) => {
         </DialogContent>
       </Dialog>
 
-
-
       <Popover
         open={cancel.confirm}
         anchorEl={cancel.anchorEl}
@@ -598,9 +580,6 @@ const VouchersList = (props) => {
           </Box>
         </Box>
       </Popover>
-
-
-
     </>
   );
 };
