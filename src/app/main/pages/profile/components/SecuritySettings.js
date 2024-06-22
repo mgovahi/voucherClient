@@ -8,6 +8,7 @@ import {
   Switch,
   FormControlLabel,
   Button,
+  Tooltip
 } from "@mui/material";
 import { useMemo } from "react";
 import moment from "jalali-moment";
@@ -20,7 +21,8 @@ const SecuritySettings = () => {
   const theme = useTheme();
   // const [status, setStatus] = useState("INACTIVE");
   const [isActive, setIsActive] = useState(false);
-
+  const [copied, setCopied] = useState(false);
+  const secretKey = "Nx@71k989284LoP009134jfT1401";
   const statusMap = {
     ACTIVE: "فعال",
     INACTIVE: "غیرفعال",
@@ -34,10 +36,16 @@ const SecuritySettings = () => {
     }
   };
 
-  const handleSaveClick = () => {};
+  const handleSaveClick = () => { };
   const loading = false;
 
-  const handleKeySecret = () => {};
+  const handleKeySecret = () => {
+    navigator.clipboard.writeText(secretKey);
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 3000)
+  };
 
   return (
     <Paper
@@ -115,108 +123,127 @@ const SecuritySettings = () => {
           </Box>
         </Box>
 
-        
-        <Box
-          className="mx-[20px] my-[24px] rounded flex  "
-          sx={{
-            border: `1px dotted ${theme.palette.custome.borderSecure}`,
-            backgroundColor: theme.palette.background.disabled,
-            height:{lg:"240px",md:"240px"} ,
-          }}
-        >
-          <Grid container>
-            <Grid
-              item
-              xs={12}
-              md={6}
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-               
-              }}
-            >
-              <Box 
+        {isActive ?
+          <Box
+            className="mx-[20px] my-[24px] rounded flex  "
+            sx={{
+              border: `1px dotted ${theme.palette.custome.borderSecure}`,
+              backgroundColor: theme.palette.background.disabled,
+              height: { lg: "240px", md: "240px" },
+            }}
+          >
+            <Grid container>
+              <Grid
+                item
+                xs={12}
+                md={6}
                 sx={{
-                  width: { xs: "100", lg: "160" },
-                  // height: "160",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  flexDirection: "column",
-                 
+
                 }}
               >
-                <Typography
-                  variant="body3"
-                  fontSize={"14px"}
-                  className=" mb-8 "
-                  sx={{marginTop:{xs:'10px',md:"none"}}}
-
-                >
-                  {t("SCAN_QR_CODE")}
-                </Typography>
-                <Typography
-                  variant="body1"
-                  className="flex  justify-center items-center "
-                  sx={{
-                    width: "160px !important",
-                    height: "160px !important",
-                    " img": {
-                      margin: "17.3px",
-                    },
-                  }}
-                >
-                  <img src={`/assets/images/Qr/QR-Code.svg`} />
-                </Typography>
-              </Box>
-            </Grid>
-            <Grid
-              item
-             md={6}
-             xs={12}
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                // justifyContent: "center",
-                alignItems: "center",
-                position: 'relative',
-                '&::before': {
-                  content: '""',
-                  position: 'absolute',
-                  left: 0,
-                  top: '40px',
-                  bottom: '40px',
-                  width:{md:"1px",xs:"0px"},
-                  backgroundColor: theme.palette.custome.borderSecure,
-                },
-              }}
-            >
-              {isActive ? (
                 <Box
                   sx={{
+                    width: { xs: "100", lg: "160" },
+                    // height: "160",
                     display: "flex",
                     justifyContent: "center",
+                    alignItems: "center",
                     flexDirection: "column",
-                    width: { lg: "55%", xs: "95%" },
-                    alignItems: "center", 
-                    textAlign: "center", 
+
                   }}
                 >
                   <Typography
                     variant="body3"
-                    className=" mb-10 "
+                    fontSize={"14px"}
+                    className=" mb-8 "
+                    sx={{ marginTop: { xs: '10px', md: "none" } }}
+
+                  >
+                    {t("SCAN_QR_CODE")}
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    className="flex  justify-center items-center "
                     sx={{
-                      marginTop: "30px",
-                      fontSize: { lg: "14px", xs: "14px" },
-                      alignItems: "", 
+                      width: "160px !important",
+                      height: "160px !important",
+                      " img": {
+                        margin: "17.3px",
+                      },
                     }}
                   >
-                    {t("ENTER_KEY_SECRET")}
+                    <img src={`/assets/images/Qr/QR-Code.svg`} />
                   </Typography>
-
-                  <Button
+                </Box>
+              </Grid>
+              <Grid
+                item
+                md={6}
+                xs={12}
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  // justifyContent: "center",
+                  alignItems: "center",
+                  position: 'relative',
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    left: 0,
+                    top: '40px',
+                    bottom: '40px',
+                    width: { md: "1px", xs: "0px" },
+                    backgroundColor: theme.palette.custome.borderSecure,
+                  },
+                }}
+              >
+                {isActive ? (
+                  <Box
                     sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      flexDirection: "column",
+                      width: { lg: "55%", xs: "95%" },
+                      alignItems: "center",
+                      textAlign: "center",
+                    }}
+                  >
+                    <Typography
+                      variant="body3"
+                      className=" mb-10 "
+                      sx={{
+                        marginTop: "30px",
+                        fontSize: { lg: "14px", xs: "14px" },
+                        alignItems: "",
+                      }}
+                    >
+                      {t("ENTER_KEY_SECRET")}
+                    </Typography>
+
+                    <Tooltip
+                      PopperProps={{
+                        disablePortal: true,
+                      }}
+                      open={copied}
+                      disableFocusListener
+                      disableHoverListener
+                      disableTouchListener
+                      title={t("SECRET_KEY_COPIED")}
+                    >
+                      <Button
+                        // sx={{
+                        //   justifyContent: "space-between",
+                        //   width: { lg: "320px", xs: "280px" },
+                        //   height: "44px",
+                        //   backgroundColor: "#fff",
+                        //   border: `1px solid ${theme.palette.text.grayDay} `,
+                        //   margin: "68px 102px 58px 48px",
+                        //   padding: "13px 20px 13px 20px",
+                        // }}
+                         sx={{
                       justifyContent: "space-between",
                       width: { lg: "320px", xs: "280px" },
                       height: "44px",
@@ -224,13 +251,27 @@ const SecuritySettings = () => {
                       border: `1px solid ${theme.palette.text.grayDay} `,
                       padding: "13px 20px",
                       marginTop: "68px",
+                      marginBottom:{xs:"50px"}
                     }}
-                    // size="large"
-                    id="key-secret-btn"
-                    onClick={handleKeySecret}
-                  >
-                    Nx@71k989284LoP009134jfT1401
-                    <Box className="flex   pr-20 my-24 " sx={{}}>
+                        size="large"
+                        id="key-secret-btn"
+                        onClick={handleKeySecret}
+                      >
+                        {secretKey}
+                        {/* <Box className="flex   pr-20 my-24 " sx={{}}>
+                          <i className=" flex items-center rounded-full ">
+                            <FuseSvgIcon
+                              size={18}
+                              sx={{
+                                fill: `${theme.palette.text.grayDay}!important`,
+                                stroke: `${theme.palette.secondary.slowLight}!important`,
+                              }}
+                            >
+                              mv-icons:icon-Copy
+                            </FuseSvgIcon>
+                          </i>
+                        </Box> */}
+                        <Box className="flex   pr-20 my-24 " sx={{}}>
                         <FuseSvgIcon
                           size={18}
                           sx={{
@@ -242,14 +283,15 @@ const SecuritySettings = () => {
                         </FuseSvgIcon>
                       
                     </Box>
-                  </Button>
-                </Box>
-              ) : (
-                ""
-              )}
+                      </Button>
+                    </Tooltip>
+                  </Box>
+                ) : (
+                  ""
+                )}
+              </Grid>
             </Grid>
-          </Grid>
-        </Box>
+          </Box> : ""}
         <Box className="col-span-2 flex justify-end mt-48 mb-20 mx-20">
           <ButtonComponent
             sx={{

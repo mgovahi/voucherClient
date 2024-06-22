@@ -73,7 +73,7 @@ function ProfilePage(props) {
                       value="/changeInfo"
                       sx={{
                         "&.Mui-selected": {
-                          color: theme.palette.primary.tabMain + " !important", fontWeight: "bold",
+                           fontWeight: "bold",
                         },
                       }}
                     />
@@ -82,7 +82,7 @@ function ProfilePage(props) {
                       value="/changePass"
                       sx={{
                         "&.Mui-selected": {
-                          color: theme.palette.primary.tabMain + " !important", fontWeight: "bold",
+                        fontWeight: "bold",
                         },
                       }}
                     />

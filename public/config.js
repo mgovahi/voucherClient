@@ -185,7 +185,8 @@ window.appSettings.resources = {
       FOOTER_SUPPORT: "Support 021-2233",
       CANCEL_VOUCHER: "Cancel Voucher",
       CANCEL_VOUCHER_CONFIRM_MESSAFE: "Are you sure about canceling the remittance?",
-      YES: "yes"
+      YES: "yes",
+      SECRET_KEY_COPIED:"The security key was copied"
 
     },
   },
@@ -487,7 +488,8 @@ window.appSettings.resources = {
       FOOTER_SUPPORT: "پشتیبانی 2233-021 ",
       CANCEL_VOUCHER: "ابطال حواله",
       CANCEL_VOUCHER_CONFIRM_MESSAFE: "آیا از ابطال حواله اطمینان دارید؟",
-      YES: "بلی"
+      YES: "بلی",
+      SECRET_KEY_COPIED:"کلید امنیتی کپی شد"
     },
   },
 };
