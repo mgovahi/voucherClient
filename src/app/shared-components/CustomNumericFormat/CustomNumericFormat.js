@@ -56,7 +56,7 @@ const CustomNumericFormat = ({ value, errors, helperText, onChange }) => {
         inputProps: {
           style: { direction: "ltr" },
           minLength: 0,
-          maxLength: 27,
+          maxLength: 17,
         },
         startAdornment: (
           <IconButton

@@ -34,12 +34,16 @@ const ApiInformation = () => {
     handleSubmit,
   } = useForm({
     mode: "onChange",
+    defaultValues: {
+      apiKey: '2a49n-2k0-3b5g69j001s-2p9-1k8u7',
+      url: ""
+    },
   });
 
   const { direction } = useSelector(selectFuseCurrentSettings);
 
   const onSubmit = (data) => {
-    console.log({ ...data, url: `https://${data.url}` });
+    console.log({ ...data });
   };
 
   return (
@@ -50,6 +54,7 @@ const ApiInformation = () => {
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="grid gap-y-[44px] px-20 pt-[24px] pb-[40px]"
+        autoComplete= "off"
       >
         <Box className="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-[50px] md:gap-x-[100px] gap-y-32">
           <FormControl>
@@ -64,10 +69,10 @@ const ApiInformation = () => {
                   sx={{ flex: 1 }}
                   onChange={onChange}
                   type={showPassword.pass ? "password" : "text"}
-                  value={"2a49n-2k0-3b5g69j001s-2p9-1k8u7"}
+                  value={value}
                   disabled
+                  // autoComplete="new-password"
                   InputProps={{
-                    autocomplete: "off",
                     endAdornment: (
                       <IconButton
                         onClick={() => {
@@ -131,6 +136,8 @@ const ApiInformation = () => {
                   type="text"
                   onChange={onChange}
                   value={value}
+                  readonly
+                  // autoComplete="off"
                   InputProps={{
                     startAdornment: direction === "ltr" && (
                       <InputAdornment>

@@ -1,16 +1,23 @@
 import React, { useState } from "react";
-import { Button, Paper, Typography } from "@mui/material";
+import { Button, Paper, Popover, Typography } from "@mui/material";
 import FusePageSimpleHeader from "@fuse/core/FusePageSimple/FusePageSimpleHeader";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@mui/styles";
 import { Box } from "@mui/system";
 import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
 import IpField from "./IpField";
+import ButtonComponent from "app/shared-components/ButtonComponent/ButtonComponent";
 
 const IpLimit = () => {
   const { t } = useTranslation();
   const theme = useTheme();
   const [ipList, setIpList] = useState(mockIpList);
+  const [cancel, setCancel] = useState({
+    confirm: false,
+    anchorEl: null,
+    data: null,
+  });
+
 
   const isFetching = false;
 
@@ -18,10 +25,28 @@ const IpLimit = () => {
     setIpList((prev) => [...prev, newIp]);
   };
 
-  const handleRemoveIp = (removedIp) => {
-    let update = ipList.filter((ip) => ip !== removedIp);
+  const handleRemoveIp = () => {
+    let update = ipList.filter((ip) => ip !== cancel.data);
     setIpList(update);
+    setCancel({
+      confirm: false,
+      anchorEl: null,
+      data: null,
+    });
   };
+
+  // const handleCancelVoucher = (e) => {
+  //   if (cancel.data) {
+  //     if (onCancelVoucher) {
+  //       onCancelVoucher(cancel.data);
+  //     }
+  //   }
+  //   setCancel({
+  //     confirm: false,
+  //     data: null,
+  //     anchorEl: null,
+  //   });
+  // };
 
   return (
     <Paper className="w-full">
@@ -61,7 +86,13 @@ const IpLimit = () => {
                   variant="outlined"
                   color="error"
                   className="gap-4"
-                  onClick={() => handleRemoveIp(item)}
+                  onClick={(e) => {
+                    setCancel({
+                      confirm: true,
+                      anchorEl: e.currentTarget,
+                      data: item,
+                    });
+                  }}
                 >
                   {t("DELETE")}
                   <FuseSvgIcon color="error" size="20px">
@@ -72,6 +103,78 @@ const IpLimit = () => {
             );
           })}
         </Box>
+        <Popover
+        open={cancel.confirm}
+        anchorEl={cancel.anchorEl}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+        onClose={() => {
+          setCancel({
+            confirm: false,
+            anchorEl: null,
+            data: null,
+          });
+        }}
+      >
+        <Box className="py-[16px]">
+          <Box class="px-[24px] mb-[16px]">
+            <Typography variant="body2">{t("REMOVE_IP")}</Typography>
+            <Typography className="mt-8">
+              {t("REMOVE_IP_CONFIRM_MESSAGE")}
+            </Typography>
+          </Box>
+          <Box
+            className="px-[24px] mt-12 text-left"
+            sx={{
+              button: {
+                padding: "3px 8px !important",
+                margin: "0 0 0 5px",
+                minWidth: "100px",
+              },
+            }}
+          >
+            <ButtonComponent
+              size="small"
+              //disabled={isLoading}
+              isLoading={isFetching}
+              onClick={(e) => {
+                setCancel({
+                  confirm: false,
+                  anchorEl: null,
+                  data: null,
+                });
+              }}
+              variant="outlined"
+            >
+              {t("CANCEL")}
+            </ButtonComponent>
+            <ButtonComponent
+              color="error"
+              skin="light"
+              size="small"
+              //disabled={isLoading}
+              isLoading={isFetching}
+              onClick={handleRemoveIp}
+              variant="contained"
+              sx={{}}
+              endIcon={
+                <FuseSvgIcon
+                  sx={{
+                    stroke: "transparent !important",
+                    fill: "#fff",
+                  }}
+                >
+                  {"mv-icons:icon-Cancel"}
+                </FuseSvgIcon>
+              }
+            >
+              {t("YES")}
+            </ButtonComponent>
+          </Box>
+        </Box>
+      </Popover>
       </Box>
     </Paper>
   );

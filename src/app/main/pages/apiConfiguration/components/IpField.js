@@ -82,11 +82,6 @@ const IpField = ({ ipList, onAddIp }) => {
                     sx={{
                       width: "120px",
                       gap: "4px",
-                      "&.Mui-disabled": {
-                        svg: {
-                          color: "custome.white",
-                        },
-                      },
                     }}
                   >
                     {t("ADD")}

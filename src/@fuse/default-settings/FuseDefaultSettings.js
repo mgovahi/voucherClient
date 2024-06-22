@@ -148,8 +148,12 @@ export const defaultThemeOptions = (direction) => {
             //   backgroundColor: theme.palette.primary.main,
             // },
             "&.Mui-disabled": {
-              color: theme.palette.custome.white,
-              backgroundColor: "rgba(0, 0, 0, 0.4)"
+              // color: theme.palette.custome.white,
+              // backgroundColor: "rgba(0, 0, 0, 0.4)"
+              opacity: 0.6,
+              svg: {
+                color: "rgba(0, 0, 0, 0.26)",
+              },
             },
           },
           sizeMedium: {

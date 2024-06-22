@@ -185,8 +185,9 @@ window.appSettings.resources = {
       FOOTER_SUPPORT: "Support 021-2233",
       CANCEL_VOUCHER: "Cancel Voucher",
       CANCEL_VOUCHER_CONFIRM_MESSAFE: "Are you sure about canceling the remittance?",
-      YES: "yes"
-
+      YES: "yes",
+      REMOVE_IP: "Remove IP",
+      REMOVE_IP_CONFIRM_MESSAGE: "Are you sure about removing the IP?"
     },
   },
   fa: {
@@ -487,7 +488,9 @@ window.appSettings.resources = {
       FOOTER_SUPPORT: "پشتیبانی 2233-021 ",
       CANCEL_VOUCHER: "ابطال حواله",
       CANCEL_VOUCHER_CONFIRM_MESSAFE: "آیا از ابطال حواله اطمینان دارید؟",
-      YES: "بلی"
+      YES: "بلی",
+      REMOVE_IP: "حذف IP",
+      REMOVE_IP_CONFIRM_MESSAGE: "آیا از حذف IP اطمینان دارید؟"
     },
   },
 };
