@@ -1,6 +1,3 @@
-
-
-
 import { useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import {
@@ -31,7 +28,7 @@ function ProfilePassword({ info = {}, onCancelClick }) {
   });
   const [loading, setLoading] = useState(false);
 
-  const { control, formState: { errors }, handleSubmit, reset, getValues } = useForm({
+  const { control, formState: { errors, isValid }, handleSubmit, reset, getValues } = useForm({
     mode: "onChange",
   });
 
@@ -45,20 +42,20 @@ function ProfilePassword({ info = {}, onCancelClick }) {
   };
 
 
-  const handleKeyDown = (event) => {
-    // Check if the pressed key is a number or backspace
-    const isNumber = /^\d$/.test(event.key);
-    const isBackspace = event.key === 'Backspace';
-  
-    // If the pressed key is not a number or backspace, prevent the default behavior (typing)
-    if (!isNumber && !isBackspace) {
-      event.preventDefault();
-    }
-  };
+  // const handleKeyDown = (event) => {
+  //   // Check if the pressed key is a number or backspace
+  //   const isNumber = /^\d$/.test(event.key);
+  //   const isBackspace = event.key === 'Backspace';
+
+  //   // If the pressed key is not a number or backspace, prevent the default behavior (typing)
+  //   if (!isNumber && !isBackspace) {
+  //     event.preventDefault();
+  //   }
+  // };
 
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="grid gap-y-36">
+    <form onSubmit={handleSubmit(onSubmit)} className="grid">
       <Box className="grid gap-14"></Box>
       <Paper
         className="gap-4 grid my-20"
@@ -113,7 +110,7 @@ function ProfilePassword({ info = {}, onCancelClick }) {
             <Typography>{t("CHANGE_PASS_HINT2")}</Typography>
           </Alert>
           <Box className=" mt-[20px]">
-            <Box className="grid md:grid-cols-2 xs:grid-cols-1 mt-44 gap-x-[100px] gap-y-[20px] mx-20">
+            <Box className="grid md:grid-cols-2 xs:grid-cols-1 mt-44 gap-x-[100px] gap-y-[20px] mx-20 ">
               <FormControl>
                 <Controller
                   name="password"
@@ -133,12 +130,28 @@ function ProfilePassword({ info = {}, onCancelClick }) {
                     <TextField
                       sx={{ flex: 1 }}
                       onChange={onChange}
-                      onKeyDown={handleKeyDown} // Add key down event handler
+                      // onKeyDown={handleKeyDown} // Add key down event handler
                       type={showPassword.pass ? "password" : "text"}
                       value={value}
                       label={t("PASSWORD")}
                       error={!!errors.password}
                       helperText={errors.password ? errors.password.message : ""}
+                      InputProps={{
+                        autocomplete: "off",
+                        endAdornment: (
+                          <IconButton
+                            onClick={() => {
+                              setShowPassword({
+                                ...showPassword,
+                                pass: !showPassword.pass,
+                              });
+                            }}
+                          >
+                            {showPassword.pass ? <FuseSvgIcon>heroicons-outline:eye</FuseSvgIcon> :
+                              <FuseSvgIcon >heroicons-outline:eye-off</FuseSvgIcon>}
+                          </IconButton>
+                        ),
+                      }}
                     />
                   )}
                 />
@@ -162,12 +175,28 @@ function ProfilePassword({ info = {}, onCancelClick }) {
                     <TextField
                       sx={{ flex: 1 }}
                       onChange={onChange}
-                      onKeyDown={handleKeyDown} // Add key down event handler
+                      // onKeyDown={handleKeyDown} // Add key down event handler
                       type={showPassword.confirm ? "password" : "text"}
                       value={value}
                       label={t("PASSWORD_CONFIRM")}
                       error={!!errors.passwordConfirm}
                       helperText={errors.passwordConfirm ? errors.passwordConfirm.message : ""}
+                      InputProps={{
+                        autocomplete: "off",
+                        endAdornment: (
+                          <IconButton
+                            onClick={() => {
+                              setShowPassword({
+                                ...showPassword,
+                                confirm: !showPassword.confirm,
+                              });
+                            }}
+                          >
+                            {showPassword.confirm ? <FuseSvgIcon>heroicons-outline:eye</FuseSvgIcon> :
+                              <FuseSvgIcon >heroicons-outline:eye-off</FuseSvgIcon>}
+                          </IconButton>
+                        ),
+                      }}
                     />
                   )}
                 />
@@ -183,6 +212,7 @@ function ProfilePassword({ info = {}, onCancelClick }) {
                 size="middle"
                 variant="contained"
                 type="submit"
+                disabled={!isValid}
                 isLoading={loading}
                 endIcon={
                   loading ? (

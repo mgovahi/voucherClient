@@ -240,7 +240,7 @@ function ClientInfo({ info = {}, onCancelClick }) {
                   },
                   " i": {
                     color: theme.palette.text.grayDay,
-                    fontStyle: "bold",
+                    fontStyle: "normal",
                     display: "block",
                     marginTop: "5px",
                     fontSize: {
@@ -265,6 +265,7 @@ function ClientInfo({ info = {}, onCancelClick }) {
                 variant="caption"
                 fontFamily="IRANYekanXNumEnBold"
                 sx={{
+                  width :"140px",
                   " b": {
                     color: theme.palette.primary.main + " !important",
                     fontWeight: "bold",
