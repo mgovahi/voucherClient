@@ -187,7 +187,9 @@ window.appSettings.resources = {
       CANCEL_VOUCHER_CONFIRM_MESSAFE: "Are you sure about canceling the remittance?",
       YES: "yes",
       REMOVE_IP: "Remove IP",
-      REMOVE_IP_CONFIRM_MESSAGE: "Are you sure about removing the IP?"
+      REMOVE_IP_CONFIRM_MESSAGE: "Are you sure about removing the IP?",
+      SECRET_KEY_COPIED:"The security key was copied",
+      DEPOSITS:"Deposits",
     },
   },
   fa: {
@@ -490,7 +492,9 @@ window.appSettings.resources = {
       CANCEL_VOUCHER_CONFIRM_MESSAFE: "آیا از ابطال حواله اطمینان دارید؟",
       YES: "بلی",
       REMOVE_IP: "حذف IP",
-      REMOVE_IP_CONFIRM_MESSAGE: "آیا از حذف IP اطمینان دارید؟"
+      REMOVE_IP_CONFIRM_MESSAGE: "آیا از حذف IP اطمینان دارید؟",
+      SECRET_KEY_COPIED:"کلید امنیتی کپی شد",
+      DEPOSITS:"واریزی‌ها"
     },
   },
 };

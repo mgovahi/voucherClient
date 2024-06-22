@@ -84,10 +84,11 @@ const DepositsList = (props) => {
       minWidth: 20,
       headerName: t("ROW_NUMBER"),
       field: "id",
+      sortable: false,
       renderCell: (params) => (
         <Typography
           variant="body2"
-          sx={{ color: "text.primary", fontWeight: "bold" }}
+          sx={{ color: "text.primary"}}
         >
           {params.api.getRowIndex(params.row.code) +
             1 +
@@ -104,7 +105,7 @@ const DepositsList = (props) => {
       renderCell: (params) => (
         <Typography
           variant="body2"
-          sx={{ direction: "ltr" }}
+          sx={{ direction: "ltr",fontWeight: "bold"  }}
         >
           {params.row.deposit.toAmount()}
         </Typography>
@@ -115,10 +116,11 @@ const DepositsList = (props) => {
       headerName: t("CREDIT"),
       field: "credit",
       flex: 1,
+      sortable: false,
       renderCell: (params) => (
         <Typography
           variant="body2"
-          sx={{ color: "info.main", direction: "ltr" }}
+          sx={{ color: "info.main", direction: "ltr",fontWeight: "bold"  }}
         >
           {params.row.credit.toAmount()}
         </Typography>
@@ -130,6 +132,7 @@ const DepositsList = (props) => {
       headerName: t("CURRENCY"),
       field: "currency",
       flex: 1,
+      sortable: false,
       // renderCell: params => (
       //     <Typography variant='body2' sx={{ color: 'text.primary' }}>
 
@@ -138,10 +141,11 @@ const DepositsList = (props) => {
     },
  
     {
-      minWidth: 250,
+      minWidth: 150,
       headerName: t("TRANSACTION_ID"),
       field: "transactionId",
       flex: 1,
+      sortable: false,
       renderCell: (params) => (
         <Typography variant="body2">
           {params.row.transactionId}
@@ -150,7 +154,7 @@ const DepositsList = (props) => {
     },
     {
       field: "depositDate",
-      minWidth: 160,
+      minWidth: 180,
       headerName: t("DEPOSIT_DATE"),
       flex: 1,
       renderCell: (params) => (
@@ -166,6 +170,7 @@ const DepositsList = (props) => {
       headerName: t("ATTACHMENT_TYPE"),
       field: "attachmentType",
       flex: 1,
+      sortable: false,
       renderCell: (params) => (
         <Typography variant="body2">{params.row.attachmentType}</Typography>
       ),
@@ -178,7 +183,7 @@ const DepositsList = (props) => {
       renderCell: (params) => (
         <Typography
           variant="body2"
-          sx={{ color: "text.primary", direction: "ltr" }}
+          sx={{ color: "text.primary", direction: "rtl" }}
         >
           {moment(new Date(params.row.latestActionDate))
             .locale("fa")
@@ -190,6 +195,7 @@ const DepositsList = (props) => {
       minWidth: 118,
       field: "status",
       headerName: t("STATUS"),
+      sortable: false,
       renderCell: (params) => (
         <Chip
           skin="light"
@@ -214,6 +220,7 @@ const DepositsList = (props) => {
       field: "details",
       sortable: false,
       headerName: t("DETAILS"),
+      sortable: false,
       renderCell: (params) => {
         return (
           <ButtonComponent
@@ -292,16 +299,50 @@ const DepositsList = (props) => {
     <>
       <Box
         sx={{
-          m: "2rem 1rem",
+          m: "2rem 2rem",
           display: "flex",
           flexDirection: { xs: "column", sm: "row" },
           justifyContent: "space-between",
           gap: "15px",
         }}
       >
-        <Typography caption="body2" className="text-lg">
-          {t("DEPOSITS_REPORT")}
+        <Typography caption="body2"    className="text-base"
+       color={theme.palette.text.grayV}>
+          {t("DEPOSITS")}
         </Typography>
+        <Box
+          sx={{
+            Button: {
+              padding: "3px 3px",
+              color: "#b4b2b7",
+              minHeight: "32px",
+            },
+          }}
+        >
+          <Button
+            variant="outlined"
+            color="default"
+            size="small"
+            aria-label="refresh"
+            sx={{
+              marginRight: "8px",
+            }}
+          >
+            <FuseSvgIcon size="16px">mv-icons:icon-Masked-Icon</FuseSvgIcon>
+          </Button>
+          <Button
+            variant="outlined"
+            color="default"
+            size="small"
+            aria-label="refresh"
+          >
+            {t("DOWNLOAD")}
+            <FuseSvgIcon className="mx-8" size="16px">
+              mv-icons:icon-Uplode_Icon
+            </FuseSvgIcon>
+          </Button>
+        </Box>
+
       </Box>
       <Box sx={{ ...dataGridStyles, minHeight: "500px" ,width: '100%'}}>
         <DataGrid

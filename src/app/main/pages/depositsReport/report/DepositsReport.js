@@ -57,7 +57,7 @@ function DepositsReport(props) {
                 sx={{
                   fontSize: { xs: "12px", md: "inherit" }
                 }}
-                className="py-10 px-20 min-h-full h-[42px] rounded-[5px] flex "
+                className="py-10 px-20 min-h-full  rounded-[5px] flex "
                 variant="contained"
                 color="secondary"
                 onClick={() => {

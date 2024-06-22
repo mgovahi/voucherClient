@@ -23,17 +23,34 @@ import {
   DialogContent,
   DialogTitle,
   Grid,
+  Popover
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
 import { InfoRounded } from "@mui/icons-material";
 import moment from "jalali-moment";
+import { useThemeMediaQuery } from "@fuse/hooks";
 import ButtonComponent from "app/shared-components/ButtonComponent/ButtonComponent";
+import FusePageSimpleHeader from "@fuse/core/FusePageSimple/FusePageSimpleHeader";
 
-function DepositsInfo({ info = {}, onCancelClick }) {
+function DepositsInfo({ info = {}, onCancelClick,  onCancelTransaction,
+  onApproveTransaction, }) {
   const { t } = useTranslation();
   const theme = useTheme();
   const [status, setStatus] = useState(info.status || "INACTIVE");
+
+  const [filePreview, setFilePreview] = useState({ modal: false, data: null });
+
+  const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down("sm"));
+    
+  const [cancel, setCancel] = useState({
+    confirm: false,
+    anchorEl: null,
+    data: null,
+  });
+
+console.log(filePreview,"mof")
+
   const handleChange = (event, newValue) => {
     setActive(newValue);
   };
@@ -57,8 +74,8 @@ function DepositsInfo({ info = {}, onCancelClick }) {
   };
   const statusMapDescription = {
     ACCEPTED: " موفق بوده است. با تشکر",
-    REJECTED: "لطفا تا پایان امروز تایید نمایید. با تشکر",
-    WAITING: "مجدد اقدام فرماید. با تشکر",
+    REJECTED: "مجدد اقدام فرماید. با تشکر",
+    WAITING: "لطفا تا پایان امروز تایید نمایید. با تشکر",
   };
   const loading = false;
 
@@ -66,6 +83,21 @@ function DepositsInfo({ info = {}, onCancelClick }) {
     setStatus(e.target.checked ? "ACTIVE" : "INACTIVE");
   };
   const handleSaveClick = () => { };
+
+  const handleCancelTransaction = () => {
+    if (onCancelTransaction) {
+      onCancelTransaction(info.transactionId);
+    }
+    setCancel({ confirm: false, anchorEl: null });
+  };
+  const handleApproveTransaction = () => {
+    if (onApproveTransaction) {
+      onApproveTransaction(info.transactionId);
+    }
+  };
+
+
+
 
   return (
     <>
@@ -242,6 +274,12 @@ function DepositsInfo({ info = {}, onCancelClick }) {
                 md: "12px",
               },
             }}
+            onClick={() => {
+              setFilePreview({
+                modal: true,
+                data: { url: "assets/pdf/test.pdf" },
+              });
+            }}
 
           >
             {t("ATTACHMENT_VIEW")}
@@ -298,10 +336,10 @@ function DepositsInfo({ info = {}, onCancelClick }) {
           </Grid>
         </Grid>
       </Box>
-      <Box className="flex justify-end gap-x-[20px] my-44 mx-20">
+      <Box className="flex justify-end gap-x-[20px] my-20 ">
         <ButtonComponent
           sx={{
-            width: { xs: "100%", sm: "fit-content" },
+            width: { xs: "100%", sm: "101px" },
           }}
           onClick={onCancelClick}
           color="default"
@@ -312,6 +350,48 @@ function DepositsInfo({ info = {}, onCancelClick }) {
           {t("CLOSE")}
         </ButtonComponent>
       </Box>
+
+      
+      <Dialog
+        open={filePreview.modal}
+        fullScreen={isMobile ? true : false}
+        maxWidth="lg"
+        fullWidth
+        keepMounted
+        onClose={() => {
+          setFilePreview({ modal: false, data: null });
+        }}
+      >
+        <DialogTitle>
+          <Box className="">
+            <FusePageSimpleHeader
+              header={t("ATTACHMENT_VIEW")}
+              headerActions={
+                <i className="inline-block rounded-xl ">
+                  <FuseSvgIcon
+                    cursor="pointer"
+                    color="gray"
+                    cer
+                    size={20}
+                    onClick={() => {
+                      setFilePreview({ modal: false, data: null });
+                    }}
+                  >
+                    {"heroicons-outline:x"}
+                  </FuseSvgIcon>
+                </i>
+              }
+            ></FusePageSimpleHeader>
+          </Box>
+        </DialogTitle>
+        <DialogContent>
+          <iframe
+            width="100%"
+            height="600px"
+            src={filePreview.data ? filePreview.data.url : ""}
+          ></iframe>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }
