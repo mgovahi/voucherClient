@@ -28,13 +28,13 @@ function ProfilePassword({ info = {}, onCancelClick }) {
   });
   const [loading, setLoading] = useState(false);
 
-  const { control, formState: { errors }, handleSubmit, reset, getValues } = useForm({
+  const { control, formState: { errors, isValid }, handleSubmit, reset, getValues } = useForm({
     mode: "onChange",
   });
 
   const onSubmit = (data) => {
     setLoading(true);
-    // console.log(data, "data");
+    console.log(data, "data");
     setTimeout(() => {
       setLoading(false);
       reset();
@@ -212,6 +212,7 @@ function ProfilePassword({ info = {}, onCancelClick }) {
                 size="middle"
                 variant="contained"
                 type="submit"
+                disabled={!isValid}
                 isLoading={loading}
                 endIcon={
                   loading ? (
