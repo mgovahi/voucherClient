@@ -71,8 +71,13 @@ const ApiInformation = () => {
                   type={showPassword.pass ? "password" : "text"}
                   value={value}
                   disabled
+                  inputProps={{
+                    autoComplete:"off"
+                    
+                  }}
                   // autoComplete="new-password"
                   InputProps={{
+                    readOnly: true,
                     endAdornment: (
                       <IconButton
                         onClick={() => {
