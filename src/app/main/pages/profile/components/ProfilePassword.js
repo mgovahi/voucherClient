@@ -18,6 +18,7 @@ import FusePageSimple from "@fuse/core/FusePageSimple";
 import FusePageSimpleHeader from "@fuse/core/FusePageSimple/FusePageSimpleHeader";
 import { useForm, Controller } from "react-hook-form";
 import ButtonComponent from "app/shared-components/ButtonComponent/ButtonComponent";
+import { srongPasswordPattern } from "@fuse/utils/validations";
 
 function ProfilePassword({ info = {}, onCancelClick }) {
   const { t } = useTranslation();
@@ -28,7 +29,14 @@ function ProfilePassword({ info = {}, onCancelClick }) {
   });
   const [loading, setLoading] = useState(false);
 
-  const { control, formState: { errors, isValid }, handleSubmit, reset, getValues } = useForm({
+  const {
+    control,
+    formState: { errors, isValid },
+    handleSubmit,
+    reset,
+    getValues,
+    watch,
+  } = useForm({
     mode: "onChange",
   });
 
@@ -41,7 +49,6 @@ function ProfilePassword({ info = {}, onCancelClick }) {
     }, 2000);
   };
 
-
   // const handleKeyDown = (event) => {
   //   // Check if the pressed key is a number or backspace
   //   const isNumber = /^\d$/.test(event.key);
@@ -52,7 +59,6 @@ function ProfilePassword({ info = {}, onCancelClick }) {
   //     event.preventDefault();
   //   }
   // };
-
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="grid">
@@ -118,8 +124,8 @@ function ProfilePassword({ info = {}, onCancelClick }) {
                   rules={{
                     required: t("FIELD_ERROR_MESSAGE"),
                     pattern: {
-                      value: /^[0-9]+$/,
-                      // message: t("CHANGE_PASS_HINT2"),
+                      value: srongPasswordPattern,
+                      message: t("CHANGE_PASS_HINT2"),
                     },
                     minLength: {
                       value: 8,
@@ -135,7 +141,9 @@ function ProfilePassword({ info = {}, onCancelClick }) {
                       value={value}
                       label={t("PASSWORD")}
                       error={!!errors.password}
-                      helperText={errors.password ? errors.password.message : ""}
+                      helperText={
+                        errors.password ? errors.password.message : ""
+                      }
                       InputProps={{
                         autocomplete: "off",
                         endAdornment: (
@@ -147,8 +155,13 @@ function ProfilePassword({ info = {}, onCancelClick }) {
                               });
                             }}
                           >
-                            {showPassword.pass ? <FuseSvgIcon>heroicons-outline:eye</FuseSvgIcon> :
-                              <FuseSvgIcon >heroicons-outline:eye-off</FuseSvgIcon>}
+                            {showPassword.pass ? (
+                              <FuseSvgIcon>heroicons-outline:eye</FuseSvgIcon>
+                            ) : (
+                              <FuseSvgIcon>
+                                heroicons-outline:eye-off
+                              </FuseSvgIcon>
+                            )}
                           </IconButton>
                         ),
                       }}
@@ -163,12 +176,17 @@ function ProfilePassword({ info = {}, onCancelClick }) {
                   rules={{
                     required: t("FIELD_ERROR_MESSAGE"),
                     pattern: {
-                      value: /^[0-9]+$/,
-                      // message: t("فقط اعداد تایپ"),
+                      value: srongPasswordPattern,
+                      message: t("CHANGE_PASS_HINT2"),
                     },
                     minLength: {
                       value: 8,
                       message: t("CHANGE_PASS_HINT2"),
+                    },
+                    validate: (val) => {
+                      if (watch("password") != val) {
+                        return t("PASSWORD_AND_CONFIRM_MISMATCH");
+                      }
                     },
                   }}
                   render={({ field: { value, onChange, onBlur } }) => (
@@ -180,7 +198,11 @@ function ProfilePassword({ info = {}, onCancelClick }) {
                       value={value}
                       label={t("PASSWORD_CONFIRM")}
                       error={!!errors.passwordConfirm}
-                      helperText={errors.passwordConfirm ? errors.passwordConfirm.message : ""}
+                      helperText={
+                        errors.passwordConfirm
+                          ? errors.passwordConfirm.message
+                          : ""
+                      }
                       InputProps={{
                         autocomplete: "off",
                         endAdornment: (
@@ -192,8 +214,13 @@ function ProfilePassword({ info = {}, onCancelClick }) {
                               });
                             }}
                           >
-                            {showPassword.confirm ? <FuseSvgIcon>heroicons-outline:eye</FuseSvgIcon> :
-                              <FuseSvgIcon >heroicons-outline:eye-off</FuseSvgIcon>}
+                            {showPassword.confirm ? (
+                              <FuseSvgIcon>heroicons-outline:eye</FuseSvgIcon>
+                            ) : (
+                              <FuseSvgIcon>
+                                heroicons-outline:eye-off
+                              </FuseSvgIcon>
+                            )}
                           </IconButton>
                         ),
                       }}

@@ -29,14 +29,15 @@ import { useThemeMediaQuery } from "@fuse/hooks";
 import VoucherInfo from "./VoucherInfo";
 import ButtonComponent from "app/shared-components/ButtonComponent/ButtonComponent";
 import CardList from "./CardList";
-
+import { useSelector } from "react-redux";
+import { selectFuseNavbar } from "app/store/mv/navbarSlice";
 const VouchersList = (props) => {
   const [exportLoading, setExportLoading] = useState(false);
   const { t } = useTranslation();
   const theme = useTheme();
   const dispatch = useDispatch();
+  const navbar = useSelector(selectFuseNavbar);
 
- 
   const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   const [cancel, setCancel] = useState({
@@ -44,8 +45,6 @@ const VouchersList = (props) => {
     anchorEl: null,
     data: null,
   });
-
- 
 
   const [sampleDataList, setSampleDataList] = useState(props.data || []);
 
@@ -55,7 +54,6 @@ const VouchersList = (props) => {
   //   );
   //   setSampleDataList(updatedList);
   // };
-
 
   const isLoadingData = true;
 
@@ -75,7 +73,7 @@ const VouchersList = (props) => {
     isAdmin,
     handleClose,
     handleClickOpen,
-    details
+    details,
   } = props;
 
   const statusMap = {
@@ -258,7 +256,7 @@ const VouchersList = (props) => {
       },
     },
     {
-      minWidth: 140,
+      minWidth: 150,
       field: "details",
       sortable: false,
       headerName: t("DETAILS"),
@@ -413,8 +411,8 @@ const VouchersList = (props) => {
       >
         {/* <Hidden mdDown> */}
         <DataGrid
-        disableVirtualization 
-          columnBuffer={300}  // Adjust buffer space here
+          disableVirtualization
+          columnBuffer={300} // Adjust buffer space here
           pagination
           rows={sampleDataList}
           getRowId={(row) => row.code}
@@ -426,7 +424,6 @@ const VouchersList = (props) => {
           page={total.PageNumber - 1}
           disableColumnMenu
           disableColumnFilter
-          // columnBuffer={50}
           disableColumnSelector
           sortable={false}
           sortColumn={false}
@@ -436,6 +433,9 @@ const VouchersList = (props) => {
           rowsPerPageOptions={[10, 20, 30]}
           onPageChange={handlePageChange}
           onPageSizeChange={handlePageSizeChange}
+          onResize={(e) => {
+            console.log("onResize", e);
+          }}
           localeText={{
             ...faIR.components.MuiDataGrid.defaultProps.localeText,
             footerTotalVisibleRows: (visibleCount, totalCount) =>
@@ -449,11 +449,7 @@ const VouchersList = (props) => {
                 }`,
             },
           }}
-       
-    
         />
-   
-
       </Box>
 
       <Dialog
