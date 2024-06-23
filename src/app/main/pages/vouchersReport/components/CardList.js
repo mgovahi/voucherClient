@@ -23,6 +23,7 @@ import {
     TablePagination,
     Chip,
     Paper,
+    Popover
 } from "@mui/material";
 import FusePageSimple from "@fuse/core/FusePageSimple";
 import useThemeMediaQuery from "@fuse/hooks/useThemeMediaQuery";
@@ -39,7 +40,15 @@ function CardList(props) {
     const { t } = useTranslation();
     const theme = useTheme();
     const [page, setPage] = useState(0);
-    const { data} = props;
+    const { data,
+        handleClose,
+        handleClickOpen,
+        details,
+        isAdmin,
+        onCancelVoucher
+
+
+    } = props;
     const [rowsPerPage, setRowsPerPage] = useState(10);
     const [sampleDataList, setSampleDataList] = useState(props.data || []);
 
@@ -52,23 +61,28 @@ function CardList(props) {
         setPage(0);
     };
 
-    const handleClose = () => {
-        setDetails({ showModal: false, data: { voucherInfo: {} } });
-    };
-    const [details, setDetails] = useState({
-        showModal: false,
-        data: {},
-    });
+
+
     const isLoadingData = true;
 
-    const handleClickOpen = (params) => {
-        setDetails({
-            showModal: true,
-            data: { voucherInfo: params },
+    const [cancel, setCancel] = useState({
+        confirm: false,
+        anchorEl: null,
+        data: null,
+    });
+
+    const handleCancelVoucher = (e) => {
+        if (cancel.data) {
+            if (onCancelVoucher) {
+                onCancelVoucher(cancel.data);
+            }
+        }
+        setCancel({
+            confirm: false,
+            data: null,
+            anchorEl: null,
         });
-
     };
-
 
     const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down("sm"));
 
@@ -122,12 +136,12 @@ function CardList(props) {
                     >
                         <Box className="grid  sm:grid-cols-2 xs:grid-cols-2 gap-24">
                             <Box className="sm:pr-36">
-                                <label variant="string">{t("VOUCHER_CODE")}</label>
+                                <label variant="string">{t("VOUCHER_CODE")} </label>
                                 <Typography variant="string">{row.code}</Typography>
                             </Box>
 
                             <Box>
-                                <label variant="string">{t("CURRENCY")}</label>
+                                <label variant="string">{t("CURRENCY")} </label>
                                 <Typography
                                     variant="string"
                                     sx={{
@@ -139,7 +153,7 @@ function CardList(props) {
                             </Box>
 
                             <Box className="sm:pr-36">
-                                <label variant="string">{t("AMOUNT")}</label>
+                                <label variant="string">{t("AMOUNT")} </label>
                                 <Typography
                                     variant="string"
                                     sx={{
@@ -241,7 +255,14 @@ function CardList(props) {
                                         size="small"
                                         //disabled={isLoading}
                                         isLoading={isLoadingData}
-                                        onClick={() => handleRemoveItem(row)}
+                                        // onClick={() => handleRemoveItem(row)}
+                                        onClick={(e) => {
+                                            setCancel({
+                                                confirm: true,
+                                                anchorEl: e.currentTarget,
+                                                data: row,
+                                            });
+                                        }}
                                         variant="outlined"
                                         sx={{ padding: "3px" }}
                                         endIcon={
@@ -362,16 +383,78 @@ function CardList(props) {
                         </DialogContent>
                     </Dialog>
 
-
-
-
-
-
-
-
-
-
-
+                    <Popover
+                        open={cancel.confirm}
+                        anchorEl={cancel.anchorEl}
+                        anchorOrigin={{
+                            vertical: "bottom",
+                            horizontal: "left",
+                        }}
+                        onClose={() => {
+                            setCancel({
+                                confirm: false,
+                                anchorEl: null,
+                                data: null,
+                            });
+                        }}
+                    >
+                        <Box className="py-[16px]">
+                            <Box class="px-[24px] mb-[16px]">
+                                <Typography variant="body2">{t("CANCEL_VOUCHER")}</Typography>
+                                <Typography className="mt-8">
+                                    {t("CANCEL_VOUCHER_CONFIRM_MESSAFE")}
+                                </Typography>
+                            </Box>
+                            <Box
+                                className="px-[24px] mt-12 text-left"
+                                sx={{
+                                    button: {
+                                        padding: "3px 8px !important",
+                                        margin: "0 0 0 5px",
+                                        minWidth: "100px",
+                                    },
+                                }}
+                            >
+                                <ButtonComponent
+                                    size="small"
+                                    //disabled={isLoading}
+                                    isLoading={isLoadingData}
+                                    onClick={(e) => {
+                                        setCancel({
+                                            confirm: false,
+                                            anchorEl: null,
+                                            data: null,
+                                        });
+                                    }}
+                                    variant="outlined"
+                                >
+                                    {t("CANCEL")}
+                                </ButtonComponent>
+                                <ButtonComponent
+                                    color="error"
+                                    skin="light"
+                                    size="small"
+                                    //disabled={isLoading}
+                                    isLoading={isLoadingData}
+                                    onClick={(e) => handleCancelVoucher(e)}
+                                    variant="contained"
+                                    sx={{}}
+                                    endIcon={
+                                        <FuseSvgIcon
+                                            sx={{
+                                                stroke: "transparent !important",
+                                                fill: "#fff",
+                                            }}
+                                        >
+                                            {"mv-icons:icon-Cancel"}
+                                        </FuseSvgIcon>
+                                    }
+                                >
+                                    {t("YES")}
+                                </ButtonComponent>
+                            </Box>
+                        </Box>
+                    </Popover>
 
 
                 </>

@@ -36,10 +36,7 @@ const VouchersList = (props) => {
   const theme = useTheme();
   const dispatch = useDispatch();
 
-  const [details, setDetails] = useState({
-    showModal: false,
-    data: {},
-  });
+ 
   const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   const [cancel, setCancel] = useState({
@@ -48,12 +45,7 @@ const VouchersList = (props) => {
     data: null,
   });
 
-  const handleClickOpen = (params) => {
-    setDetails({
-      showModal: true,
-      data: { voucherInfo: params },
-    });
-  };
+ 
 
   const [sampleDataList, setSampleDataList] = useState(props.data || []);
 
@@ -64,9 +56,7 @@ const VouchersList = (props) => {
   //   setSampleDataList(updatedList);
   // };
 
-  const handleClose = () => {
-    setDetails({ showModal: false, data: { voucherInfo: {} } });
-  };
+
   const isLoadingData = true;
 
   const {
@@ -83,6 +73,9 @@ const VouchersList = (props) => {
     onApprovePurchases,
     onCancelVoucher,
     isAdmin,
+    handleClose,
+    handleClickOpen,
+    details
   } = props;
 
   const statusMap = {
@@ -279,7 +272,6 @@ const VouchersList = (props) => {
             isLoading={isLoadingData}
             onClick={() => handleClickOpen(params.row)}
             variant="contained"
-            sx={{}}
             startIcon={
               <FuseSvgIcon
                 sx={{
@@ -411,6 +403,7 @@ const VouchersList = (props) => {
         sx={{
           ...dataGridStyles,
           minHeight: "500px",
+          width: "100%",
           "& .muirtl-1w8msm6-MuiDataGrid-root .MuiDataGrid-cell:last-of-type": {
             // paddingRight:'0px',
             paddingLeft: "0px",
@@ -420,6 +413,8 @@ const VouchersList = (props) => {
       >
         {/* <Hidden mdDown> */}
         <DataGrid
+        disableVirtualization 
+          columnBuffer={300}  // Adjust buffer space here
           pagination
           rows={sampleDataList}
           getRowId={(row) => row.code}
@@ -431,7 +426,7 @@ const VouchersList = (props) => {
           page={total.PageNumber - 1}
           disableColumnMenu
           disableColumnFilter
-          columnBuffer={50}
+          // columnBuffer={50}
           disableColumnSelector
           sortable={false}
           sortColumn={false}
@@ -454,31 +449,19 @@ const VouchersList = (props) => {
                 }`,
             },
           }}
+       
+    
         />
-        {/* </Hidden> */}
-        {/* <Hidden mdUp>
+   
 
-         <CardList
-            data={data}
-            statusMap={statusMap}
-            statusMapColor={statusMapColor}
-            onApprovePurchases={onApprovePurchases}
-            total={total}
-            pageSize={pageSize}
-            onPageChange={onPageChange}
-            onPageSizeChange={onPageSizeChange}
-            // handleClickOpen={handleClickOpen}
-            // onPurchasesAdvice={handlePurchasesAdvice}
-          />
- </Hidden> */}
       </Box>
+
       <Dialog
         open={details.showModal}
         fullScreen={isMobile ? true : false}
         maxWidth="lg"
         fullWidth
         keepMounted
-        onClose={handleClose}
       >
         <DialogTitle>
           <Box className="">

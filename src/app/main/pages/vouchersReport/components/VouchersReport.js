@@ -13,6 +13,7 @@ import { useState } from "react";
 import VouchersList from "./VouchersList";
 import { useNavigate } from "react-router-dom";
 import FusePageSimpleHeader from "@fuse/core/FusePageSimple/FusePageSimpleHeader";
+import VoucherInfo from "./VoucherInfo";
 
 import sx from "@mui/system/sx";
 import CardList from "./CardList";
@@ -44,6 +45,15 @@ function VouchersReport(props) {
     console.log(model);
   };
 
+
+  // const [cancel, setCancel] = useState({
+  //   confirm: false,
+  //   anchorEl: null,
+  //   data: null,
+  // });
+
+
+
   const onCancelVoucher = (data) => {
     let list = [...vouchers.list];
     let index = list.findIndex((v) => v.code == data.code);
@@ -55,6 +65,38 @@ function VouchersReport(props) {
       });
     }
   };
+
+  const handleCancelVoucher = (e) => {
+    if (cancel.data) {
+      if (onCancelVoucher) {
+        onCancelVoucher(cancel.data);
+      }
+    }
+    setCancel({
+      confirm: false,
+      data: null,
+      anchorEl: null,
+    });
+  };
+
+
+  const [details, setDetails] = useState({
+    showModal: false,
+    data: {},
+  });
+
+  const handleOpenDetails  = (params) => {
+    setDetails({
+      showModal: true,
+      data: { voucherInfo: params },
+    });
+  };
+
+  const handleClose  = () => {
+    setDetails({ showModal: false, data: { voucherInfo: {} } });
+  };
+
+
 
   return (
     <>
@@ -107,10 +149,23 @@ function VouchersReport(props) {
 
               <Hidden mdUp>
                 <CardList 
-                 data={vouchers.list ? vouchers.list :[]}></CardList>
+                 data={vouchers.list ? vouchers.list :[]}
+                 total={vouchers.totalInfo}
+                 onPageSizeChange={onPageSizeChange}
+                 onSortChange={onSortChange}
+                 onCancelVoucher={onCancelVoucher}
+                 handleClickOpen={handleOpenDetails}
+                 handleClose={handleClose}
+                 details={details}
+                 ></CardList>
               </Hidden>
               <Hidden mdDown>
                 <VouchersList
+              
+                handleCancelVoucher={handleCancelVoucher}
+                details={details}
+                handleClickOpen={handleOpenDetails}
+                 handleClose={handleClose}
                   data={vouchers.list}
                   total={vouchers.totalInfo}
                   onPageSizeChange={onPageSizeChange}
@@ -118,9 +173,6 @@ function VouchersReport(props) {
                   onCancelVoucher={onCancelVoucher}
                 />
               </Hidden>
-
-
-
             </Box>
           </motion.div>
         </motion.div>
@@ -130,6 +182,7 @@ function VouchersReport(props) {
     </>
   );
 }
+
 
 const sampleData = [
   {
