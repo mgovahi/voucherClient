@@ -41,8 +41,6 @@ const emotionCacheOptions = {
   },
 };
 
-console.log("")
-
 
 const App = () => {
   const langDirection = useSelector(selectCurrentLanguageDirection);

@@ -21,7 +21,6 @@ import { useNavigate } from "react-router-dom";
 const VoucherChart = () => {
   let pastSevenDays = [];
   const currentLanguage = useSelector(selectCurrentLanguage);
-  console.log(currentLanguage, "moon")
 
   for (let i = 0; i <= 6; i++) {
     const currentDate = moment(new Date());

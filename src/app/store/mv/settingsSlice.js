@@ -43,7 +43,6 @@ function getInitialSettings() {
     style: defaultLayoutStyle,
     config: themeLayoutConfigs[defaultLayoutStyle].defaults,
   };
-  console.log("getInitialSettings", defaultSettings, layout, settingsConfig, getParsedQuerySettings())
 
   return _.merge(
     {},
@@ -76,8 +75,6 @@ const initialState = {
   defaults: _.merge({}, initialSettings),
   current: _.merge({}, initialSettings),
 };
-
-console.log("initialSettings", initialSettings)
 
 export const setDefaultSettings = createAsyncThunk(
   "fuse/settings/setDefaultSettings",

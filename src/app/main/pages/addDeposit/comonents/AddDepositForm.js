@@ -28,6 +28,7 @@ const AddDepositForm = ({ onShowPage }) => {
     control,
     formState: { errors, isValid },
     handleSubmit,
+    watch,
   } = useForm({
     mode: "onChange",
   });
@@ -35,12 +36,15 @@ const AddDepositForm = ({ onShowPage }) => {
   const theme = useTheme();
   const langDirection = useSelector(selectCurrentLanguageDirection);
 
+  const paymentDollar = 60.4;
+
   const validateImage = (file) => {
-    if (file.size > 1024 * 1024) {
+
+    if (file.size && file.size > 1024 * 1024) {
       return t("FILE_SIZE_ERROR");
     }
     const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
-    if (!allowedTypes.includes(file.type)) {
+    if (file.type && !allowedTypes.includes(file.type)) {
       return t("FILE_TYPE_ERROR");
     }
     return true;
@@ -53,20 +57,18 @@ const AddDepositForm = ({ onShowPage }) => {
 
   const depositTypeMap = [
     {
-      label: "PAYA",
-      value: "paya",
+      label: "BANK_DEPOSIT_SLIP",
+      value: "bandDepositSlip",
     },
     {
-      label: "SATNA",
-      value: "satna",
-    },
-    {
-      label: "POL",
-      value: "pol",
+      label: "INTERBANK_PAYMENT_SYSTEM",
+      value: "interbankPaymentSystem",
     },
   ];
 
   const loading = false;
+
+  const depositAmountValue = watch("depositAmount");
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="grid gap-y-36">
@@ -139,7 +141,7 @@ const AddDepositForm = ({ onShowPage }) => {
               {t("PAYMENT_DOLLAR")}:
             </Typography>
             <Typography variant="body2" className="font-bold">
-              60.400 {t("TOMAN")}
+              {paymentDollar} {t("TOMAN")}
             </Typography>
             <Typography
               variant="body2"
@@ -148,8 +150,15 @@ const AddDepositForm = ({ onShowPage }) => {
             >
               {t("ALLOCATED_CREDIT")}:
             </Typography>
-            <Typography variant="body2" className="font-bold">
-              $17
+            <Typography
+              variant="body2"
+              className="font-bold"
+              fontFamily="iranYekanXNumEn"
+            >
+              $
+              {depositAmountValue
+                ? parseFloat(depositAmountValue / paymentDollar).toFixed(2)
+                : 0}
             </Typography>
           </Grid>
         </Grid>
@@ -204,7 +213,11 @@ const AddDepositForm = ({ onShowPage }) => {
                       onChange={onChange}
                       value={value}
                       error={errors.depositType}
+                      defaultValue={"-1"}
                     >
+                      <MenuItem disabled value="-1">
+                        {t("SELECT")}
+                      </MenuItem>
                       {depositTypeMap.map((type, i) => (
                         <MenuItem key={`type_${i}`} value={type.value}>
                           {t(type.label)}

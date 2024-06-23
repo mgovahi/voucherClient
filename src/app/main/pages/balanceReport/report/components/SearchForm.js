@@ -98,7 +98,6 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
       setShopList(dataShop?.result);
     }
   };
-  // console.log(getValues(),"get");
   let firstDayOfMonth = getFirstDayOfMonth(null, "fa");
   return (
     <>

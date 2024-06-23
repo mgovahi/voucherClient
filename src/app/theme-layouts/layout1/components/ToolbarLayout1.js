@@ -31,7 +31,6 @@ function ToolbarLayout1(props) {
   const toolbarTheme = useSelector(selectToolbarTheme);
   const { t } = useTranslation();
   const theme = useTheme();
-  console.log("config", config)
   return (
     <ThemeProvider theme={toolbarTheme}>
       <AppBar

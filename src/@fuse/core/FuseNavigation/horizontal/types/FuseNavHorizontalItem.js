@@ -48,7 +48,6 @@ const StyledListItem = styled(ListItem)(({ theme }) => ({
 
 function FuseNavHorizontalItem(props) {
   const { item } = props;
-  console.log("item", item);
 
   return useMemo(
     () => (

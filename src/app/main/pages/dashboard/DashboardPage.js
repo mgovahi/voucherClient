@@ -18,8 +18,6 @@ function DashboardPage(props) {
   const { t } = useTranslation();
   const theme = useTheme();
 
-  console.log(format(new Date(), "eeee"));
-
   const Root = styled(FusePageSimple)(({ theme }) => {});
   const container = {
     show: {

@@ -48,9 +48,7 @@ function DepositsInfo({ info = {}, onCancelClick,  onCancelTransaction,
     anchorEl: null,
     data: null,
   });
-
-console.log(filePreview,"mof")
-
+  
   const handleChange = (event, newValue) => {
     setActive(newValue);
   };

@@ -190,6 +190,9 @@ window.appSettings.resources = {
       REMOVE_IP_CONFIRM_MESSAGE: "Are you sure about removing the IP?",
       SECRET_KEY_COPIED:"The security key was copied",
       DEPOSITS:"Deposits",
+      SELECT: "Select",
+      BANK_DEPOSIT_SLIP: "Bank Deposit Slip",
+      INTERBANK_PAYMENT_SYSTEM: "Interbank Payment System",
     },
   },
   fa: {
@@ -494,7 +497,10 @@ window.appSettings.resources = {
       REMOVE_IP: "حذف IP",
       REMOVE_IP_CONFIRM_MESSAGE: "آیا از حذف IP اطمینان دارید؟",
       SECRET_KEY_COPIED:"کلید امنیتی کپی شد",
-      DEPOSITS:"واریزی‌ها"
+      DEPOSITS:"واریزی‌ها",
+      SELECT: "انتخاب کنید",
+      BANK_DEPOSIT_SLIP: "فیش واریز بانکی",
+      INTERBANK_PAYMENT_SYSTEM: "رسید انتقال بین بانکی"
     },
   },
 };

@@ -5,7 +5,7 @@ import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
 
 const CustomNumericFormat = ({ value, errors, helperText, onChange }) => {
   const [number, setNumber] = useState(value ? value : 0);
-
+  
   const handleIncrement = () => {
     const newValue = number === "" ? 0 : number + 1;
     onChange(newValue);

@@ -14,7 +14,7 @@ import FuseSvgIcon from "../FuseSvgIcon/FuseSvgIcon";
 import { useDropzone } from "react-dropzone";
 
 import FormHelperText from "@mui/material/FormHelperText";
-import { CircularProgress, IconButton } from "@mui/material";
+import { Button, CircularProgress, IconButton } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import ButtonComponent from "app/shared-components/ButtonComponent/ButtonComponent";
 import { useTheme } from "@mui/styles";
@@ -53,7 +53,6 @@ const FileUploaderSingle = (props) => {
       }
     },
   });
-
   const handleLinkClick = (event) => {
     event.preventDefault();
   };
@@ -70,12 +69,13 @@ const FileUploaderSingle = (props) => {
   return (
     <>
       <input {...getInputProps()} />
-      <Box position="relative" width="100%">
-        <InputLabel
-          sx={{ backgroundColor: "#fff" }}
-          htmlFor={props.id}
-          error={error}
-        >
+      <Box
+        position="relative"
+        width="100%"
+        backgroundColor="primary.light"
+        borderColor="primary.main"
+      >
+        <InputLabel htmlFor={props.id} error={error}>
           {props.label}
         </InputLabel>
         <OutlinedInput
@@ -85,11 +85,12 @@ const FileUploaderSingle = (props) => {
             width: "100%",
             height: "auto",
             minHeight:
-              file.preview && (error?.type !== "validate")
-                ? "300px"
-                : "200px",
+              file.preview && error?.type !== "validate" ? "300px" : "200px",
             maxHeight: "300px",
             zIndex: "1",
+            ".MuiOutlinedInput-notchedOutline": {
+              border: `1px dashed ${theme.palette.primary.main}`,
+            },
           }}
           id={props.id}
           // value={value ? value : file && file.name ? file.name : ""}
@@ -99,6 +100,7 @@ const FileUploaderSingle = (props) => {
           inputProps={{
             sx: {
               fontFamily: "IransansxRE !important",
+              backgroundColor: theme.palette.primary.light + " !important",
             },
           }}
           endAdornment={
@@ -130,18 +132,37 @@ const FileUploaderSingle = (props) => {
             justifyContent: "center",
           }}
         >
-          {file.preview && (error?.type !== "validate") ? (
+          {file.preview && error?.type !== "validate" ? (
             <Box
-              component="img"
-              src={file.preview}
-              alt={file.name}
               sx={{
-                width: "150px",
-                height: "150px",
-                borderRadius: "6px",
                 zIndex: 2,
+                position: "relative",
+                "&:hover": {
+                  ".img-hover": {
+                    backgroundColor: "rgba(0,0,0)",
+                    opacity: 0.45,
+                  },
+                },
               }}
-            />
+            >
+              <Box
+                component="img"
+                src={file.preview}
+                alt={file.name}
+                sx={{
+                  width: "150px",
+                  height: "150px",
+                  borderRadius: "6px",
+                }}
+              />
+              <Box className="img-hover absolute top-0 rounded-6 w-full h-full opacity-0 transition-all duration-400 flex items-center justify-center">
+                <Button onClick={handleFileRemove} className="p-0">
+                  <FuseSvgIcon sx={{ zIndex: 2 }} color="white">
+                    heroicons-outline:trash
+                  </FuseSvgIcon>
+                </Button>
+              </Box>
+            </Box>
           ) : (
             <FuseSvgIcon size={48} color={theme.palette.primary.main}>
               mv-icons:icon-CloudUpload

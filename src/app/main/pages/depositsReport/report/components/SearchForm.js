@@ -110,7 +110,6 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
       setShopList(dataShop?.result);
     }
   };
-  // console.log(getValues(),"get");
   return (
     <>
       <Box sx={{ m: "2rem 2rem" }}>
