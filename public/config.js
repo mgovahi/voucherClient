@@ -84,7 +84,7 @@ window.appSettings.resources = {
       TRANSACTION_FEE: "transaction Fee",
       CREATE_DATE: "Create Date",
       ACTION: "OPERATION",
-      ACTIVE: "action",
+      ACTIVE: "Active",
       USED: "used",
       MERGED: "MERGED",
       CANCELED: "canceled",

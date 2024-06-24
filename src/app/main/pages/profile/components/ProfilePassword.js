@@ -145,7 +145,7 @@ function ProfilePassword({ info = {}, onCancelClick }) {
                         errors.password ? errors.password.message : ""
                       }
                       InputProps={{
-                        autocomplete: "off",
+                        autoComplete: "off",
                         endAdornment: (
                           <IconButton
                             onClick={() => {
@@ -204,7 +204,7 @@ function ProfilePassword({ info = {}, onCancelClick }) {
                           : ""
                       }
                       InputProps={{
-                        autocomplete: "off",
+                        autoComplete: "off",
                         endAdornment: (
                           <IconButton
                             onClick={() => {

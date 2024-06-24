@@ -36,7 +36,7 @@ function ClientInfo({ info = {}, onCancelClick }) {
   const onStatusChange = (e) => {
     setStatus(e.target.checked ? "ACTIVE" : "INACTIVE");
   };
-  const handleSaveClick = () => {};
+  const handleSaveClick = () => { };
   const loading = false;
 
   const VisuallyHiddenInput = styled("input")({
@@ -55,6 +55,7 @@ function ClientInfo({ info = {}, onCancelClick }) {
     const file = event.target.files[0];
     console.log("File selected:", file);
   };
+  const isLTR = theme.direction === 'ltr';
 
   return (
     <Paper
@@ -127,12 +128,13 @@ function ClientInfo({ info = {}, onCancelClick }) {
             </Typography>
             <Typography
               variant="body2"
-              className="gap-x-[20px] font-bold lg:text-[12px]"
+              className="gap-x-[20px] font-bold lg:text-[12px] flex 	"
               color={theme.palette.text.grayDay}
               sx={{
                 display: "flex",
-                flexDirection: { xs: "column", sm: "row" },
-                alignItems: { xs: "flex-start", sm: "center" },
+                flexDirection: isLTR ? { xs: "column-reverse", md: "row-reverse" } : { xs: "column", md: "row" },
+                // flexDirection: { xs: "column", sm: "row" },
+                alignItems: { xs: "flex-start", md: "center" },
                 svg: {
                   marginRight: "7px",
                 },
@@ -172,10 +174,13 @@ function ClientInfo({ info = {}, onCancelClick }) {
         >
           <Box className=" col-span-2 md:col-span-4 flex flex-col  md:items-end   gap-4 gap-y-[30px]">
             <Box
-              className="flex gap-x-[20px]"
+              className="flex gap-x-[20px] "
               sx={{
                 flexDirection: { sm: "row", md: "row" },
                 justifyContent: "right",
+                direction: isLTR ? { xs: "rtl" } : { xs: "ltr" }
+
+
               }}
             >
               <Button
@@ -196,16 +201,16 @@ function ClientInfo({ info = {}, onCancelClick }) {
                 component="label"
                 variant="contained"
                 color="primary"
-                >
+              >
                 {t("UPDATE_PROFILE_PICTURE")}
                 <VisuallyHiddenInput type="file" onChange={handleFileChange} />
                 <span className="flex justify-center items-center rounded-full">
                   <FuseSvgIcon
-                    className="mr-4"
+                    className="mr-5 "
                     sx={{
                       // fill: `${theme.palette.divider}!important`,
                       // stroke: `${theme.palette.divider}!important`,
-                      style: { direction: "ltr" },
+
                       marginLeft: "5px",
                     }}
                   >
@@ -217,7 +222,8 @@ function ClientInfo({ info = {}, onCancelClick }) {
             <Box
               className="flex gap-x-[20px]     "
               sx={{
-                flexDirection: { xs: "column", sm: "row", md: "row" },
+                flexDirection: isLTR ? { xs: "column-reverse", sm: "row-reverse" } : { xs: "column", sm: "row" },
+                // flexDirection: { xs: "column", sm: "row", md: "row" },
                 justifyContent: "right",
 
                 " span": {
@@ -226,7 +232,8 @@ function ClientInfo({ info = {}, onCancelClick }) {
                   display: "inline-block",
                   padding: { lg: "15px", xs: "10px" },
                   // textAlign: {lg:"right",xs:"center"},
-                  textAlign: { lg: "right", xs: "center" },
+
+                  textAlign: isLTR ? { xs: "center", sm: "left" } : { xs: "center", sm: "right" },
                   // width: { xs: "250px",md:'100px', lg: '140px' },
                   // height: { xs: "70px", lg: '100px' },
                   marginBottom: { xs: "10px" },
@@ -263,10 +270,10 @@ function ClientInfo({ info = {}, onCancelClick }) {
               </Typography>
               <Typography
                 variant="caption"
-                fontFamily="IRANYekanXNumEnBold"
                 sx={{
-                  width :"140px",
+                  width: "160px",
                   " b": {
+                    fontFamily: "IRANYekanXNumEnBold",
                     color: theme.palette.primary.main + " !important",
                     fontWeight: "bold",
                   },

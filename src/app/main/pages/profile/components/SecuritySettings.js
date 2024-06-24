@@ -68,10 +68,11 @@ const SecuritySettings = () => {
             {t("TWO_FACTOR_LOGIN")}
           </Typography>
         </Box>
-        <Box className="flex  flex-row" width={"100%"}>
+        <Box className="flex  flex-row" width={"100%"} >
           <Box
-            className="flex  justify-center pr-20 my-24 "
-            sx={{ height: "43px" }}
+            className="flex  justify-center  my-24 "
+
+            sx={{ paddingLeft: "20px", height: "43px" }}
           >
             <i className=" flex justify-center items-center	  rounded-full ">
               <FuseSvgIcon
@@ -243,16 +244,16 @@ const SecuritySettings = () => {
                         //   margin: "68px 102px 58px 48px",
                         //   padding: "13px 20px 13px 20px",
                         // }}
-                         sx={{
-                      justifyContent: "space-between",
-                      width: { lg: "320px", xs: "280px" },
-                      height: "44px",
-                      backgroundColor: "#fff",
-                      border: `1px solid ${theme.palette.text.grayDay} `,
-                      padding: "13px 20px",
-                      marginTop: "68px",
-                      marginBottom:{xs:"50px"}
-                    }}
+                        sx={{
+                          justifyContent: "space-between",
+                          width: { lg: "320px", xs: "280px" },
+                          height: "44px",
+                          backgroundColor: "#fff",
+                          border: `1px solid ${theme.palette.text.grayDay} `,
+                          padding: "13px 20px",
+                          marginTop: "68px",
+                          marginBottom: { xs: "50px" }
+                        }}
                         size="large"
                         id="key-secret-btn"
                         onClick={handleKeySecret}
@@ -272,17 +273,17 @@ const SecuritySettings = () => {
                           </i>
                         </Box> */}
                         <Box className="flex   pr-20 my-24 " sx={{}}>
-                        <FuseSvgIcon
-                          size={18}
-                          sx={{
-                            fill: `${theme.palette.text.grayDay}!important`,
-                            stroke: `${theme.palette.secondary.slowLight}!important`,
-                          }}
-                        >
-                          mv-icons:icon-Copy
-                        </FuseSvgIcon>
-                      
-                    </Box>
+                          <FuseSvgIcon
+                            size={18}
+                            sx={{
+                              fill: `${theme.palette.text.grayDay}!important`,
+                              stroke: `${theme.palette.secondary.slowLight}!important`,
+                            }}
+                          >
+                            mv-icons:icon-Copy
+                          </FuseSvgIcon>
+
+                        </Box>
                       </Button>
                     </Tooltip>
                   </Box>

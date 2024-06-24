@@ -27,7 +27,7 @@ const Lastlogin = () => {
 
   return (
     <Paper className="w-full">
-      <FusePageSimpleHeader  className="mb-12" header={t("LAST_LOGIN")}></FusePageSimpleHeader>
+      <FusePageSimpleHeader className="mb-12" header={t("LAST_LOGIN")}></FusePageSimpleHeader>
 
       <Grid container>
         {SampleData.map((dataItem) => (
@@ -38,7 +38,7 @@ const Lastlogin = () => {
             sm={6}
             lg={12}
             key={dataItem.id}
-            className=" text-right  md:mx-0 "
+            className=" rtl:text-right  md:mx-0 "
             sx={{
               " p:not(:first-child)": {
                 minWidth: "25%",
@@ -48,7 +48,7 @@ const Lastlogin = () => {
               flexDirection: { xs: "column", lg: "row" },
               alignItems: "center",
               justifyContent: "space-between",
-              padding: 2, 
+              padding: 2,
               backgroundColor: { xs: theme.palette.custome.cyanBlueLight, sm: theme.palette.custome.cyanBlueLight, md: "transparent", lg: "transparent" },
               marginBottom: { xs: "10px", sm: "10px", md: 0, lg: 0 },
 
@@ -63,7 +63,7 @@ const Lastlogin = () => {
               md={3}
               sx={{
                 maxWidth: "100%!important",
-               
+
               }}
             >
               <Typography className="font-bold " sx={{ fontSize: "14px" }}>
@@ -81,8 +81,9 @@ const Lastlogin = () => {
                       sx={{
                         stroke: "transparent !important",
                         display: "block!important",
+                        // marginLeft:"14px"
                       }}
-                      className="ml-14 "
+                      className="rtl:ml-14 "
                     >
                       mv-icons-mc:icon-Login
                     </FuseSvgIcon>
