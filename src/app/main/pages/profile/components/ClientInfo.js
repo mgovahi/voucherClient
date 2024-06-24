@@ -271,7 +271,7 @@ function ClientInfo({ info = {}, onCancelClick }) {
               <Typography
                 variant="caption"
                 sx={{
-                  width: "160px",
+                  width:{xs:"1",sm:"160px"} ,
                   " b": {
                     fontFamily: "IRANYekanXNumEnBold",
                     color: theme.palette.primary.main + " !important",
