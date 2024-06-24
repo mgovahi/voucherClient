@@ -61,7 +61,7 @@ function ProfilePassword({ info = {}, onCancelClick }) {
   // };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="grid">
+    <form onSubmit={handleSubmit(onSubmit)} className="grid" autoComplete="off">
       <Box className="grid gap-14"></Box>
       <Paper
         className="gap-4 grid my-20"
