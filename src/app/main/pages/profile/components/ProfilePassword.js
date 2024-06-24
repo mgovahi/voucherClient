@@ -203,6 +203,7 @@ function ProfilePassword({ info = {}, onCancelClick }) {
                           ? errors.passwordConfirm.message
                           : ""
                       }
+
                       InputProps={{
                         autoComplete: "off",
                         endAdornment: (
@@ -229,7 +230,14 @@ function ProfilePassword({ info = {}, onCancelClick }) {
                 />
               </FormControl>
             </Box>
-            <Box className="flex justify-end gap-x-[20px] mt-[74px] md:ml-20  sm:ml-10">
+            <Box className="flex justify-end gap-x-[20px] mt-[74px]  "
+            
+            sx={{
+                 marginRight:"20px",
+                 marginLeft:"20px"
+                }}
+            
+            >
               <ButtonComponent
                 sx={{
                   width: { xs: "100%", sm: "fit-content", lg: "162px" },

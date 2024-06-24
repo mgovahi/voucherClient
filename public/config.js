@@ -147,7 +147,7 @@ window.appSettings.resources = {
       PROFILE: "Profile",
       EXIT: "Exit",
       VOUCHER_GENERATE: "Voucher Generate",
-      VOUCHERS_REPORT: "Vouchers Report",
+      VOUCHERS_REPORT: "Vouchers",
       DEPOSIT_INFORMATION: "Deposit Information",
       DEPOSIT_STATUS: "Deposit Status",
       EXCHANGE_RATE_REMITTANCE_RECEIVANLES_TOMAN:
