@@ -47,7 +47,7 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
   const channelMap = [
     {
       value: "-1",
-      label: t('ALL_ITEMS'),
+      label: t("ALL_ITEMS"),
     },
     {
       label: "panel",
@@ -65,7 +65,7 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
   const statusMap = [
     {
       value: "-1",
-      label: t('ALL_ITEMS'),
+      label: t("ALL_ITEMS"),
     },
     {
       label: t("ACTIVE"),
@@ -122,10 +122,16 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
             // alignItems: "center",
             justifyContent: "space-between",
             gap: "20px",
-            flexDirection: { xs: "column", sm: "row", },
+            flexDirection: { xs: "column", sm: "row" },
             // columnGap: { xs: 2, sm: 2.5, md: 2, lg: 3, xl:4},
             "  .MuiFormControl-root": {
-              flex: { xs: '1 1 100%', sm: '1 1 calc(50% - 20px)', md: '1 1 calc(33.333% - 20px)', lg: '1 1 calc(33.333% - 20px)', xl: 1 },
+              flex: {
+                xs: "1 1 100%",
+                sm: "1 1 calc(50% - 20px)",
+                md: "1 1 calc(33.333% - 20px)",
+                lg: "1 1 calc(33.333% - 20px)",
+                xl: 1,
+              },
               // m: { sm: "0.1rem 0.5rem", xs: "0.1rem 0.5rem", md: "0.1rem 0.5rem" },
               width: {
                 xs: "100%",
@@ -155,7 +161,6 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
             <InputLabel>{t("CHANNEL")}</InputLabel>
             <Controller
               name="Status"
-
               control={control}
               render={({ field: { value, onChange, onBlur } }) => (
                 <Select
@@ -214,7 +219,6 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
                   }}
                   defaultValue={firstDayOfMonth}
                   value={value}
-                  maxDate={new Date()}
                   label={t("FROM_DATE")}
                   slotProps={{
                     popper: {
@@ -270,7 +274,6 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
                   renderInput={(params) => (
                     <TextField {...params} sx={{ flex: 1 }} />
                   )}
-                  maxDate={new Date()}
                   InputProps={{
                     sx: { flex: 1 },
                     autocomplete: "off",
@@ -366,4 +369,3 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
 }
 
 export default SearchForm;
-

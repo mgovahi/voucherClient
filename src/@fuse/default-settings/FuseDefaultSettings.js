@@ -408,14 +408,14 @@ export const defaultThemeOptions = (direction) => {
           columnHeader: {
             height: "54px",
             "&:not(.MuiDataGrid-columnHeaderCheckbox)": {
-              paddingRight: theme.spacing(4),
-              paddingLeft: theme.spacing(4),
+              paddingRight: theme.spacing(1),
+              paddingLeft: theme.spacing(1),
               "&:first-of-type": {
-                paddingLeft: theme.spacing(5),
+                paddingLeft: theme.spacing(1),
               },
             },
             "&:last-of-type": {
-              paddingRight: theme.spacing(5),
+              paddingRight: theme.spacing(1),
             },
           },
           columnHeaderCheckbox: {
@@ -424,6 +424,7 @@ export const defaultThemeOptions = (direction) => {
           },
           columnHeaderTitleContainer: {
             padding: 0,
+            justifyContent: "center",
           },
           columnHeaderTitle: {
             fontWeight: 600,

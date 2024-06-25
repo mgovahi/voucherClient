@@ -196,7 +196,6 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
                   }}
                   value={value}
                   defaultValue={firstDayOfMonth}
-                  maxDate={new Date()}
                   label={t("FROM_DATE")}
                   slotProps={{
                     popper: {
@@ -252,7 +251,6 @@ function SearchForm({ onSearchClick, loading, isAdmin }) {
                   renderInput={(params) => (
                     <TextField {...params} sx={{ flex: 1 }} />
                   )}
-                  maxDate={new Date()}
                   InputProps={{
                     sx: { flex: 1 },
                     autocomplete: "off",

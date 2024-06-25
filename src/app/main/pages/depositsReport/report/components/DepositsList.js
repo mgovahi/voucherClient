@@ -68,8 +68,8 @@ const DepositsList = (props) => {
 
   const statusMap = {
     ACCEPTED: t("CONFIRMED"),
-    WAITING:t("WAITING"), 
-    REJECTED:t("REJECTED") ,
+    WAITING: t("WAITING"),
+    REJECTED: t("REJECTED"),
   };
 
   const statusMapColor = {
@@ -78,7 +78,6 @@ const DepositsList = (props) => {
     WAITING: "warningLight",
   };
 
-
   let columns = [
     {
       minWidth: 20,
@@ -86,10 +85,7 @@ const DepositsList = (props) => {
       field: "id",
       sortable: false,
       renderCell: (params) => (
-        <Typography
-          variant="body2"
-          sx={{ color: "text.primary"}}
-        >
+        <Typography variant="body2" sx={{ color: "text.primary" }}>
           {params.api.getRowIndex(params.row.code) +
             1 +
             (parseInt(total?.PageNumber) - 1) * total.PageSize}
@@ -105,14 +101,14 @@ const DepositsList = (props) => {
       renderCell: (params) => (
         <Typography
           variant="body2"
-          sx={{ direction: "ltr",fontWeight: "bold"  }}
+          sx={{ direction: "ltr", fontWeight: "bold" }}
         >
           {params.row.deposit.toAmount()}
         </Typography>
       ),
     },
     {
-      minWidth: 100,
+      minWidth: 120,
       headerName: t("CREDIT"),
       field: "credit",
       flex: 1,
@@ -120,15 +116,14 @@ const DepositsList = (props) => {
       renderCell: (params) => (
         <Typography
           variant="body2"
-          sx={{ color: "info.main", direction: "ltr",fontWeight: "bold"  }}
+          sx={{ color: "info.main", direction: "ltr", fontWeight: "bold" }}
         >
           {params.row.credit.toAmount()}
         </Typography>
       ),
-
     },
     {
-      minWidth: 100,
+      minWidth: 140,
       headerName: t("CURRENCY"),
       field: "currency",
       flex: 1,
@@ -139,17 +134,15 @@ const DepositsList = (props) => {
       //     </Typography>
       // )
     },
- 
+
     {
-      minWidth: 150,
+      minWidth: 170,
       headerName: t("TRANSACTION_ID"),
       field: "transactionId",
       flex: 1,
       sortable: false,
       renderCell: (params) => (
-        <Typography variant="body2">
-          {params.row.transactionId}
-        </Typography>
+        <Typography variant="body2">{params.row.transactionId}</Typography>
       ),
     },
     {
@@ -166,7 +159,7 @@ const DepositsList = (props) => {
       ),
     },
     {
-      minWidth: 50,
+      minWidth: 140,
       headerName: t("ATTACHMENT_TYPE"),
       field: "attachmentType",
       flex: 1,
@@ -203,18 +196,17 @@ const DepositsList = (props) => {
           label={statusMap[params.row.status]}
           color={statusMapColor[params.row.status]}
           sx={{
-            textTransform: 'uppercase',
+            textTransform: "uppercase",
             height: 20,
             maxWidth: "initial",
             mt: 0.4,
             fontSize: "1.1rem",
             fontWeight: "normal",
-           
           }}
         ></Chip>
       ),
     },
- 
+
     {
       minWidth: 180,
       field: "details",
@@ -306,8 +298,11 @@ const DepositsList = (props) => {
           gap: "15px",
         }}
       >
-        <Typography caption="body2"    className="text-base"
-       color={theme.palette.text.grayV}>
+        <Typography
+          caption="body2"
+          className="text-base"
+          color={theme.palette.text.grayV}
+        >
           {t("DEPOSITS")}
         </Typography>
         <Box
@@ -342,9 +337,8 @@ const DepositsList = (props) => {
             </FuseSvgIcon>
           </Button>
         </Box>
-
       </Box>
-      <Box sx={{ ...dataGridStyles, minHeight: "500px" ,width: '100%'}}>
+      <Box sx={{ ...dataGridStyles, minHeight: "500px", width: "100%" }}>
         <DataGrid
           pagination
           rows={data}
@@ -410,7 +404,10 @@ const DepositsList = (props) => {
           </Box>
         </DialogTitle>
         <DialogContent>
-          <DepositsInfo info={details.data.DepositsInfo}  onCancelClick={handleClose}></DepositsInfo>
+          <DepositsInfo
+            info={details.data.DepositsInfo}
+            onCancelClick={handleClose}
+          ></DepositsInfo>
         </DialogContent>
       </Dialog>
     </>

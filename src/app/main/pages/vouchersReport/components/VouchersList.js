@@ -29,14 +29,12 @@ import { useThemeMediaQuery } from "@fuse/hooks";
 import VoucherInfo from "./VoucherInfo";
 import ButtonComponent from "app/shared-components/ButtonComponent/ButtonComponent";
 import CardList from "./CardList";
-import { useSelector } from "react-redux";
-import { selectFuseNavbar } from "app/store/mv/navbarSlice";
+
 const VouchersList = (props) => {
   const [exportLoading, setExportLoading] = useState(false);
   const { t } = useTranslation();
   const theme = useTheme();
   const dispatch = useDispatch();
-  const navbar = useSelector(selectFuseNavbar);
 
   const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down("sm"));
 
@@ -116,7 +114,7 @@ const VouchersList = (props) => {
       ),
     },
     {
-      minWidth: 100,
+      minWidth: 120,
       headerName: t("CURRENCY"),
       field: "currency",
       flex: 1,
@@ -142,7 +140,7 @@ const VouchersList = (props) => {
       ),
     },
     {
-      minWidth: 100,
+      minWidth: 140,
       headerName: t("TRANSACTION_FEE"),
       field: "wage",
       flex: 1,

@@ -23,6 +23,18 @@ const inputGlobalStyles = (
       body: {
         backgroundColor: theme.palette.background.default,
         color: theme.palette.text.primary,
+        /*mui datagrid resize issue in rtl*/
+        "&[dir=rtl]": {
+          ".MuiDataGrid-main": {
+            direction: "rtl",
+            ".MuiDataGrid-columnHeaders": {
+              direction: "ltr",
+            },
+            ".MuiDataGrid-virtualScroller": {
+              direction: "ltr",
+            },
+          },
+        },
       },
       /*  'code:not([class*="language-"])': {
         color: theme.palette.secondary.dark,
