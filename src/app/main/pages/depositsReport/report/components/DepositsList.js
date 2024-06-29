@@ -414,8 +414,8 @@ const DepositsList = (props) => {
         </DialogTitle>
         <DialogContent>
           <DepositsInfo
-          // statusMapColor={statusMapColor}
-          // statusMap={statusMap}
+          statusMapColor={statusMapColor}
+          statusMap={statusMap}
           info={details.data.depositsInfo}
           onCancelClick={handleClose}
           ></DepositsInfo>

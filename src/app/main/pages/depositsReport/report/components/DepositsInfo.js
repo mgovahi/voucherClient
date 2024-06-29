@@ -33,7 +33,7 @@ import { useThemeMediaQuery } from "@fuse/hooks";
 import ButtonComponent from "app/shared-components/ButtonComponent/ButtonComponent";
 import FusePageSimpleHeader from "@fuse/core/FusePageSimple/FusePageSimpleHeader";
 
-function DepositsInfo({ info = {}, onCancelClick,  onCancelTransaction,
+function DepositsInfo({ info = {}, onCancelClick,  onCancelTransaction,statusMap,statusMapColor,
   onApproveTransaction, }) {
   const { t } = useTranslation();
   const theme = useTheme();
@@ -59,17 +59,17 @@ function DepositsInfo({ info = {}, onCancelClick,  onCancelTransaction,
     setDetails({ showModal: false });
   };
 
-  const statusMap = {
-    ACCEPTED: t("CONFIRMED"),
-    WAITING: t("WAITING"),
-    REJECTED: t("REJECTED"),
-  };
+  // const statusMap = {
+  //   ACCEPTED: t("CONFIRMED"),
+  //   WAITING: t("WAITING"),
+  //   REJECTED: t("REJECTED"),
+  // };
 
-  const statusMapColor = {
-    ACCEPTED: "successLight",
-    REJECTED: "errorLight",
-    WAITING: "warningLight",
-  };
+  // const statusMapColor = {
+  //   ACCEPTED: "successLight",
+  //   REJECTED: "errorLight",
+  //   WAITING: "warningLight",
+  // };
 
 
   const statusMapDescription = {

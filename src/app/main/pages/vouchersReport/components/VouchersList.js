@@ -487,8 +487,10 @@ const VouchersList = (props) => {
         </DialogTitle>
         <DialogContent>
           <VoucherInfo
-            info={details.data.voucherInfo}
-            onCancelClick={handleClose}
+          statusMap={statusMap}
+          statusMapColor={statusMapColor}
+          info={details.data.voucherInfo}
+          onCancelClick={handleClose}
           ></VoucherInfo>
         </DialogContent>
       </Dialog>
