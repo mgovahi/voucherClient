@@ -35,7 +35,7 @@ import { Controller, useForm } from "react-hook-form";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import moment from "jalali-moment";
 import ButtonComponent from "app/shared-components/ButtonComponent/ButtonComponent";
-import VoucherInfo from "./VoucherInfo";
+import DepositsInfo from "./DepositsInfo";
 function CardList(props) {
     const { t } = useTranslation();
     const theme = useTheme();
@@ -90,27 +90,25 @@ function CardList(props) {
         setSampleDataList(updatedList);
     };
 
-
     const statusMap = {
-        ACTIVE: t("ACTIVE"),
-        CANCELED: t("CANCELED"),
-        MERGED: t("MERGED"),
-        USED: t("USED"),
-    };
-    const statusMapColor = {
-        ACTIVE: "successLight",
-        CANCELED: "errorLight",
-        MERGED: "warningLight",
-        USED: "infoLight",
-    };
-
+        ACCEPTED: t("CONFIRMED"),
+        WAITING: t("WAITING"),
+        REJECTED: t("REJECTED"),
+      };
+    
+      const statusMapColor = {
+        ACCEPTED: "successLight",
+        REJECTED: "errorLight",
+        WAITING: "warningLight",
+      };
 
 
 
     const listItems =
         sampleDataList && sampleDataList.length
             ? sampleDataList.map((row) => {
-                return (
+                console.log("Status:", row.status);           
+                     return (
                     <Paper
                         className="flex flex-col flex-auto p-16 xs:p-24 shadow rounded-2xl mx-16"
                         sx={{
@@ -133,11 +131,22 @@ function CardList(props) {
                         }}
                     >
                         <Box className="grid  sm:grid-cols-2 xs:grid-cols-2 gap-24">
-                            <Box className="sm:pr-36">
-                                <label variant="string">{t("VOUCHER_CODE")} </label>
-                                <Typography variant="string">{row.code}</Typography>
+                            <Box >
+                                <label variant="string">{t("DEPOSIT_TOMAN")} </label>
+                                <Typography variant="string">{row.deposit}</Typography>
                             </Box>
 
+                            <Box>
+                                <label variant="string">{t("CREDIT")} </label>
+                                <Typography
+                                    variant="string"
+                                    sx={{
+                                        direction: "ltr",
+                                    }}
+                                >
+                                    {row.credit}
+                                </Typography>
+                            </Box>
                             <Box>
                                 <label variant="string">{t("CURRENCY")} </label>
                                 <Typography
@@ -149,59 +158,8 @@ function CardList(props) {
                                     {row.currency}
                                 </Typography>
                             </Box>
-
-                            <Box className="sm:pr-36">
-                                <label variant="string">{t("AMOUNT")} </label>
-                                <Typography
-                                    variant="string"
-                                    sx={{
-                                        direction: "ltr",
-                                    }}
-                                >
-                                    {row.amount.toAmount()}
-                                </Typography>
-                            </Box>
-
-                            <Box className="">
-                                <label variant="string">{t("TRANSACTION_FEE")}</label>
-                                <Typography
-                                    variant="string"
-                                    sx={{
-                                        direction: "ltr",
-                                    }}
-                                >
-                                    {row.wage}
-                                </Typography>
-                            </Box>
-                            <Box className="sm:pr-36">
-                                <label className="w-28 inline-block" variant="string">{t("CHANNEL")}</label>
-                                <Typography
-                                    variant="string"
-                                    sx={{
-                                        direction: "ltr",
-
-                                    }}
-                                >
-                                    {row.channel}
-                                </Typography>
-                            </Box>
-
-                            <Box className="">
-                                <label variant="string">{t("CREATE_DATE")}</label>
-                                <Typography
-                                    variant="string"
-                                    sx={{
-                                        direction: "ltr",
-                                    }}
-                                >
-                                    {moment(new Date(row.createDate))
-                                        .locale("fa")
-                                        .format("YYYY-MM-DD hh:mm:ss")}
-                                </Typography>
-                            </Box>
-
-                            <Box className="sm:pr-36">
-                                <label variant="string">{t("TRANSACTION_ID")}</label>
+                            <Box >
+                                <label variant="string">{t("TRANSACTION_ID")} </label>
                                 <Typography
                                     variant="string"
                                     sx={{
@@ -213,24 +171,49 @@ function CardList(props) {
                             </Box>
 
                             <Box className="">
-                                <label variant="string">{t("USED_DATE")}</label>
+                                <label variant="string">{t("DEPOSIT_DATE")}</label>
                                 <Typography
                                     variant="string"
                                     sx={{
                                         direction: "ltr",
                                     }}
                                 >
-                                    {moment(new Date(row.usedDate))
+                                    {moment(new Date(row.depositDate))
                                         .locale("fa")
                                         .format("YYYY-MM-DD - hh:mm:ss")}
                                 </Typography>
                             </Box>
-                            <Box className="sm:pr-36">
+                            <Box >
+                                <label className="w-28 inline-block" variant="string">{t("LAST_ACTION_DATE")}</label>
+                                <Typography
+                                    variant="string"
+                                    sx={{
+                                        direction: "ltr",
+
+                                    }}
+                                >
+                                    {moment(new Date(row.latestActionDate))
+                                        .locale("fa")
+                                        .format("YYYY/MM/DD hh:mm:ss")}
+                                </Typography>
+                            </Box>
+                            <Box className="">
+                                <label variant="string">{t("ATTACHMENT_TYPE")}</label>
+                                <Typography
+                                    variant="string"
+                                    sx={{
+                                        direction: "ltr",
+                                    }}
+                                >
+                                   {row.attachmentType}
+                                </Typography>
+                            </Box>
+                            <Box >
                                 <label variant="string">{t("STATUS")}</label>
                                 <Chip
                                     skin="light"
                                     //label={params.row.status=="1" ? <Translations  text ="DEPOSITED" /> :  <Translations text="CANCELD" />}
-                                    label={statusMap[row.status]}
+                                    label={statusMap[row.status] }
                                     color={statusMapColor[row.status]}
                                     sx={{
                                         textTransform: 'uppercase',
@@ -243,49 +226,9 @@ function CardList(props) {
                                 ></Chip>
                             </Box>
 
-                            <Box className="">
-                                <label variant="string">{t("ACTIONS")}</label>
 
-                                {row.status == "ACTIVE" ? (
-                                    <ButtonComponent
-                                    className="w-96"
-                                        color="error"
-                                        skin="light"
-                                        size="small"
-                                        //disabled={isLoading}
-                                        isLoading={isLoadingData}
-                                        // onClick={() => handleRemoveItem(row)}
-                                        onClick={(e) => {
-                                            setCancel({
-                                                confirm: true,
-                                                anchorEl: e.currentTarget,
-                                                data: row,
-                                            });
-                                        }}
-                                        variant="outlined"
-                                        sx={{ padding: "3px" }}
-                                        endIcon={
-                                            <FuseSvgIcon
-                                                sx={{
-
-                                                    stroke: "transparent !important",
-                                                    fill: "#fff",
-                                                }}
-                                            >
-                                                {"mv-icons:icon-Cancel"}
-                                            </FuseSvgIcon>
-                                        }
-                                    >
-                                        {t("CANCELLATION")}
-                                    </ButtonComponent>
-                                ) : (
-                                    <></>
-                                )
-                                }
-
-                            </Box>
-
-                            <Box className="sm:pr-36">
+                            <Box 
+                            >
                                 <label variant="string">{t("DETAILS")}</label>
                                 {
                                     <ButtonComponent
@@ -297,7 +240,8 @@ function CardList(props) {
                                         isLoading={isLoadingData}
                                         onClick={() => handleClickOpen(row)}
                                         variant="contained"
-                                        sx={{ padding: "5px" }}
+                                        sx={{ padding: "5px"}}
+                                        
                                         startIcon={
                                             <FuseSvgIcon
                                                 sx={{
@@ -361,7 +305,7 @@ function CardList(props) {
                         <DialogTitle>
                             <Box className="">
                                 <FusePageSimpleHeader
-                                    header={t("VOUCHER_DETAIL")}
+                                    header={t("DEPOSIT_INFORMATION")}
                                     headerActions={
                                         <i className="inline-block rounded-xl ">
                                             <FuseSvgIcon
@@ -379,7 +323,7 @@ function CardList(props) {
                             </Box>
                         </DialogTitle>
                         <DialogContent>
-                            <VoucherInfo info={details.data.voucherInfo} onCancelClick={handleClose}></VoucherInfo>
+                            <DepositsInfo info={details.data.depositsInfo} onCancelClick={handleClose}></DepositsInfo>
                         </DialogContent>
                     </Dialog>
 

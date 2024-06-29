@@ -146,7 +146,7 @@ window.appSettings.resources = {
       INACTIVE: "inActive ",
       PROFILE: "Profile",
       EXIT: "Exit",
-      VOUCHER_GENERATE: "Voucher Generate",
+      VOUCHER_GENERATE: "Add Voucher",
       VOUCHERS_REPORT: "Vouchers",
       DEPOSIT_INFORMATION: "Deposit Information",
       DEPOSIT_STATUS: "Deposit Status",
@@ -197,6 +197,8 @@ window.appSettings.resources = {
       SELECT: "Select",
       BANK_DEPOSIT_SLIP: "Bank Deposit Slip",
       INTERBANK_PAYMENT_SYSTEM: "Interbank Payment System",
+      CHANGE_PASS_HINT2:"Password must contain at least 8 digits and a combination of lower and uppercase English letters and numbers.",
+      PASSWORD_CONFIRM:"Repeat Password"
     },
   },
   fa: {

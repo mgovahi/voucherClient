@@ -156,8 +156,6 @@ function VoucherInfo({ info = {}, onCancelClick }) {
             disabled
           />
         </Grid>
-
-    
       </Grid>
     </Box>
       <Box className="flex justify-end gap-x-[20px] my-20 mx-20">
@@ -177,8 +175,6 @@ function VoucherInfo({ info = {}, onCancelClick }) {
           </ButtonComponent>
     </Box>
 </>
-
-
   );
 }
 

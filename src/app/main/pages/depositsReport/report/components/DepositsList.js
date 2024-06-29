@@ -33,22 +33,23 @@ const DepositsList = (props) => {
   const theme = useTheme();
   const dispatch = useDispatch();
 
-  const [details, setDetails] = useState({
-    showModal: false,
-    data: {},
-  });
+  // const [details, setDetails] = useState({
+  //   showModal: false,
+  //   data: {},
+  // });
   const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down("sm"));
 
-  const handleClickOpen = (params) => {
-    setDetails({
-      showModal: true,
-      data: { DepositsInfo: params },
-    });
-  };
+  // const handleClickOpen = (params) => {
+  //   setDetails({
+  //     showModal: true,
+  //     data: { DepositsInfo: params },
+  //   });
+  // };
+  const isLTR = theme.direction === 'ltr';
 
-  const handleClose = () => {
-    setDetails({ showModal: false, data: { DepositsInfo: {} } });
-  };
+  // const handleClose = () => {
+  //   setDetails({ showModal: false, data: { DepositsInfo: {} } });
+  // };
   const isLoadingData = true;
 
   const {
@@ -64,6 +65,10 @@ const DepositsList = (props) => {
     page,
     onApprovePurchases,
     isAdmin,
+    onCancelVoucher,
+    handleClose,
+    handleClickOpen,
+    details,
   } = props;
 
   const statusMap = {
@@ -307,6 +312,8 @@ const DepositsList = (props) => {
         </Typography>
         <Box
           sx={{
+            display:"flex",
+            flexDirection: isLTR ? { xs: "column-reverse", md: "row-reverse" } : { xs: "column", md: "row" },
             Button: {
               padding: "3px 3px",
               color: "#b4b2b7",
@@ -321,6 +328,7 @@ const DepositsList = (props) => {
             aria-label="refresh"
             sx={{
               marginRight: "8px",
+              marginLeft: "8px",
             }}
           >
             <FuseSvgIcon size="16px">mv-icons:icon-Masked-Icon</FuseSvgIcon>
@@ -346,6 +354,7 @@ const DepositsList = (props) => {
           rowCount={total?.TotalRecords}
           autoHeight
           columns={columns}
+          columnBuffer={300} // Adjust buffer space here
           pageSize={total.PageSize}
           loading={loading}
           page={total.PageNumber - 1}
@@ -405,8 +414,10 @@ const DepositsList = (props) => {
         </DialogTitle>
         <DialogContent>
           <DepositsInfo
-            info={details.data.DepositsInfo}
-            onCancelClick={handleClose}
+          // statusMapColor={statusMapColor}
+          // statusMap={statusMap}
+          info={details.data.depositsInfo}
+          onCancelClick={handleClose}
           ></DepositsInfo>
         </DialogContent>
       </Dialog>

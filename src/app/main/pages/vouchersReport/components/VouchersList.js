@@ -43,6 +43,7 @@ const VouchersList = (props) => {
     anchorEl: null,
     data: null,
   });
+  const isLTR = theme.direction === 'ltr';
 
   const [sampleDataList, setSampleDataList] = useState(props.data || []);
 
@@ -254,7 +255,7 @@ const VouchersList = (props) => {
       },
     },
     {
-      minWidth: 150,
+      minWidth: 180,
       field: "details",
       sortable: false,
       headerName: t("DETAILS"),
@@ -364,6 +365,9 @@ const VouchersList = (props) => {
         </Typography>
         <Box
           sx={{
+            display:"flex",
+            flexDirection: isLTR ? { xs: "column-reverse", md: "row-reverse" } : { xs: "column", md: "row" },
+            // flexDirection: { xs: "row-reverse", sm: "" },
             Button: {
               padding: "3px 3px",
               color: "#b4b2b7",
@@ -378,6 +382,7 @@ const VouchersList = (props) => {
             aria-label="refresh"
             sx={{
               marginRight: "8px",
+              marginLeft: "8px",
             }}
           >
             <FuseSvgIcon size="16px">mv-icons:icon-Masked-Icon</FuseSvgIcon>
@@ -387,6 +392,9 @@ const VouchersList = (props) => {
             color="default"
             size="small"
             aria-label="refresh"
+            sx={{
+              // width: "120px",
+            }}
           >
             {t("DOWNLOAD")}
             <FuseSvgIcon className="mx-8" size="16px">

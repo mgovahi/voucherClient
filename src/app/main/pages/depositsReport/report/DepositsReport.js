@@ -2,7 +2,7 @@ import { useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import { motion } from "framer-motion";
 import { Box, border, fontSize } from "@mui/system";
-import { Paper, TextField, Button } from "@mui/material";
+import { Paper, TextField, Button,Hidden } from "@mui/material";
 import FusePageSimple from "@fuse/core/FusePageSimple";
 import { useTranslation } from "react-i18next";
 import { styled } from "@mui/material/styles";
@@ -15,6 +15,7 @@ import FusePageSimpleHeader from "@fuse/core/FusePageSimple/FusePageSimpleHeader
 
 import sx from "@mui/system/sx";
 import DepositsList from "./components/DepositsList";
+import CardList from "./components/CardList";
 function DepositsReport(props) {
   const { t } = useTranslation();
   const naviage = useNavigate();
@@ -38,7 +39,23 @@ function DepositsReport(props) {
   const onPageSizeChange = (pageSize) => {
     //setReportData({ ...reportData, pageSize: pageSize });
   };
-  
+  const [details, setDetails] = useState({
+    showModal: false,
+    data: {},
+  });
+
+  const handleOpenDetails  = (params) => {
+    setDetails({
+      showModal: true,
+      data: { depositsInfo: params },
+    });
+  };
+
+  const handleClose  = () => {
+    setDetails({ showModal: false, data: { depositsInfo: {} } });
+  };
+
+
   return (
     <>
       <Paper className="w-full rounded"
@@ -77,9 +94,7 @@ function DepositsReport(props) {
             </>
           }
         ></FusePageSimpleHeader>
-
-
-        <motion.div
+                <motion.div
           className="grid grid-cols-1  gap-24 w-full min-w-0 "
           variants={container}
           initial="hidden"
@@ -91,11 +106,26 @@ function DepositsReport(props) {
               <SearchForm />
             </Box>
             <Box>
+            <Hidden mdUp>
+                <CardList 
+                 data={deposits.list ? deposits.list :[]}
+                 total={deposits.totalInfo}
+                 onPageSizeChange={onPageSizeChange}
+                 handleClickOpen={handleOpenDetails}
+                 handleClose={handleClose}
+                 details={details}
+                 ></CardList>
+              </Hidden>
+              <Hidden mdDown>
               <DepositsList
                 data={deposits.list}
                 total={deposits.totalInfo}
                 onPageSizeChange={onPageSizeChange}
+                details={details}
+                handleClickOpen={handleOpenDetails}
+                 handleClose={handleClose}
               />
+               </Hidden>
             </Box>
           </motion.div>
         </motion.div>

@@ -43,11 +43,11 @@ function DepositsInfo({ info = {}, onCancelClick,  onCancelTransaction,
 
   const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down("sm"));
     
-  const [cancel, setCancel] = useState({
-    confirm: false,
-    anchorEl: null,
-    data: null,
-  });
+  // const [cancel, setCancel] = useState({
+  //   confirm: false,
+  //   anchorEl: null,
+  //   data: null,
+  // });
   
   const handleChange = (event, newValue) => {
     setActive(newValue);
@@ -70,6 +70,8 @@ function DepositsInfo({ info = {}, onCancelClick,  onCancelTransaction,
     REJECTED: "errorLight",
     WAITING: "warningLight",
   };
+
+
   const statusMapDescription = {
     ACCEPTED: " موفق بوده است. با تشکر",
     REJECTED: "مجدد اقدام فرماید. با تشکر",
@@ -95,8 +97,6 @@ function DepositsInfo({ info = {}, onCancelClick,  onCancelTransaction,
   };
 
 
-
-
   return (
     <>
       <Box
@@ -105,10 +105,7 @@ function DepositsInfo({ info = {}, onCancelClick,  onCancelTransaction,
       >
         <Grid container spacing={2}>
           <Grid item xs={12} display="flex" justifyContent="flex-end">
-            <Typography variant="caption"  sx={{
-              //  direction: "rtl",
-               
-            }}>
+            <Typography variant="caption">
               <label>{t("DEPOSIT_STATUS")}:</label>
               <Chip
                 // className="mr-8"
@@ -175,29 +172,6 @@ function DepositsInfo({ info = {}, onCancelClick,  onCancelTransaction,
               disabled
             />
           </Grid>
-          {/* <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              value={info.transactionId || ""}
-              label={t("TRANSACTION_ID")}
-              disabled
-            />
-          </Grid> */}
-          {/* <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              sx={{
-                direction: "rtl",
-                ".MuiOutlinedInput-input": { textAlign: "left" },
-              }}
-              value={
-                moment(info.usedDate).locale("fa").format("YYYY/MM/DD - hh:mm:ss") ||
-                "1403/01/25  23:10:13 "
-              }
-              label={t("USED_DATE")}
-              disabled
-            />
-          </Grid> */}
           <Grid item xs={12} sm={6}>
             <TextField
               fullWidth
@@ -254,8 +228,6 @@ function DepositsInfo({ info = {}, onCancelClick,  onCancelTransaction,
               height: "auto",
             }}
           />
-
-
           <ButtonComponent
             endIcon={<FuseSvgIcon>mv-icons:icon-FilePresent</FuseSvgIcon>}
             variant="contained"

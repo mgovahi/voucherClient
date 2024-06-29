@@ -146,7 +146,6 @@ function VouchersReport(props) {
               <SearchForm />
             </Box>
             <Box>
-
               <Hidden mdUp>
                 <CardList 
                  data={vouchers.list ? vouchers.list :[]}
@@ -161,28 +160,24 @@ function VouchersReport(props) {
               </Hidden>
               <Hidden mdDown>
                 <VouchersList
-              
-                handleCancelVoucher={handleCancelVoucher}
-                details={details}
-                handleClickOpen={handleOpenDetails}
-                 handleClose={handleClose}
                   data={vouchers.list}
                   total={vouchers.totalInfo}
                   onPageSizeChange={onPageSizeChange}
                   onSortChange={onSortChange}
                   onCancelVoucher={onCancelVoucher}
+                  handleCancelVoucher={handleCancelVoucher}
+                  details={details}
+                  handleClickOpen={handleOpenDetails}
+                  handleClose={handleClose}
                 />
               </Hidden>
             </Box>
           </motion.div>
         </motion.div>
-
-
       </Paper>
     </>
   );
 }
-
 
 const sampleData = [
   {
